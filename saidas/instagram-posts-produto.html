@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Posts Produto em Destaque</title>
+<style>
+:root {
+  --azul: #1A2B4D;
+  --azul2: #0d1b35;
+  --laranja: #F28C28;
+  --laranja2: #e07010;
+  --branco: #fff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: #0a0e1a; font-family: 'Segoe UI', Arial, sans-serif; color:#fff; padding: 40px; }
+
+h1 { text-align:center; font-size:28px; font-weight:900; margin-bottom:6px; }
+.sub { text-align:center; font-size:14px; color:rgba(255,255,255,0.4); margin-bottom:60px; }
+
+.posts-row { display:flex; flex-wrap:wrap; gap:40px; justify-content:center; }
+
+/* FRAME DO POST */
+.post-frame {
+  width: 480px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column;
+}
+.post-ig-header {
+  display:flex; align-items:center; gap:10px; padding:10px 14px;
+  background:#fff;
+}
+.post-ig-av {
+  width:32px;height:32px;border-radius:50%;
+  background:var(--azul);display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;color:var(--laranja);
+  border:1.5px solid rgba(242,140,40,0.5);flex-shrink:0;
+}
+.post-ig-name { font-size:12px;font-weight:700;color:#000;font-family:-apple-system,sans-serif; }
+.post-ig-loc { font-size:11px;color:#888;font-family:-apple-system,sans-serif; }
+.post-ig-more { margin-left:auto;color:#000;font-size:18px; }
+
+/* CANVAS QUADRADO */
+.canvas { width:480px;height:480px;position:relative;overflow:hidden;flex-shrink:0; }
+
+/* AÇÕES */
+.post-actions { display:flex;align-items:center;gap:14px;padding:10px 14px 4px;background:#fff; }
+.post-actions svg { width:22px;height:22px;fill:none;stroke:#000;stroke-width:2; }
+.post-actions .save { margin-left:auto; }
+.post-likes { font-size:12px;font-weight:700;color:#000;padding:0 14px;background:#fff;font-family:-apple-system,sans-serif; }
+.post-caption { padding:4px 14px 14px;font-size:12px;color:#000;line-height:1.5;font-family:-apple-system,sans-serif;background:#fff; }
+.post-caption strong { font-weight:700; }
+.post-caption .tags { color:#003569; }
+.post-dots { display:flex;justify-content:center;gap:4px;padding:5px 0;background:#fff; }
+.post-dots span { width:5px;height:5px;border-radius:50%;background:#dbdbdb; }
+.post-dots span.on { background:#0095f6;width:14px;border-radius:3px; }
+
+/* ======================================================
+   BALDE MEP — componente SVG reutilizável inline
+   ====================================================== */
+
+/* ===== POST 1 — 3 BALDES (HERO PRODUTO) ===== */
+.p1-bg {
+  width:100%;height:100%;
+  background: linear-gradient(160deg, #e8f0fa 0%, #c8d8f0 50%, #a8c0e8 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom: 28px;
+  position:relative;overflow:hidden;
+}
+.p1-bg .topo {
+  position:absolute;top:0;left:0;right:0;
+  background:var(--azul);
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.p1-bg .topo .logo { font-size:22px;font-weight:900;color:#fff;letter-spacing:2px; }
+.p1-bg .topo .logo span { color:var(--laranja); }
+.p1-bg .topo .tag { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.6); }
+.p1-baldes { display:flex;align-items:flex-end;justify-content:center;gap:8px;margin-bottom:8px; }
+.p1-claims {
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+}
+.p1-claim {
+  background:var(--azul);color:#fff;
+  font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.p1-claim.laranja { background:var(--laranja); }
+.p1-floor {
+  position:absolute;bottom:0;left:0;right:0;height:60px;
+  background:linear-gradient(180deg,transparent,rgba(26,43,77,0.12));
+}
+
+/* ===== POST 2 — BALDE + NUMERO GRANDE ===== */
+.p2-bg {
+  width:100%;height:100%;
+  background:var(--azul2);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;
+  padding: 0 40px;
+}
+.p2-bg .hex-dec { position:absolute;opacity:0.07; }
+.p2-left {}
+.p2-left .pre { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:8px; }
+.p2-left .num { font-size:110px;font-weight:900;color:var(--laranja);line-height:1; }
+.p2-left .desc { font-size:16px;font-weight:800;color:#fff;margin-top:4px;line-height:1.3; }
+.p2-left .sub { font-size:13px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.5;max-width:160px; }
+.p2-left .logo-bottom { margin-top:20px;font-size:18px;font-weight:900;color:rgba(255,255,255,0.3);letter-spacing:2px; }
+.p2-left .logo-bottom span { color:rgba(242,140,40,0.5); }
+
+/* ===== POST 3 — BALDE CENTRALIZADO + GRID DE CLAIMS ===== */
+.p3-bg {
+  width:100%;height:100%;
+  background:#fff;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  padding:0;
+}
+.p3-header { width:100%;background:var(--azul);padding:16px 24px;display:flex;align-items:center;justify-content:space-between; }
+.p3-header .logo { font-size:20px;font-weight:900;color:#fff;letter-spacing:2px; }
+.p3-header .logo span { color:var(--laranja); }
+.p3-header .h-tag { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.5); }
+.p3-balde-center { flex:1;display:flex;align-items:center;justify-content:center;position:relative; }
+.p3-claims-grid {
+  width:100%;display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid #e5e7eb;
+}
+.p3-claim-item {
+  padding:14px 18px;display:flex;flex-direction:column;
+  border-right:1px solid #e5e7eb;
+}
+.p3-claim-item:nth-child(even) { border-right:none; }
+.p3-claim-item:nth-child(3),.p3-claim-item:nth-child(4) { border-top:1px solid #e5e7eb; }
+.p3-claim-item .cn { font-size:28px;font-weight:900;color:var(--laranja);line-height:1; }
+.p3-claim-item .cl { font-size:11px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px;margin-top:3px; }
+
+/* ===== POST 4 — BALDE COM PASSOS ===== */
+.p4-bg {
+  width:100%;height:100%;
+  background:var(--azul);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.p4-bg .stripe { position:absolute;top:0;left:0;width:6px;height:100%;background:var(--laranja); }
+.p4-top { padding:22px 28px 0 36px;flex-shrink:0; }
+.p4-top .tag { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:8px; }
+.p4-top h2 { font-size:26px;font-weight:900;color:#fff;line-height:1.2; }
+.p4-main { flex:1;display:flex;align-items:center;gap:0;padding:0 20px 0 36px; }
+.p4-passos { flex:1;display:flex;flex-direction:column;gap:14px; }
+.p4-passo { display:flex;align-items:flex-start;gap:12px; }
+.p4-num { width:30px;height:30px;border-radius:50%;background:var(--laranja);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.p4-ptxt h4 { font-size:13px;font-weight:800;color:#fff; }
+.p4-ptxt p { font-size:11px;color:rgba(255,255,255,0.6);line-height:1.4;margin-top:2px; }
+.p4-balde-side { flex-shrink:0; }
+.p4-bottom { padding:16px 28px 20px 36px; }
+.p4-result { background:rgba(242,140,40,0.12);border:1px solid rgba(242,140,40,0.3);border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between; }
+.p4-result .r-label { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.5); }
+.p4-result .r-val { font-size:15px;font-weight:900;color:var(--laranja); }
+.p4-logo { position:absolute;bottom:18px;right:22px;font-size:16px;font-weight:900;color:rgba(255,255,255,0.15);letter-spacing:2px; }
+.p4-logo span { color:rgba(242,140,40,0.25); }
+
+/* ===== POST 5 — COMPARATIVO VISUAL (PRODUTO VS CONVENCIONAL) ===== */
+.p5-bg {
+  width:100%;height:100%;
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.p5-lado { display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;position:relative; }
+.p5-lado.conv { background:#f0f0f0; }
+.p5-lado.mep { background:var(--azul); }
+.p5-lado .l-tag { font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px; }
+.p5-lado.conv .l-tag { color:#aaa; }
+.p5-lado.mep .l-tag { color:rgba(242,140,40,0.7); }
+.p5-lado .l-val { font-size:36px;font-weight:900;line-height:1;margin-top:10px; }
+.p5-lado.conv .l-val { color:#ccc;text-decoration:line-through;font-size:28px; }
+.p5-lado.mep .l-val { color:var(--laranja); }
+.p5-lado .l-sub { font-size:11px;margin-top:6px;line-height:1.4;text-align:center; }
+.p5-lado.conv .l-sub { color:#aaa; }
+.p5-lado.mep .l-sub { color:rgba(255,255,255,0.5); }
+.p5-divider {
+  position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);
+  width:40px;display:flex;align-items:center;justify-content:center;z-index:10;
+}
+.p5-vs {
+  width:36px;height:36px;border-radius:50%;
+  background:var(--laranja);color:#fff;
+  font-size:12px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(242,140,40,0.4);
+}
+.p5-bottom {
+  position:absolute;bottom:0;left:0;right:0;
+  background:var(--azul2);
+  padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:5;
+}
+.p5-bottom .b-text { font-size:11px;color:rgba(255,255,255,0.6); }
+.p5-bottom .b-val { font-size:13px;font-weight:800;color:var(--laranja); }
+.p5-bottom .logo-s { font-size:15px;font-weight:900;color:rgba(255,255,255,0.4);letter-spacing:2px; }
+.p5-bottom .logo-s span { color:rgba(242,140,40,0.6); }
+
+/* LABEL INFERIOR */
+.post-label-text {
+  background:#111827;border-radius:8px;padding:16px 20px;
+  font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;
+  margin-top:12px; max-width:480px;
+}
+.post-label-text strong { color:var(--laranja); }
+.post-wrapper { display:flex;flex-direction:column;align-items:center;gap:8px; }
+.post-number { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja); }
+</style>
+</head>
+<body>
+
+<h1>MEP Massas — Posts com Produto em Destaque</h1>
+<p class="sub">5 posts estilo produto hero · balde MEP como elemento principal · Instagram</p>
+
+<div class="posts-row">
+
+<!-- ============================= POST 1 ============================= -->
+<div class="post-wrapper">
+<div class="post-number">Post 1 — Produto Hero</div>
+<div class="post-frame">
+  <div class="post-ig-header">
+    <div class="post-ig-av">M</div>
+    <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+    <div class="post-ig-more">···</div>
+  </div>
+
+  <div class="canvas">
+    <div class="p1-bg">
+      <!-- TOPO -->
+      <div class="topo">
+        <div class="logo">ME<span>P</span></div>
+        <div class="tag">Argamassa Polimerica Pronta Para Uso</div>
+      </div>
+
+      <!-- SOMBRA NO CHAO -->
+      <div style="position:absolute;bottom:88px;left:50%;transform:translateX(-50%);width:320px;height:18px;background:rgba(26,43,77,0.18);border-radius:50%;filter:blur(10px);"></div>
+
+      <!-- 3 BALDES -->
+      <div class="p1-baldes">
+        <!-- BALDE ESQUERDO (menor, inclinado) -->
+        <svg width="115" height="148" viewBox="0 0 115 148" style="transform:rotate(-6deg) translateY(10px);opacity:0.88;">
+          <defs>
+            <linearGradient id="b1g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#142240"/>
+              <stop offset="40%" style="stop-color:#1A2B4D"/>
+              <stop offset="100%" style="stop-color:#1e3560"/>
+            </linearGradient>
+            <linearGradient id="b1label" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#d06800"/>
+              <stop offset="50%" style="stop-color:#F28C28"/>
+              <stop offset="100%" style="stop-color:#d06800"/>
+            </linearGradient>
+          </defs>
+          <!-- alca -->
+          <path d="M 35 18 Q 57 4 79 18" stroke="#0d1b35" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- corpo -->
+          <path d="M 18 22 L 97 22 L 86 128 L 29 128 Z" fill="url(#b1g)"/>
+          <!-- tampa -->
+          <rect x="18" y="14" width="79" height="12" rx="4" fill="#0d1b35"/>
+          <!-- label laranja -->
+          <rect x="25" y="40" width="65" height="52" rx="4" fill="url(#b1label)"/>
+          <!-- logo na label -->
+          <text x="57" y="62" text-anchor="middle" font-size="14" font-weight="900" fill="white" font-family="Arial,sans-serif">MEP</text>
+          <line x1="30" y1="68" x2="84" y2="68" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="57" y="82" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif">POLIMERICA</text>
+          <!-- peso -->
+          <text x="57" y="133" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.35)" font-family="Arial,sans-serif">25 kg</text>
+          <!-- reflexo lateral -->
+          <path d="M 18 22 L 30 22 L 29 128 L 18 128" fill="rgba(255,255,255,0.04)" opacity="0.5"/>
+        </svg>
+
+        <!-- BALDE CENTRAL (maior, destaque) -->
+        <svg width="148" height="188" viewBox="0 0 148 188">
+          <defs>
+            <linearGradient id="b2g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#142240"/>
+              <stop offset="35%" style="stop-color:#1A2B4D"/>
+              <stop offset="65%" style="stop-color:#233a66"/>
+              <stop offset="100%" style="stop-color:#1a3055"/>
+            </linearGradient>
+            <linearGradient id="b2label" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#e07010"/>
+              <stop offset="50%" style="stop-color:#F28C28"/>
+              <stop offset="100%" style="stop-color:#cc6600"/>
+            </linearGradient>
+            <filter id="shadow2">
+              <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0a1020" flood-opacity="0.4"/>
+            </filter>
+          </defs>
+          <!-- alca -->
+          <path d="M 42 22 Q 74 4 106 22" stroke="#0d1b35" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="42" cy="22" r="4" fill="#0d1b35"/>
+          <circle cx="106" cy="22" r="4" fill="#0d1b35"/>
+          <!-- corpo com sombra -->
+          <path d="M 22 28 L 126 28 L 112 162 L 36 162 Z" fill="url(#b2g)" filter="url(#shadow2)"/>
+          <!-- tampa -->
+          <rect x="22" y="18" width="104" height="14" rx="5" fill="#0a1828"/>
+          <!-- borda da tampa -->
+          <rect x="22" y="28" width="104" height="4" fill="#0f2040" rx="1"/>
+          <!-- label laranja grande -->
+          <rect x="30" y="48" width="88" height="72" rx="6" fill="url(#b2label)"/>
+          <!-- reflexo no label -->
+          <rect x="30" y="48" width="88" height="20" rx="6" fill="rgba(255,255,255,0.1)"/>
+          <!-- logo grande -->
+          <text x="74" y="78" text-anchor="middle" font-size="22" font-weight="900" fill="white" font-family="Arial,sans-serif" letter-spacing="2">MEP</text>
+          <line x1="36" y1="85" x2="112" y2="85" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+          <text x="74" y="103" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif">POLIMERICA</text>
+          <!-- peso em destaque -->
+          <rect x="50" y="126" width="48" height="18" rx="9" fill="rgba(0,0,0,0.2)"/>
+          <text x="74" y="139" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial,sans-serif">25 kg</text>
+          <!-- faixas laterais decorativas -->
+          <path d="M 22 28 L 38 28 L 36 162 L 22 162" fill="rgba(255,255,255,0.03)"/>
+          <path d="M 126 28 L 112 28 L 112 162 L 126 162" fill="rgba(0,0,0,0.1)"/>
+          <!-- abertura / indicador no canto -->
+          <circle cx="112" cy="50" r="6" fill="rgba(255,255,255,0.1)"/>
+          <text x="112" y="54" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.4)" font-family="Arial">⟳</text>
+          <!-- peso na base -->
+          <text x="74" y="172" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.3)" font-family="Arial,sans-serif">mepmassa.com.br</text>
+        </svg>
+
+        <!-- BALDE DIREITO (menor, inclinado) -->
+        <svg width="115" height="148" viewBox="0 0 115 148" style="transform:rotate(6deg) translateY(10px);opacity:0.88;">
+          <defs>
+            <linearGradient id="b3g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#1e3560"/>
+              <stop offset="60%" style="stop-color:#1A2B4D"/>
+              <stop offset="100%" style="stop-color:#142240"/>
+            </linearGradient>
+          </defs>
+          <path d="M 35 18 Q 57 4 79 18" stroke="#0d1b35" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 18 22 L 97 22 L 86 128 L 29 128 Z" fill="url(#b3g)"/>
+          <rect x="18" y="14" width="79" height="12" rx="4" fill="#0d1b35"/>
+          <rect x="25" y="40" width="65" height="52" rx="4" fill="#d06800"/>
+          <text x="57" y="62" text-anchor="middle" font-size="14" font-weight="900" fill="white" font-family="Arial,sans-serif">MEP</text>
+          <line x1="30" y1="68" x2="84" y2="68" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="57" y="82" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif">POLIMERICA</text>
+          <text x="57" y="133" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.35)" font-family="Arial,sans-serif">25 kg</text>
+          <path d="M 97 22 L 86 22 L 86 128 L 97 128" fill="rgba(0,0,0,0.1)"/>
+        </svg>
+      </div>
+
+      <!-- CLAIMS -->
+      <div class="p1-claims">
+        <div class="p1-claim laranja">4x mais rapida</div>
+        <div class="p1-claim">40% mais economica</div>
+        <div class="p1-claim laranja">Pronto para uso</div>
+        <div class="p1-claim">Zero desperdicio</div>
+      </div>
+
+      <div class="p1-floor"></div>
+    </div>
+  </div>
+
+  <div class="post-dots"><span class="on"></span><span></span><span></span></div>
+  <div class="post-actions">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+  </div>
+  <div class="post-likes">Seja o primeiro a curtir</div>
+  <div class="post-caption"><strong>mepmassa</strong> Chegou o MEP. Argamassa polimerica pronta para uso — sem betoneira, sem mistura, sem desperdicio. 4x mais rapida e 40% mais economica. <span class="tags">#mepmassa #argamassamep #construcaocivil</span></div>
+</div>
+<div class="post-label-text"><strong>Post 1 — Hero do produto.</strong> 3 baldes em composição, fundo degrade azul claro, claims abaixo. Estilo de fotografia de produto.</div>
+</div>
+
+
+<!-- ============================= POST 2 ============================= -->
+<div class="post-wrapper">
+<div class="post-number">Post 2 — Numero Grande + Balde</div>
+<div class="post-frame">
+  <div class="post-ig-header">
+    <div class="post-ig-av">M</div>
+    <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+    <div class="post-ig-more">···</div>
+  </div>
+
+  <div class="canvas">
+    <div class="p2-bg">
+      <!-- HEXAGONOS FUNDO -->
+      <svg class="hex-dec" style="top:-60px;right:-60px;" width="280" height="280" viewBox="0 0 280 280">
+        <polygon points="140,14 259,77 259,203 140,266 21,203 21,77" fill="none" stroke="white" stroke-width="36"/>
+      </svg>
+      <svg class="hex-dec" style="bottom:-40px;left:-40px;" width="160" height="160" viewBox="0 0 160 160">
+        <polygon points="80,8 148,44 148,116 80,152 12,116 12,44" fill="none" stroke="white" stroke-width="20"/>
+      </svg>
+
+      <div class="p2-left">
+        <div class="pre">Velocidade</div>
+        <div class="num">4x</div>
+        <div class="desc">mais rapida<br>que o convencional</div>
+        <div class="sub">Produto pronto. Sem mistura, sem betoneira, sem espera.</div>
+        <div class="logo-bottom">ME<span>P</span></div>
+      </div>
+
+      <!-- BALDE GRANDE DIREITA -->
+      <svg width="180" height="230" viewBox="0 0 180 230" style="flex-shrink:0;">
+        <defs>
+          <linearGradient id="bg2l" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#0a1828"/>
+            <stop offset="30%" style="stop-color:#1A2B4D"/>
+            <stop offset="70%" style="stop-color:#233a66"/>
+            <stop offset="100%" style="stop-color:#1a3055"/>
+          </linearGradient>
+          <linearGradient id="label2l" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#F28C28"/>
+            <stop offset="100%" style="stop-color:#c06000"/>
+          </linearGradient>
+          <filter id="sombra2">
+            <feDropShadow dx="-8" dy="12" stdDeviation="12" flood-color="#000" flood-opacity="0.5"/>
+          </filter>
+        </defs>
+        <!-- sombra no chão -->
+        <ellipse cx="90" cy="224" rx="54" ry="9" fill="rgba(0,0,0,0.3)" filter="blur(4px)"/>
+        <!-- alca -->
+        <path d="M 50 26 Q 90 6 130 26" stroke="rgba(255,255,255,0.2)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <circle cx="50" cy="26" r="5" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="130" cy="26" r="5" fill="rgba(255,255,255,0.15)"/>
+        <!-- corpo principal -->
+        <path d="M 26 34 L 154 34 L 138 200 L 42 200 Z" fill="url(#bg2l)" filter="url(#sombra2)"/>
+        <!-- tampa -->
+        <rect x="26" y="22" width="128" height="16" rx="6" fill="#071220"/>
+        <!-- borda -->
+        <rect x="26" y="36" width="128" height="5" fill="#0d1f38"/>
+        <!-- label -->
+        <rect x="38" y="58" width="104" height="86" rx="7" fill="url(#label2l)"/>
+        <!-- shine no label -->
+        <rect x="38" y="58" width="104" height="26" rx="7" fill="rgba(255,255,255,0.12)"/>
+        <!-- logo MEP -->
+        <text x="90" y="95" text-anchor="middle" font-size="28" font-weight="900" fill="white" font-family="Arial,sans-serif" letter-spacing="3">MEP</text>
+        <line x1="44" y1="103" x2="136" y2="103" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="90" y="122" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif">POLIMERICA</text>
+        <!-- peso badge -->
+        <rect x="63" y="148" width="54" height="20" rx="10" fill="rgba(0,0,0,0.25)"/>
+        <text x="90" y="162" text-anchor="middle" font-size="11" font-weight="900" fill="white" font-family="Arial,sans-serif">25 kg</text>
+        <!-- reflexo lateral esq -->
+        <path d="M 26 34 L 42 34 L 42 200 L 26 200" fill="rgba(255,255,255,0.03)"/>
+        <!-- sombra lateral dir -->
+        <path d="M 154 34 L 138 34 L 138 200 L 154 200" fill="rgba(0,0,0,0.15)"/>
+        <!-- website base -->
+        <text x="90" y="212" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.2)" font-family="Arial,sans-serif">mepmassa.com.br</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="post-dots"><span class="on"></span><span></span><span></span></div>
+  <div class="post-actions">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+  </div>
+  <div class="post-likes">Seja o primeiro a curtir</div>
+  <div class="post-caption"><strong>mepmassa</strong> 4x mais rapida que a argamassa convencional. Sem betoneira, sem mistura, sem espera. O pedreiro aplica e avanca. <span class="tags">#mepmassa #4xmaisrapida #obraeficiente</span></div>
+</div>
+<div class="post-label-text"><strong>Post 2 — Numero 4x em destaque</strong> com balde grande na direita. Fundo azul escuro com hexagonos.</div>
+</div>
+
+
+<!-- ============================= POST 3 ============================= -->
+<div class="post-wrapper">
+<div class="post-number">Post 3 — Grid de Claims</div>
+<div class="post-frame">
+  <div class="post-ig-header">
+    <div class="post-ig-av">M</div>
+    <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+    <div class="post-ig-more">···</div>
+  </div>
+
+  <div class="canvas">
+    <div class="p3-bg">
+      <div class="p3-header">
+        <div class="logo">ME<span>P</span></div>
+        <div class="h-tag">Argamassa Polimerica · 25 kg</div>
+      </div>
+
+      <div class="p3-balde-center">
+        <!-- BALDE CENTRALIZADO -->
+        <svg width="190" height="240" viewBox="0 0 190 240">
+          <defs>
+            <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#0d1b35"/>
+              <stop offset="40%" style="stop-color:#1A2B4D"/>
+              <stop offset="70%" style="stop-color:#1e3a6e"/>
+              <stop offset="100%" style="stop-color:#162a50"/>
+            </linearGradient>
+            <linearGradient id="label3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#F28C28"/>
+              <stop offset="100%" style="stop-color:#c06000"/>
+            </linearGradient>
+            <filter id="sombra3">
+              <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0a1020" flood-opacity="0.35"/>
+            </filter>
+          </defs>
+          <!-- sombra -->
+          <ellipse cx="95" cy="234" rx="58" ry="10" fill="rgba(26,43,77,0.2)"/>
+          <!-- alca -->
+          <path d="M 54 28 Q 95 8 136 28" stroke="#0d1b35" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <circle cx="54" cy="28" r="6" fill="#0a1828"/>
+          <circle cx="136" cy="28" r="6" fill="#0a1828"/>
+          <!-- corpo -->
+          <path d="M 28 36 L 162 36 L 145 210 L 45 210 Z" fill="url(#bg3)" filter="url(#sombra3)"/>
+          <!-- tampa -->
+          <rect x="28" y="24" width="134" height="16" rx="6" fill="#071220"/>
+          <rect x="28" y="38" width="134" height="5" rx="1" fill="#0d1f38"/>
+          <!-- label -->
+          <rect x="40" y="62" width="110" height="90" rx="8" fill="url(#label3)"/>
+          <rect x="40" y="62" width="110" height="28" rx="8" fill="rgba(255,255,255,0.1)"/>
+          <!-- logo -->
+          <text x="95" y="99" text-anchor="middle" font-size="30" font-weight="900" fill="white" font-family="Arial,sans-serif" letter-spacing="4">MEP</text>
+          <line x1="46" y1="108" x2="144" y2="108" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <text x="95" y="127" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif">POLIMERICA</text>
+          <!-- badge peso -->
+          <rect x="68" y="156" width="54" height="20" rx="10" fill="rgba(0,0,0,0.25)"/>
+          <text x="95" y="170" text-anchor="middle" font-size="11" font-weight="900" fill="white" font-family="Arial,sans-serif">25 kg</text>
+          <!-- reflexo -->
+          <path d="M 28 36 L 46 36 L 45 210 L 28 210" fill="rgba(255,255,255,0.03)"/>
+          <path d="M 162 36 L 146 36 L 145 210 L 162 210" fill="rgba(0,0,0,0.12)"/>
+          <text x="95" y="222" text-anchor="middle" font-size="9" fill="rgba(26,43,77,0.35)" font-family="Arial,sans-serif">mepmassa.com.br</text>
+        </svg>
+      </div>
+
+      <div class="p3-claims-grid">
+        <div class="p3-claim-item"><div class="cn">4x</div><div class="cl">Mais Rapida</div></div>
+        <div class="p3-claim-item"><div class="cn">40%</div><div class="cl">Mais Economica</div></div>
+        <div class="p3-claim-item"><div class="cn">3x</div><div class="cl">Mais Resistente</div></div>
+        <div class="p3-claim-item"><div class="cn">95%</div><div class="cl">Menos Agua</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-dots"><span class="on"></span><span></span><span></span></div>
+  <div class="post-actions">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+  </div>
+  <div class="post-likes">Seja o primeiro a curtir</div>
+  <div class="post-caption"><strong>mepmassa</strong> 4 diferenciais em 1 produto. Salve esse post para ter os numeros em maos na hora de comprar o material da sua obra. <span class="tags">#mepmassa #argamassamep #construtora</span></div>
+</div>
+<div class="post-label-text"><strong>Post 3 — Balde centralizado</strong> com grid de 4 claims embaixo. Fundo branco limpo, estilo ficha tecnica.</div>
+</div>
+
+
+<!-- ============================= POST 4 ============================= -->
+<div class="post-wrapper">
+<div class="post-number">Post 4 — Como Usar</div>
+<div class="post-frame">
+  <div class="post-ig-header">
+    <div class="post-ig-av">M</div>
+    <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+    <div class="post-ig-more">···</div>
+  </div>
+
+  <div class="canvas">
+    <div class="p4-bg" style="position:relative;">
+      <!-- FOTO PEDREIRO COMO FUNDO -->
+      <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2021_10_15.png"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.18;z-index:0;">
+      <div class="p4-bg .stripe" style="position:absolute;top:0;left:0;width:6px;height:100%;background:var(--laranja);z-index:1;"></div>
+
+      <div class="p4-top">
+        <div class="tag">3 passos</div>
+        <h2>Como usar o<br>MEP na obra</h2>
+      </div>
+
+      <div class="p4-main">
+        <div class="p4-passos">
+          <div class="p4-passo">
+            <div class="p4-num">1</div>
+            <div class="p4-ptxt"><h4>Abra o balde</h4><p>Produto 100% pronto. Sem adicionar nada.</p></div>
+          </div>
+          <div class="p4-passo">
+            <div class="p4-num">2</div>
+            <div class="p4-ptxt"><h4>Prepare a superficie</h4><p>Limpe com vassoura. Sem poeira.</p></div>
+          </div>
+          <div class="p4-passo">
+            <div class="p4-num">3</div>
+            <div class="p4-ptxt"><h4>Aplique direto</h4><p>Saco aplicador na alvenaria. Zero desperdicio.</p></div>
+          </div>
+        </div>
+
+        <!-- BALDE LATERAL -->
+        <div class="p4-balde-side">
+          <svg width="148" height="190" viewBox="0 0 148 190">
+            <defs>
+              <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#0a1828"/>
+                <stop offset="40%" style="stop-color:#1A2B4D"/>
+                <stop offset="100%" style="stop-color:#233a66"/>
+              </linearGradient>
+              <linearGradient id="label4" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#F28C28"/>
+                <stop offset="100%" style="stop-color:#b85800"/>
+              </linearGradient>
+              <filter id="sombra4"><feDropShadow dx="-6" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.4"/></filter>
+            </defs>
+            <ellipse cx="74" cy="184" rx="44" ry="7" fill="rgba(0,0,0,0.25)"/>
+            <path d="M 42 22 Q 74 6 106 22" stroke="rgba(255,255,255,0.15)" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <circle cx="42" cy="22" r="4" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="106" cy="22" r="4" fill="rgba(255,255,255,0.1)"/>
+            <path d="M 22 28 L 126 28 L 112 162 L 36 162 Z" fill="url(#bg4)" filter="url(#sombra4)"/>
+            <rect x="22" y="18" width="104" height="14" rx="5" fill="#071220"/>
+            <rect x="22" y="30" width="104" height="4" fill="#0d1f38"/>
+            <rect x="30" y="48" width="88" height="70" rx="6" fill="url(#label4)"/>
+            <rect x="30" y="48" width="88" height="22" rx="6" fill="rgba(255,255,255,0.1)"/>
+            <text x="74" y="80" text-anchor="middle" font-size="22" font-weight="900" fill="white" font-family="Arial,sans-serif" letter-spacing="3">MEP</text>
+            <line x1="36" y1="87" x2="112" y2="87" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="74" y="105" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.75)" font-family="Arial,sans-serif">POLIMERICA</text>
+            <rect x="52" y="124" width="44" height="16" rx="8" fill="rgba(0,0,0,0.25)"/>
+            <text x="74" y="136" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial,sans-serif">25 kg</text>
+            <path d="M 22 28 L 36 28 L 36 162 L 22 162" fill="rgba(255,255,255,0.03)"/>
+            <path d="M 126 28 L 112 28 L 112 162 L 126 162" fill="rgba(0,0,0,0.12)"/>
+            <text x="74" y="172" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.2)" font-family="Arial,sans-serif">mepmassa.com.br</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="p4-bottom">
+        <div class="p4-result">
+          <div><div class="r-label">Resultado</div><div class="r-val">4x mais rapido · 40% mais barato</div></div>
+        </div>
+      </div>
+
+      <div class="p4-logo">ME<span>P</span></div>
+    </div>
+  </div>
+
+  <div class="post-dots"><span class="on"></span><span></span><span></span></div>
+  <div class="post-actions">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+  </div>
+  <div class="post-likes">Seja o primeiro a curtir</div>
+  <div class="post-caption"><strong>mepmassa</strong> Tres passos. Abre, limpa, aplica. Qualquer pedreiro usa no primeiro dia. Resultado: 4x mais rapido e 40% mais barato. <span class="tags">#mepmassa #comousar #obrarapida</span></div>
+</div>
+<div class="post-label-text"><strong>Post 4 — Tutorial</strong> com balde ao lado dos 3 passos. Fundo azul escuro, stripe laranja na lateral.</div>
+</div>
+
+
+<!-- ============================= POST 5 ============================= -->
+<div class="post-wrapper">
+<div class="post-number">Post 5 — Comparativo Visual</div>
+<div class="post-frame">
+  <div class="post-ig-header">
+    <div class="post-ig-av">M</div>
+    <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+    <div class="post-ig-more">···</div>
+  </div>
+
+  <div class="canvas">
+    <div class="p5-bg">
+      <!-- IMAGEM REAL COMO FUNDO -->
+      <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2017_13_44.png"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;">
+
+      <!-- LADO CONVENCIONAL -->
+      <div class="p5-lado conv" style="background:transparent;">
+        <div class="l-tag" style="color:rgba(255,255,255,0.6);">Argamassa Convencional</div>
+        <div class="l-val" style="color:rgba(255,255,255,0.5);text-decoration:line-through;font-size:28px;">24.000 kg</div>
+        <div class="l-sub" style="color:rgba(255,255,255,0.4);">para 820 m²</div>
+      </div>
+
+      <!-- DIVISOR VS -->
+      <div class="p5-divider">
+        <div class="p5-vs">VS</div>
+      </div>
+
+      <!-- LADO MEP -->
+      <div class="p5-lado mep" style="background:transparent;">
+        <div class="l-tag">MEP Polimerica</div>
+        <!-- BALDE MEP -->
+        <svg width="120" height="152" viewBox="0 0 120 152" style="margin:8px 0;">
+          <defs>
+            <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#0d1b35"/>
+              <stop offset="50%" style="stop-color:#1A2B4D"/>
+              <stop offset="100%" style="stop-color:#1e3a6e"/>
+            </linearGradient>
+            <linearGradient id="label5" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#F28C28"/>
+              <stop offset="100%" style="stop-color:#c06000"/>
+            </linearGradient>
+            <filter id="sombra5"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity="0.4"/></filter>
+          </defs>
+          <ellipse cx="60" cy="148" rx="38" ry="6" fill="rgba(0,0,0,0.3)"/>
+          <path d="M 30 18 Q 60 5 90 18" stroke="rgba(255,255,255,0.2)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M 14 22 L 106 22 L 94 130 L 26 130 Z" fill="url(#bg5)" filter="url(#sombra5)"/>
+          <rect x="14" y="14" width="92" height="12" rx="4" fill="#071220"/>
+          <rect x="14" y="24" width="92" height="4" fill="#0d1f38"/>
+          <rect x="22" y="38" width="76" height="58" rx="5" fill="url(#label5)"/>
+          <rect x="22" y="38" width="76" height="18" rx="5" fill="rgba(255,255,255,0.1)"/>
+          <text x="60" y="63" text-anchor="middle" font-size="18" font-weight="900" fill="white" font-family="Arial,sans-serif" letter-spacing="3">MEP</text>
+          <line x1="27" y1="70" x2="93" y2="70" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <text x="60" y="85" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,0.7)" font-family="Arial,sans-serif">POLIMERICA</text>
+          <rect x="38" y="100" width="44" height="14" rx="7" fill="rgba(0,0,0,0.25)"/>
+          <text x="60" y="111" text-anchor="middle" font-size="9" font-weight="900" fill="white" font-family="Arial,sans-serif">25 kg</text>
+          <text x="60" y="138" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.2)" font-family="Arial,sans-serif">mepmassa.com.br</text>
+        </svg>
+        <div class="l-val">1.200 kg</div>
+        <div class="l-sub">1 pallet · pronto</div>
+      </div>
+
+      <!-- BARRA INFERIOR -->
+      <div class="p5-bottom">
+        <div><div class="b-text">Reducao de material</div><div class="b-val">95% menos</div></div>
+        <div><div class="b-text">Reducao de custo</div><div class="b-val">ate 40%</div></div>
+        <div class="logo-s">ME<span>P</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-dots"><span class="on"></span><span></span></div>
+  <div class="post-actions">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+  </div>
+  <div class="post-likes">Seja o primeiro a curtir</div>
+  <div class="post-caption"><strong>mepmassa</strong> 820 m². 24.000 kg de argamassa convencional. Ou 1.200 kg de MEP — 1 pallet. Os numeros falam. <span class="tags">#mepmassa #comparativo #argamassa #construtora</span></div>
+</div>
+<div class="post-label-text"><strong>Post 5 — Comparativo visual</strong> lado a lado: sacos empilhados vs balde MEP. Dado de impacto na barra inferior.</div>
+</div>
+
+
+</div><!-- /posts-row -->
+</body>
+</html>

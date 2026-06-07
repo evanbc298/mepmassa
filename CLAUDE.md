@@ -113,3 +113,22 @@ Quando o usuário pedir skill nova:
 4. Se a skill precisar de arquivos de apoio (templates, exemplos),
    criar dentro da pasta da skill
 5. Seguir o fluxo da skill-creator nativa do Claude Code
+
+---
+
+## Regras específicas — MEPMASSAS
+
+### Negócio
+Empresa de serviços para construção civil. Público-alvo B2B: construtoras, incorporadoras e empresas de obras. O interlocutor do Claude é o responsável pelo comercial e marketing.
+
+### Tom obrigatório
+- Nunca usar emojis em nenhum formato de conteúdo
+- Nunca usar gírias
+- Linguagem profissional e direta, adequada a tomadores de decisão do setor de construção
+- Sem frases de enchimento típicas de IA
+
+### Canais ativos
+Instagram (orgânico), Meta Ads (Facebook + Instagram), Google Ads
+
+### Contexto de fase
+Empresa começando do zero em junho de 2026. Toda sugestão deve considerar que não há base prévia — seguidores, histórico de anúncios ou lista de leads. Priorizar ações que constroem estrutura antes de escalar.

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — 5 Carrosséis de Lançamento</title>
+<style>
+:root { --azul: #1A2B4D; --laranja: #F28C28; --branco: #fff; --cinza: #f4f4f4; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a2e; color: #fff; padding: 40px; }
+h1 { text-align:center; font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+.subtitle { text-align:center; color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 60px; }
+
+.carrossel-section { margin-bottom: 80px; }
+.carrossel-title { font-size: 16px; font-weight: 800; color: var(--laranja); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+.carrossel-desc { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+.slides-row { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 12px; }
+
+/* SLIDE BASE — proporção quadrada 1:1 */
+.slide {
+  width: 300px; height: 300px;
+  border-radius: 12px; flex-shrink: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; padding: 32px;
+  position: relative; overflow: hidden;
+}
+
+/* CAPTION */
+.caption-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 20px 24px;
+  margin-top: 20px; max-width: 680px;
+}
+.caption-box p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; white-space: pre-line; }
+.caption-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--laranja); margin-bottom: 8px; }
+
+/* ---- CARROSSEL 1 — COMPARATIVO ---- */
+.c1-s1 { background: var(--azul); }
+.c1-s1 .tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--laranja); margin-bottom: 20px; }
+.c1-s1 h2 { font-size: 26px; font-weight: 900; color: #fff; line-height: 1.2; }
+.c1-s1 h2 span { color: var(--laranja); }
+.c1-s1 .sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 12px; }
+
+.c1-s2 { background: #0d1b35; flex-direction: column; justify-content: space-around; }
+.comp-bloco h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+.comp-bloco .v { font-size: 32px; font-weight: 900; }
+.comp-bloco .v.riscado { color: rgba(255,255,255,0.3); text-decoration: line-through; font-size: 24px; }
+.comp-bloco .v.destaque { color: var(--laranja); }
+.comp-bloco .sub { font-size: 12px; color: rgba(255,255,255,0.4); }
+.vs-bar { text-align: center; color: rgba(255,255,255,0.15); font-size: 20px; font-weight: 900; margin: 8px 0; }
+
+.c1-s3 { background: #0d1b35; }
+.c1-s3 .linha { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.c1-s3 .linha:last-child { border-bottom: none; }
+.c1-s3 .l-label { font-size: 12px; color: rgba(255,255,255,0.5); }
+.c1-s3 .l-trad { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: line-through; }
+.c1-s3 .l-mep { font-size: 14px; font-weight: 800; color: var(--laranja); }
+
+.c1-s4 { background: var(--laranja); text-align: center; }
+.c1-s4 .big { font-size: 52px; font-weight: 900; color: #fff; line-height: 1; }
+.c1-s4 .big-label { font-size: 16px; color: rgba(255,255,255,0.8); margin-top: 8px; font-weight: 700; }
+.c1-s4 .cta { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 16px; }
+
+/* ---- CARROSSEL 2 — 4 NÚMEROS ---- */
+.c2-capa { background: var(--azul); }
+.c2-capa .pretitulo { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--laranja); margin-bottom: 16px; }
+.c2-capa h2 { font-size: 28px; font-weight: 900; color: #fff; line-height: 1.2; }
+.c2-capa h2 span { color: var(--laranja); }
+.c2-capa .dica { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 16px; }
+
+.c2-num { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.c2-num .num-big { font-size: 72px; font-weight: 900; line-height: 1; }
+.c2-num .num-titulo { font-size: 18px; font-weight: 800; color: #fff; margin-top: 8px; }
+.c2-num .num-desc { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 8px; line-height: 1.5; }
+.s-4x { background: #0d1b35; }
+.s-4x .num-big { color: var(--laranja); }
+.s-40 { background: #1e3a6e; }
+.s-40 .num-big { color: var(--laranja); }
+.s-3x { background: #0d1b35; }
+.s-3x .num-big { color: var(--laranja); }
+.s-95 { background: #1e3a6e; }
+.s-95 .num-big { color: var(--laranja); }
+.c2-cta { background: var(--laranja); justify-content: center; align-items: center; text-align: center; }
+.c2-cta h2 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.c2-cta p { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+.c2-cta .link { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px; }
+
+/* ---- CARROSSEL 3 — COMO FUNCIONA ---- */
+.c3-capa { background: var(--azul); }
+.c3-capa h2 { font-size: 26px; font-weight: 900; color: #fff; }
+.c3-capa span { color: var(--laranja); }
+.c3-passo { display: flex; flex-direction: column; }
+.c3-passo .num-passo { font-size: 60px; font-weight: 900; color: var(--laranja); line-height: 1; opacity: 0.3; margin-bottom: 4px; }
+.c3-passo h3 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.c3-passo p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+.c3-p1 { background: #0d1b35; }
+.c3-p2 { background: var(--azul); }
+.c3-p3 { background: #1e3a6e; }
+.c3-result { background: var(--laranja); text-align: center; align-items: center; }
+.c3-result h2 { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.c3-result p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+/* ---- CARROSSEL 4 — DEPOIMENTO ---- */
+.c4-capa { background: var(--azul); justify-content: flex-end; padding-bottom: 32px; }
+.c4-capa .frase { font-size: 22px; font-weight: 900; color: #fff; line-height: 1.3; }
+.c4-capa .frase span { color: var(--laranja); }
+.c4-capa .subtag { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.c4-dep { background: #f9f9f9; }
+.c4-dep .aspas { font-size: 64px; color: var(--laranja); line-height: 0.8; font-family: Georgia, serif; }
+.c4-dep .texto { font-size: 15px; color: var(--azul); font-style: italic; line-height: 1.6; margin-top: 8px; font-weight: 600; }
+.c4-dep .autor { font-size: 12px; color: #888; margin-top: 16px; font-style: normal; }
+.c4-dados { background: #0d1b35; }
+.c4-dados h3 { font-size: 14px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+.c4-dado-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.c4-dado-item:last-child { border-bottom: none; }
+.c4-dado-item .d-label { font-size: 12px; color: rgba(255,255,255,0.5); }
+.c4-dado-item .d-val { font-size: 15px; font-weight: 800; color: var(--laranja); }
+.c4-cta { background: var(--laranja); text-align: center; align-items: center; }
+.c4-cta h2 { font-size: 22px; font-weight: 900; color: #fff; }
+.c4-cta p { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 12px; line-height: 1.6; }
+
+/* ---- CARROSSEL 5 — CALCULADORA CTA ---- */
+.c5-capa { background: var(--azul); }
+.c5-capa .pergunta { font-size: 24px; font-weight: 900; color: #fff; line-height: 1.3; }
+.c5-capa .pergunta span { color: var(--laranja); }
+.c5-capa .sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 16px; }
+.c5-custo { background: #0d1b35; }
+.c5-custo h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--laranja); margin-bottom: 20px; }
+.custo-linha { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.custo-linha:last-child { border-bottom: none; }
+.custo-linha .c-label { font-size: 12px; color: rgba(255,255,255,0.5); }
+.custo-linha .c-val { font-size: 13px; font-weight: 700; color: #fff; }
+.custo-linha .c-val.ok { color: #4ade80; }
+.c5-calc { background: var(--laranja); text-align: center; align-items: center; }
+.c5-calc h2 { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.c5-calc p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 16px; }
+.c5-calc .link-box { background: rgba(255,255,255,0.2); border-radius: 6px; padding: 10px 16px; font-size: 13px; font-weight: 700; color: #fff; }
+.c5-final { background: var(--azul); text-align: center; align-items: center; }
+.c5-final .logo { font-size: 36px; font-weight: 900; color: #fff; letter-spacing: 3px; }
+.c5-final .logo span { color: var(--laranja); }
+.c5-final .tagline { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 10px; line-height: 1.6; }
+.c5-final .contato { font-size: 14px; color: var(--laranja); font-weight: 700; margin-top: 20px; }
+
+/* DECORATIVO */
+.deco-circle {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<h1>MEP Massas — Carrosséis de Lançamento</h1>
+<p class="subtitle">5 posts prontos para Instagram, Facebook e LinkedIn · Imprima ou exporte como imagem</p>
+
+<!-- ============ CARROSSEL 1 ============ -->
+<div class="carrossel-section">
+  <div class="carrossel-title">Post 1 — O Comparativo que vende</div>
+  <div class="carrossel-desc">Carrossel · 4 slides · Foco: dado técnico real · Público: engenheiro, diretor de obras</div>
+  <div class="slides-row">
+
+    <!-- SLIDE 1 - CAPA -->
+    <div class="slide c1-s1">
+      <div class="deco-circle" style="width:200px;height:200px;bottom:-80px;right:-80px;"></div>
+      <div class="tag">Comparativo Tecnico</div>
+      <h2>820 m² de pavimento.<br>Quanto material<br>voce <span>realmente</span><br>precisa?</h2>
+      <div class="sub">Deslize para ver os numeros →</div>
+    </div>
+
+    <!-- SLIDE 2 - COMPARATIVO VISUAL -->
+    <div class="slide c1-s2">
+      <div class="comp-bloco">
+        <h3>Argamassa Convencional</h3>
+        <div class="v riscado">24.000 kg</div>
+        <div class="sub">areia + cimento + agua + betoneira</div>
+      </div>
+      <div class="vs-bar">— vs —</div>
+      <div class="comp-bloco">
+        <h3>MEP Polimerica</h3>
+        <div class="v destaque">1.200 kg</div>
+        <div class="sub">1 pallet. Pronto para usar.</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 - TABELA -->
+    <div class="slide c1-s3" style="padding: 24px;">
+      <div class="linha">
+        <span class="l-label">Velocidade</span>
+        <span class="l-trad">Padrao</span>
+        <span class="l-mep">4x mais rapida</span>
+      </div>
+      <div class="linha">
+        <span class="l-label">Desperdicio</span>
+        <span class="l-trad">15-25%</span>
+        <span class="l-mep">Zero</span>
+      </div>
+      <div class="linha">
+        <span class="l-label">Betoneira</span>
+        <span class="l-trad">Obrigatoria</span>
+        <span class="l-mep">Nao precisa</span>
+      </div>
+      <div class="linha">
+        <span class="l-label">Agua na obra</span>
+        <span class="l-trad">Alto consumo</span>
+        <span class="l-mep">95% menos</span>
+      </div>
+      <div class="linha">
+        <span class="l-label">Custo total</span>
+        <span class="l-trad">—</span>
+        <span class="l-mep">ate 40% menos</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 - CTA -->
+    <div class="slide c1-s4">
+      <div class="big">40%</div>
+      <div class="big-label">menos no custo da obra</div>
+      <div class="cta">Calcule o quanto sua obra economiza<br>mepmassa.com.br/calculadora</div>
+    </div>
+
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Legenda do post</div>
+    <p>820 metros quadrados de pavimento. A argamassa convencional exige 24.000 kg de material. O MEP resolve com 1.200 kg.
+
+Menos transporte. Menos estoque. Menos peso no canteiro. Mais velocidade.
+
+Os numeros sao tecnicos, nao estimativas. Veja o comparativo completo e calcule a economia da sua obra.
+
+Link na bio → mepmassa.com.br/calculadora-de-custos
+
+#construtora #incorporadora #argamassa #construcaocivil #mepmassa #argamassamep #reducaodecusto</p>
+  </div>
+</div>
+
+<!-- ============ CARROSSEL 2 ============ -->
+<div class="carrossel-section">
+  <div class="carrossel-title">Post 2 — Os 4 Números</div>
+  <div class="carrossel-desc">Carrossel · 6 slides · Foco: impacto visual forte · Ideal para salvar e compartilhar</div>
+  <div class="slides-row">
+
+    <!-- CAPA -->
+    <div class="slide c2-capa" style="background:var(--azul);">
+      <div class="pretitulo">Dados Tecnicos MEP</div>
+      <h2>4 numeros que<br>toda <span>construtora</span><br>precisa conhecer</h2>
+      <div class="dica">Deslize para ver cada um →</div>
+    </div>
+
+    <!-- 4X -->
+    <div class="slide c2-num s-4x">
+      <div class="deco-circle" style="width:180px;height:180px;top:-60px;right:-60px;"></div>
+      <div class="num-big">4x</div>
+      <div class="num-titulo">Mais Rapida</div>
+      <div class="num-desc">Produto pronto. Sem mistura, sem betoneira, sem espera. O pedreiro aplica direto e avanca na obra.</div>
+    </div>
+
+    <!-- 40% -->
+    <div class="slide c2-num s-40">
+      <div class="deco-circle" style="width:180px;height:180px;top:-60px;right:-60px;"></div>
+      <div class="num-big">40%</div>
+      <div class="num-titulo">Mais Economica</div>
+      <div class="num-desc">Menos material, menos transporte, menos mao de obra. Zero desperdicio. Reducao real no custo total.</div>
+    </div>
+
+    <!-- 3X -->
+    <div class="slide c2-num s-3x">
+      <div class="deco-circle" style="width:180px;height:180px;top:-60px;right:-60px;"></div>
+      <div class="num-big">3x</div>
+      <div class="num-titulo">Mais Resistente</div>
+      <div class="num-desc">Tecnologia polimerica. Aderencia e durabilidade superiores ao metodo convencional. Qualidade garantida.</div>
+    </div>
+
+    <!-- 95% -->
+    <div class="slide c2-num s-95">
+      <div class="deco-circle" style="width:180px;height:180px;top:-60px;right:-60px;"></div>
+      <div class="num-big">95%</div>
+      <div class="num-titulo">Menos Agua</div>
+      <div class="num-desc">Reducao drastica no consumo hidrico. Obra mais sustentavel, mais limpa, mais eficiente.</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="slide c2-cta">
+      <h2>Calcule a economia da sua obra</h2>
+      <p>Informe a metragem e descubra quanto o MEP economiza no seu proximo projeto.</p>
+      <div class="link">mepmassa.com.br/calculadora-de-custos</div>
+    </div>
+
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Legenda do post</div>
+    <p>4 numeros que mudaram a forma de construir.
+
+4x mais rapida · 40% mais economica · 3x mais resistente · 95% menos agua na obra.
+
+Nao e marketing. Sao os dados tecnicos do produto, comprovados na obra.
+
+Salve esse post para ter os numeros em maos na hora de decidir o material da sua proxima obra.
+
+Link na bio para calcular a economia.
+
+#argamassamep #produtividade #obraeficiente #engenheiroobra #mepmassa #construcaocivil #construtora</p>
+  </div>
+</div>
+
+<!-- ============ CARROSSEL 3 ============ -->
+<div class="carrossel-section">
+  <div class="carrossel-title">Post 3 — Como Funciona</div>
+  <div class="carrossel-desc">Carrossel · 5 slides · Foco: educativo / prático · Público: mestre de obras, pedreiro, encarregado</div>
+  <div class="slides-row">
+
+    <!-- CAPA -->
+    <div class="slide c3-capa" style="background:var(--azul);">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:16px;">Na pratica</div>
+      <h2 style="font-size:26px;font-weight:900;color:#fff;line-height:1.3;">Como usar o<br><span style="color:var(--laranja);">MEP</span> na obra.<br>3 passos.</h2>
+      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:16px;">Sem betoneira. Sem mistura. Sem complicacao.</div>
+    </div>
+
+    <!-- PASSO 1 -->
+    <div class="slide c3-passo c3-p1">
+      <div class="num-passo">01</div>
+      <h3>Abra a Embalagem</h3>
+      <p>Produto 100% pronto para uso. Sem adicao de agua, areia ou cimento. Sem preparo. Sem espera.</p>
+    </div>
+
+    <!-- PASSO 2 -->
+    <div class="slide c3-passo c3-p2">
+      <div class="num-passo">02</div>
+      <h3>Prepare a Superficie</h3>
+      <p>Limpe com vassoura ou pincel. Tijolos e blocos devem estar sem poeira para garantir maxima aderencia.</p>
+    </div>
+
+    <!-- PASSO 3 -->
+    <div class="slide c3-passo c3-p3">
+      <div class="num-passo">03</div>
+      <h3>Aplique Direto</h3>
+      <p>Coloque no saco aplicador e aplique diretamente na alvenaria. Zero desperdicio. Canteiro limpo.</p>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="slide c3-result">
+      <h2>Resultado:</h2>
+      <p>Obra 4x mais rapida. Custo 40% menor. Canteiro mais limpo. Pedreiro menos desgastado.</p>
+      <div style="margin-top:20px;font-size:12px;color:rgba(255,255,255,0.8);border-top:1px solid rgba(255,255,255,0.3);padding-top:16px;">(18) 99688-1384 · mepmassa.com.br</div>
+    </div>
+
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Legenda do post</div>
+    <p>Sem areia. Sem cimento. Sem betoneira. Sem mistura.
+
+O MEP chega pronto. Abre a embalagem, coloca no aplicador e assenta diretamente na alvenaria.
+
+3 passos. Qualquer pedreiro aplica no primeiro uso.
+
+O resultado: obra 4x mais rapida, custo 40% menor, canteiro mais limpo e pedreiro com menos desgaste fisico.
+
+Fale com a gente: (18) 99688-1384
+
+#mepmassa #argamassamep #construcaocivil #obrarapida #pedreiro #mestredeobrasobras #alvenaria</p>
+  </div>
+</div>
+
+<!-- ============ CARROSSEL 4 ============ -->
+<div class="carrossel-section">
+  <div class="carrossel-title">Post 4 — Depoimento</div>
+  <div class="carrossel-desc">Carrossel · 4 slides · Foco: prova social · Humaniza a marca</div>
+  <div class="slides-row">
+
+    <!-- CAPA -->
+    <div class="slide c4-capa">
+      <div class="deco-circle" style="width:250px;height:250px;top:-100px;right:-100px;"></div>
+      <div class="frase">"Comecei a usar o<br><span>MEP</span> e minha<br>qualidade de vida<br>mudou."</div>
+      <div class="subtag">Depoimento real · Deslize →</div>
+    </div>
+
+    <!-- DEPOIMENTO -->
+    <div class="slide c4-dep">
+      <div class="aspas">"</div>
+      <div class="texto">Comecei a trabalhar com o MEP e minha qualidade de vida mudou. Sem carregar peso, sem poeira, sem barulho de betoneira.</div>
+      <div class="autor">— Cintia Costa, Operadora de Obra</div>
+    </div>
+
+    <!-- DADOS POR TRAS -->
+    <div class="slide c4-dados" style="padding:24px;">
+      <h3>Por que ela tem razao</h3>
+      <div class="c4-dado-item">
+        <span class="d-label">Peso carregado por turno</span>
+        <span class="d-val">95% menos</span>
+      </div>
+      <div class="c4-dado-item">
+        <span class="d-label">Barulho de betoneira</span>
+        <span class="d-val">Zero</span>
+      </div>
+      <div class="c4-dado-item">
+        <span class="d-label">Poeira na obra</span>
+        <span class="d-val">Drasticamente menor</span>
+      </div>
+      <div class="c4-dado-item">
+        <span class="d-label">Velocidade de execucao</span>
+        <span class="d-val">4x mais rapida</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="slide c4-cta">
+      <h2>Quem ja usa MEP sabe.</h2>
+      <p>Quem ainda nao usa esta pagando mais caro e trabalhando mais. Fale com a gente.</p>
+      <div style="margin-top:20px;font-size:13px;font-weight:700;color:rgba(255,255,255,0.9);">(18) 99688-1384</div>
+    </div>
+
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Legenda do post</div>
+    <p>"Comecei a trabalhar com o MEP e minha qualidade de vida mudou."
+— Cintia Costa, operadora de obra.
+
+Sem carregar sacos de areia e cimento. Sem betoneira. Sem poeira. O canteiro muda quando o produto muda.
+
+Por tras do depoimento: 95% menos peso carregado por turno. Zero barulho de betoneira. Obra mais rapida e mais limpa.
+
+Quem ja usa MEP sabe. Quem ainda nao usa, esta pagando mais caro e trabalhando mais.
+
+Fale com a gente: (18) 99688-1384
+
+#depoimento #pedreiro #mepmassa #canteiro #obramelhor #argamassamep #construcaocivil</p>
+  </div>
+</div>
+
+<!-- ============ CARROSSEL 5 ============ -->
+<div class="carrossel-section">
+  <div class="carrossel-title">Post 5 — Calculadora / CTA Financeiro</div>
+  <div class="carrossel-desc">Carrossel · 4 slides · Foco: conversão · Público: diretor de obras, comprador, engenheiro</div>
+  <div class="slides-row">
+
+    <!-- CAPA -->
+    <div class="slide c5-capa">
+      <div class="deco-circle" style="width:200px;height:200px;bottom:-80px;right:-80px;"></div>
+      <div class="pergunta">Quanto sua obra<br>esta<br><span>desperdicando</span><br>em argamassa?</div>
+      <div class="sub">A resposta pode mudar seu orcamento.</div>
+    </div>
+
+    <!-- CUSTO REAL -->
+    <div class="slide c5-custo" style="padding:24px;">
+      <h3>Custo real da argamassa convencional</h3>
+      <div class="custo-linha">
+        <span class="c-label">Material</span>
+        <span class="c-val">Alto</span>
+      </div>
+      <div class="custo-linha">
+        <span class="c-label">Transporte (peso)</span>
+        <span class="c-val">Alto</span>
+      </div>
+      <div class="custo-linha">
+        <span class="c-label">Mao de obra extra</span>
+        <span class="c-val">Alto</span>
+      </div>
+      <div class="custo-linha">
+        <span class="c-label">Desperdicio</span>
+        <span class="c-val">15-25%</span>
+      </div>
+      <div class="custo-linha">
+        <span class="c-label">Com MEP</span>
+        <span class="c-val ok">ate 40% menos</span>
+      </div>
+    </div>
+
+    <!-- CALCULADORA -->
+    <div class="slide c5-calc">
+      <h2>Calcule o da sua obra</h2>
+      <p>Nossa calculadora gratuita compara o custo real para a metragem do seu projeto.</p>
+      <div class="link-box">mepmassa.com.br/calculadora</div>
+    </div>
+
+    <!-- FINAL MEP -->
+    <div class="slide c5-final">
+      <div class="deco-circle" style="width:200px;height:200px;top:-80px;right:-80px;"></div>
+      <div class="logo">ME<span>P</span></div>
+      <div class="tagline">Argamassa Polimerica Pronta Para Uso<br>Presidente Prudente, SP</div>
+      <div class="contato">(18) 99688-1384</div>
+    </div>
+
+  </div>
+  <div class="caption-box">
+    <div class="caption-label">Legenda do post</div>
+    <p>Quanto custa a argamassa convencional na sua proxima obra?
+
+Material + transporte + mao de obra + desperdicio de 15% a 25%.
+
+O MEP reduz esse custo em ate 40%. E o numero e calculavel antes de voce comprar qualquer material.
+
+Use nossa calculadora gratuita, informe a metragem e veja a diferenca real.
+
+Link na bio → mepmassa.com.br/calculadora-de-custos
+
+#calculadora #custoobra #reducaodecusto #construtora #incorporadora #argamassapolimerica #mepmassa</p>
+  </div>
+</div>
+
+</body>
+</html>

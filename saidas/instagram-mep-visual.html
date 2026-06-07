@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Instagram Visual</title>
+<style>
+:root {
+  --azul: #1A2B4D;
+  --azul2: #0d1b35;
+  --azul3: #1e3a6e;
+  --laranja: #F28C28;
+  --laranja2: #e07010;
+  --branco: #fff;
+  --cinza: #f4f5f7;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: #0a0e1a; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; }
+
+/* PAGE HEADER */
+.page-header { text-align:center; padding: 60px 40px 40px; }
+.page-header h1 { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+.page-header p { font-size: 15px; color: rgba(255,255,255,0.4); }
+.page-divider { width: 60px; height: 3px; background: var(--laranja); margin: 20px auto 0; }
+
+/* SECTION LABEL */
+.sec-label {
+  text-align: center; padding: 60px 40px 32px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--laranja);
+}
+.sec-title { text-align: center; font-size: 24px; font-weight: 900; color: #fff; padding: 0 40px 48px; }
+
+/* ===================== PHONE MOCKUP ===================== */
+.phone-wrapper { display: flex; justify-content: center; padding: 0 40px 80px; }
+.phone {
+  width: 320px;
+  background: #1a1a1a;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1);
+  position: relative;
+}
+.phone-notch {
+  width: 100px; height: 26px; background: #1a1a1a;
+  border-radius: 0 0 16px 16px;
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  z-index: 10;
+}
+.phone-screen {
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 620px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.phone-screen::-webkit-scrollbar { display:none; }
+
+/* INSTAGRAM UI */
+.ig-topbar {
+  position: sticky; top:0; z-index:10;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+}
+.ig-topbar .ig-username { font-size: 15px; font-weight: 700; color: #000; font-family: -apple-system, sans-serif; }
+.ig-topbar svg { width: 24px; height: 24px; fill: #000; }
+
+.ig-profile { padding: 16px; }
+.ig-profile-row { display: flex; align-items: center; gap: 20px; margin-bottom: 14px; }
+.ig-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--azul);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900; color: var(--laranja);
+  border: 2px solid #e5e7eb;
+  flex-shrink: 0;
+}
+.ig-stats { display: flex; gap: 16px; }
+.ig-stat { text-align: center; }
+.ig-stat .n { font-size: 16px; font-weight: 700; color: #000; font-family: -apple-system, sans-serif; }
+.ig-stat .l { font-size: 12px; color: #555; }
+.ig-bio-name { font-size: 13px; font-weight: 700; color: #000; margin-bottom: 2px; font-family: -apple-system,sans-serif; }
+.ig-bio-cat { font-size: 12px; color: #555; margin-bottom: 4px; font-family: -apple-system,sans-serif; }
+.ig-bio-text { font-size: 13px; color: #000; line-height: 1.5; font-family: -apple-system,sans-serif; margin-bottom: 4px; }
+.ig-bio-link { font-size: 13px; color: #003569; font-family: -apple-system,sans-serif; }
+.ig-btn-row { display: flex; gap: 8px; margin-top: 12px; }
+.ig-btn {
+  flex: 1; background: #efefef; border-radius: 8px;
+  padding: 7px; font-size: 13px; font-weight: 600; color: #000;
+  text-align: center; font-family: -apple-system,sans-serif;
+}
+.ig-btn.primary { background: var(--azul); color: #fff; }
+
+/* DESTAQUES */
+.ig-destaques { padding: 12px 16px; border-top: 1px solid #efefef; }
+.ig-destaques-row { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+.ig-destaques-row::-webkit-scrollbar { display:none; }
+.ig-destaque { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.ig-dest-ring {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 2px solid #e5e7eb;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--azul);
+  font-size: 20px;
+}
+.ig-dest-name { font-size: 11px; color: #000; font-family: -apple-system,sans-serif; }
+
+/* FEED GRID */
+.ig-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-top: 1px solid #efefef; }
+.ig-feed-item { aspect-ratio: 1; overflow: hidden; }
+.ig-feed-item img, .ig-feed-item .feed-thumb { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* THUMBNAILS DO FEED */
+.ft { width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.ft1 { background: var(--azul); }
+.ft2 { background: var(--laranja); }
+.ft3 { background: #0d1b35; }
+.ft4 { background: var(--azul3); }
+.ft5 { background: var(--laranja2); }
+.ft6 { background: var(--azul); }
+.ft7 { background: #0d1b35; }
+.ft8 { background: var(--laranja); }
+.ft9 { background: var(--azul2); }
+.ft-num { font-size: 18px; font-weight: 900; color: rgba(255,255,255,0.9); }
+.ft-sub { font-size: 8px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; position:absolute; bottom:6px; left:6px; right:6px; text-align:center; }
+
+/* ===================== POSTS ===================== */
+.posts-section { padding: 0 40px 80px; }
+.posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; }
+.post-wrapper { display: flex; flex-direction: column; gap: 20px; }
+.post-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--laranja); }
+.post-desc { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+/* FRAME IG DO POST */
+.post-ig-frame {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.post-ig-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+}
+.post-ig-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--azul);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 900; color: var(--laranja);
+  border: 1.5px solid rgba(242,140,40,0.4);
+  flex-shrink: 0;
+}
+.post-ig-name { font-size: 12px; font-weight: 700; color: #000; font-family: -apple-system,sans-serif; }
+.post-ig-loc { font-size: 11px; color: #555; font-family: -apple-system,sans-serif; }
+.post-ig-more { margin-left: auto; color: #000; font-size: 18px; line-height: 1; }
+
+/* AREA DO SLIDE */
+.post-canvas { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+
+/* POST ACTIONS */
+.post-ig-actions { display: flex; align-items: center; gap: 14px; padding: 10px 14px 4px; }
+.post-ig-actions svg { width: 22px; height: 22px; fill: none; stroke: #000; stroke-width: 2; }
+.post-ig-actions .save { margin-left: auto; }
+.post-ig-likes { font-size: 12px; font-weight: 700; color: #000; padding: 0 14px; font-family: -apple-system,sans-serif; }
+.post-ig-caption { padding: 4px 14px 12px; font-size: 12px; color: #000; line-height: 1.5; font-family: -apple-system,sans-serif; }
+.post-ig-caption strong { font-weight: 700; }
+.post-ig-caption .tags { color: #003569; }
+.post-ig-dots { display: flex; justify-content: center; gap: 4px; padding: 6px 0; }
+.post-ig-dots span { width: 6px; height: 6px; border-radius: 50%; background: #dbdbdb; }
+.post-ig-dots span.active { background: #0095f6; width: 6px; }
+
+/* ===== ELEMENTOS SVG REUTILIZÁVEIS ===== */
+
+/* BALDE MEP */
+.balde-wrap { position: absolute; }
+
+/* ===================== POST 1 — BRAND ===================== */
+.p1 {
+  background: linear-gradient(145deg, #0d1b35 0%, #1A2B4D 50%, #1e3a6e 100%);
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.p1 .hex-bg {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.07;
+}
+.p1 .tagline-top {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--laranja); margin-bottom: 20px;
+  position: relative; z-index: 2;
+}
+.p1 .logo-big {
+  font-size: 100px; font-weight: 900; color: var(--branco);
+  letter-spacing: 6px; line-height: 1;
+  position: relative; z-index: 2;
+}
+.p1 .logo-big span { color: var(--laranja); }
+.p1 .divider-line {
+  width: 80px; height: 3px; background: var(--laranja);
+  margin: 20px 0; position: relative; z-index: 2;
+}
+.p1 .tagline-bottom {
+  font-size: 13px; color: rgba(255,255,255,0.6);
+  text-align: center; max-width: 200px; line-height: 1.6;
+  position: relative; z-index: 2; text-transform: uppercase; letter-spacing: 1px;
+}
+.p1 .balde-deco {
+  position: absolute; right: -20px; bottom: -20px;
+  opacity: 0.15; z-index: 1;
+}
+
+/* ===================== POST 2 — COMPARATIVO ===================== */
+.p2 {
+  background: var(--azul2);
+  width: 100%; height: 100%; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 36px;
+}
+.p2 .corner-hex { position: absolute; top:-40px; right:-40px; opacity: 0.15; }
+.p2 .tag-p2 { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--laranja); margin-bottom: 16px; }
+.p2 .titulo-p2 { font-size: 20px; font-weight: 900; color: #fff; line-height: 1.3; margin-bottom: 28px; }
+.p2 .comp-bloco { margin-bottom: 16px; }
+.p2 .comp-lado {
+  border-radius: 8px; padding: 18px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.p2 .comp-lado.trad { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+.p2 .comp-lado.mep { background: rgba(242,140,40,0.12); border: 1px solid rgba(242,140,40,0.3); margin-top: 8px; }
+.p2 .comp-nome { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+.p2 .comp-val { font-size: 26px; font-weight: 900; }
+.p2 .comp-lado.trad .comp-val { color: rgba(255,255,255,0.3); text-decoration: line-through; }
+.p2 .comp-lado.mep .comp-val { color: var(--laranja); }
+.p2 .comp-unit { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.p2 .comp-unit.destaque { color: rgba(242,140,40,0.7); }
+.p2 .bottom-tag {
+  position: absolute; bottom: 28px; right: 28px;
+  font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.p2 .balde-pos { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); }
+
+/* ===================== POST 3 — 4 NUMEROS ===================== */
+.p3 {
+  width: 100%; height: 100%; position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+}
+.p3-quad {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 24px; position: relative; overflow: hidden;
+}
+.p3-q1 { background: var(--azul); }
+.p3-q2 { background: var(--laranja); }
+.p3-q3 { background: #0d1b35; }
+.p3-q4 { background: var(--azul3); }
+.p3-deco { position: absolute; top:-30px; right:-30px; opacity: 0.12; }
+.p3-num { font-size: 52px; font-weight: 900; color: rgba(255,255,255,0.9); line-height: 1; }
+.p3-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ===================== POST 4 — COMO USAR ===================== */
+.p4 {
+  background: #fff; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 36px; position: relative; overflow: hidden;
+}
+.p4 .barra-topo { position: absolute; top:0; left:0; right:0; height: 6px; background: var(--azul); }
+.p4 .tag-p4 { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--laranja); margin-bottom: 12px; }
+.p4 .titulo-p4 { font-size: 22px; font-weight: 900; color: var(--azul); margin-bottom: 28px; }
+.p4 .passo-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.p4 .passo-num-box {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--azul); color: #fff;
+  font-size: 15px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.p4 .passo-text h4 { font-size: 14px; font-weight: 800; color: var(--azul); }
+.p4 .passo-text p { font-size: 12px; color: #666; line-height: 1.5; margin-top: 2px; }
+.p4 .resultado-box {
+  margin-top: 8px; background: var(--azul); border-radius: 8px; padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.p4 .resultado-box span { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; }
+.p4 .resultado-box strong { font-size: 16px; font-weight: 900; color: var(--laranja); }
+.p4 .balde-pos4 { position: absolute; right: 28px; top: 50%; transform: translateY(-50%); }
+.p4 .mep-sig { position: absolute; bottom: 16px; right: 20px; font-size: 16px; font-weight: 900; color: rgba(26,43,77,0.2); letter-spacing: 2px; }
+
+/* ===================== POST 5 — DEPOIMENTO ===================== */
+.p5 {
+  background: var(--azul); width: 100%; height: 100%;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding: 40px;
+}
+.p5 .strip { position: absolute; top:0; left:0; width: 6px; height: 100%; background: var(--laranja); }
+.p5 .aspas { font-size: 100px; color: rgba(242,140,40,0.15); font-family: Georgia,serif; line-height: 0.8; margin-bottom: 12px; }
+.p5 .depo-texto { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.5; max-width: 340px; }
+.p5 .depo-autor { margin-top: 24px; }
+.p5 .depo-autor-nome { font-size: 13px; font-weight: 800; color: var(--laranja); }
+.p5 .depo-autor-cargo { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.p5 .hex-deco { position: absolute; right: -60px; bottom: -60px; opacity: 0.08; }
+.p5 .dado-box {
+  position: absolute; bottom: 36px; right: 36px;
+  background: rgba(242,140,40,0.12);
+  border: 1px solid rgba(242,140,40,0.3);
+  border-radius: 8px; padding: 12px 16px; text-align: center;
+}
+.p5 .dado-box .dv { font-size: 28px; font-weight: 900; color: var(--laranja); }
+.p5 .dado-box .dl { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+/* POST CAPTION ABAIXO */
+.post-caption-text {
+  background: #111827; border-radius: 8px; padding: 16px 20px;
+  font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7;
+}
+.post-caption-text strong { color: var(--laranja); font-weight: 700; }
+
+/* SLIDE INDICATOR */
+.slide-ind { display:flex; gap:4px; justify-content:center; padding: 6px 0 2px; }
+.slide-ind span { width:5px;height:5px;border-radius:50%;background:#dbdbdb; }
+.slide-ind span.a { background:#0095f6;width:14px;border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>MEP Massas — Instagram</h1>
+  <p>Perfil completo + 5 posts profissionais prontos para publicar</p>
+  <div class="page-divider"></div>
+</div>
+
+<!-- ======================== PERFIL ======================== -->
+<div class="sec-label">01 — Perfil</div>
+<div class="sec-title">Como o @mepmassa aparece no Instagram</div>
+
+<div class="phone-wrapper">
+  <div class="phone">
+    <div class="phone-notch"></div>
+    <div class="phone-screen">
+
+      <!-- TOP BAR IG -->
+      <div class="ig-topbar">
+        <span class="ig-username">mepmassa</span>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#000" stroke-width="1.5" fill="none"/><line x1="12" y1="8" x2="12" y2="16" stroke="#000" stroke-width="1.5"/><line x1="8" y1="12" x2="16" y2="12" stroke="#000" stroke-width="1.5"/></svg>
+      </div>
+
+      <!-- PERFIL INFO -->
+      <div class="ig-profile">
+        <div class="ig-profile-row">
+          <div class="ig-avatar">MEP</div>
+          <div class="ig-stats">
+            <div class="ig-stat"><div class="n">0</div><div class="l">posts</div></div>
+            <div class="ig-stat"><div class="n">0</div><div class="l">seguidores</div></div>
+            <div class="ig-stat"><div class="n">12</div><div class="l">seguindo</div></div>
+          </div>
+        </div>
+        <div class="ig-bio-name">MEP Massas</div>
+        <div class="ig-bio-cat">Material de Construcao · B2B</div>
+        <div class="ig-bio-text">Argamassa polimerica pronta para uso.<br>4x mais rapida. 40% mais economica.<br>Para construtoras e incorporadoras.<br>Presidente Prudente, SP</div>
+        <div class="ig-bio-link">mepmassa.com.br/calculadora</div>
+        <div class="ig-btn-row">
+          <div class="ig-btn primary">Seguir</div>
+          <div class="ig-btn">Mensagem</div>
+          <div class="ig-btn" style="flex:0;padding:7px 10px;">▾</div>
+        </div>
+      </div>
+
+      <!-- DESTAQUES -->
+      <div class="ig-destaques">
+        <div class="ig-destaques-row">
+          <div class="ig-destaque">
+            <div class="ig-dest-ring">📦</div>
+            <div class="ig-dest-name">Produto</div>
+          </div>
+          <div class="ig-destaque">
+            <div class="ig-dest-ring">🔧</div>
+            <div class="ig-dest-name">Como Usar</div>
+          </div>
+          <div class="ig-destaque">
+            <div class="ig-dest-ring">📊</div>
+            <div class="ig-dest-name">Resultados</div>
+          </div>
+          <div class="ig-destaque">
+            <div class="ig-dest-ring">💬</div>
+            <div class="ig-dest-name">Clientes</div>
+          </div>
+          <div class="ig-destaque">
+            <div class="ig-dest-ring">📞</div>
+            <div class="ig-dest-name">Contato</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEED GRID -->
+      <div class="ig-feed">
+        <div class="ig-feed-item"><div class="ft ft1"><div class="ft-num" style="font-size:28px;font-weight:900;letter-spacing:3px;">MEP</div><div class="ft-sub">lancamento</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft2"><div class="ft-num">24K<br><span style="font-size:10px;opacity:0.7;">vs</span><br>1.2K</div><div class="ft-sub">comparativo</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft3"><div class="ft-num" style="font-size:36px;">4x</div><div class="ft-sub">mais rapida</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft4"><div class="ft-num" style="font-size:36px;">40%</div><div class="ft-sub">economia</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft5"><div class="ft-num" style="font-size:13px;text-align:center;max-width:60px;">"minha vida mudou"</div><div class="ft-sub">depoimento</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft6"><div style="display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="font-size:11px;opacity:0.6;text-transform:uppercase;letter-spacing:1px;">3 passos</div><div class="ft-num" style="font-size:18px;">Como Usar</div></div><div class="ft-sub">tutorial</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft7"><div class="ft-num" style="font-size:36px;">3x</div><div class="ft-sub">mais resistente</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft8"><div class="ft-num" style="font-size:36px;">95%</div><div class="ft-sub">menos agua</div></div></div>
+        <div class="ig-feed-item"><div class="ft ft9"><div class="ft-num" style="font-size:14px;text-align:center;max-width:60px;line-height:1.3;">calcule sua economia</div><div class="ft-sub">calculadora</div></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ======================== POSTS ======================== -->
+<div class="sec-label">02 — Posts</div>
+<div class="sec-title">5 posts profissionais prontos para publicar</div>
+
+<div class="posts-section">
+<div class="posts-grid">
+
+  <!-- ===== POST 1 — BRAND / LANCAMENTO ===== -->
+  <div class="post-wrapper">
+    <div class="post-label">Post 1 — Lancamento da marca</div>
+    <div class="post-desc">Primeiro post do perfil. Apresentacao da MEP com identidade forte.</div>
+
+    <div class="post-ig-frame">
+      <div class="post-ig-header">
+        <div class="post-ig-avatar">M</div>
+        <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+        <div class="post-ig-more">···</div>
+      </div>
+
+      <div class="post-canvas">
+        <div class="p1" style="width:100%;height:100%;">
+          <!-- HEXAGONO FUNDO -->
+          <svg class="hex-bg" width="400" height="400" viewBox="0 0 400 400">
+            <polygon points="200,20 370,110 370,290 200,380 30,290 30,110" fill="none" stroke="white" stroke-width="40"/>
+          </svg>
+          <!-- BALDE DECORATIVO -->
+          <svg class="balde-deco" width="200" height="220" viewBox="0 0 200 220">
+            <polygon points="30,40 170,40 150,190 50,190" fill="white"/>
+            <rect x="30" y="25" width="140" height="20" rx="4" fill="white"/>
+            <path d="M 70 25 Q 100 5 130 25" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <rect x="50" y="60" width="100" height="60" rx="4" fill="rgba(0,0,0,0.2)"/>
+            <text x="100" y="95" text-anchor="middle" font-size="22" font-weight="900" fill="white" font-family="Arial">MEP</text>
+          </svg>
+          <div class="tagline-top">Argamassa Polimerica</div>
+          <div class="logo-big">ME<span>P</span></div>
+          <div class="divider-line"></div>
+          <div class="tagline-bottom">A revolucao na construcao civil</div>
+        </div>
+      </div>
+
+      <div class="slide-ind"><span class="a"></span><span></span><span></span></div>
+      <div class="post-ig-actions">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+      </div>
+      <div class="post-ig-likes">Seja o primeiro a curtir</div>
+      <div class="post-ig-caption"><strong>mepmassa</strong> Chegou o MEP. Argamassa polimerica pronta para uso — sem betoneira, sem mistura, sem desperdicio. 4x mais rapida, 40% mais economica, 3x mais resistente. Construcao civil nunca mais sera a mesma. Link na bio. <span class="tags">#mepmassa #argamassamep #construcaocivil #construtora</span></div>
+    </div>
+
+    <div class="post-caption-text"><strong>Legenda:</strong> Chegou o MEP. Argamassa polimerica pronta para uso — sem betoneira, sem mistura, sem desperdicio. 4x mais rapida, 40% mais economica, 3x mais resistente. Construcao civil nunca mais sera a mesma. Link na bio.</div>
+  </div>
+
+  <!-- ===== POST 2 — COMPARATIVO COM BALDE ===== -->
+  <div class="post-wrapper">
+    <div class="post-label">Post 2 — O comparativo real</div>
+    <div class="post-desc">Dado tecnico + balde como elemento visual. Argumento mais forte da marca.</div>
+
+    <div class="post-ig-frame">
+      <div class="post-ig-header">
+        <div class="post-ig-avatar">M</div>
+        <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+        <div class="post-ig-more">···</div>
+      </div>
+
+      <div class="post-canvas">
+        <div class="p2" style="width:100%;height:100%;">
+          <!-- HEX CANTO -->
+          <svg class="corner-hex" width="200" height="200" viewBox="0 0 200 200">
+            <polygon points="100,10 185,55 185,145 100,190 15,145 15,55" fill="none" stroke="white" stroke-width="30"/>
+          </svg>
+
+          <div class="tag-p2">Pavimento 820 m²</div>
+          <div class="titulo-p2">Quanto material<br>sua obra <span style="color:var(--laranja);">realmente</span><br>precisa?</div>
+
+          <div class="comp-bloco">
+            <div class="comp-lado trad">
+              <div>
+                <div class="comp-nome">Convencional</div>
+                <div class="comp-val">24.000 kg</div>
+                <div class="comp-unit">areia + cimento + betoneira</div>
+              </div>
+              <!-- PILHA DE SACOS -->
+              <svg width="60" height="60" viewBox="0 0 60 60">
+                <rect x="5" y="35" width="22" height="14" rx="3" fill="rgba(255,255,255,0.15)"/>
+                <rect x="10" y="22" width="22" height="14" rx="3" fill="rgba(255,255,255,0.12)"/>
+                <rect x="30" y="35" width="22" height="14" rx="3" fill="rgba(255,255,255,0.15)"/>
+                <rect x="25" y="22" width="22" height="14" rx="3" fill="rgba(255,255,255,0.12)"/>
+                <rect x="15" y="9" width="22" height="14" rx="3" fill="rgba(255,255,255,0.1)"/>
+                <text x="30" y="58" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)" font-family="Arial">muitos sacos</text>
+              </svg>
+            </div>
+            <div class="comp-lado mep">
+              <div>
+                <div class="comp-nome" style="color:rgba(255,255,255,0.6);">MEP Polimerica</div>
+                <div class="comp-val">1.200 kg</div>
+                <div class="comp-unit destaque">1 pallet. Pronto para usar.</div>
+              </div>
+              <!-- BALDE MEP -->
+              <svg width="60" height="68" viewBox="0 0 60 68">
+                <polygon points="8,14 52,14 46,60 14,60" fill="#F28C28"/>
+                <rect x="8" y="8" width="44" height="10" rx="3" fill="#e07010"/>
+                <path d="M 18 8 Q 30 0 42 8" stroke="#c06000" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <rect x="14" y="22" width="32" height="20" rx="3" fill="rgba(0,0,0,0.2)"/>
+                <text x="30" y="35" text-anchor="middle" font-size="9" font-weight="900" fill="white" font-family="Arial">MEP</text>
+                <text x="30" y="66" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.5)" font-family="Arial">25 kg</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="bottom-tag">mepmassa.com.br</div>
+        </div>
+      </div>
+
+      <div class="slide-ind"><span class="a"></span><span></span><span></span><span></span></div>
+      <div class="post-ig-actions">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+      </div>
+      <div class="post-ig-likes">Seja o primeiro a curtir</div>
+      <div class="post-ig-caption"><strong>mepmassa</strong> 820 m² de pavimento. A argamassa convencional exige 24.000 kg. O MEP resolve com 1.200 kg. Menos transporte, menos peso, menos custo. <span class="tags">#mepmassa #construcaocivil #argamassa</span></div>
+    </div>
+
+    <div class="post-caption-text"><strong>Legenda:</strong> 820 metros quadrados de pavimento. A argamassa convencional exige 24.000 kg de material. O MEP resolve com 1.200 kg — 1 pallet. Menos transporte, menos peso no canteiro, menos custo. Os numeros sao tecnicos. Calcule o da sua obra no link da bio.</div>
+  </div>
+
+  <!-- ===== POST 3 — 4 NUMEROS ===== -->
+  <div class="post-wrapper">
+    <div class="post-label">Post 3 — Os 4 numeros</div>
+    <div class="post-desc">Grid 2x2 com cada diferencial. Visual forte, ideal para salvar.</div>
+
+    <div class="post-ig-frame">
+      <div class="post-ig-header">
+        <div class="post-ig-avatar">M</div>
+        <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+        <div class="post-ig-more">···</div>
+      </div>
+
+      <div class="post-canvas">
+        <div class="p3" style="width:100%;height:100%;">
+          <div class="p3-quad p3-q1">
+            <svg class="p3-deco" width="120" height="120" viewBox="0 0 120 120">
+              <polygon points="60,5 112,32 112,88 60,115 8,88 8,32" fill="none" stroke="white" stroke-width="20"/>
+            </svg>
+            <div class="p3-num">4x</div>
+            <div class="p3-label">Mais Rapida</div>
+          </div>
+          <div class="p3-quad p3-q2">
+            <svg class="p3-deco" width="120" height="120" viewBox="0 0 120 120">
+              <polygon points="60,5 112,32 112,88 60,115 8,88 8,32" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="20"/>
+            </svg>
+            <div class="p3-num">40%</div>
+            <div class="p3-label">Mais Economica</div>
+          </div>
+          <div class="p3-quad p3-q3">
+            <svg class="p3-deco" width="120" height="120" viewBox="0 0 120 120">
+              <polygon points="60,5 112,32 112,88 60,115 8,88 8,32" fill="none" stroke="white" stroke-width="20"/>
+            </svg>
+            <div class="p3-num">3x</div>
+            <div class="p3-label">Mais Resistente</div>
+          </div>
+          <div class="p3-quad p3-q4">
+            <svg class="p3-deco" width="120" height="120" viewBox="0 0 120 120">
+              <polygon points="60,5 112,32 112,88 60,115 8,88 8,32" fill="none" stroke="white" stroke-width="20"/>
+            </svg>
+            <div class="p3-num">95%</div>
+            <div class="p3-label">Menos Agua</div>
+          </div>
+          <!-- CENTRO MEP -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;z-index:10;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span style="font-size:13px;font-weight:900;color:var(--azul);letter-spacing:1px;">MEP</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ind"><span class="a"></span><span></span><span></span><span></span><span></span></div>
+      <div class="post-ig-actions">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+      </div>
+      <div class="post-ig-likes">Seja o primeiro a curtir</div>
+      <div class="post-ig-caption"><strong>mepmassa</strong> 4 numeros que mudaram a forma de construir. Salve esse post para ter em maos na hora de decidir o material da sua proxima obra. <span class="tags">#argamassamep #produtividade #construtora</span></div>
+    </div>
+
+    <div class="post-caption-text"><strong>Legenda:</strong> 4 numeros que mudaram a forma de construir. 4x mais rapida · 40% mais economica · 3x mais resistente · 95% menos agua. Nao e marketing. Sao os dados tecnicos do produto. Salve esse post para ter em maos na hora de decidir o material da sua proxima obra.</div>
+  </div>
+
+  <!-- ===== POST 4 — COMO USAR (BALDE CENTRAL) ===== -->
+  <div class="post-wrapper">
+    <div class="post-label">Post 4 — Como usar o MEP</div>
+    <div class="post-desc">Visual limpo, fundo branco, balde como elemento central. Educativo.</div>
+
+    <div class="post-ig-frame">
+      <div class="post-ig-header">
+        <div class="post-ig-avatar">M</div>
+        <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+        <div class="post-ig-more">···</div>
+      </div>
+
+      <div class="post-canvas">
+        <div class="p4" style="width:100%;height:100%;">
+          <div class="barra-topo"></div>
+
+          <!-- BALDE LATERAL DIREITO -->
+          <div class="balde-pos4">
+            <svg width="110" height="130" viewBox="0 0 110 130">
+              <!-- Sombra -->
+              <ellipse cx="55" cy="125" rx="35" ry="6" fill="rgba(26,43,77,0.1)"/>
+              <!-- Alca -->
+              <path d="M 28 18 Q 55 2 82 18" stroke="#1A2B4D" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <!-- Corpo balde -->
+              <polygon points="18,22 92,22 80,115 30,115" fill="#1A2B4D"/>
+              <!-- Tampa -->
+              <rect x="18" y="14" width="74" height="12" rx="4" fill="#0d1b35"/>
+              <!-- Faixa laranja -->
+              <rect x="25" y="38" width="60" height="42" rx="4" fill="#F28C28"/>
+              <!-- Logo text no balde -->
+              <text x="55" y="56" text-anchor="middle" font-size="14" font-weight="900" fill="white" font-family="Arial">MEP</text>
+              <text x="55" y="72" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)" font-family="Arial">ARGAMASSA</text>
+              <text x="55" y="83" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.7)" font-family="Arial">POLIMERICA</text>
+              <!-- Detalhes balde -->
+              <line x1="25" y1="90" x2="85" y2="90" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <text x="55" y="104" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="Arial">25 kg</text>
+            </svg>
+          </div>
+
+          <div class="tag-p4">Simples assim</div>
+          <div class="titulo-p4">Como usar<br>o MEP na obra</div>
+
+          <div class="passo-row">
+            <div class="passo-num-box">1</div>
+            <div class="passo-text">
+              <h4>Abra a embalagem</h4>
+              <p>Produto 100% pronto. Sem adicionar nada.</p>
+            </div>
+          </div>
+          <div class="passo-row">
+            <div class="passo-num-box">2</div>
+            <div class="passo-text">
+              <h4>Limpe a superficie</h4>
+              <p>Vassoura ou pincel. Sem poeira para aderencia maxima.</p>
+            </div>
+          </div>
+          <div class="passo-row">
+            <div class="passo-num-box">3</div>
+            <div class="passo-text">
+              <h4>Aplique direto</h4>
+              <p>Saco aplicador na alvenaria. Zero desperdicio.</p>
+            </div>
+          </div>
+
+          <div class="resultado-box">
+            <span>Resultado</span>
+            <strong>4x mais rapido · 40% mais barato</strong>
+          </div>
+
+          <div class="mep-sig">MEP</div>
+        </div>
+      </div>
+
+      <div class="slide-ind"><span class="a"></span><span></span><span></span></div>
+      <div class="post-ig-actions">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+      </div>
+      <div class="post-ig-likes">Seja o primeiro a curtir</div>
+      <div class="post-ig-caption"><strong>mepmassa</strong> Sem areia. Sem cimento. Sem betoneira. Abre, limpa a superficie, aplica. Tres passos. Qualquer pedreiro usa no primeiro dia. <span class="tags">#mepmassa #argamassamep #obrarapida #pedreiro</span></div>
+    </div>
+
+    <div class="post-caption-text"><strong>Legenda:</strong> Sem areia. Sem cimento. Sem betoneira. Abre o balde, limpa a superficie e aplica direto com o saco aplicador. Tres passos. Qualquer pedreiro usa no primeiro dia de obra. O resultado: 4x mais rapido, custo 40% menor, canteiro mais limpo.</div>
+  </div>
+
+  <!-- ===== POST 5 — DEPOIMENTO ===== -->
+  <div class="post-wrapper" style="grid-column: 1 / -1; max-width: 500px;">
+    <div class="post-label">Post 5 — Depoimento real</div>
+    <div class="post-desc">Prova social. Humaniza a marca para o publico do canteiro de obras.</div>
+
+    <div class="post-ig-frame" style="max-width:500px;">
+      <div class="post-ig-header">
+        <div class="post-ig-avatar">M</div>
+        <div><div class="post-ig-name">mepmassa</div><div class="post-ig-loc">Presidente Prudente, SP</div></div>
+        <div class="post-ig-more">···</div>
+      </div>
+
+      <div class="post-canvas" style="max-width:100%;">
+        <div class="p5" style="width:100%;height:100%;">
+          <div class="strip"></div>
+          <!-- HEX DECORATIVO -->
+          <svg class="hex-deco" width="300" height="300" viewBox="0 0 300 300">
+            <polygon points="150,15 277,82 277,218 150,285 23,218 23,82" fill="none" stroke="white" stroke-width="50"/>
+          </svg>
+          <!-- BALDE CANTO SUPERIOR DIREITO -->
+          <div style="position:absolute;top:24px;right:24px;opacity:0.25;">
+            <svg width="70" height="80" viewBox="0 0 70 80">
+              <path d="M 18 12 Q 35 2 52 12" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <polygon points="10,16 60,16 52,72 18,72" fill="white"/>
+              <rect x="10" y="9" width="50" height="9" rx="3" fill="white"/>
+              <rect x="16" y="24" width="38" height="24" rx="3" fill="rgba(0,0,0,0.2)"/>
+              <text x="35" y="40" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial">MEP</text>
+            </svg>
+          </div>
+          <div class="aspas">"</div>
+          <div class="depo-texto">Comecei a trabalhar com o MEP e minha qualidade de vida mudou.</div>
+          <div class="depo-autor">
+            <div class="depo-autor-nome">Cintia Costa</div>
+            <div class="depo-autor-cargo">Operadora de obra</div>
+          </div>
+          <div class="dado-box">
+            <div class="dv">95%</div>
+            <div class="dl">menos peso<br>por turno</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ind"><span class="a"></span><span></span><span></span><span></span></div>
+      <div class="post-ig-actions">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        <svg class="save" viewBox="0 0 24 24"><polygon points="19 21 12 16 5 21 5 3 19 3 19 21"></polygon></svg>
+      </div>
+      <div class="post-ig-likes">Seja o primeiro a curtir</div>
+      <div class="post-ig-caption"><strong>mepmassa</strong> "Comecei a trabalhar com o MEP e minha qualidade de vida mudou." Sem carregar peso, sem poeira, sem barulho de betoneira. Quem ja usa sabe. <span class="tags">#mepmassa #canteiro #pedreiro #qualidadedevida</span></div>
+    </div>
+
+    <div class="post-caption-text"><strong>Legenda:</strong> "Comecei a trabalhar com o MEP e minha qualidade de vida mudou." — Cintia Costa, operadora de obra. Sem carregar sacos de areia e cimento. Sem betoneira. Sem poeira. 95% menos peso carregado por turno. O canteiro muda quando o produto muda. Quem ja usa MEP sabe. Quem ainda nao usa, esta pagando mais caro e trabalhando mais. (18) 99688-1384</div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>

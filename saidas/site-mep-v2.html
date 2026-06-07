@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP Massas — Argamassa Polimérica para Construção Civil</title>
+<style>
+:root {
+  --azul: #1A2B4D;
+  --azul2: #0d1b35;
+  --azul3: #1e3a6e;
+  --laranja: #F28C28;
+  --laranja2: #e07010;
+  --branco: #fff;
+  --cinza: #f5f6f8;
+  --cinza2: #e9eaec;
+  --texto: #1c1e21;
+  --sub: #6b7280;
+  --borda: #e5e7eb;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--branco); color: var(--texto); }
+a { text-decoration:none; color:inherit; }
+
+/* ===================== TOPBAR ===================== */
+.topbar {
+  background: var(--azul2);
+  padding: 7px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar span { font-size: 12px; color: rgba(255,255,255,0.55); }
+.topbar .tb-right { display:flex; gap:20px; }
+.topbar .tb-right a { font-size: 12px; color: rgba(255,255,255,0.55); transition: color .2s; }
+.topbar .tb-right a:hover { color: var(--laranja); }
+
+/* ===================== HEADER ===================== */
+header {
+  background: var(--branco);
+  border-bottom: 1px solid var(--borda);
+  position: sticky; top:0; z-index:100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.header-inner {
+  max-width: 1200px; margin:0 auto; padding: 0 40px;
+  display: flex; align-items: center; gap: 32px; height: 72px;
+}
+.header-logo { font-size: 28px; font-weight: 900; color: var(--azul); letter-spacing: 2px; flex-shrink:0; }
+.header-logo span { color: var(--laranja); }
+.header-search {
+  flex:1; max-width:480px;
+  border: 1.5px solid var(--borda); border-radius: 8px;
+  display: flex; overflow: hidden;
+  transition: border-color .2s;
+}
+.header-search:focus-within { border-color: var(--laranja); }
+.header-search input {
+  flex:1; border:none; outline:none; padding: 10px 16px; font-size: 14px; font-family:inherit; color:var(--texto);
+}
+.header-search button {
+  background: var(--azul); border:none; padding: 0 18px; cursor:pointer; color:#fff; font-size:16px;
+}
+.header-actions { display:flex; gap:20px; align-items:center; margin-left:auto; flex-shrink:0; }
+.header-action { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--sub); cursor:pointer; transition:color .2s; }
+.header-action:hover { color: var(--azul); }
+.header-action .icon { font-size:20px; }
+.header-cta {
+  background: var(--laranja); color: var(--branco);
+  padding: 10px 22px; border-radius: 6px; font-size:14px; font-weight:700;
+  transition: opacity .2s;
+}
+.header-cta:hover { opacity:.88; color:#fff; }
+
+/* NAV */
+nav {
+  background: var(--branco);
+  border-bottom: 1px solid var(--borda);
+}
+.nav-inner {
+  max-width:1200px; margin:0 auto; padding:0 40px;
+  display:flex; gap:0;
+}
+.nav-item {
+  padding: 14px 20px; font-size:14px; font-weight:500; color:var(--sub);
+  cursor:pointer; border-bottom:3px solid transparent;
+  transition: color .2s, border-color .2s; white-space:nowrap;
+}
+.nav-item:hover { color: var(--azul); border-bottom-color: var(--azul); }
+.nav-item.active { color: var(--azul); border-bottom-color: var(--laranja); font-weight:700; }
+
+/* ===================== HERO BANNER ===================== */
+.hero {
+  position:relative; overflow:hidden;
+  background: linear-gradient(135deg, #071220 0%, #0d1b35 35%, #1A2B4D 65%, #1e3a6e 100%);
+  min-height: 500px; display:flex; align-items:center;
+}
+.hero-inner {
+  max-width:1200px; margin:0 auto; padding: 60px 40px;
+  display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; width:100%;
+  position:relative; z-index:2;
+}
+.hero-hex { position:absolute; opacity:0.06; }
+.hero-badge { display:inline-block; background:rgba(242,140,40,0.15); border:1px solid rgba(242,140,40,0.3); color:var(--laranja); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; padding:6px 14px; border-radius:20px; margin-bottom:18px; }
+.hero h1 { font-size:48px; font-weight:900; color:#fff; line-height:1.15; }
+.hero h1 span { color:var(--laranja); }
+.hero p { font-size:16px; color:rgba(255,255,255,0.65); line-height:1.7; margin-top:14px; max-width:440px; }
+.hero-btns { display:flex; gap:14px; margin-top:28px; flex-wrap:wrap; }
+.btn-hero-primary { background:var(--laranja); color:#fff; padding:14px 28px; border-radius:6px; font-size:14px; font-weight:700; transition:opacity .2s; }
+.btn-hero-primary:hover { opacity:.88; color:#fff; }
+.btn-hero-sec { background:transparent; color:#fff; padding:14px 28px; border-radius:6px; font-size:14px; font-weight:600; border:1.5px solid rgba(255,255,255,0.25); transition:border-color .2s; }
+.btn-hero-sec:hover { border-color:var(--laranja); color:#fff; }
+.hero-stats { display:flex; gap:36px; margin-top:36px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.1); }
+.hero-stat .hs-val { font-size:30px; font-weight:900; color:var(--laranja); line-height:1; }
+.hero-stat .hs-label { font-size:12px; color:rgba(255,255,255,0.45); margin-top:4px; line-height:1.4; }
+.hero-produto { display:flex; align-items:center; justify-content:center; gap:-20px; }
+
+/* ===================== BARRA DE DIFERENCIAIS ===================== */
+.dif-bar {
+  background: var(--laranja);
+  padding: 0;
+}
+.dif-bar-inner {
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.dif-bar-item {
+  padding: 18px 24px; text-align:center;
+  border-right:1px solid rgba(255,255,255,0.2);
+  display:flex; align-items:center; justify-content:center; gap:10px;
+}
+.dif-bar-item:last-child { border-right:none; }
+.dif-bar-item .db-val { font-size:22px; font-weight:900; color:#fff; }
+.dif-bar-item .db-label { font-size:12px; color:rgba(255,255,255,0.8); font-weight:600; }
+
+/* ===================== SEÇÃO GENÉRICA ===================== */
+.sec { padding: 70px 0; }
+.sec-bg { background:var(--cinza); }
+.sec-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+.sec-header { text-align:center; margin-bottom:48px; }
+.sec-header .sh-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--laranja); margin-bottom:8px; }
+.sec-header .sh-title { font-size:32px; font-weight:900; color:var(--azul); }
+.sec-header .sh-sub { font-size:15px; color:var(--sub); margin-top:8px; line-height:1.6; }
+
+/* ===================== PRODUTOS ===================== */
+.produtos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.produto-card {
+  background:var(--branco); border-radius:10px; overflow:hidden;
+  border:1px solid var(--borda);
+  transition:box-shadow .2s, transform .2s; cursor:pointer;
+  position:relative;
+}
+.produto-card:hover { box-shadow:0 8px 32px rgba(0,0,0,0.1); transform:translateY(-4px); }
+.produto-badge-tag {
+  position:absolute; top:12px; left:12px; z-index:2;
+  background:var(--laranja); color:#fff; font-size:10px; font-weight:700;
+  padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.5px;
+}
+.produto-badge-tag.destaque { background:var(--azul); }
+.produto-img {
+  background: linear-gradient(160deg, #f0f4fa 0%, #e4eaf4 100%);
+  height: 200px; display:flex; align-items:center; justify-content:center;
+  padding: 20px;
+}
+.produto-info { padding:16px; }
+.produto-nome { font-size:14px; font-weight:700; color:var(--azul); line-height:1.3; }
+.produto-desc { font-size:12px; color:var(--sub); margin-top:4px; line-height:1.5; }
+.produto-cta {
+  display:block; margin-top:14px; text-align:center;
+  background:var(--azul); color:#fff; padding:10px;
+  border-radius:6px; font-size:13px; font-weight:700;
+  transition:background .2s;
+}
+.produto-cta:hover { background:var(--laranja); color:#fff; }
+
+/* ===================== APLICACAO ===================== */
+.aplicacao {
+  background: var(--azul);
+  padding: 70px 0;
+}
+.aplicacao-inner {
+  max-width:1200px; margin:0 auto; padding:0 40px;
+}
+.aplicacao-header { text-align:center; margin-bottom:48px; }
+.aplicacao-header .sh-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--laranja); margin-bottom:8px; }
+.aplicacao-header .sh-title { font-size:32px; font-weight:900; color:#fff; }
+.aplicacao-header .sh-sub { font-size:15px; color:rgba(255,255,255,0.55); margin-top:8px; }
+.aplicacao-tabs { display:flex; justify-content:center; gap:0; margin-bottom:36px; border:1.5px solid rgba(255,255,255,0.15); border-radius:8px; overflow:hidden; width:fit-content; margin-left:auto; margin-right:auto; }
+.aplicacao-tab { padding:11px 24px; font-size:13px; font-weight:600; color:rgba(255,255,255,0.5); cursor:pointer; transition:all .2s; }
+.aplicacao-tab.active { background:var(--laranja); color:#fff; }
+.aplicacao-showcase {
+  display:grid; grid-template-columns:1fr 360px; gap:32px; align-items:center;
+}
+.aplicacao-visual {
+  border-radius:12px; overflow:hidden; position:relative;
+  background: linear-gradient(160deg, #c8d8e8 0%, #a0b8d0 50%, #8099b8 100%);
+  height: 360px; display:flex; align-items:center; justify-content:center;
+}
+.aplicacao-visual .obra-bg {
+  position:absolute; inset:0;
+  background: linear-gradient(160deg, #b8cce0 0%, #90acc8 40%, #6888a8 100%);
+}
+.aplicacao-callout {
+  position:absolute; display:flex; align-items:center; gap:10px; z-index:2;
+}
+.aplicacao-callout .ac-dot { width:10px; height:10px; border-radius:50%; background:var(--laranja); border:2px solid #fff; box-shadow:0 0 0 3px rgba(242,140,40,0.3); flex-shrink:0; }
+.aplicacao-callout .ac-line { width:40px; height:1.5px; background:rgba(255,255,255,0.6); }
+.aplicacao-callout .ac-box { background:rgba(255,255,255,0.92); border-radius:6px; padding:8px 12px; backdrop-filter:blur(4px); }
+.aplicacao-callout .ac-box strong { font-size:12px; font-weight:800; color:var(--azul); display:block; }
+.aplicacao-callout .ac-box span { font-size:11px; color:var(--sub); }
+.aplicacao-lista { display:flex; flex-direction:column; gap:12px; }
+.aplicacao-item {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px; padding:16px 18px;
+  display:flex; align-items:center; gap:14px; cursor:pointer;
+  transition:background .2s;
+}
+.aplicacao-item:hover { background:rgba(242,140,40,0.1); border-color:rgba(242,140,40,0.3); }
+.aplicacao-item.ativo { background:rgba(242,140,40,0.12); border-color:rgba(242,140,40,0.35); }
+.aplicacao-item .ai-icon { font-size:22px; flex-shrink:0; }
+.aplicacao-item h4 { font-size:14px; font-weight:700; color:#fff; }
+.aplicacao-item p { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+
+/* ===================== COMPARATIVO ===================== */
+.comp-table-wrap {
+  border-radius:10px; overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  border:1px solid var(--borda);
+  margin-top:48px;
+}
+.comp-head { display:grid; grid-template-columns:1.5fr 1fr 1fr; background:var(--azul); }
+.comp-head div { padding:18px 24px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.7); }
+.comp-head .col-mep { background:var(--laranja); color:#fff; display:flex; align-items:center; gap:8px; }
+.comp-row { display:grid; grid-template-columns:1.5fr 1fr 1fr; border-bottom:1px solid var(--borda); }
+.comp-row:last-child { border-bottom:none; }
+.comp-row:hover { background:var(--cinza); }
+.comp-row div { padding:16px 24px; font-size:14px; align-self:center; }
+.comp-row .col-a { color:var(--sub); font-weight:500; }
+.comp-row .col-b { color:#aaa; }
+.comp-row .col-c { color:var(--azul); font-weight:700; }
+.comp-row .col-c.win { color:#16a34a; }
+
+/* ===================== COMO USAR ===================== */
+.como-usar { background:var(--azul); padding:70px 0; }
+.como-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+.como-header { text-align:center; margin-bottom:56px; }
+.como-header .sh-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--laranja); margin-bottom:8px; }
+.como-header .sh-title { font-size:32px; font-weight:900; color:#fff; }
+.como-header .sh-sub { font-size:15px; color:rgba(255,255,255,0.5); margin-top:8px; }
+.passos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative; }
+.passos-grid::before { content:''; position:absolute; top:36px; left:20%; right:20%; height:2px; background:rgba(255,255,255,0.1); }
+.passo { text-align:center; padding:0 28px; }
+.passo-num { width:72px; height:72px; border-radius:50%; background:rgba(242,140,40,0.12); border:2px solid var(--laranja); color:var(--laranja); font-size:26px; font-weight:900; display:flex; align-items:center; justify-content:center; margin:0 auto 22px; position:relative; z-index:1; }
+.passo h3 { font-size:18px; font-weight:800; color:#fff; margin-bottom:10px; }
+.passo p { font-size:14px; color:rgba(255,255,255,0.55); line-height:1.7; }
+.como-resultado { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:56px; }
+.resultado-item { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:20px; text-align:center; }
+.resultado-item .rv { font-size:28px; font-weight:900; color:var(--laranja); }
+.resultado-item .rl { font-size:12px; color:rgba(255,255,255,0.5); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* ===================== DEPOIMENTOS ===================== */
+.deps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:0; }
+.dep-card { background:var(--branco); border-radius:10px; padding:28px; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:3px solid var(--laranja); }
+.dep-stars { color:#f59e0b; font-size:14px; margin-bottom:14px; }
+.dep-texto { font-size:14px; color:var(--texto); line-height:1.7; font-style:italic; margin-bottom:20px; }
+.dep-autor { display:flex; align-items:center; gap:12px; }
+.dep-av { width:44px; height:44px; border-radius:50%; background:var(--azul); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:900; color:var(--laranja); flex-shrink:0; }
+.dep-nome { font-size:14px; font-weight:700; color:var(--azul); }
+.dep-cargo { font-size:12px; color:var(--sub); margin-top:2px; }
+
+/* ===================== CALCULADORA CTA ===================== */
+.calc-cta { background:var(--laranja); padding:60px 0; }
+.calc-inner { max-width:1200px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:space-between; gap:60px; }
+.calc-text {}
+.calc-text .ct-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.7); margin-bottom:8px; }
+.calc-text h2 { font-size:30px; font-weight:900; color:#fff; line-height:1.2; }
+.calc-text p { font-size:15px; color:rgba(255,255,255,0.8); margin-top:8px; line-height:1.6; max-width:480px; }
+.btn-calc { background:var(--azul); color:#fff; padding:18px 36px; border-radius:6px; font-size:16px; font-weight:700; white-space:nowrap; transition:opacity .2s; flex-shrink:0; }
+.btn-calc:hover { opacity:.88; color:#fff; }
+
+/* ===================== INSTAGRAM FEED ===================== */
+.ig-section { padding:70px 0; }
+.ig-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
+.ig-header { text-align:center; margin-bottom:32px; }
+.ig-header h2 { font-size:24px; font-weight:800; color:var(--azul); }
+.ig-header p { font-size:14px; color:var(--sub); margin-top:4px; }
+.ig-header p a { color:var(--laranja); font-weight:600; }
+.ig-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; }
+.ig-item { aspect-ratio:1; border-radius:4px; overflow:hidden; position:relative; cursor:pointer; }
+.ig-item:hover .ig-overlay { opacity:1; }
+.ig-item:first-child { grid-column:span 2; grid-row:span 2; }
+.ig-overlay { position:absolute; inset:0; background:rgba(26,43,77,0.55); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .2s; }
+.ig-overlay span { font-size:24px; }
+
+/* ===================== FOOTER ===================== */
+footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
+.footer-inner { max-width:1200px; margin:0 auto; padding:60px 40px 0; }
+.footer-top { display:grid; grid-template-columns:1.8fr 1fr 1fr 1fr; gap:60px; margin-bottom:48px; }
+.footer-logo { font-size:32px; font-weight:900; color:#fff; letter-spacing:3px; margin-bottom:12px; }
+.footer-logo span { color:var(--laranja); }
+.footer-desc { font-size:14px; line-height:1.7; }
+.footer-col h4 { font-size:13px; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-col ul li a { font-size:14px; color:rgba(255,255,255,0.5); transition:color .2s; }
+.footer-col ul li a:hover { color:var(--laranja); }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding:24px 0; display:flex; justify-content:space-between; align-items:center; }
+.footer-bottom span { font-size:13px; }
+
+/* WHATSAPP FIXO */
+.wa-btn { position:fixed; bottom:28px; right:28px; z-index:999; width:58px; height:58px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:transform .2s; }
+.wa-btn:hover { transform:scale(1.1); }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Presidente Prudente, SP · Atende todo o Brasil</span>
+  <div class="tb-right">
+    <a href="#">(18) 99688-1384</a>
+    <a href="#">contato@mepmassa.com.br</a>
+    <a href="#">mepmassa.com.br/calculadora-de-custos</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">ME<span>P</span></div>
+    <div class="header-search">
+      <input type="text" placeholder="O que voce procura?">
+      <button>🔍</button>
+    </div>
+    <div class="header-actions">
+      <div class="header-action"><span class="icon">📞</span><span>(18) 99688-1384</span></div>
+      <div class="header-action"><span class="icon">📍</span><span>Pres. Prudente</span></div>
+      <a href="#contato" class="header-cta">Solicitar Orcamento</a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-item active">Inicio</div>
+    <div class="nav-item">Produtos</div>
+    <div class="nav-item">Como Usar</div>
+    <div class="nav-item">Por que MEP</div>
+    <div class="nav-item">Calculadora de Custos</div>
+    <div class="nav-item">Especificacoes Tecnicas</div>
+    <div class="nav-item">Blog</div>
+    <div class="nav-item">Contato</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <svg class="hero-hex" style="top:-80px;right:-80px;" width="500" height="500" viewBox="0 0 500 500">
+    <polygon points="250,25 462,142 462,358 250,475 38,358 38,142" fill="none" stroke="white" stroke-width="50"/>
+  </svg>
+  <svg class="hero-hex" style="bottom:-60px;left:300px;" width="220" height="220" viewBox="0 0 220 220">
+    <polygon points="110,11 203,60 203,160 110,209 17,160 17,60" fill="none" stroke="white" stroke-width="22"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Argamassa Polimerica</div>
+      <h1>A revolucao<br>na <span>construcao</span><br>civil chegou.</h1>
+      <p>Produto pronto para uso. Sem betoneira, sem mistura, zero desperdicio. Para construtoras e incorporadoras que exigem mais resultado com menos custo.</p>
+      <div class="hero-btns">
+        <a href="#produtos" class="btn-hero-primary">Conhecer Produtos</a>
+        <a href="#calculadora" class="btn-hero-sec">Calcular Economia</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hs-val">4x</div><div class="hs-label">mais rapida</div></div>
+        <div class="hero-stat"><div class="hs-val">40%</div><div class="hs-label">mais economica</div></div>
+        <div class="hero-stat"><div class="hs-val">3x</div><div class="hs-label">mais resistente</div></div>
+        <div class="hero-stat"><div class="hs-val">95%</div><div class="hs-label">menos agua</div></div>
+      </div>
+    </div>
+
+    <!-- 3 BALDES HERO -->
+    <div class="hero-produto">
+      <svg width="360" height="380" viewBox="0 0 360 380">
+        <defs>
+          <linearGradient id="hb1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#071220"/><stop offset="40%" style="stop-color:#1A2B4D"/><stop offset="100%" style="stop-color:#1e3a6e"/></linearGradient>
+          <linearGradient id="hl1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#F28C28"/><stop offset="100%" style="stop-color:#c06000"/></linearGradient>
+          <filter id="hs"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000" flood-opacity="0.45"/></filter>
+        </defs>
+        <!-- sombra chão -->
+        <ellipse cx="180" cy="370" rx="100" ry="14" fill="rgba(0,0,0,0.3)"/>
+        <!-- balde esq pequeno -->
+        <g transform="translate(20,60) scale(0.72)" opacity="0.8">
+          <path d="M 30 20 Q 68 4 106 20" stroke="rgba(255,255,255,0.2)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M 16 26 L 120 26 L 108 190 L 28 190 Z" fill="url(#hb1)"/>
+          <rect x="16" y="16" width="104" height="14" rx="5" fill="#071220"/>
+          <rect x="24" y="50" width="88" height="70" rx="6" fill="url(#hl1)"/>
+          <text x="68" y="85" text-anchor="middle" font-size="20" font-weight="900" fill="white" font-family="Arial">MEP</text>
+          <text x="68" y="103" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.75)" font-family="Arial">POLIMERICA</text>
+          <rect x="46" y="118" width="44" height="14" rx="7" fill="rgba(0,0,0,0.25)"/>
+          <text x="68" y="129" text-anchor="middle" font-size="9" font-weight="900" fill="white" font-family="Arial">25 kg</text>
+        </g>
+        <!-- balde central grande -->
+        <g transform="translate(80,10)" filter="url(#hs)">
+          <path d="M 50 28 Q 100 6 150 28" stroke="rgba(255,255,255,0.25)" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <circle cx="50" cy="28" r="6" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="150" cy="28" r="6" fill="rgba(255,255,255,0.15)"/>
+          <path d="M 22 36 L 178 36 L 160 270 L 40 270 Z" fill="url(#hb1)"/>
+          <rect x="22" y="24" width="156" height="17" rx="6" fill="#071220"/>
+          <rect x="22" y="40" width="156" height="5" fill="#0d1f38"/>
+          <rect x="34" y="64" width="132" height="108" rx="8" fill="url(#hl1)"/>
+          <rect x="34" y="64" width="132" height="32" rx="8" fill="rgba(255,255,255,0.1)"/>
+          <text x="100" y="104" text-anchor="middle" font-size="34" font-weight="900" fill="white" font-family="Arial" letter-spacing="4">MEP</text>
+          <line x1="42" y1="115" x2="158" y2="115" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          <text x="100" y="130" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.85)" font-family="Arial">ARGAMASSA POLIMERICA</text>
+          <rect x="72" y="180" width="56" height="20" rx="10" fill="rgba(0,0,0,0.25)"/>
+          <text x="100" y="194" text-anchor="middle" font-size="11" font-weight="900" fill="white" font-family="Arial">25 kg</text>
+          <text x="100" y="258" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.2)" font-family="Arial">mepmassa.com.br</text>
+        </g>
+        <!-- balde dir pequeno -->
+        <g transform="translate(238,60) scale(0.72)" opacity="0.8">
+          <path d="M 30 20 Q 68 4 106 20" stroke="rgba(255,255,255,0.2)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M 16 26 L 120 26 L 108 190 L 28 190 Z" fill="#0d1b35"/>
+          <rect x="16" y="16" width="104" height="14" rx="5" fill="#071220"/>
+          <rect x="24" y="50" width="88" height="70" rx="6" fill="#d06800"/>
+          <text x="68" y="85" text-anchor="middle" font-size="20" font-weight="900" fill="white" font-family="Arial">MEP</text>
+          <text x="68" y="103" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.75)" font-family="Arial">POLIMERICA</text>
+          <rect x="46" y="118" width="44" height="14" rx="7" fill="rgba(0,0,0,0.25)"/>
+          <text x="68" y="129" text-anchor="middle" font-size="9" font-weight="900" fill="white" font-family="Arial">5 kg</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- BARRA DIFERENCIAIS -->
+<div class="dif-bar">
+  <div class="dif-bar-inner">
+    <div class="dif-bar-item"><div class="db-val">4x</div><div class="db-label">mais rapida</div></div>
+    <div class="dif-bar-item"><div class="db-val">40%</div><div class="db-label">mais economica</div></div>
+    <div class="dif-bar-item"><div class="db-val">3x</div><div class="db-label">mais resistente</div></div>
+    <div class="dif-bar-item"><div class="db-val">95%</div><div class="db-label">menos agua na obra</div></div>
+  </div>
+</div>
+
+<!-- PRODUTOS -->
+<div class="sec" id="produtos">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <div class="sh-tag">Linha MEP</div>
+      <div class="sh-title">Nossos Produtos</div>
+      <div class="sh-sub">Argamassa polimerica pronta para uso. Solucao completa para qualquer etapa da obra.</div>
+    </div>
+    <div class="produtos-grid">
+
+      <!-- PRODUTO 1 -->
+      <div class="produto-card">
+        <div class="produto-badge-tag">Mais Vendido</div>
+        <div class="produto-img">
+          <svg width="130" height="165" viewBox="0 0 130 165">
+            <defs><linearGradient id="pc1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0d1b35"/><stop offset="50%" style="stop-color:#1A2B4D"/><stop offset="100%" style="stop-color:#1e3a6e"/></linearGradient><linearGradient id="pl1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#F28C28"/><stop offset="100%" style="stop-color:#c06000"/></linearGradient><filter id="ps1"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/></filter></defs>
+            <ellipse cx="65" cy="158" rx="44" ry="7" fill="rgba(26,43,77,0.15)"/>
+            <path d="M 34 16 Q 65 4 96 16" stroke="rgba(255,255,255,0.2)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M 16 22 L 114 22 L 102 142 L 28 142 Z" fill="url(#pc1)" filter="url(#ps1)"/>
+            <rect x="16" y="14" width="98" height="12" rx="4" fill="#071220"/>
+            <rect x="22" y="38" width="86" height="68" rx="6" fill="url(#pl1)"/>
+            <rect x="22" y="38" width="86" height="20" rx="6" fill="rgba(255,255,255,0.1)"/>
+            <text x="65" y="70" text-anchor="middle" font-size="20" font-weight="900" fill="white" font-family="Arial" letter-spacing="2">MEP</text>
+            <line x1="28" y1="78" x2="102" y2="78" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="65" y="90" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.8)" font-family="Arial">POLIMERICA</text>
+            <rect x="42" y="104" width="46" height="16" rx="8" fill="rgba(0,0,0,0.25)"/>
+            <text x="65" y="116" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial">25 kg</text>
+          </svg>
+        </div>
+        <div class="produto-info">
+          <div class="produto-nome">Massa MEP Padrao</div>
+          <div class="produto-desc">Argamassa polimerica para assentamento de alvenaria. Balde 25 kg.</div>
+          <a href="#contato" class="produto-cta">Solicitar Orcamento</a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 2 -->
+      <div class="produto-card">
+        <div class="produto-badge-tag destaque">Sob Encomenda</div>
+        <div class="produto-img">
+          <svg width="130" height="165" viewBox="0 0 130 165">
+            <defs><linearGradient id="pc2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1a1a1a"/><stop offset="50%" style="stop-color:#2a2a2a"/><stop offset="100%" style="stop-color:#333"/></linearGradient><filter id="ps2"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.35"/></filter></defs>
+            <ellipse cx="65" cy="158" rx="44" ry="7" fill="rgba(0,0,0,0.2)"/>
+            <path d="M 34 16 Q 65 4 96 16" stroke="rgba(255,255,255,0.15)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M 16 22 L 114 22 L 102 142 L 28 142 Z" fill="url(#pc2)" filter="url(#ps2)"/>
+            <rect x="16" y="14" width="98" height="12" rx="4" fill="#111"/>
+            <rect x="22" y="38" width="86" height="68" rx="6" fill="#F28C28"/>
+            <rect x="22" y="38" width="86" height="20" rx="6" fill="rgba(255,255,255,0.1)"/>
+            <text x="65" y="70" text-anchor="middle" font-size="20" font-weight="900" fill="white" font-family="Arial" letter-spacing="2">MEP</text>
+            <line x1="28" y1="78" x2="102" y2="78" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="65" y="88" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.8)" font-family="Arial">SECAGEM RAPIDA</text>
+            <rect x="42" y="104" width="46" height="16" rx="8" fill="rgba(255,255,255,0.1)"/>
+            <text x="65" y="116" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial">25 kg</text>
+          </svg>
+        </div>
+        <div class="produto-info">
+          <div class="produto-nome">Massa MEP Secagem Rapida</div>
+          <div class="produto-desc">Formulacao acelerada para obras com prazo critico. Balde 25 kg.</div>
+          <a href="#contato" class="produto-cta">Solicitar Orcamento</a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 3 -->
+      <div class="produto-card">
+        <div class="produto-img">
+          <svg width="100" height="130" viewBox="0 0 100 130">
+            <defs><linearGradient id="pc3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0d1b35"/><stop offset="50%" style="stop-color:#1A2B4D"/><stop offset="100%" style="stop-color:#1e3a6e"/></linearGradient><filter id="ps3"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/></filter></defs>
+            <ellipse cx="50" cy="124" rx="34" ry="6" fill="rgba(26,43,77,0.15)"/>
+            <path d="M 26 13 Q 50 3 74 13" stroke="rgba(255,255,255,0.2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M 12 18 L 88 18 L 78 112 L 22 112 Z" fill="url(#pc3)" filter="url(#ps3)"/>
+            <rect x="12" y="11" width="76" height="10" rx="4" fill="#071220"/>
+            <rect x="18" y="30" width="64" height="52" rx="5" fill="#F28C28"/>
+            <rect x="18" y="30" width="64" height="16" rx="5" fill="rgba(255,255,255,0.1)"/>
+            <text x="50" y="54" text-anchor="middle" font-size="15" font-weight="900" fill="white" font-family="Arial" letter-spacing="2">MEP</text>
+            <line x1="22" y1="60" x2="78" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="50" y="70" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.75)" font-family="Arial">POLIMERICA</text>
+            <rect x="32" y="80" width="36" height="12" rx="6" fill="rgba(0,0,0,0.25)"/>
+            <text x="50" y="90" text-anchor="middle" font-size="8" font-weight="900" fill="white" font-family="Arial">5 kg</text>
+          </svg>
+        </div>
+        <div class="produto-info">
+          <div class="produto-nome">Massa MEP Compacta</div>
+          <div class="produto-desc">Para reparos e obras de pequeno porte. Balde 5 kg.</div>
+          <a href="#contato" class="produto-cta">Solicitar Orcamento</a>
+        </div>
+      </div>
+
+      <!-- PRODUTO 4 -->
+      <div class="produto-card">
+        <div class="produto-img" style="flex-direction:column;gap:8px;">
+          <svg width="80" height="100" viewBox="0 0 80 100">
+            <rect x="10" y="0" width="60" height="80" rx="4" fill="#1A2B4D"/>
+            <rect x="10" y="0" width="60" height="20" rx="4" fill="#F28C28"/>
+            <text x="40" y="14" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial">MEP</text>
+            <text x="40" y="50" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="Arial">Mini Cunha</text>
+            <text x="40" y="66" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="Arial">250 un</text>
+            <ellipse cx="40" cy="88" rx="30" ry="5" fill="rgba(0,0,0,0.15)"/>
+          </svg>
+          <span style="font-size:11px;color:#888;text-align:center;">Acessorio de aplicacao</span>
+        </div>
+        <div class="produto-info">
+          <div class="produto-nome">Mini Cunha MEP</div>
+          <div class="produto-desc">Acessorio para aplicacao precisa e alinhamento perfeito. 250 unidades.</div>
+          <a href="#contato" class="produto-cta">Solicitar Orcamento</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- APLICACOES -->
+<div class="aplicacao" id="aplicacoes">
+  <div class="aplicacao-inner">
+    <div class="aplicacao-header">
+      <div class="sh-tag">Onde Usar</div>
+      <div class="sh-title">Aplicacoes do MEP na obra</div>
+      <div class="sh-sub">Um produto. Multiplas solucoes para diferentes etapas da construcao.</div>
+    </div>
+    <div class="aplicacao-tabs">
+      <div class="aplicacao-tab active">Alvenaria</div>
+      <div class="aplicacao-tab">Muros</div>
+      <div class="aplicacao-tab">Churrasqueiras</div>
+      <div class="aplicacao-tab">Reparos</div>
+    </div>
+    <div class="aplicacao-showcase">
+      <div class="aplicacao-visual" style="padding:0;">
+        <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2021_12_08.png"
+             alt="Alvenaria concluida com MEP" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        <!-- Callout 1 -->
+        <div class="aplicacao-callout" style="top:22%;left:8%;">
+          <div class="ac-dot"></div>
+          <div class="ac-line"></div>
+          <div class="ac-box"><strong>Alvenaria</strong><span>Junta uniforme e precisa</span></div>
+        </div>
+        <!-- Callout 2 -->
+        <div class="aplicacao-callout" style="bottom:22%;left:25%;">
+          <div class="ac-dot"></div>
+          <div class="ac-line"></div>
+          <div class="ac-box"><strong>Zero desperdicio</strong><span>Canteiro limpo e organizado</span></div>
+        </div>
+      </div>
+      <div class="aplicacao-lista">
+        <div class="aplicacao-item ativo">
+          <div class="ai-icon">🧱</div>
+          <div><h4>Alvenaria de Vedacao</h4><p>Tijolos e blocos em geral. Alto rendimento e aderencia superior.</p></div>
+        </div>
+        <div class="aplicacao-item">
+          <div class="ai-icon">🏗</div>
+          <div><h4>Muros Estruturais</h4><p>Muros a vista e estruturais com resistencia comprovada.</p></div>
+        </div>
+        <div class="aplicacao-item">
+          <div class="ai-icon">🔥</div>
+          <div><h4>Churrasqueiras</h4><p>Alta resistencia ao calor. Ideal para areas de lazer.</p></div>
+        </div>
+        <div class="aplicacao-item">
+          <div class="ai-icon">🔧</div>
+          <div><h4>Reparos e Reformas</h4><p>Consertos e reformas com praticidade e sem desperdicio.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARATIVO -->
+<div class="sec sec-bg">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <div class="sh-tag">Comparativo Tecnico</div>
+      <div class="sh-title">MEP vs. Argamassa Convencional</div>
+      <div class="sh-sub">Dados reais de obra. Use a calculadora para simular o seu projeto.</div>
+    </div>
+    <!-- IMAGEM COMPARATIVO -->
+    <div style="border-radius:12px;overflow:hidden;margin-bottom:40px;box-shadow:0 8px 32px rgba(0,0,0,0.12);position:relative;">
+      <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2017_13_44.png" alt="Comparativo: pilha de sacos de argamassa convencional vs balde MEP" style="width:100%;display:block;max-height:480px;object-fit:cover;object-position:center;">
+      <div style="position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);">
+        <div style="padding:16px 28px;border-right:1px solid rgba(255,255,255,0.15);">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.45);margin-bottom:4px;">Argamassa Convencional</div>
+          <div style="font-size:26px;font-weight:900;color:rgba(255,255,255,0.4);text-decoration:line-through;">24.000 kg</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.35);">para 820 m² de pavimento</div>
+        </div>
+        <div style="padding:16px 28px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(242,140,40,0.7);margin-bottom:4px;">MEP Polimerica</div>
+          <div style="font-size:26px;font-weight:900;color:#F28C28;">1.200 kg</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);">1 pallet · pronto para usar</div>
+        </div>
+      </div>
+    </div>
+    <div class="comp-table-wrap">
+      <div class="comp-head">
+        <div>Metrica</div>
+        <div>Argamassa Convencional</div>
+        <div class="col-mep">✓ MEP Polimerica</div>
+      </div>
+      <div class="comp-row"><div class="col-a">Material para quarto 3x3m (2,7m)</div><div class="col-b">594 kg</div><div class="col-c win">45 kg</div></div>
+      <div class="comp-row"><div class="col-a">Material para pavimento 820 m²</div><div class="col-b">24.000 kg</div><div class="col-c win">1.200 kg (1 pallet)</div></div>
+      <div class="comp-row"><div class="col-a">Velocidade de execucao</div><div class="col-b">Padrao</div><div class="col-c win">4x mais rapida</div></div>
+      <div class="comp-row"><div class="col-a">Desperdicio de material</div><div class="col-b">15% a 25%</div><div class="col-c win">Zero (0%)</div></div>
+      <div class="comp-row"><div class="col-a">Equipamentos necessarios</div><div class="col-b">Betoneira + energia + nivel + prumo</div><div class="col-c win">Aplicador + nivel + prumo</div></div>
+      <div class="comp-row"><div class="col-a">Consumo de agua na obra</div><div class="col-b">Alto consumo</div><div class="col-c win">95% menos</div></div>
+      <div class="comp-row"><div class="col-a">Reducao de custo total</div><div class="col-b">—</div><div class="col-c win">Ate 40%</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMO USAR -->
+<div class="como-usar" id="como-usar">
+  <div class="como-inner">
+    <div class="como-header">
+      <div class="sh-tag">Simplicidade</div>
+      <div class="sh-title">Como usar o MEP na obra</div>
+      <div class="sh-sub">Tres passos. Qualquer pedreiro aplica no primeiro dia.</div>
+    </div>
+    <!-- FOTO PEDREIRO -->
+    <div style="border-radius:12px;overflow:hidden;margin-bottom:52px;position:relative;max-height:420px;">
+      <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2021_10_15.png"
+           alt="Pedreiro aplicando MEP na alvenaria" style="width:100%;object-fit:cover;object-position:center top;display:block;max-height:420px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,53,0.7) 0%,transparent 50%);"></div>
+      <div style="position:absolute;bottom:24px;left:32px;right:32px;display:flex;gap:20px;flex-wrap:wrap;">
+        <div style="background:rgba(242,140,40,0.15);border:1px solid rgba(242,140,40,0.4);border-radius:8px;padding:10px 18px;backdrop-filter:blur(6px);">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.5);">Aplicacao direta</div>
+          <div style="font-size:15px;font-weight:800;color:#F28C28;margin-top:2px;">Saco aplicador — sem betoneira</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;backdrop-filter:blur(6px);">
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.5);">Resultado</div>
+          <div style="font-size:15px;font-weight:800;color:#fff;margin-top:2px;">4x mais rapido · 40% mais barato</div>
+        </div>
+      </div>
+    </div>
+    <div class="passos-grid">
+      <div class="passo">
+        <div class="passo-num">1</div>
+        <h3>Abra o Balde</h3>
+        <p>Produto 100% pronto para uso. Sem adicionar agua, areia ou cimento. Sem preparo. Sem espera.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-num">2</div>
+        <h3>Prepare a Superficie</h3>
+        <p>Limpe a superficie com vassoura ou pincel. Blocos e tijolos devem estar sem poeira para garantir maxima aderencia.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-num">3</div>
+        <h3>Aplique Direto</h3>
+        <p>Coloque o produto no saco aplicador e aplique diretamente na alvenaria. Zero desperdicio. Canteiro limpo.</p>
+      </div>
+    </div>
+    <div class="como-resultado">
+      <div class="resultado-item"><div class="rv">4x</div><div class="rl">Mais rapida</div></div>
+      <div class="resultado-item"><div class="rv">40%</div><div class="rl">Mais economica</div></div>
+      <div class="resultado-item"><div class="rv">3x</div><div class="rl">Mais resistente</div></div>
+      <div class="resultado-item"><div class="rv">Zero</div><div class="rl">Desperdicio</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<div class="sec sec-bg">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <div class="sh-tag">Quem usa MEP</div>
+      <div class="sh-title">O resultado fala por quem esta na obra</div>
+    </div>
+    <div class="deps-grid">
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <div class="dep-texto">"A MEP mudou completamente a logistica das nossas obras. Reducao real de custo e muito mais agilidade no canteiro. Nao voltamos para a argamassa convencional."</div>
+        <div class="dep-autor">
+          <div class="dep-av">L</div>
+          <div><div class="dep-nome">Eng.ª Lucia Ribeiro</div><div class="dep-cargo">Gestora de Projetos — Construtora</div></div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <div class="dep-texto">"Com mais de 20 anos de obra, nunca vi um produto que facilitasse tanto o trabalho do pedreiro sem perder qualidade. Recomendo para qualquer obra."</div>
+        <div class="dep-autor">
+          <div class="dep-av">J</div>
+          <div><div class="dep-nome">Joao Carlos</div><div class="dep-cargo">Mestre de Obras — 20+ anos de experiencia</div></div>
+        </div>
+      </div>
+      <div class="dep-card">
+        <div class="dep-stars">★★★★★</div>
+        <div class="dep-texto">"Comecei a trabalhar com o MEP e minha qualidade de vida mudou. Sem carregar peso, sem poeira, sem barulho de betoneira. Obra silenciosa e muito mais rapida."</div>
+        <div class="dep-autor">
+          <div class="dep-av">C</div>
+          <div><div class="dep-nome">Cintia Costa</div><div class="dep-cargo">Operadora de Obra</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULADORA CTA -->
+<div class="calc-cta" id="calculadora">
+  <div class="calc-inner">
+    <div class="calc-text">
+      <div class="ct-tag">Ferramenta Gratuita</div>
+      <h2>Descubra quanto sua obra<br>pode economizar com o MEP</h2>
+      <p>Informe a metragem e veja a diferenca real entre o MEP e a argamassa convencional. Numeros do seu projeto, nao estimativas genericas.</p>
+    </div>
+    <a href="https://mepmassa.com.br/calculadora-de-custos" class="btn-calc">Acessar Calculadora Gratuita</a>
+  </div>
+</div>
+
+<!-- INSTAGRAM FEED -->
+<div class="ig-section">
+  <div class="ig-inner">
+    <div class="ig-header">
+      <h2>Instagram</h2>
+      <p><a href="#">@mepmassa</a> — Acompanhe dicas, resultados de obra e novidades</p>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-item" style="background:linear-gradient(135deg,#0d1b35,#1A2B4D);">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:20px;">
+          <div style="text-align:center;"><div style="font-size:48px;font-weight:900;color:#F28C28;">4x</div><div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px;">mais rapida</div></div>
+        </div>
+        <div class="ig-overlay"><span>❤</span></div>
+      </div>
+      <div class="ig-item" style="background:#F28C28;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;"><div style="font-size:36px;font-weight:900;color:#fff;">40%</div><div style="font-size:11px;color:rgba(255,255,255,0.8);margin-top:4px;text-transform:uppercase;letter-spacing:1px;">economia</div></div>
+        </div>
+        <div class="ig-overlay"><span>❤</span></div>
+      </div>
+      <div class="ig-item" style="background:#0d1b35;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;"><div style="font-size:36px;font-weight:900;color:#F28C28;">3x</div><div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px;text-transform:uppercase;letter-spacing:1px;">resistente</div></div>
+        </div>
+        <div class="ig-overlay"><span>❤</span></div>
+      </div>
+      <div class="ig-item" style="background:#1e3a6e;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;"><div style="font-size:36px;font-weight:900;color:#F28C28;">95%</div><div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:4px;text-transform:uppercase;letter-spacing:1px;">menos agua</div></div>
+        </div>
+        <div class="ig-overlay"><span>❤</span></div>
+      </div>
+      <div class="ig-item" style="background:linear-gradient(135deg,#F28C28,#c06000);">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:12px;">
+          <div style="text-align:center;font-size:13px;color:#fff;font-weight:700;line-height:1.5;">Como usar<br>o MEP<br>em 3 passos</div>
+        </div>
+        <div class="ig-overlay"><span>❤</span></div>
+      </div>
+      <div class="ig-item" style="background:#1A2B4D;">
+        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:12px;">
+          <div style="text-align:center;font-size:11px;color:rgba(255,255,255,0.6);font-style:italic;line-height:1.5;">"Minha qualidade de vida mudou"<br><span style="color:#F28C28;font-style:normal;font-weight:700;">— Cintia Costa</span></div>
+        </div>
+        <div class="ig-overlay"><span>❤</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTATO -->
+<div class="sec sec-bg" id="contato">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <div class="sh-tag">Fale Conosco</div>
+      <div class="sh-title">Solicite um orcamento</div>
+      <div class="sh-sub">Atendemos construtoras e incorporadoras em todo o Brasil.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--azul);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📞</div>
+          <div><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--sub);">WhatsApp</div><div style="font-size:16px;font-weight:700;color:var(--azul);margin-top:3px;">(18) 99688-1384</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--azul);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📧</div>
+          <div><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--sub);">E-mail</div><div style="font-size:16px;font-weight:700;color:var(--azul);margin-top:3px;">contato@mepmassa.com.br</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--azul);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">📍</div>
+          <div><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--sub);">Localizacao</div><div style="font-size:16px;font-weight:700;color:var(--azul);margin-top:3px;">Presidente Prudente, SP</div></div>
+        </div>
+      </div>
+      <div style="background:var(--branco);border-radius:10px;padding:36px;border:1px solid var(--borda);">
+        <div style="font-size:18px;font-weight:800;color:var(--azul);margin-bottom:24px;">Solicitar Orcamento</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <input type="text" placeholder="Nome completo" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;">
+          <input type="text" placeholder="Empresa / Construtora" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;">
+          <input type="tel" placeholder="WhatsApp" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;">
+          <input type="number" placeholder="Metragem da obra (m²)" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;">
+          <textarea placeholder="Descreva sua necessidade..." style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;height:90px;resize:vertical;"></textarea>
+          <button style="background:var(--laranja);color:#fff;padding:14px;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">Enviar Solicitacao</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">ME<span>P</span></div>
+        <p class="footer-desc">Argamassa polimerica pronta para uso. Produtividade, economia e qualidade superior para construtoras e incorporadoras em todo o Brasil.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produtos</h4>
+        <ul>
+          <li><a href="#">Massa MEP 25kg</a></li>
+          <li><a href="#">Massa MEP Rapida 25kg</a></li>
+          <li><a href="#">Massa MEP 5kg</a></li>
+          <li><a href="#">Mini Cunha</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">Por que MEP</a></li>
+          <li><a href="#">Como Usar</a></li>
+          <li><a href="#">Comparativo</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="tel:18996881384">(18) 99688-1384</a></li>
+          <li><a href="mailto:contato@mepmassa.com.br">contato@mepmassa.com.br</a></li>
+          <li><a href="#">Presidente Prudente, SP</a></li>
+          <li><a href="#">mepmassa.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MEP Massas. Todos os direitos reservados.</span>
+      <span>mepmassa.com.br</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FIXO -->
+<a href="https://wa.me/5518996881384" class="wa-btn" target="_blank">💬</a>
+
+</body>
+</html>

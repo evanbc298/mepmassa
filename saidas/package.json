@@ -1,0 +1,16 @@
+{
+  "name": "saidas",
+  "version": "1.0.0",
+  "description": "Pasta pra qualquer output que não é marketing puro (não cabe em `marketing/`).",
+  "main": "exportar-posts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MEP COLOR — Identidade Visual e Rótulos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #EBEBEB;
+      padding: 60px 24px;
+      color: #111;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .page-header .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #1A2B4D;
+      letter-spacing: -1px;
+    }
+    .page-header h1 span { color: #F28C28; }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #999;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #d0d0d0;
+      margin-bottom: 32px;
+    }
+
+    /* ── LOGO SHOWCASE ── */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .logo-card {
+      border-radius: 10px;
+      padding: 48px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-card.bg-dark  { background: #1A2B4D; }
+    .logo-card.bg-white { background: #ffffff; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .logo-card.bg-gray  { background: #f5f5f5; }
+
+    /* ── LOGO COMPONENT ── */
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo-texts {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-row-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .t-mep {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+    .t-color {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #F28C28;
+    }
+    .t-tintas {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+    .bg-dark  .t-mep    { color: #ffffff; }
+    .bg-dark  .t-tintas { color: rgba(255,255,255,0.35); }
+    .bg-white .t-mep    { color: #1A2B4D; }
+    .bg-white .t-tintas { color: #bbb; }
+    .bg-gray  .t-mep    { color: #1A2B4D; }
+    .bg-gray  .t-tintas { color: #bbb; }
+
+    /* ── LABELS GRID ── */
+    .labels-grid {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ── SINGLE LABEL ── */
+    .label {
+      width: 188px;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.14);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .label-top-accent {
+      height: 5px;
+      width: 100%;
+    }
+
+    .label-header {
+      background: #1A2B4D;
+      padding: 14px 12px 12px;
+    }
+    .label-header-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lh-texts { display: flex; flex-direction: column; line-height: 1; }
+    .lh-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 3px;
+    }
+    .lh-mep   { font-size: 13px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
+    .lh-color { font-size: 13px; font-weight: 900; color: #F28C28; letter-spacing: 1px; }
+    .lh-tintas {
+      font-size: 6px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 3px;
+    }
+
+    .label-body {
+      padding: 18px 14px 10px;
+      text-align: center;
+      flex: 1;
+    }
+    .lb-sub {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+    .lb-name {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1A2B4D;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .app-tags {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .app-tag {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      color: #fff;
+    }
+
+    .bucket-area {
+      background: #f4f4f4;
+      padding: 16px 12px;
+      display: flex;
+      justify-content: center;
+      margin: 0 0 12px;
+    }
+
+    .label-features {
+      padding: 0 14px 10px;
+    }
+    .feat {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 5px;
+    }
+    .feat-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .feat-text {
+      font-size: 7.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #444;
+    }
+
+    .label-volume {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #1A2B4D;
+      letter-spacing: 1px;
+      padding: 8px 0;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .label-footer {
+      background: #1A2B4D;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .lf-company { font-size: 6px; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .lf-cnpj    { font-size: 6px; color: rgba(255,255,255,0.4); }
+    .lf-addr    { font-size: 5.5px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+    /* ── PALETTE SECTION ── */
+    .palette {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .swatch-box {
+      width: 80px; height: 80px;
+      border-radius: 8px;
+    }
+    .swatch-name { font-size: 10px; font-weight: 700; color: #333; }
+    .swatch-hex  { font-size: 9px; color: #999; font-family: monospace; }
+
+    .palette-note {
+      margin-top: 18px;
+      font-size: 11px;
+      color: #999;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="tag">Identidade Visual — Conceito</div>
+    <h1>MEP <span>COLOR</span> TINTAS</h1>
+  </div>
+
+  <!-- ══════════ 01 LOGO ══════════ -->
+  <div class="section">
+    <div class="section-label">01 — Logo / Símbolo</div>
+    <div class="logo-showcase">
+
+      <!-- DARK -->
+      <div class="logo-card bg-dark">
+        <div class="logo-wrap">
+          <svg width="90" height="90" viewBox="0 0 120 112">
+            <defs>
+              <linearGradient id="gTop" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#E63946"/>
+                <stop offset="34%"  stop-color="#F28C28"/>
+                <stop offset="67%"  stop-color="#FFD60A"/>
+                <stop offset="100%" stop-color="#4CC9F0"/>
+              </linearGradient>
+            </defs>
+            <!-- Top face -->
+            <polygon points="60,10 100,33 60,56 20,33" fill="url(#gTop)"/>
+            <!-- Left face -->
+            <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+            <!-- Right face -->
+            <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            <!-- Edges -->
+            <polygon points="60,10 100,33 60,56 20,33" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="60" y1="56" x2="60" y2="102" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="20" y1="33" x2="20" y2="79"  stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="100" y1="33" x2="100" y2="79" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="20" y1="79" x2="60" y2="102"  stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <line x1="100" y1="79" x2="60" y2="102" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          </svg>
+          <div class="logo-texts">
+            <div class="logo-row-main">
+              <span class="t-mep">MEP</span>
+              <span class="t-color">COLOR</span>
+            </div>
+            <span class="t-tintas">TINTAS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHITE -->
+      <div class="logo-card bg-white">
+        <div class="logo-wrap">
+          <svg width="90" height="90" viewBox="0 0 120 112">
+            <defs>
+              <linearGradient id="gTop2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#E63946"/>
+                <stop offset="34%"  stop-color="#F28C28"/>
+                <stop offset="67%"  stop-color="#FFD60A"/>
+                <stop offset="100%" stop-color="#4CC9F0"/>
+              </linearGradient>
+            </defs>
+            <polygon points="60,10 100,33 60,56 20,33" fill="url(#gTop2)"/>
+            <polygon points="20,33 60,56 60,102 20,79" fill="#1A2B4D"/>
+            <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            <polygon points="60,10 100,33 60,56 20,33" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+            <line x1="60" y1="56" x2="60" y2="102" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+            <line x1="20" y1="33" x2="20" y2="79"  stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+            <line x1="100" y1="33" x2="100" y2="79" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+            <line x1="20" y1="79" x2="60" y2="102"  stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+            <line x1="100" y1="79" x2="60" y2="102" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+          </svg>
+          <div class="logo-texts">
+            <div class="logo-row-main">
+              <span class="t-mep">MEP</span>
+              <span class="t-color">COLOR</span>
+            </div>
+            <span class="t-tintas">TINTAS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRAY -->
+      <div class="logo-card bg-gray">
+        <div class="logo-wrap">
+          <svg width="90" height="90" viewBox="0 0 120 112">
+            <defs>
+              <linearGradient id="gTop3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#E63946"/>
+                <stop offset="34%"  stop-color="#F28C28"/>
+                <stop offset="67%"  stop-color="#FFD60A"/>
+                <stop offset="100%" stop-color="#4CC9F0"/>
+              </linearGradient>
+            </defs>
+            <polygon points="60,10 100,33 60,56 20,33" fill="url(#gTop3)"/>
+            <polygon points="20,33 60,56 60,102 20,79" fill="#1A2B4D"/>
+            <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            <polygon points="60,10 100,33 60,56 20,33" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+            <line x1="60" y1="56" x2="60" y2="102" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+            <line x1="20" y1="33" x2="20" y2="79"  stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+            <line x1="100" y1="33" x2="100" y2="79" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+            <line x1="20" y1="79" x2="60" y2="102"  stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+            <line x1="100" y1="79" x2="60" y2="102" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+          </svg>
+          <div class="logo-texts">
+            <div class="logo-row-main">
+              <span class="t-mep">MEP</span>
+              <span class="t-color">COLOR</span>
+            </div>
+            <span class="t-tintas">TINTAS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ 02 RÓTULOS ══════════ -->
+  <div class="section">
+    <div class="section-label">02 — Rótulos (mockup por linha)</div>
+    <div class="labels-grid">
+
+      <!-- ECONÔMICA -->
+      <div class="label">
+        <div class="label-top-accent" style="background:#F28C28;"></div>
+        <div class="label-header">
+          <div class="label-header-inner">
+            <svg width="30" height="30" viewBox="0 0 120 112">
+              <defs><linearGradient id="gL1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="60,10 100,33 60,56 20,33" fill="url(#gL1)"/>
+              <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+              <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            </svg>
+            <div class="lh-texts">
+              <div class="lh-brand"><span class="lh-mep">MEP</span><span class="lh-color">COLOR</span></div>
+              <span class="lh-tintas">TINTAS</span>
+            </div>
+          </div>
+        </div>
+        <div class="label-body">
+          <div class="lb-sub">Linha Econômica</div>
+          <div class="lb-name">Tinta<br>Acrílica</div>
+          <div class="app-tags">
+            <span class="app-tag" style="background:#1A2B4D;">Superfícies Internas</span>
+          </div>
+        </div>
+        <div class="bucket-area">
+          <svg width="76" height="80" viewBox="0 0 100 105">
+            <rect x="14" y="32" width="72" height="62" rx="5" fill="#1A2B4D"/>
+            <ellipse cx="50" cy="32" rx="36" ry="9" fill="#22356A"/>
+            <rect x="17" y="44" width="66" height="42" rx="3" fill="white" opacity="0.92"/>
+            <svg x="17" y="44" width="66" height="42">
+              <defs><linearGradient id="bL1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="33,6 53,17 33,28 13,17" fill="url(#bL1)" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="13,17 33,28 33,50 13,39" fill="#1A2B4D" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="53,17 53,39 33,50 33,28" fill="#F28C28" transform="scale(0.55) translate(20,4)"/>
+              <text x="33" y="23" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="6" fill="#1A2B4D">ACRÍLICA</text>
+              <text x="33" y="31" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="5" fill="#888">ECONÔMICA</text>
+            </svg>
+            <path d="M 22 30 Q 50 18 78 30" fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="label-features">
+          <div class="feat"><div class="feat-dot" style="background:#F28C28;"></div><span class="feat-text">Alto Rendimento</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#F28C28;"></div><span class="feat-text">Fácil Aplicação</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#F28C28;"></div><span class="feat-text">Excelente Acabamento</span></div>
+        </div>
+        <div class="label-volume">18L / 3,6L</div>
+        <div class="label-footer">
+          <div class="lf-company">MEP Indústria e Comércio Ltda</div>
+          <div class="lf-cnpj">CNPJ: 43.717.899/0001-87</div>
+          <div class="lf-addr">3500, Sl. 05 · Balneário Camboriú/SC</div>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="label">
+        <div class="label-top-accent" style="background:linear-gradient(90deg,#B8860B,#FFD700,#B8860B);"></div>
+        <div class="label-header">
+          <div class="label-header-inner">
+            <svg width="30" height="30" viewBox="0 0 120 112">
+              <defs><linearGradient id="gL2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="60,10 100,33 60,56 20,33" fill="url(#gL2)"/>
+              <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+              <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            </svg>
+            <div class="lh-texts">
+              <div class="lh-brand"><span class="lh-mep">MEP</span><span class="lh-color">COLOR</span></div>
+              <span class="lh-tintas">TINTAS</span>
+            </div>
+          </div>
+        </div>
+        <div class="label-body">
+          <div class="lb-sub">Linha Premium</div>
+          <div class="lb-name">Tinta<br>Acrílica</div>
+          <div class="app-tags">
+            <span class="app-tag" style="background:#92700A;">Exterior</span>
+            <span class="app-tag" style="background:#92700A;">Interior</span>
+          </div>
+        </div>
+        <div class="bucket-area">
+          <svg width="76" height="80" viewBox="0 0 100 105">
+            <rect x="14" y="32" width="72" height="62" rx="5" fill="#1A2B4D"/>
+            <ellipse cx="50" cy="32" rx="36" ry="9" fill="#22356A"/>
+            <rect x="17" y="44" width="66" height="42" rx="3" fill="white" opacity="0.92"/>
+            <svg x="17" y="44" width="66" height="42">
+              <defs><linearGradient id="bL2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="33,6 53,17 33,28 13,17" fill="url(#bL2)" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="13,17 33,28 33,50 13,39" fill="#1A2B4D" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="53,17 53,39 33,50 33,28" fill="#F28C28" transform="scale(0.55) translate(20,4)"/>
+              <text x="33" y="23" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="6" fill="#1A2B4D">ACRÍLICA</text>
+              <text x="33" y="31" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="5" fill="#888">PREMIUM</text>
+            </svg>
+            <path d="M 22 30 Q 50 18 78 30" fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="label-features">
+          <div class="feat"><div class="feat-dot" style="background:#B8860B;"></div><span class="feat-text">Alta Durabilidade</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#B8860B;"></div><span class="feat-text">Alta Cobertura</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#B8860B;"></div><span class="feat-text">Resistente a Intempéries</span></div>
+        </div>
+        <div class="label-volume">18L / 3,6L</div>
+        <div class="label-footer">
+          <div class="lf-company">MEP Indústria e Comércio Ltda</div>
+          <div class="lf-cnpj">CNPJ: 43.717.899/0001-87</div>
+          <div class="lf-addr">3500, Sl. 05 · Balneário Camboriú/SC</div>
+        </div>
+      </div>
+
+      <!-- PISOS E QUADRAS -->
+      <div class="label">
+        <div class="label-top-accent" style="background:#C1121F;"></div>
+        <div class="label-header">
+          <div class="label-header-inner">
+            <svg width="30" height="30" viewBox="0 0 120 112">
+              <defs><linearGradient id="gL3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="60,10 100,33 60,56 20,33" fill="url(#gL3)"/>
+              <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+              <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            </svg>
+            <div class="lh-texts">
+              <div class="lh-brand"><span class="lh-mep">MEP</span><span class="lh-color">COLOR</span></div>
+              <span class="lh-tintas">TINTAS</span>
+            </div>
+          </div>
+        </div>
+        <div class="label-body">
+          <div class="lb-sub">Uso Profissional</div>
+          <div class="lb-name">Pisos e<br>Quadras</div>
+          <div class="app-tags">
+            <span class="app-tag" style="background:#C1121F;">Calçadas</span>
+            <span class="app-tag" style="background:#C1121F;">Pisos</span>
+            <span class="app-tag" style="background:#C1121F;">Quadras</span>
+          </div>
+        </div>
+        <div class="bucket-area">
+          <svg width="76" height="80" viewBox="0 0 100 105">
+            <rect x="14" y="32" width="72" height="62" rx="5" fill="#1A2B4D"/>
+            <ellipse cx="50" cy="32" rx="36" ry="9" fill="#22356A"/>
+            <rect x="17" y="44" width="66" height="42" rx="3" fill="white" opacity="0.92"/>
+            <svg x="17" y="44" width="66" height="42">
+              <defs><linearGradient id="bL3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="33,6 53,17 33,28 13,17" fill="url(#bL3)" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="13,17 33,28 33,50 13,39" fill="#1A2B4D" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="53,17 53,39 33,50 33,28" fill="#F28C28" transform="scale(0.55) translate(20,4)"/>
+              <text x="33" y="23" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="5.5" fill="#1A2B4D">PISOS</text>
+              <text x="33" y="31" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="5" fill="#888">E QUADRAS</text>
+            </svg>
+            <path d="M 22 30 Q 50 18 78 30" fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="label-features">
+          <div class="feat"><div class="feat-dot" style="background:#C1121F;"></div><span class="feat-text">Alta Resistência</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#C1121F;"></div><span class="feat-text">Cimentados Rústicos</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#C1121F;"></div><span class="feat-text">Quadras Esportivas</span></div>
+        </div>
+        <div class="label-volume">18L / 3,6L</div>
+        <div class="label-footer">
+          <div class="lf-company">MEP Indústria e Comércio Ltda</div>
+          <div class="lf-cnpj">CNPJ: 43.717.899/0001-87</div>
+          <div class="lf-addr">3500, Sl. 05 · Balneário Camboriú/SC</div>
+        </div>
+      </div>
+
+      <!-- ESMALTE -->
+      <div class="label">
+        <div class="label-top-accent" style="background:#4B5563;"></div>
+        <div class="label-header">
+          <div class="label-header-inner">
+            <svg width="30" height="30" viewBox="0 0 120 112">
+              <defs><linearGradient id="gL4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="60,10 100,33 60,56 20,33" fill="url(#gL4)"/>
+              <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+              <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            </svg>
+            <div class="lh-texts">
+              <div class="lh-brand"><span class="lh-mep">MEP</span><span class="lh-color">COLOR</span></div>
+              <span class="lh-tintas">TINTAS</span>
+            </div>
+          </div>
+        </div>
+        <div class="label-body">
+          <div class="lb-sub">Base de Água</div>
+          <div class="lb-name">Esmalte</div>
+          <div class="app-tags">
+            <span class="app-tag" style="background:#374151;">Madeiras</span>
+            <span class="app-tag" style="background:#374151;">Metais</span>
+          </div>
+        </div>
+        <div class="bucket-area">
+          <svg width="76" height="80" viewBox="0 0 100 105">
+            <rect x="14" y="32" width="72" height="62" rx="5" fill="#1A2B4D"/>
+            <ellipse cx="50" cy="32" rx="36" ry="9" fill="#22356A"/>
+            <rect x="17" y="44" width="66" height="42" rx="3" fill="white" opacity="0.92"/>
+            <svg x="17" y="44" width="66" height="42">
+              <defs><linearGradient id="bL4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="33,6 53,17 33,28 13,17" fill="url(#bL4)" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="13,17 33,28 33,50 13,39" fill="#1A2B4D" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="53,17 53,39 33,50 33,28" fill="#F28C28" transform="scale(0.55) translate(20,4)"/>
+              <text x="33" y="25" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="6" fill="#1A2B4D">ESMALTE</text>
+              <text x="33" y="32" text-anchor="middle" font-family="Inter,Arial" font-weight="500" font-size="5" fill="#888">BASE ÁGUA</text>
+            </svg>
+            <path d="M 22 30 Q 50 18 78 30" fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="label-features">
+          <div class="feat"><div class="feat-dot" style="background:#4B5563;"></div><span class="feat-text">Fácil Aplicação</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#4B5563;"></div><span class="feat-text">Secagem Rápida</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#4B5563;"></div><span class="feat-text">Exterior e Interior</span></div>
+        </div>
+        <div class="label-volume">18L / 3,6L</div>
+        <div class="label-footer">
+          <div class="lf-company">MEP Indústria e Comércio Ltda</div>
+          <div class="lf-cnpj">CNPJ: 43.717.899/0001-87</div>
+          <div class="lf-addr">3500, Sl. 05 · Balneário Camboriú/SC</div>
+        </div>
+      </div>
+
+      <!-- EMBORRACHADA -->
+      <div class="label">
+        <div class="label-top-accent" style="background:#1A7A4C;"></div>
+        <div class="label-header">
+          <div class="label-header-inner">
+            <svg width="30" height="30" viewBox="0 0 120 112">
+              <defs><linearGradient id="gL5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="60,10 100,33 60,56 20,33" fill="url(#gL5)"/>
+              <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+              <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+            </svg>
+            <div class="lh-texts">
+              <div class="lh-brand"><span class="lh-mep">MEP</span><span class="lh-color">COLOR</span></div>
+              <span class="lh-tintas">TINTAS</span>
+            </div>
+          </div>
+        </div>
+        <div class="label-body">
+          <div class="lb-sub">Impermeabilizante</div>
+          <div class="lb-name">Tinta<br>Emborrachada</div>
+          <div class="app-tags">
+            <span class="app-tag" style="background:#1A7A4C;">Paredes</span>
+            <span class="app-tag" style="background:#1A7A4C;">Muros</span>
+          </div>
+        </div>
+        <div class="bucket-area">
+          <svg width="76" height="80" viewBox="0 0 100 105">
+            <rect x="14" y="32" width="72" height="62" rx="5" fill="#1A2B4D"/>
+            <ellipse cx="50" cy="32" rx="36" ry="9" fill="#22356A"/>
+            <rect x="17" y="44" width="66" height="42" rx="3" fill="white" opacity="0.92"/>
+            <svg x="17" y="44" width="66" height="42">
+              <defs><linearGradient id="bL5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E63946"/><stop offset="50%" stop-color="#F28C28"/><stop offset="100%" stop-color="#FFD60A"/></linearGradient></defs>
+              <polygon points="33,6 53,17 33,28 13,17" fill="url(#bL5)" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="13,17 33,28 33,50 13,39" fill="#1A2B4D" transform="scale(0.55) translate(20,4)"/>
+              <polygon points="53,17 53,39 33,50 33,28" fill="#F28C28" transform="scale(0.55) translate(20,4)"/>
+              <text x="33" y="23" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="5.5" fill="#1A2B4D">EMBORRACHADA</text>
+              <text x="33" y="31" text-anchor="middle" font-family="Inter,Arial" font-weight="500" font-size="5" fill="#888">IMPERMEÁVEL</text>
+            </svg>
+            <path d="M 22 30 Q 50 18 78 30" fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="label-features">
+          <div class="feat"><div class="feat-dot" style="background:#1A7A4C;"></div><span class="feat-text">Impermeabilizante</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#1A7A4C;"></div><span class="feat-text">Alta Elasticidade</span></div>
+          <div class="feat"><div class="feat-dot" style="background:#1A7A4C;"></div><span class="feat-text">Alta Aderência</span></div>
+        </div>
+        <div class="label-volume">18L / 3,6L</div>
+        <div class="label-footer">
+          <div class="lf-company">MEP Indústria e Comércio Ltda</div>
+          <div class="lf-cnpj">CNPJ: 43.717.899/0001-87</div>
+          <div class="lf-addr">3500, Sl. 05 · Balneário Camboriú/SC</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════ 03 PALETA ══════════ -->
+  <div class="section">
+    <div class="section-label">03 — Paleta da marca MEP COLOR</div>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-box" style="background:#1A2B4D;"></div>
+        <div class="swatch-name">Azul MEP</div>
+        <div class="swatch-hex">#1A2B4D</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#F28C28;"></div>
+        <div class="swatch-name">Laranja MEP</div>
+        <div class="swatch-hex">#F28C28</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:linear-gradient(135deg,#E63946,#F28C28,#FFD60A,#4CC9F0); border-radius:8px;"></div>
+        <div class="swatch-name">Gradiente Cubo</div>
+        <div class="swatch-hex">Símbolo apenas</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#ffffff; border:1px solid #e0e0e0;"></div>
+        <div class="swatch-name">Branco</div>
+        <div class="swatch-hex">#FFFFFF</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-box" style="background:#f5f5f5; border:1px solid #e0e0e0;"></div>
+        <div class="swatch-name">Fundo Neutro</div>
+        <div class="swatch-hex">#F5F5F5</div>
+      </div>
+    </div>
+    <p class="palette-note">
+      O gradiente multicolorido (vermelho → laranja → amarelo → azul claro) é exclusivo do cubo MEP COLOR — nunca usado como fundo, texto ou elemento decorativo avulso. Representa a amplitude da paleta de cores da linha de tintas.
+    </p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MEP — UX Bisnaga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #E8E8E8;
+      min-height: 100vh;
+      padding: 60px 24px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .page-header .tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #888;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1A2B4D;
+      letter-spacing: -0.5px;
+    }
+    .page-header h1 span { color: #F28C28; }
+
+    /* COMPARISON GRID */
+    .comparison {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 80px;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto 80px;
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    .col-label.depois { color: #F28C28; }
+
+    /* ARROW */
+    .arrow {
+      font-size: 40px;
+      color: #ccc;
+      margin-top: 140px;
+      font-weight: 300;
+    }
+
+    /* ══════ BISNAGA WRAPPER ══════ */
+    .bisnaga-wrap {
+      position: relative;
+      width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* CAP */
+    .cap {
+      width: 28px;
+      height: 18px;
+      border-radius: 6px 6px 2px 2px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* SPOUT */
+    .spout {
+      width: 22px;
+      height: 22px;
+      border-radius: 3px;
+      position: relative;
+      z-index: 2;
+      margin-top: -2px;
+    }
+
+    /* BODY */
+    .bisnaga-body {
+      width: 148px;
+      border-radius: 14px 14px 22px 22px;
+      position: relative;
+      overflow: hidden;
+      margin-top: -2px;
+      clip-path: polygon(18% 0%, 82% 0%, 100% 8%, 100% 100%, 0% 100%, 0% 8%);
+    }
+
+    /* ══════ ANTES ══════ */
+    .antes .cap   { background: #e0e0e0; }
+    .antes .spout { background: #d0d0d0; }
+    .antes .bisnaga-body {
+      background: #c8c8c8;
+      height: 300px;
+    }
+
+    /* Label atual (antes) */
+    .label-atual {
+      position: absolute;
+      bottom: 30px;
+      left: 10px; right: 10px;
+      background: white;
+      border-radius: 8px;
+      padding: 20px 14px 14px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .label-atual .logo-cube {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 8px;
+    }
+
+    .label-atual .mep-text-antes {
+      font-size: 22px;
+      font-weight: 900;
+      color: #1A2B4D;
+      letter-spacing: -0.5px;
+    }
+
+    .label-atual .site-antes {
+      font-size: 7px;
+      color: #aaa;
+      margin-top: 6px;
+    }
+
+    /* ══════ DEPOIS ══════ */
+    .depois-wrap .cap   { background: #0D1F3C; }
+    .depois-wrap .spout { background: #152240; }
+    .depois-wrap .bisnaga-body {
+      height: 340px;
+      background: #1A2B4D;
+    }
+
+    /* Orange top band */
+    .band-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 54px;
+      background: #F28C28;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 14px;
+    }
+
+    .band-top .logo-small {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .band-top .t-mep {
+      font-size: 16px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+    .band-top .t-massas {
+      font-size: 8px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Main content area */
+    .body-content {
+      position: absolute;
+      top: 54px;
+      left: 0; right: 0; bottom: 0;
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      text-align: center;
+    }
+    .product-name .tipo {
+      font-size: 7.5px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+    }
+    .product-name .nome {
+      font-size: 22px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .product-name .sub {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* Big stat badge */
+    .stat-badge {
+      background: #F28C28;
+      border-radius: 6px;
+      padding: 8px 10px;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .stat-badge .stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .stat-badge .stat-desc {
+      font-size: 8px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* 3 quick features */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .feat-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .feat-icon {
+      width: 18px;
+      height: 18px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      flex-shrink: 0;
+    }
+    .feat-text {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+    }
+    .feat-text span {
+      color: #F28C28;
+      font-weight: 800;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 4px 0;
+    }
+
+    /* QR + site bottom */
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .qr-block {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .qr-box {
+      width: 34px;
+      height: 34px;
+      background: white;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-label {
+      font-size: 7px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .qr-label strong {
+      color: white;
+      font-size: 8px;
+      display: block;
+    }
+    .weight-badge {
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 6px 8px;
+      text-align: center;
+    }
+    .weight-badge .w-num {
+      font-size: 14px;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+    }
+    .weight-badge .w-unit {
+      font-size: 7px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ══════ ANOTAÇÕES UX ══════ */
+    .section-title {
+      max-width: 900px;
+      margin: 0 auto 28px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #999;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .ux-notes {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .ux-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      border-left: 4px solid #F28C28;
+    }
+    .ux-card.problem { border-left-color: #ccc; }
+
+    .ux-card .ux-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ux-card .ux-tag.orange { color: #F28C28; }
+    .ux-card .ux-tag.gray   { color: #bbb; }
+
+    .ux-card h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1A2B4D;
+      margin-bottom: 6px;
+    }
+    .ux-card p {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <span class="tag">UX de Embalagem — Bisnaga</span>
+    <h1>MEP Massas — <span>Antes e Depois</span></h1>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="comparison">
+
+    <!-- ANTES -->
+    <div class="col">
+      <span class="col-label">Antes</span>
+      <div class="bisnaga-wrap antes">
+        <div class="cap"></div>
+        <div class="spout"></div>
+        <div class="bisnaga-body">
+          <div class="label-atual">
+            <!-- Logo atual simplificada -->
+            <svg class="logo-cube" viewBox="0 0 60 60" fill="none">
+              <polygon points="30,4 56,19 56,49 30,56 4,49 4,19" fill="#1A2B4D" opacity="0.08"/>
+              <polygon points="30,4 56,18 30,30 4,18" fill="#1A2B4D"/>
+              <polygon points="4,18 30,30 30,56 4,42" fill="#333"/>
+              <polygon points="56,18 56,42 30,56 30,30" fill="#F28C28"/>
+            </svg>
+            <div class="mep-text-antes">MEP</div>
+            <div class="site-antes">www.mepmassa.com.br</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px; color:#aaa; max-width:160px; text-align:center; line-height:1.5;">
+        Logo centralizada, fundo branco, zero informação de produto
+      </div>
+    </div>
+
+    <!-- ARROW -->
+    <div class="arrow">→</div>
+
+    <!-- DEPOIS -->
+    <div class="col">
+      <span class="col-label depois">Depois</span>
+      <div class="bisnaga-wrap depois-wrap">
+        <div class="cap"></div>
+        <div class="spout"></div>
+        <div class="bisnaga-body">
+
+          <!-- Orange top band -->
+          <div class="band-top">
+            <svg width="26" height="26" viewBox="0 0 120 112">
+              <defs>
+                <linearGradient id="gCube" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+                  <stop offset="100%" stop-color="rgba(255,255,255,0.6)"/>
+                </linearGradient>
+              </defs>
+              <polygon points="60,10 100,33 60,56 20,33" fill="rgba(255,255,255,0.95)"/>
+              <polygon points="20,33 60,56 60,102 20,79" fill="rgba(255,255,255,0.5)"/>
+              <polygon points="100,33 100,79 60,102 60,56" fill="rgba(255,255,255,0.75)"/>
+            </svg>
+            <div>
+              <div class="t-mep">MEP</div>
+              <div class="t-massas">Massas</div>
+            </div>
+          </div>
+
+          <!-- Body content -->
+          <div class="body-content">
+
+            <div class="product-name">
+              <div class="tipo">Argamassa Polimérica</div>
+              <div class="nome">MASSA<br>MEP</div>
+              <div class="sub">Pronto para uso</div>
+            </div>
+
+            <div class="stat-badge">
+              <div class="stat-num">4×</div>
+              <div class="stat-desc">mais rápida</div>
+            </div>
+
+            <div class="features">
+              <div class="feat-row">
+                <div class="feat-icon">⚡</div>
+                <div class="feat-text">Pega em <span>30 min</span></div>
+              </div>
+              <div class="feat-row">
+                <div class="feat-icon">🚫</div>
+                <div class="feat-text"><span>Sem mistura</span> · sem betoneira</div>
+              </div>
+              <div class="feat-row">
+                <div class="feat-icon">📦</div>
+                <div class="feat-text">Rende <span>10× mais</span> que o convencional</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="bottom-bar">
+              <div class="qr-block">
+                <div class="qr-box">
+                  <svg width="26" height="26" viewBox="0 0 26 26">
+                    <rect x="2" y="2" width="9" height="9" rx="1" fill="#1A2B4D"/>
+                    <rect x="3.5" y="3.5" width="6" height="6" rx="0.5" fill="white"/>
+                    <rect x="4.5" y="4.5" width="4" height="4" rx="0.5" fill="#1A2B4D"/>
+                    <rect x="15" y="2" width="9" height="9" rx="1" fill="#1A2B4D"/>
+                    <rect x="16.5" y="3.5" width="6" height="6" rx="0.5" fill="white"/>
+                    <rect x="17.5" y="4.5" width="4" height="4" rx="0.5" fill="#1A2B4D"/>
+                    <rect x="2" y="15" width="9" height="9" rx="1" fill="#1A2B4D"/>
+                    <rect x="3.5" y="16.5" width="6" height="6" rx="0.5" fill="white"/>
+                    <rect x="4.5" y="17.5" width="4" height="4" rx="0.5" fill="#1A2B4D"/>
+                    <rect x="15" y="15" width="3" height="3" fill="#1A2B4D"/>
+                    <rect x="20" y="15" width="4" height="3" fill="#1A2B4D"/>
+                    <rect x="15" y="20" width="4" height="4" fill="#1A2B4D"/>
+                    <rect x="21" y="20" width="3" height="4" fill="#1A2B4D"/>
+                  </svg>
+                </div>
+                <div class="qr-label">
+                  <strong>▶ Como aplicar</strong>
+                  mepmassa.com.br
+                </div>
+              </div>
+              <div class="weight-badge">
+                <div class="w-num">1kg</div>
+                <div class="w-unit">amostra</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px; color:#888; max-width:160px; text-align:center; line-height:1.5;">
+        Identidade forte, benefício principal em destaque, QR code e rendimento visíveis
+      </div>
+    </div>
+
+  </div>
+
+  <!-- UX NOTES -->
+  <div class="section-title">Decisões de UX</div>
+  <div class="ux-notes">
+
+    <div class="ux-card problem">
+      <div class="ux-tag gray">Problema atual</div>
+      <h3>Fundo branco invisível</h3>
+      <p>Na prateleira ao lado de 10 concorrentes brancos, a bisnaga MEP desaparece. O pedreiro não pega o que não enxerga.</p>
+    </div>
+
+    <div class="ux-card">
+      <div class="ux-tag orange">Solução</div>
+      <h3>Azul escuro de fundo</h3>
+      <p>Fundo #1A2B4D + faixa laranja no topo. Nenhum concorrente usa. Destaca imediatamente e comunica seriedade técnica.</p>
+    </div>
+
+    <div class="ux-card problem">
+      <div class="ux-tag gray">Problema atual</div>
+      <h3>Zero informação de produto</h3>
+      <p>Só logo e site. O pedreiro não sabe o que está comprando, quanto rende ou como usa — compra o que já conhece.</p>
+    </div>
+
+    <div class="ux-card">
+      <div class="ux-tag orange">Solução</div>
+      <h3>Hierarquia de informação</h3>
+      <p>"4× mais rápida" em destaque máximo. Abaixo: pega em 30min, sem mistura, rende 10×. Ele entende o valor em 3 segundos.</p>
+    </div>
+
+    <div class="ux-card problem">
+      <div class="ux-tag gray">Problema atual</div>
+      <h3>Nenhum próximo passo</h3>
+      <p>Depois de usar a amostra, o pedreiro não sabe onde comprar mais, como pedir ou como falar com a MEP.</p>
+    </div>
+
+    <div class="ux-card">
+      <div class="ux-tag orange">Solução</div>
+      <h3>QR code de ação</h3>
+      <p>QR leva para vídeo de aplicação no YouTube — educa o pedreiro e constrói confiança. Site visível para recompra.</p>
+    </div>
+
+    <div class="ux-card problem">
+      <div class="ux-tag gray">Problema atual</div>
+      <h3>Rótulo cobre só 1/3</h3>
+      <p>O terço superior da bisnaga é transparente e sem informação — espaço desperdiçado que poderia trabalhar pela marca.</p>
+    </div>
+
+    <div class="ux-card">
+      <div class="ux-tag orange">Solução</div>
+      <h3>Cobertura total da embalagem</h3>
+      <p>Faixa laranja no topo integra o bico da bisnaga à marca. Toda a superfície útil comunica. Sem espaço desperdiçado.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

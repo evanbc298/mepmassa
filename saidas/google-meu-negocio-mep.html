@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Google Meu Negócio</title>
+<style>
+:root {
+  --azul: #1A2B4D;
+  --laranja: #F28C28;
+  --branco: #fff;
+  --g-blue: #1a73e8;
+  --g-text: #202124;
+  --g-sub: #70757a;
+  --g-border: #dadce0;
+  --g-bg: #f8f9fa;
+  --g-green: #137333;
+  --g-red: #c5221f;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: #0a0e1a; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; }
+
+.page-header { text-align:center; padding: 60px 40px 20px; }
+.page-header h1 { font-size: 30px; font-weight: 900; }
+.page-header p { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+.page-divider { width: 60px; height: 3px; background: var(--laranja); margin: 16px auto 0; }
+.sec-label { text-align:center; padding: 56px 40px 16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:var(--laranja); }
+.sec-title { text-align:center; font-size:22px; font-weight:900; padding:0 40px 40px; }
+
+/* ===================== BROWSER MOCKUP ===================== */
+.browser-wrap { max-width: 1000px; margin: 0 auto 80px; padding: 0 30px; }
+.browser-bar {
+  background: #2d2d2d; border-radius: 10px 10px 0 0;
+  padding: 10px 16px; display: flex; align-items: center; gap: 10px;
+}
+.b-dots { display:flex; gap:6px; }
+.b-dots span { width:12px;height:12px;border-radius:50%; }
+.b-dots span:nth-child(1){background:#ff5f57;}
+.b-dots span:nth-child(2){background:#febc2e;}
+.b-dots span:nth-child(3){background:#28c840;}
+.b-url { flex:1; background:#1a1a1a; border-radius:6px; padding:6px 14px; font-size:12px; color:rgba(255,255,255,0.4); display:flex; align-items:center; gap:8px; }
+.b-url .lock { font-size:11px; }
+
+/* GOOGLE RESULTS PAGE */
+.g-page { background: var(--branco); border-radius: 0 0 10px 10px; }
+
+/* TOP BAR */
+.g-topbar {
+  background: var(--branco); padding: 12px 24px 0;
+  border-bottom: 1px solid var(--g-border);
+}
+.g-topbar-row1 { display:flex; align-items:center; gap:20px; margin-bottom: 10px; }
+.g-logo { font-size: 26px; font-weight: 700; color: var(--g-text); }
+.g-logo .g1{color:#4285f4;} .g-logo .g2{color:#ea4335;} .g-logo .g3{color:#fbbc05;}
+.g-logo .g4{color:#4285f4;} .g-logo .g5{color:#34a853;} .g-logo .g6{color:#ea4335;}
+.g-searchbar {
+  flex:1; max-width:600px;
+  border: 1px solid var(--g-border); border-radius: 24px;
+  padding: 10px 20px; font-size:15px; color:var(--g-text);
+  display:flex; align-items:center; justify-content:space-between;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.g-searchbar .query { color: var(--g-text); }
+.g-searchbar .icons { display:flex; gap:12px; color:var(--g-sub); font-size:18px; }
+.g-tabs { display:flex; gap:0; }
+.g-tab { padding:10px 16px; font-size:13px; color:var(--g-sub); cursor:pointer; border-bottom: 3px solid transparent; }
+.g-tab.active { color:var(--g-blue); border-bottom-color: var(--g-blue); }
+
+/* RESULTS */
+.g-results { display:grid; grid-template-columns: 1fr 440px; gap:24px; padding: 20px 24px; }
+
+/* LEFT RESULTS */
+.g-left {}
+.g-result-count { font-size: 13px; color: var(--g-sub); margin-bottom: 20px; }
+.g-organic { display:flex; flex-direction:column; gap:24px; }
+.g-result {}
+.g-result .r-url { font-size: 12px; color: var(--g-sub); margin-bottom: 2px; display:flex; align-items:center; gap:6px; }
+.g-result .r-url .favicon { width:16px;height:16px;border-radius:2px;background:var(--azul);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:var(--laranja); }
+.g-result .r-title { font-size: 20px; color: var(--g-blue); cursor:pointer; margin-bottom: 4px; font-weight:400; }
+.g-result .r-title:hover { text-decoration:underline; }
+.g-result .r-desc { font-size: 14px; color: var(--g-text); line-height: 1.6; }
+.g-result .r-desc strong { font-weight:700; }
+
+/* ===================== KNOWLEDGE PANEL (DESTAQUE DIREITA) ===================== */
+.g-panel {
+  background: var(--branco);
+  border: 1px solid var(--g-border);
+  border-radius: 10px;
+  overflow: hidden;
+  height: fit-content;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+/* FOTO COVER DO PANEL */
+.g-panel-cover {
+  width: 100%; height: 160px;
+  background: linear-gradient(135deg, #0d1b35 0%, #1A2B4D 60%, #1e3a6e 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.g-panel-cover .hex-d { position:absolute; opacity:0.08; }
+.g-panel-cover .cover-logo {
+  font-size: 48px; font-weight: 900; color: #fff;
+  letter-spacing: 4px; position:relative; z-index:1;
+}
+.g-panel-cover .cover-logo span { color: var(--laranja); }
+.g-panel-cover .balde-d { position:absolute; right:16px; bottom:-8px; opacity:0.18; }
+
+/* PANEL BODY */
+.g-panel-body { padding: 16px; }
+.g-panel-name { font-size: 22px; font-weight: 400; color: var(--g-text); margin-bottom: 4px; }
+.g-panel-cat { font-size: 14px; color: var(--g-sub); margin-bottom: 12px; }
+
+/* ESTRELAS */
+.g-stars { display:flex; align-items:center; gap:6px; margin-bottom: 12px; }
+.g-stars .stars { color: #f29900; font-size: 16px; letter-spacing: 1px; }
+.g-stars .rating { font-size: 16px; font-weight: 700; color: var(--g-text); }
+.g-stars .count { font-size: 13px; color: var(--g-blue); cursor:pointer; }
+.g-stars .count:hover { text-decoration:underline; }
+
+/* BOTOES ACAO */
+.g-action-btns { display:flex; gap:8px; margin-bottom: 16px; }
+.g-action-btn {
+  flex:1; background:var(--g-bg); border:1px solid var(--g-border);
+  border-radius:8px; padding:10px 8px; text-align:center;
+  font-size:12px; color:var(--g-blue); cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+}
+.g-action-btn:hover { background:#e8f0fe; }
+.g-action-btn .icon { font-size:18px; }
+
+/* INFO ITEMS */
+.g-panel-info { display:flex; flex-direction:column; gap:0; border-top:1px solid var(--g-border); }
+.g-info-row {
+  display:flex; align-items:flex-start; gap:12px;
+  padding: 12px 0; border-bottom: 1px solid var(--g-border);
+}
+.g-info-row:last-child { border-bottom: none; }
+.g-info-icon { font-size:18px; flex-shrink:0; margin-top:1px; color:var(--g-sub); }
+.g-info-text { font-size:14px; color:var(--g-text); line-height:1.5; flex:1; }
+.g-info-text a { color:var(--g-blue); text-decoration:none; }
+.g-info-text a:hover { text-decoration:underline; }
+.g-info-sub { font-size:12px; color:var(--g-sub); display:block; margin-top:2px; }
+.g-open { color:var(--g-green); font-weight:600; }
+.g-perguntas { padding:12px 0; border-top:1px solid var(--g-border); }
+.g-perguntas-titulo { font-size:14px; font-weight:600; color:var(--g-text); margin-bottom:10px; }
+.g-pergunta-item { margin-bottom:8px; }
+.g-pergunta-item .pq { font-size:13px; color:var(--g-blue); cursor:pointer; }
+.g-pergunta-item .pa { font-size:13px; color:var(--g-text); margin-top:2px; }
+
+/* FOTOS DO PAINEL */
+.g-panel-photos { padding:12px 0; border-top:1px solid var(--g-border); }
+.g-panel-photos-title { font-size:14px;font-weight:600;color:var(--g-text);margin-bottom:10px; }
+.g-photos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+.g-photo { aspect-ratio:1; border-radius:4px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+
+/* ===================== GUIA DE CONFIGURAÇÃO ===================== */
+.guia-wrap { max-width: 900px; margin: 0 auto 80px; padding: 0 30px; }
+.guia-steps { display:flex; flex-direction:column; gap:0; }
+.guia-step {
+  display:grid; grid-template-columns: 80px 1fr;
+  align-items:stretch;
+}
+.guia-step-left {
+  display:flex; flex-direction:column; align-items:center; padding-top:4px;
+}
+.guia-step-num {
+  width:44px; height:44px; border-radius:50%;
+  background:var(--laranja); color:var(--branco);
+  font-size:18px; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; position:relative; z-index:1;
+}
+.guia-step-line { flex:1; width:2px; background:rgba(255,255,255,0.1); margin:6px 0; }
+.guia-step:last-child .guia-step-line { display:none; }
+.guia-step-content { padding: 4px 0 40px 20px; }
+.guia-step-content h3 { font-size:18px; font-weight:800; color:#fff; margin-bottom:8px; }
+.guia-step-content p { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.7; }
+.guia-step-content .step-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.guia-step-content .step-tag { font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.6); }
+.guia-step-content .step-tag.laranja { background:rgba(242,140,40,0.15);color:var(--laranja); }
+.guia-step-content .step-exemplo {
+  margin-top:14px; background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08); border-left:3px solid var(--laranja);
+  border-radius:0 8px 8px 0; padding:14px 18px;
+  font-size:13px; color:rgba(255,255,255,0.7); line-height:1.7;
+}
+.guia-step-content .step-exemplo strong { color:var(--laranja); }
+
+/* CHECKLIST */
+.checklist-wrap { max-width:900px; margin:0 auto 80px; padding:0 30px; }
+.checklist-title { font-size:18px;font-weight:800;color:#fff;margin-bottom:24px; }
+.checklist-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.cl-item {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px; padding:16px 18px;
+  display:flex; align-items:flex-start; gap:12px;
+}
+.cl-box {
+  width:22px;height:22px;border-radius:4px;
+  border:2px solid rgba(255,255,255,0.2);
+  flex-shrink:0; margin-top:1px;
+}
+.cl-text h4 { font-size:14px;font-weight:700;color:#fff; }
+.cl-text p { font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;line-height:1.5; }
+.cl-urgente { border-color:rgba(242,140,40,0.3);background:rgba(242,140,40,0.05); }
+.cl-urgente .cl-box { border-color:var(--laranja); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>MEP Massas — Google Meu Negócio</h1>
+  <p>Como a MEP aparece no Google + roteiro completo de configuração</p>
+  <div class="page-divider"></div>
+</div>
+
+<!-- ======================== MOCKUP GOOGLE ======================== -->
+<div class="sec-label">01 — Como vai aparecer</div>
+<div class="sec-title">A MEP no Google — busca + painel de destaque</div>
+
+<div class="browser-wrap">
+  <div class="browser-bar">
+    <div class="b-dots"><span></span><span></span><span></span></div>
+    <div class="b-url"><span class="lock">🔒</span> google.com/search?q=argamassa+polimerica+presidente+prudente</div>
+  </div>
+
+  <div class="g-page">
+
+    <!-- TOP BAR GOOGLE -->
+    <div class="g-topbar">
+      <div class="g-topbar-row1">
+        <div class="g-logo">
+          <span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span>
+        </div>
+        <div class="g-searchbar">
+          <span class="query">argamassa polimerica presidente prudente</span>
+          <div class="icons"><span>🎙</span><span>🔍</span></div>
+        </div>
+      </div>
+      <div class="g-tabs">
+        <div class="g-tab active">Tudo</div>
+        <div class="g-tab">Mapas</div>
+        <div class="g-tab">Imagens</div>
+        <div class="g-tab">Videos</div>
+        <div class="g-tab">Noticias</div>
+        <div class="g-tab">Mais ▾</div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="g-results">
+
+      <!-- RESULTADOS ORGANICOS -->
+      <div class="g-left">
+        <div class="g-result-count">Cerca de 4.320 resultados (0,42 segundos)</div>
+
+        <div class="g-organic">
+
+          <!-- RESULTADO 1 — MEP (ADS) -->
+          <div class="g-result">
+            <div class="r-url">
+              <div class="favicon">M</div>
+              mepmassa.com.br
+              <span style="background:#e8f0fe;color:#1a73e8;font-size:10px;font-weight:700;padding:1px 6px;border-radius:3px;">Patrocinado</span>
+            </div>
+            <div class="r-title">MEP Massas — Argamassa Polimerica Pronta para Uso</div>
+            <div class="r-desc">
+              Sem betoneira, sem mistura, zero desperdicio. <strong>4x mais rapida</strong> e <strong>40% mais economica</strong> que a argamassa convencional. Para construtoras e incorporadoras. Calcule a economia da sua obra agora.
+            </div>
+            <div style="margin-top:8px;display:flex;gap:16px;font-size:13px;color:var(--g-blue);">
+              <span style="cursor:pointer;">Calculadora de custos</span>
+              <span style="cursor:pointer;">Produtos</span>
+              <span style="cursor:pointer;">Solicitar orcamento</span>
+              <span style="cursor:pointer;">Como usar</span>
+            </div>
+          </div>
+
+          <!-- RESULTADO 2 — MEP ORGANICO -->
+          <div class="g-result">
+            <div class="r-url">
+              <div class="favicon">M</div>
+              mepmassa.com.br
+            </div>
+            <div class="r-title">MEP Massas | Argamassa Polimerica para Obras em Presidente Prudente</div>
+            <div class="r-desc">
+              MEP Massas oferece <strong>argamassa polimerica pronta para uso</strong> para construtoras e incorporadoras. Produto sem mistura, sem betoneira. Entrega para toda a regiao de Presidente Prudente, SP...
+            </div>
+          </div>
+
+          <!-- RESULTADO 3 -->
+          <div class="g-result">
+            <div class="r-url">
+              <div class="favicon" style="background:#4285f4;color:white;font-size:9px;">G</div>
+              maps.google.com
+            </div>
+            <div class="r-title" style="color:var(--g-blue);">MEP Massas — Google Maps</div>
+            <div class="r-desc">
+              Material de construcao em Presidente Prudente. <strong>⭐ 5.0</strong> · 12 avaliacoes · Aberto agora · (18) 99688-1384
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- KNOWLEDGE PANEL -->
+      <div class="g-panel">
+
+        <!-- COVER -->
+        <div class="g-panel-cover">
+          <svg class="hex-d" style="top:-40px;right:-40px;" width="200" height="200" viewBox="0 0 200 200">
+            <polygon points="100,10 185,55 185,145 100,190 15,145 15,55" fill="none" stroke="white" stroke-width="30"/>
+          </svg>
+          <div class="cover-logo">ME<span>P</span></div>
+          <!-- BALDE DECORATIVO -->
+          <div class="balde-d">
+            <svg width="90" height="100" viewBox="0 0 90 100">
+              <path d="M 22 18 Q 45 5 68 18" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <polygon points="14,22 76,22 66,88 24,88" fill="white"/>
+              <rect x="14" y="14" width="62" height="12" rx="4" fill="white"/>
+              <rect x="22" y="34" width="46" height="28" rx="4" fill="rgba(0,0,0,0.3)"/>
+              <text x="45" y="52" text-anchor="middle" font-size="13" font-weight="900" fill="white" font-family="Arial">MEP</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="g-panel-body">
+
+          <div class="g-panel-name">MEP Massas</div>
+          <div class="g-panel-cat">Material de construção · Presidente Prudente, SP</div>
+
+          <!-- ESTRELAS -->
+          <div class="g-stars">
+            <span class="stars">★★★★★</span>
+            <span class="rating">5,0</span>
+            <span class="count">12 avaliações no Google</span>
+          </div>
+
+          <!-- BOTOES -->
+          <div class="g-action-btns">
+            <div class="g-action-btn"><div class="icon">🌐</div><div>Site</div></div>
+            <div class="g-action-btn"><div class="icon">🗺</div><div>Rotas</div></div>
+            <div class="g-action-btn"><div class="icon">📞</div><div>Ligar</div></div>
+            <div class="g-action-btn"><div class="icon">💾</div><div>Salvar</div></div>
+          </div>
+
+          <!-- INFO -->
+          <div class="g-panel-info">
+
+            <div class="g-info-row">
+              <span class="g-info-icon">📍</span>
+              <div class="g-info-text">
+                Presidente Prudente, SP
+                <span class="g-info-sub">Atende toda a região</span>
+              </div>
+            </div>
+
+            <div class="g-info-row">
+              <span class="g-info-icon">🕐</span>
+              <div class="g-info-text">
+                <span class="g-open">Aberto agora</span>
+                <span class="g-info-sub">Seg–Sex: 08h–18h · Sáb: 08h–12h</span>
+              </div>
+            </div>
+
+            <div class="g-info-row">
+              <span class="g-info-icon">📞</span>
+              <div class="g-info-text">
+                <a href="#">(18) 99688-1384</a>
+              </div>
+            </div>
+
+            <div class="g-info-row">
+              <span class="g-info-icon">🌐</span>
+              <div class="g-info-text">
+                <a href="#">mepmassa.com.br</a>
+              </div>
+            </div>
+
+            <div class="g-info-row">
+              <span class="g-info-icon">📦</span>
+              <div class="g-info-text">
+                Argamassa polimérica pronta para uso. Sem mistura, sem betoneira. Para construtoras e incorporadoras em Presidente Prudente e região.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FOTOS -->
+          <div class="g-panel-photos">
+            <div class="g-panel-photos-title">Fotos</div>
+            <div class="g-photos-grid">
+              <div class="g-photo" style="background:var(--azul);"><span style="font-size:18px;font-weight:900;color:var(--laranja);">MEP</span></div>
+              <div class="g-photo" style="background:var(--laranja);"><span style="font-size:13px;font-weight:900;color:#fff;text-align:center;padding:4px;">Balde 25kg</span></div>
+              <div class="g-photo" style="background:#0d1b35;"><span style="font-size:22px;font-weight:900;color:var(--laranja);">4x</span></div>
+              <div class="g-photo" style="background:#1e3a6e;"><span style="font-size:22px;font-weight:900;color:#fff;">40%</span></div>
+              <div class="g-photo" style="background:var(--azul);"><span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);text-align:center;max-width:60px;text-transform:uppercase;letter-spacing:1px;">Como Usar</span></div>
+              <div class="g-photo" style="background:#e07010;"><span style="font-size:22px;font-weight:900;color:#fff;">3x</span></div>
+            </div>
+          </div>
+
+          <!-- PERGUNTAS -->
+          <div class="g-perguntas">
+            <div class="g-perguntas-titulo">Perguntas e respostas</div>
+            <div class="g-pergunta-item">
+              <div class="pq">O produto ja vem pronto para uso?</div>
+              <div class="pa">Sim. O MEP e 100% pronto. Nao e necessario adicionar agua, areia ou cimento.</div>
+            </div>
+            <div class="g-pergunta-item">
+              <div class="pq">Qual a area que um balde de 25kg cobre?</div>
+              <div class="pa">Varia conforme a espessura. Use nossa calculadora em mepmassa.com.br/calculadora-de-custos.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ======================== GUIA CONFIGURAÇÃO ======================== -->
+<div class="sec-label">02 — Como configurar</div>
+<div class="sec-title">Roteiro de configuração passo a passo</div>
+
+<div class="guia-wrap">
+<div class="guia-steps">
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">1</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Criar e verificar o perfil</h3>
+      <p>Acessar <strong>business.google.com</strong>, clicar em "Gerenciar agora" e criar o perfil com CNPJ, endereço de Presidente Prudente e número de telefone. O Google vai enviar um código pelo correio ou por telefone para verificar o negócio.</p>
+      <div class="step-tags">
+        <span class="step-tag laranja">Prioridade 1</span>
+        <span class="step-tag">business.google.com</span>
+        <span class="step-tag">15 min</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">2</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Categoria e descrição</h3>
+      <p>Categoria principal: <strong>Fornecedor de materiais de construção</strong>. Categorias secundárias: "Loja de materiais de construção" e "Distribuidor". A descrição deve ter até 750 caracteres e usar as palavras-chave que construtoras pesquisam.</p>
+      <div class="step-exemplo">
+        <strong>Exemplo de descrição:</strong><br>
+        A MEP Massas é fabricante de argamassa polimérica pronta para uso em Presidente Prudente, SP. Nosso produto elimina o uso de betoneira, areia e cimento, reduzindo o custo da obra em até 40% e aumentando a produtividade 4 vezes. Atendemos construtoras, incorporadoras e profissionais de obras em toda a região. Entrega para todo o Brasil.
+      </div>
+      <div class="step-tags">
+        <span class="step-tag laranja">Prioridade 1</span>
+        <span class="step-tag">SEO local</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">3</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Fotos do produto e da empresa</h3>
+      <p>Mínimo de 10 fotos para ativar o painel de destaque no Google. Perfis com fotos recebem 35% mais cliques. Fotos necessárias: produto embalado, aplicação na obra, antes/depois de alvenaria, equipe, depósito/fábrica.</p>
+      <div class="step-exemplo">
+        <strong>Lista de fotos para upload:</strong><br>
+        · Balde 25kg com a logo MEP bem visível<br>
+        · Balde 5kg<br>
+        · Pedreiro aplicando na obra<br>
+        · Parede finalizada com MEP<br>
+        · Comparativo de pilha de material convencional vs 1 pallet MEP<br>
+        · Fachada da empresa / depósito<br>
+        · Logo da marca em fundo branco (foto de perfil)
+      </div>
+      <div class="step-tags">
+        <span class="step-tag laranja">Prioridade 1</span>
+        <span class="step-tag">+35% cliques</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">4</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Horário de funcionamento</h3>
+      <p>Configurar o horário real de atendimento. Quando marcado como "aberto agora" nos resultados do Google, a taxa de clique aumenta significativamente. Ativar também o recurso de mensagem para receber contatos direto pelo painel.</p>
+      <div class="step-tags">
+        <span class="step-tag">Seg–Sex 08h–18h</span>
+        <span class="step-tag">Sáb 08h–12h</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">5</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Cadastrar perguntas e respostas</h3>
+      <p>O Google permite que o próprio dono cadastre perguntas e respostas que aparecem diretamente no painel. Isso evita que concorrentes ou pessoas mal-informadas respondam por você.</p>
+      <div class="step-exemplo">
+        <strong>Perguntas para cadastrar:</strong><br>
+        · O produto já vem pronto para uso? → Sim. Sem água, areia ou cimento.<br>
+        · Precisa de betoneira? → Não. O MEP é aplicado diretamente com saco aplicador.<br>
+        · Qual a área que um balde de 25kg cobre? → Varia conforme a espessura. Use nossa calculadora em mepmassa.com.br/calculadora-de-custos.<br>
+        · Vocês entregam fora de Presidente Prudente? → Sim. Atendemos toda a região e entregamos para todo o Brasil.
+      </div>
+      <div class="step-tags">
+        <span class="step-tag">Controle da narrativa</span>
+        <span class="step-tag">SEO</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">6</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Solicitar as primeiras avaliações</h3>
+      <p>Avaliações com 5 estrelas são o fator mais relevante para o ranqueamento local no Google. Cada cliente satisfeito precisa receber um link direto para deixar a avaliação — sem link, quase ninguém avalia. O Google Meu Negócio gera esse link em um clique.</p>
+      <div class="step-exemplo">
+        <strong>Mensagem modelo para enviar por WhatsApp:</strong><br><br>
+        "Oi [nome], muito obrigado por usar o MEP na sua obra! Sua opinião é muito importante para nós. Você teria 1 minuto para deixar uma avaliação no Google? É rápido e ajuda muito:<br>
+        [LINK DA AVALIAÇÃO]<br>
+        Obrigado!"
+      </div>
+      <div class="step-tags">
+        <span class="step-tag laranja">Meta: 10 avaliações em 90 dias</span>
+        <span class="step-tag">Ranqueamento local</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guia-step">
+    <div class="guia-step-left">
+      <div class="guia-step-num">7</div>
+      <div class="guia-step-line"></div>
+    </div>
+    <div class="guia-step-content">
+      <h3>Posts semanais no Google</h3>
+      <p>O Google Meu Negócio permite publicar posts que aparecem no painel de destaque por 7 dias. Manter ativo com 1 post por semana — novidades, dados do produto, promoções — melhora o posicionamento local sem custo.</p>
+      <div class="step-exemplo">
+        <strong>Exemplos de post para o Google:</strong><br>
+        · "Obra de 820m² com 1 pallet de MEP. Calcule a sua: mepmassa.com.br/calculadora"<br>
+        · "4x mais rápida. 40% mais econômica. Fale com a gente: (18) 99688-1384"<br>
+        · "Novo vídeo: como aplicar o MEP em 3 passos — assista no link"
+      </div>
+      <div class="step-tags">
+        <span class="step-tag">1x por semana</span>
+        <span class="step-tag">Gratuito</span>
+        <span class="step-tag">Ranqueamento</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ======================== CHECKLIST ======================== -->
+<div class="sec-label">03 — Checklist</div>
+<div class="sec-title">O que precisa estar feito antes de rodar anúncios</div>
+
+<div class="checklist-wrap">
+<div class="checklist-grid">
+
+  <div class="cl-item cl-urgente">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Perfil criado e verificado</h4>
+      <p>Sem verificação o perfil não aparece nas buscas. É o primeiro passo.</p>
+    </div>
+  </div>
+
+  <div class="cl-item cl-urgente">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Categoria principal configurada</h4>
+      <p>"Fornecedor de materiais de construção" — define para que buscas aparecer.</p>
+    </div>
+  </div>
+
+  <div class="cl-item cl-urgente">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Descrição com palavras-chave</h4>
+      <p>Texto de até 750 caracteres com termos de busca do setor.</p>
+    </div>
+  </div>
+
+  <div class="cl-item cl-urgente">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Mínimo 10 fotos publicadas</h4>
+      <p>Produto, obra, equipe. Perfis com fotos recebem 35% mais cliques.</p>
+    </div>
+  </div>
+
+  <div class="cl-item">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Horário de atendimento configurado</h4>
+      <p>Aparecer como "aberto agora" aumenta a taxa de clique.</p>
+    </div>
+  </div>
+
+  <div class="cl-item">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Link do site configurado</h4>
+      <p>Apontar para mepmassa.com.br/calculadora-de-custos como CTA principal.</p>
+    </div>
+  </div>
+
+  <div class="cl-item">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Perguntas e respostas cadastradas</h4>
+      <p>Mínimo 4 perguntas com as respostas corretas da empresa.</p>
+    </div>
+  </div>
+
+  <div class="cl-item">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Primeiras 10 avaliações coletadas</h4>
+      <p>Enviar link personalizado para clientes existentes. Meta: 90 dias.</p>
+    </div>
+  </div>
+
+  <div class="cl-item">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Mensagem direta ativada</h4>
+      <p>Permite receber leads diretamente pelo painel do Google.</p>
+    </div>
+  </div>
+
+  <div class="cl-item">
+    <div class="cl-box"></div>
+    <div class="cl-text">
+      <h4>Posts semanais iniciados</h4>
+      <p>1 post por semana mantém o perfil ativo e melhora o posicionamento.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>

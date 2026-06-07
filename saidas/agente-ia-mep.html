@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Agente de IA: Pré-Atendimento</title>
+<style>
+:root {
+  --azul: #1A2B4D; --laranja: #F28C28; --branco: #fff;
+  --cinza: #f5f6f8; --borda: #e5e7eb; --sub: #6b7280;
+  --verde-wpp: #25D366; --verde-wpp2: #128C7E;
+  --msg-ia: #f0f4ff; --msg-user: #1A2B4D;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#0a0e1a; color:#fff; padding:40px; }
+
+h1 { font-size:28px; font-weight:900; margin-bottom:6px; }
+.page-sub { font-size:14px; color:rgba(255,255,255,0.4); }
+.page-div { width:60px; height:3px; background:var(--laranja); margin:16px 0 48px; }
+
+/* LAYOUT PRINCIPAL */
+.main-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; max-width:1200px; margin:0 auto; }
+.full-col { grid-column:1/-1; }
+
+/* SECAO */
+.sec-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--laranja); margin-bottom:8px; }
+.sec-title { font-size:20px; font-weight:900; margin-bottom:6px; }
+.sec-sub { font-size:13px; color:rgba(255,255,255,0.45); margin-bottom:24px; line-height:1.6; }
+
+/* ===================== CHAT WIDGET MOCKUP ===================== */
+.chat-mockup-wrap { position:relative; }
+
+/* SITE FUNDO */
+.site-bg {
+  background: linear-gradient(145deg, #0d1b35, #1A2B4D);
+  border-radius:12px; padding:24px; min-height:500px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  position:relative; overflow:hidden;
+}
+.site-bg-content { text-align:center; padding:40px 0 80px; }
+.site-bg-content .logo { font-size:40px; font-weight:900; letter-spacing:4px; opacity:0.25; }
+.site-bg-content .logo span { color:var(--laranja); }
+.site-bg-content p { font-size:13px; color:rgba(255,255,255,0.2); margin-top:8px; }
+
+/* WIDGET CHAT */
+.chat-widget {
+  position:absolute; bottom:20px; right:20px;
+  width:340px; background:var(--branco); border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4); overflow:hidden;
+  font-family:-apple-system,'Segoe UI',sans-serif;
+}
+.chat-header {
+  background:var(--azul); padding:14px 16px;
+  display:flex; align-items:center; gap:12px;
+}
+.chat-av {
+  width:36px; height:36px; border-radius:50%; background:var(--laranja);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0;
+}
+.chat-header-text .ch-nome { font-size:14px; font-weight:700; color:#fff; }
+.chat-header-text .ch-status { font-size:11px; color:rgba(255,255,255,0.6); display:flex; align-items:center; gap:4px; }
+.ch-dot { width:7px; height:7px; border-radius:50%; background:#4ade80; }
+.chat-close { margin-left:auto; color:rgba(255,255,255,0.5); font-size:20px; cursor:pointer; }
+
+.chat-msgs { padding:14px; display:flex; flex-direction:column; gap:10px; max-height:280px; overflow-y:auto; background:#f8f9fb; }
+.chat-msgs::-webkit-scrollbar { width:4px; }
+.chat-msgs::-webkit-scrollbar-thumb { background:#ddd; border-radius:2px; }
+
+.msg { display:flex; flex-direction:column; max-width:85%; }
+.msg.ia { align-self:flex-start; }
+.msg.user { align-self:flex-end; }
+.msg-bubble {
+  padding:10px 14px; border-radius:12px; font-size:13px; line-height:1.5;
+}
+.msg.ia .msg-bubble { background:var(--branco); color:#111; border-radius:4px 12px 12px 12px; box-shadow:0 1px 4px rgba(0,0,0,0.08); }
+.msg.user .msg-bubble { background:var(--azul); color:#fff; border-radius:12px 4px 12px 12px; }
+.msg-time { font-size:10px; color:#aaa; margin-top:3px; padding:0 4px; }
+.msg.user .msg-time { align-self:flex-end; }
+
+.chat-quick-replies { display:flex; gap:6px; flex-wrap:wrap; padding:10px 14px 0; background:#f8f9fb; }
+.qr {
+  font-size:12px; padding:6px 12px; border-radius:20px;
+  border:1.5px solid var(--azul); color:var(--azul);
+  cursor:pointer; background:#fff; transition:all .15s; white-space:nowrap;
+}
+.qr:hover { background:var(--azul); color:#fff; }
+
+.chat-input-row {
+  display:flex; gap:0; padding:10px 12px;
+  background:#fff; border-top:1px solid var(--borda);
+}
+.chat-input-row input {
+  flex:1; border:1.5px solid var(--borda); border-radius:20px 0 0 20px;
+  padding:8px 14px; font-size:13px; outline:none; font-family:inherit;
+  border-right:none;
+}
+.chat-send { background:var(--laranja); border:none; padding:8px 16px; border-radius:0 20px 20px 0; cursor:pointer; color:#fff; font-size:16px; }
+
+/* BOTAO FLUTUANTE */
+.chat-fab {
+  position:absolute; bottom:20px; right:20px;
+  width:56px; height:56px; border-radius:50%;
+  background:var(--laranja); color:#fff; font-size:24px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(242,140,40,0.5); cursor:pointer;
+}
+
+/* ===================== WHATSAPP MOCKUP ===================== */
+.wpp-phone {
+  background:#1a1a1a; border-radius:36px; padding:10px;
+  box-shadow:0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+  width:300px; margin:0 auto;
+}
+.wpp-screen {
+  background:#e5ddd5; border-radius:28px; overflow:hidden; height:580px;
+  display:flex; flex-direction:column;
+}
+.wpp-header {
+  background:var(--verde-wpp2); padding:10px 14px;
+  display:flex; align-items:center; gap:10px;
+}
+.wpp-back { color:rgba(255,255,255,0.8); font-size:18px; }
+.wpp-av { width:36px; height:36px; border-radius:50%; background:var(--azul); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; color:var(--laranja); flex-shrink:0; }
+.wpp-header-text .wn { font-size:14px; font-weight:700; color:#fff; }
+.wpp-header-text .ws { font-size:11px; color:rgba(255,255,255,0.7); }
+.wpp-header-icons { margin-left:auto; display:flex; gap:14px; color:rgba(255,255,255,0.8); font-size:16px; }
+
+.wpp-msgs { flex:1; padding:10px; display:flex; flex-direction:column; gap:8px; overflow-y:auto; }
+.wpp-msgs::-webkit-scrollbar { display:none; }
+.wpp-date { text-align:center; font-size:11px; color:rgba(0,0,0,0.35); background:rgba(255,255,255,0.6); border-radius:8px; padding:3px 10px; align-self:center; }
+.wm { max-width:80%; padding:7px 10px; border-radius:8px; font-size:12.5px; line-height:1.5; position:relative; }
+.wm.bot { background:#fff; align-self:flex-start; border-radius:0 8px 8px 8px; box-shadow:0 1px 2px rgba(0,0,0,0.1); color:#111; }
+.wm.user { background:#dcf8c6; align-self:flex-end; border-radius:8px 0 8px 8px; box-shadow:0 1px 2px rgba(0,0,0,0.1); color:#111; }
+.wm-time { font-size:10px; color:rgba(0,0,0,0.35); float:right; margin-left:8px; margin-top:2px; }
+
+.wpp-input { background:#f0f0f0; padding:6px 8px; display:flex; gap:8px; align-items:center; }
+.wpp-input input { flex:1; border:none; border-radius:20px; padding:7px 14px; font-size:13px; outline:none; }
+.wpp-input .wi-btn { width:36px; height:36px; border-radius:50%; background:var(--verde-wpp); border:none; color:#fff; font-size:18px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+
+/* ===================== FLUXO ===================== */
+.fluxo-wrap { display:flex; flex-direction:column; gap:0; }
+.fluxo-step { display:grid; grid-template-columns:56px 1fr; align-items:stretch; }
+.fluxo-left { display:flex; flex-direction:column; align-items:center; }
+.fluxo-num { width:40px; height:40px; border-radius:50%; background:var(--laranja); color:#fff; font-size:15px; font-weight:900; display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; z-index:1; }
+.fluxo-line { flex:1; width:2px; background:rgba(255,255,255,0.1); margin:4px 0; }
+.fluxo-step:last-child .fluxo-line { display:none; }
+.fluxo-content { padding:4px 0 32px 16px; }
+.fluxo-content h4 { font-size:15px; font-weight:800; color:#fff; margin-bottom:6px; }
+.fluxo-content .fc-msg {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+  border-left:3px solid var(--laranja); border-radius:0 8px 8px 0;
+  padding:12px 16px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.7;
+  margin-bottom:10px; font-style:italic;
+}
+.fluxo-content .fc-note { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6; }
+.fluxo-content .fc-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+.fluxo-content .fc-tag { font-size:11px; padding:3px 10px; border-radius:20px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.5); border:1px solid rgba(255,255,255,0.08); }
+.fluxo-content .fc-tag.l { background:rgba(242,140,40,0.12); color:var(--laranja); border-color:rgba(242,140,40,0.3); }
+
+/* PLATAFORMAS */
+.plat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.plat-card { background:#111827; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:20px; }
+.plat-card .pc-icon { font-size:28px; margin-bottom:10px; }
+.plat-card h4 { font-size:15px; font-weight:800; color:#fff; margin-bottom:6px; }
+.plat-card .pc-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; margin-bottom:10px; }
+.plat-card .pc-tags { display:flex; gap:6px; flex-wrap:wrap; }
+.plat-card .pc-tag { font-size:11px; padding:3px 10px; border-radius:20px; background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.5); }
+.plat-card.destaque { border-color:rgba(242,140,40,0.3); background:rgba(242,140,40,0.04); }
+.plat-card.destaque h4 { color:var(--laranja); }
+.plat-rec { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--laranja); margin-bottom:6px; }
+
+/* SCRIPT */
+.script-box {
+  background:#111827; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:28px;
+}
+.script-titulo { font-size:14px; font-weight:800; color:var(--laranja); margin-bottom:16px; }
+.script-msg { display:flex; flex-direction:column; gap:10px; }
+.sm { display:flex; gap:12px; align-items:flex-start; }
+.sm-av { width:28px; height:28px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:900; margin-top:2px; }
+.sm-av.ia { background:var(--azul); color:var(--laranja); }
+.sm-av.u { background:#374151; color:rgba(255,255,255,0.6); }
+.sm-bubble { font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6; }
+.sm-bubble strong { color:#fff; font-weight:700; display:block; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; color:rgba(255,255,255,0.35); }
+.sm-bubble .bubble-text { background:rgba(255,255,255,0.05); border-radius:8px; padding:10px 14px; border:1px solid rgba(255,255,255,0.08); }
+.sm-av.ia + .sm-bubble .bubble-text { border-left:3px solid var(--laranja); }
+.sm-av.u + .sm-bubble .bubble-text { border-left:3px solid rgba(255,255,255,0.15); }
+</style>
+</head>
+<body>
+
+<h1>MEP — Agente de IA: Pré-Atendimento</h1>
+<p class="page-sub">Site + WhatsApp · Qualifica, responde e agenda contato humano</p>
+<div class="page-div"></div>
+
+<div class="main-grid">
+
+  <!-- ===================== CHAT NO SITE ===================== -->
+  <div>
+    <div class="sec-label">01 — Site</div>
+    <div class="sec-title">Widget de chat no site</div>
+    <div class="sec-sub">Aparece como botão flutuante. Quando o visitante clica, o agente assume e conduz a conversa.</div>
+
+    <div class="chat-mockup-wrap">
+      <div class="site-bg">
+        <div class="site-bg-content">
+          <div class="logo">ME<span>P</span></div>
+          <p>mepmassa.com.br</p>
+        </div>
+
+        <div class="chat-widget">
+          <div class="chat-header">
+            <div class="chat-av">🤖</div>
+            <div class="chat-header-text">
+              <div class="ch-nome">MEP Assistente</div>
+              <div class="ch-status"><div class="ch-dot"></div> Online agora</div>
+            </div>
+            <div class="chat-close">×</div>
+          </div>
+
+          <div class="chat-msgs">
+            <div class="msg ia">
+              <div class="msg-bubble">Ola! Sou o assistente da MEP Massas. Voce e de uma construtora, incorporadora ou esta fazendo uma obra?</div>
+              <div class="msg-time">agora</div>
+            </div>
+            <div class="msg user">
+              <div class="msg-bubble">Sou engenheiro de uma construtora</div>
+              <div class="msg-time">agora ✓✓</div>
+            </div>
+            <div class="msg ia">
+              <div class="msg-bubble">Otimo! Posso te mostrar como o MEP reduz o custo da sua obra em ate 40%. Qual e a metragem do proximo projeto?</div>
+              <div class="msg-time">agora</div>
+            </div>
+            <div class="msg user">
+              <div class="msg-bubble">Temos um pavimento de 600m²</div>
+              <div class="msg-time">agora ✓✓</div>
+            </div>
+            <div class="msg ia">
+              <div class="msg-bubble">Para 600m² de pavimento, a argamassa convencional exige <strong>~17.500 kg</strong>. Com MEP: <strong>880 kg (menos de 1 pallet)</strong>. Economia estimada de R$ 8–15k. Quer falar com nosso consultor?</div>
+              <div class="msg-time">agora</div>
+            </div>
+          </div>
+
+          <div class="chat-quick-replies">
+            <div class="qr">Sim, quero falar</div>
+            <div class="qr">Me conta mais</div>
+            <div class="qr">Ver produtos</div>
+          </div>
+
+          <div class="chat-input-row">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button class="chat-send">➤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== WHATSAPP ===================== -->
+  <div>
+    <div class="sec-label">02 — WhatsApp</div>
+    <div class="sec-title">Bot no WhatsApp MEP</div>
+    <div class="sec-sub">Mesmo agente, mesmo fluxo — no canal que o publico de obras ja usa no dia a dia.</div>
+
+    <div class="wpp-phone">
+      <div class="wpp-screen">
+        <div class="wpp-header">
+          <div class="wpp-back">‹</div>
+          <div class="wpp-av">M</div>
+          <div class="wpp-header-text">
+            <div class="wn">MEP Massas</div>
+            <div class="ws">online agora</div>
+          </div>
+          <div class="wpp-header-icons"><span>📞</span><span>⋮</span></div>
+        </div>
+
+        <div class="wpp-msgs">
+          <div class="wpp-date">Hoje</div>
+
+          <div class="wm bot">Ola! Sou o assistente da MEP Massas. Como posso ajudar?<br><br>1️⃣ Quero orcamento<br>2️⃣ Duvida sobre o produto<br>3️⃣ Sou representante comercial<span class="wm-time">09:14</span></div>
+
+          <div class="wm user">1<span class="wm-time">09:15 ✓✓</span></div>
+
+          <div class="wm bot">Perfeito! Para montar um orcamento preciso de algumas informacoes.<br><br>Qual e o nome da sua empresa/construtora?<span class="wm-time">09:15</span></div>
+
+          <div class="wm user">Construtora Almeida e Filhos<span class="wm-time">09:16 ✓✓</span></div>
+
+          <div class="wm bot">Obrigado! E qual e a metragem estimada da obra? (em m²)<span class="wm-time">09:16</span></div>
+
+          <div class="wm user">Uns 800m² de alvenaria<span class="wm-time">09:17 ✓✓</span></div>
+
+          <div class="wm bot">Para 800m² de alvenaria:<br><br>📦 Convencional: ~23.000 kg<br>✅ MEP: 1.150 kg (1 pallet)<br>💰 Economia estimada: ate 40%<br><br>Nosso consultor pode te passar o preco exato. Qual o melhor horario para ele te ligar?<span class="wm-time">09:17</span></div>
+
+          <div class="wm user">Pode ser amanhe de manha<span class="wm-time">09:18 ✓✓</span></div>
+
+          <div class="wm bot">✅ Anotado! Amanha pela manha nosso consultor entra em contato com voce na Construtora Almeida e Filhos. Tem mais alguma duvida enquanto isso?<span class="wm-time">09:18</span></div>
+        </div>
+
+        <div class="wpp-input">
+          <span style="font-size:20px;color:#888;">😊</span>
+          <input type="text" placeholder="Mensagem">
+          <button class="wi-btn">🎤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FLUXO COMPLETO ===================== -->
+  <div class="full-col">
+    <div class="sec-label">03 — Fluxo</div>
+    <div class="sec-title">Como o agente conduz a conversa</div>
+    <div class="sec-sub">Do primeiro "oi" ao agendamento com o consultor humano — sem perder nenhum lead.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:0;">
+
+      <div class="fluxo-wrap">
+
+        <div class="fluxo-step">
+          <div class="fluxo-left"><div class="fluxo-num">1</div><div class="fluxo-line"></div></div>
+          <div class="fluxo-content">
+            <h4>Recepcao e identificacao</h4>
+            <div class="fc-msg">"Ola! Sou o assistente da MEP Massas. Voce e engenheiro, mestre de obras, representante comercial ou outro?"</div>
+            <div class="fc-note">Identifica o perfil antes de qualquer coisa — a conversa muda dependendo de quem e.</div>
+            <div class="fc-tags"><span class="fc-tag l">Automatico</span><span class="fc-tag">Saudacao</span></div>
+          </div>
+        </div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-left"><div class="fluxo-num">2</div><div class="fluxo-line"></div></div>
+          <div class="fluxo-content">
+            <h4>Qualificacao rapida</h4>
+            <div class="fc-msg">"Qual e o nome da empresa? E qual e a metragem ou volume de obra que voces costumam trabalhar?"</div>
+            <div class="fc-note">2 perguntas que definem se e um lead quente (grande volume) ou pequeno.</div>
+            <div class="fc-tags"><span class="fc-tag l">Qualificacao</span><span class="fc-tag">Empresa</span><span class="fc-tag">Volume</span></div>
+          </div>
+        </div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-left"><div class="fluxo-num">3</div><div class="fluxo-line"></div></div>
+          <div class="fluxo-content">
+            <h4>Calculo de economia</h4>
+            <div class="fc-msg">"Para [X] m², a argamassa convencional exige [Y] kg. Com MEP voce usa [Z] kg — economia estimada de R$ [valor]. Quer ver o orcamento exato?"</div>
+            <div class="fc-note">Calcula automaticamente com base na metragem informada. Numero concreto prende a atencao.</div>
+            <div class="fc-tags"><span class="fc-tag l">Calculo</span><span class="fc-tag">Valor</span></div>
+          </div>
+        </div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-left"><div class="fluxo-num">4</div><div class="fluxo-line"></div></div>
+          <div class="fluxo-content">
+            <h4>Responde duvidas (se houver)</h4>
+            <div class="fc-msg">"O MEP e pronto para uso — nao precisa de betoneira, areia ou cimento. Basta abrir o balde e aplicar. Quer ver como funciona?"</div>
+            <div class="fc-note">Base de conhecimento do produto: como funciona, aplicacoes, especificacoes. Responde qualquer pergunta tecnica.</div>
+            <div class="fc-tags"><span class="fc-tag">FAQ</span><span class="fc-tag">Tecnico</span></div>
+          </div>
+        </div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-left"><div class="fluxo-num" style="background:var(--azul);">5</div><div class="fluxo-line"></div></div>
+          <div class="fluxo-content">
+            <h4>Agendamento com humano</h4>
+            <div class="fc-msg">"Nosso consultor pode te passar o preco exato e tirar qualquer duvida. Qual o melhor horario para ele entrar em contato — manha ou tarde?"</div>
+            <div class="fc-note">Quando o lead confirma interesse, coleta nome, empresa e melhor horario. Passa para o vendedor humano com o contexto completo.</div>
+            <div class="fc-tags"><span class="fc-tag l">Handoff</span><span class="fc-tag">Agendamento</span></div>
+          </div>
+        </div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-left"><div class="fluxo-num" style="background:#16a34a;">✓</div></div>
+          <div class="fluxo-content">
+            <h4>Notificacao ao vendedor</h4>
+            <div class="fc-msg">O agente envia automaticamente para o vendedor humano: nome, empresa, metragem, melhor horario e o resumo da conversa.</div>
+            <div class="fc-note">O humano entra na conversa ja sabendo tudo — sem reter informacao, sem perguntar de novo.</div>
+            <div class="fc-tags"><span class="fc-tag l">Automatico</span><span class="fc-tag">CRM</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SCRIPT DA CONVERSA -->
+      <div>
+        <div class="script-box" style="margin-bottom:20px;">
+          <div class="script-titulo">Script — Fluxo de Engenheiro / Construtora</div>
+          <div class="script-msg">
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Ola! Sou o assistente da MEP Massas. Voce e engenheiro, mestre de obras, representante ou outro?</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av u">👤</div>
+              <div class="sm-bubble"><strong>Cliente</strong><div class="bubble-text">Sou engenheiro de obra</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Otimo! Qual o nome da construtora e a metragem do proximo projeto?</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av u">👤</div>
+              <div class="sm-bubble"><strong>Cliente</strong><div class="bubble-text">Construtora Silva — uns 500m² de alvenaria</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Para 500m²: convencional exige ~14.500 kg. Com MEP: 720 kg (menos de 1 pallet). Reducao de ate 40% no custo. Quer que nosso consultor entre em contato com o preco exato?</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av u">👤</div>
+              <div class="sm-bubble"><strong>Cliente</strong><div class="bubble-text">Sim, pode mandar</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Perfeito! Qual o melhor horario — manha ou tarde? O consultor ja entra em contato com voce na Construtora Silva.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="script-box">
+          <div class="script-titulo">Script — Fluxo de Representante Comercial</div>
+          <div class="script-msg">
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Ola! Voce mencionou que e representante comercial. Voce ja trabalha com a MEP ou quer conhecer nossa linha para revender?</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av u">👤</div>
+              <div class="sm-bubble"><strong>Representante</strong><div class="bubble-text">Quero conhecer para revender na minha regiao</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Que otimo! Qual e a sua regiao de atuacao e com que tipo de cliente voce trabalha — construtoras, lojas de material, outro?</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av u">👤</div>
+              <div class="sm-bubble"><strong>Representante</strong><div class="bubble-text">Interior de SP, atendo construtoras pequenas e medias</div></div>
+            </div>
+            <div class="sm">
+              <div class="sm-av ia">IA</div>
+              <div class="sm-bubble"><strong>Agente MEP</strong><div class="bubble-text">Perfeito — exatamente o perfil que mais adota o MEP. Vou passar seus dados para nosso time comercial. Qual o seu nome e melhor horario para contato?</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== PLATAFORMAS ===================== -->
+  <div class="full-col">
+    <div class="sec-label">04 — Plataformas</div>
+    <div class="sec-title">Como colocar em producao</div>
+    <div class="sec-sub">Tres caminhos conforme o orcamento e complexidade desejada.</div>
+
+    <div class="plat-grid">
+
+      <div class="plat-card destaque">
+        <div class="plat-rec">Recomendado para comecar</div>
+        <div class="pc-icon">⚡</div>
+        <h4>Typebot + WhatsApp</h4>
+        <div class="pc-desc">Ferramenta visual para montar o fluxo de conversa sem codigo. Conecta ao WhatsApp Business API via Zap ou Z-API. Tem IA integrada (ChatGPT) para respostas livres.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">R$ 0–150/mes</span>
+          <span class="pc-tag">Sem codigo</span>
+          <span class="pc-tag">WhatsApp + Site</span>
+        </div>
+      </div>
+
+      <div class="plat-card">
+        <div class="pc-icon">🤖</div>
+        <h4>n8n + OpenAI + WhatsApp</h4>
+        <div class="pc-desc">Automacao mais poderosa. Fluxo visual conectando WhatsApp Business, GPT-4, planilha de leads e notificacao para o vendedor. Mais flexivel, requer configuracao tecnica.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">R$ 50–200/mes</span>
+          <span class="pc-tag">Tecnico</span>
+          <span class="pc-tag">Muito flexivel</span>
+        </div>
+      </div>
+
+      <div class="plat-card">
+        <div class="pc-icon">🏢</div>
+        <h4>ManyChat ou Botpress</h4>
+        <div class="pc-desc">Plataformas completas de chatbot com painel visual, CRM integrado, relatorios e suporte. Maior custo mas entrega solucao completa pronta para usar em producao.</div>
+        <div class="pc-tags">
+          <span class="pc-tag">R$ 200–600/mes</span>
+          <span class="pc-tag">Completo</span>
+          <span class="pc-tag">CRM incluso</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESUMO TECNICO -->
+    <div style="margin-top:24px;background:#111827;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+      <div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--laranja);margin-bottom:8px;">O que o agente sabe</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Todos os produtos e especificacoes</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Calculo de economia por metragem</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Comparativo tecnico vs convencional</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Como usar e aplicacoes</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Perguntas frequentes</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--laranja);margin-bottom:8px;">Quando passa para humano</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Lead confirma interesse em comprar</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Volume acima de 500m²</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Pergunta de preco exato</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Representante quer parceria</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Reclamacao ou problema tecnico</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--laranja);margin-bottom:8px;">O que o vendedor recebe</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Nome e empresa do lead</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Metragem e tipo de obra</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Resumo da conversa</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Melhor horario para ligar</li>
+          <li style="font-size:13px;color:rgba(255,255,255,0.6);display:flex;gap:8px;"><span style="color:var(--laranja);">—</span> Nivel de interesse (frio/morno/quente)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

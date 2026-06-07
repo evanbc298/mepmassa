@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Perspectiva de Crescimento 6 Meses</title>
+<style>
+:root {
+  --azul: #1A2B4D;
+  --azul2: #0d1b35;
+  --azul3: #1e3a6e;
+  --laranja: #F28C28;
+  --laranja2: #e07010;
+  --branco: #fff;
+  --cinza: #f5f6f8;
+  --texto: #1c1e21;
+  --sub: #6b7280;
+  --borda: #e5e7eb;
+  --verde: #16a34a;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--branco); color: var(--texto); }
+
+/* CAPA */
+.capa {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #071220 0%, #0d1b35 40%, #1A2B4D 80%, #1e3a6e 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 60px;
+  position: relative; overflow: hidden;
+}
+.capa-hex { position:absolute; opacity:0.06; }
+.capa-logo { font-size:72px; font-weight:900; color:#fff; letter-spacing:6px; }
+.capa-logo span { color:var(--laranja); }
+.capa-div { width:60px; height:4px; background:var(--laranja); margin:28px auto; }
+.capa h1 { font-size:38px; font-weight:900; color:#fff; line-height:1.2; max-width:700px; }
+.capa p { font-size:17px; color:rgba(255,255,255,0.55); margin-top:14px; }
+.capa-periodo {
+  margin-top:56px; display:flex; gap:40px; justify-content:center;
+  border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;
+}
+.capa-periodo-item .cp-val { font-size:36px; font-weight:900; color:var(--laranja); line-height:1; }
+.capa-periodo-item .cp-label { font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+
+/* CONTAINER */
+.container { max-width:1100px; margin:0 auto; padding:0 60px; }
+section { padding:80px 0; }
+.s-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--laranja); margin-bottom:10px; }
+.s-title { font-size:34px; font-weight:900; color:var(--azul); line-height:1.2; }
+.s-sub { font-size:16px; color:var(--sub); margin-top:10px; line-height:1.6; max-width:580px; }
+
+/* LINHA DO TEMPO */
+.timeline-wrap { margin-top:60px; }
+.tl-months { display:grid; grid-template-columns:repeat(6,1fr); gap:0; position:relative; }
+.tl-months::before {
+  content:''; position:absolute; top:28px; left:8%; right:8%;
+  height:3px; background:var(--borda); z-index:0;
+}
+.tl-progress {
+  position:absolute; top:28px; left:8%; width:0%;
+  height:3px; background:var(--laranja); z-index:1;
+  transition: width 1.5s ease;
+}
+.tl-month { display:flex; flex-direction:column; align-items:center; position:relative; z-index:2; }
+.tl-dot {
+  width:58px; height:58px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:800; margin-bottom:16px;
+  border:3px solid var(--borda); background:var(--branco);
+  color:var(--sub);
+}
+.tl-dot.fase1 { border-color:var(--laranja); background:var(--laranja); color:#fff; }
+.tl-dot.fase2 { border-color:var(--azul3); background:var(--azul3); color:#fff; }
+.tl-dot.fase3 { border-color:var(--azul); background:var(--azul); color:#fff; }
+.tl-month-label { font-size:13px; font-weight:700; color:var(--azul); margin-bottom:6px; }
+.tl-month-fase { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+.tl-month-fase.f1 { color:var(--laranja); }
+.tl-month-fase.f2 { color:var(--azul3); }
+.tl-month-fase.f3 { color:var(--azul); }
+.tl-month ul { list-style:none; display:flex; flex-direction:column; gap:4px; text-align:center; padding:0 4px; }
+.tl-month ul li { font-size:11px; color:var(--sub); line-height:1.4; }
+
+/* FASES */
+.fases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:60px; }
+.fase-card { border-radius:10px; overflow:hidden; }
+.fase-header { padding:24px 28px; }
+.fase-header.f1 { background:var(--laranja); }
+.fase-header.f2 { background:var(--azul3); }
+.fase-header.f3 { background:var(--azul); }
+.fase-header .fh-num { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.6); margin-bottom:4px; }
+.fase-header .fh-nome { font-size:20px; font-weight:900; color:#fff; }
+.fase-header .fh-periodo { font-size:13px; color:rgba(255,255,255,0.6); margin-top:4px; }
+.fase-body { background:var(--cinza); padding:24px 28px; }
+.fase-body ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.fase-body ul li { font-size:13px; color:var(--texto); display:flex; gap:10px; align-items:flex-start; }
+.fase-body ul li::before { content:'—'; color:var(--laranja); font-weight:700; flex-shrink:0; }
+.fase-meta { margin-top:16px; background:#fff; border-radius:8px; padding:14px 16px; }
+.fase-meta .fm-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--sub); margin-bottom:6px; }
+.fase-meta .fm-val { font-size:14px; font-weight:700; color:var(--azul); }
+
+/* GRAFICO DE CRESCIMENTO */
+.grafico-section { background:var(--azul2); }
+.grafico-section .s-tag { color:var(--laranja); }
+.grafico-section .s-title { color:#fff; }
+.grafico-section .s-sub { color:rgba(255,255,255,0.5); }
+.grafico-wrap { margin-top:60px; }
+.grafico { position:relative; }
+.grafico-labels-y {
+  position:absolute; left:0; top:0; bottom:40px;
+  display:flex; flex-direction:column-reverse; justify-content:space-between;
+  padding-right:12px;
+}
+.grafico-labels-y span { font-size:11px; color:rgba(255,255,255,0.35); text-align:right; }
+.grafico-area { margin-left:48px; position:relative; }
+.grafico-grid {
+  position:absolute; top:0; left:0; right:0; bottom:40px;
+  display:flex; flex-direction:column-reverse; justify-content:space-between;
+}
+.grafico-grid-line { width:100%; height:1px; background:rgba(255,255,255,0.06); }
+.grafico-bars { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; height:320px; align-items:flex-end; position:relative; z-index:1; }
+.grafico-col { display:flex; flex-direction:column; align-items:center; gap:6px; height:100%; justify-content:flex-end; }
+.bar-group { display:flex; gap:4px; align-items:flex-end; width:100%; }
+.bar { border-radius:4px 4px 0 0; flex:1; min-height:4px; transition:height 0.5s ease; }
+.bar.leads { background:var(--laranja); }
+.bar.seguidores { background:rgba(255,255,255,0.25); }
+.bar-tooltip { font-size:11px; font-weight:700; color:rgba(255,255,255,0.6); text-align:center; }
+.grafico-labels-x { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-top:8px; margin-left:48px; }
+.grafico-labels-x span { font-size:12px; color:rgba(255,255,255,0.4); text-align:center; }
+.grafico-legend { display:flex; gap:24px; margin-top:24px; }
+.legend-item { display:flex; align-items:center; gap:8px; font-size:13px; color:rgba(255,255,255,0.5); }
+.legend-dot { width:12px; height:12px; border-radius:3px; }
+
+/* METRICAS FINAIS */
+.metricas-section {}
+.metricas-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:60px; }
+.metrica-card { background:var(--azul); border-radius:10px; padding:32px 24px; text-align:center; }
+.metrica-card .mc-icon { font-size:28px; margin-bottom:12px; }
+.metrica-card .mc-val { font-size:40px; font-weight:900; color:var(--laranja); line-height:1; }
+.metrica-card .mc-label { font-size:12px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; margin-top:8px; line-height:1.5; }
+.metrica-card .mc-prazo { font-size:11px; color:rgba(255,255,255,0.3); margin-top:6px; }
+
+/* CANAIS */
+.canais-section { background:var(--cinza); }
+.canais-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:60px; }
+.canal-card { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.06); }
+.canal-header { padding:20px 24px; display:flex; align-items:center; gap:14px; }
+.canal-icon { width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.canal-icon.ig { background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); }
+.canal-icon.fb { background:#1877f2; }
+.canal-icon.ga { background:#4285f4; }
+.canal-icon.goog { background:#34a853; }
+.canal-nome { font-size:16px; font-weight:800; color:var(--azul); }
+.canal-tipo { font-size:12px; color:var(--sub); margin-top:2px; }
+.canal-body { padding:0 24px 20px; }
+.canal-bar-wrap { margin-bottom:12px; }
+.canal-bar-label { display:flex; justify-content:space-between; font-size:12px; margin-bottom:6px; }
+.canal-bar-label .cbl-name { color:var(--sub); }
+.canal-bar-label .cbl-val { font-weight:700; color:var(--azul); }
+.canal-bar-bg { height:8px; background:#f0f0f0; border-radius:4px; overflow:hidden; }
+.canal-bar-fill { height:100%; border-radius:4px; background:var(--laranja); }
+.canal-metas { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:14px; border-top:1px solid var(--borda); padding-top:14px; }
+.canal-meta-item { text-align:center; }
+.canal-meta-item .cmv { font-size:18px; font-weight:900; color:var(--azul); }
+.canal-meta-item .cml { font-size:10px; color:var(--sub); text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+
+/* INVESTIMENTO */
+.invest-section {}
+.invest-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:60px; align-items:start; }
+.invest-table { width:100%; border-collapse:collapse; }
+.invest-table th { text-align:left; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--sub); padding:0 0 12px; border-bottom:2px solid var(--borda); }
+.invest-table td { padding:14px 0; border-bottom:1px solid var(--borda); font-size:14px; }
+.invest-table td:first-child { color:var(--texto); font-weight:500; }
+.invest-table td:last-child { text-align:right; font-weight:700; color:var(--azul); }
+.invest-table tr.total td { font-size:16px; font-weight:800; border-bottom:none; padding-top:18px; }
+.invest-table tr.total td:last-child { color:var(--laranja); font-size:20px; }
+.invest-note { font-size:12px; color:var(--sub); margin-top:10px; line-height:1.6; }
+.invest-right { background:var(--azul); border-radius:10px; padding:36px; }
+.invest-right h3 { font-size:18px; font-weight:800; color:#fff; margin-bottom:24px; }
+.roi-item { display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+.roi-item:last-child { border-bottom:none; }
+.roi-item .ri-label { font-size:13px; color:rgba(255,255,255,0.6); }
+.roi-item .ri-val { font-size:16px; font-weight:800; color:var(--laranja); }
+.roi-destaque { margin-top:20px; background:rgba(242,140,40,0.1); border:1px solid rgba(242,140,40,0.3); border-radius:8px; padding:18px; text-align:center; }
+.roi-destaque .rd-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.5); margin-bottom:6px; }
+.roi-destaque .rd-val { font-size:32px; font-weight:900; color:var(--laranja); line-height:1; }
+.roi-destaque .rd-sub { font-size:12px; color:rgba(255,255,255,0.4); margin-top:6px; }
+
+/* FOOTER */
+footer { background:var(--azul2); padding:60px; text-align:center; }
+footer .f-logo { font-size:40px; font-weight:900; color:#fff; letter-spacing:4px; margin-bottom:12px; }
+footer .f-logo span { color:var(--laranja); }
+footer p { font-size:14px; color:rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="capa">
+  <svg class="capa-hex" style="top:-100px;right:-100px;" width="600" height="600" viewBox="0 0 600 600">
+    <polygon points="300,30 557,165 557,435 300,570 43,435 43,165" fill="none" stroke="white" stroke-width="60"/>
+  </svg>
+  <svg class="capa-hex" style="bottom:-80px;left:-80px;" width="320" height="320" viewBox="0 0 320 320">
+    <polygon points="160,16 298,88 298,232 160,304 22,232 22,88" fill="none" stroke="white" stroke-width="30"/>
+  </svg>
+  <div class="capa-logo">ME<span>P</span></div>
+  <div class="capa-div"></div>
+  <h1>Perspectiva de Crescimento Digital</h1>
+  <p>Roadmap · Metas · Investimento · Resultados esperados</p>
+  <div class="capa-periodo">
+    <div class="capa-periodo-item"><div class="cp-val">6</div><div class="cp-label">meses de execucao</div></div>
+    <div class="capa-periodo-item"><div class="cp-val">3</div><div class="cp-label">canais ativos</div></div>
+    <div class="capa-periodo-item"><div class="cp-val">Jul–Dez</div><div class="cp-label">2026</div></div>
+  </div>
+</div>
+
+<!-- LINHA DO TEMPO -->
+<div style="background:var(--cinza);padding:80px 0;">
+<div class="container">
+  <div class="s-tag">Roadmap</div>
+  <div class="s-title">6 meses, 3 fases</div>
+  <div class="s-sub">Cada fase constrói sobre a anterior. Sem queimar etapas.</div>
+
+  <div class="timeline-wrap">
+    <div class="tl-months">
+      <div class="tl-progress" id="tlProgress"></div>
+      <div class="tl-month">
+        <div class="tl-dot fase1">Jul</div>
+        <div class="tl-month-label">Julho</div>
+        <div class="tl-month-fase f1">Fundacao</div>
+        <ul>
+          <li>Site publicado</li>
+          <li>Perfis criados</li>
+          <li>Pixel instalado</li>
+          <li>5 posts publicados</li>
+        </ul>
+      </div>
+      <div class="tl-month">
+        <div class="tl-dot fase1">Ago</div>
+        <div class="tl-month-label">Agosto</div>
+        <div class="tl-month-fase f1">Fundacao</div>
+        <ul>
+          <li>Google Meu Neg.</li>
+          <li>Conteudo regular</li>
+          <li>Primeiros seguid.</li>
+          <li>Audiencia grow.</li>
+        </ul>
+      </div>
+      <div class="tl-month">
+        <div class="tl-dot fase2">Set</div>
+        <div class="tl-month-label">Setembro</div>
+        <div class="tl-month-fase f2">Trafego Pago</div>
+        <ul>
+          <li>Meta Ads no ar</li>
+          <li>Google Ads ativo</li>
+          <li>Primeiros leads</li>
+          <li>Testes de criativos</li>
+        </ul>
+      </div>
+      <div class="tl-month">
+        <div class="tl-dot fase2">Out</div>
+        <div class="tl-month-label">Outubro</div>
+        <div class="tl-month-fase f2">Trafego Pago</div>
+        <ul>
+          <li>Otimizacao ads</li>
+          <li>Remarketing ativo</li>
+          <li>Leads crescendo</li>
+          <li>10 aval. Google</li>
+        </ul>
+      </div>
+      <div class="tl-month">
+        <div class="tl-dot fase3">Nov</div>
+        <div class="tl-month-label">Novembro</div>
+        <div class="tl-month-fase f3">Escala</div>
+        <ul>
+          <li>Budget otimizado</li>
+          <li>Blog / SEO</li>
+          <li>Cases de obra</li>
+          <li>Analise de ROI</li>
+        </ul>
+      </div>
+      <div class="tl-month">
+        <div class="tl-dot fase3">Dez</div>
+        <div class="tl-month-label">Dezembro</div>
+        <div class="tl-month-fase f3">Escala</div>
+        <ul>
+          <li>Meta de leads bat.</li>
+          <li>Canais maduros</li>
+          <li>Operacao rodando</li>
+          <li>Planej. 2027</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FASES DETALHADAS -->
+<div style="padding:80px 0;">
+<div class="container">
+  <div class="s-tag">Detalhamento</div>
+  <div class="s-title">O que acontece em cada fase</div>
+  <div class="fases-grid">
+
+    <div class="fase-card">
+      <div class="fase-header f1">
+        <div class="fh-num">Fase 01</div>
+        <div class="fh-nome">Fundacao</div>
+        <div class="fh-periodo">Julho — Agosto 2026</div>
+      </div>
+      <div class="fase-body">
+        <ul>
+          <li>Site novo publicado com comparativo tecnico e formulario</li>
+          <li>Instagram, Facebook configurados e ativos</li>
+          <li>Google Meu Negocio verificado com fotos e descricao</li>
+          <li>5 posts de lancamento no ar</li>
+          <li>Pixel do Meta + Google Tag instalados</li>
+          <li>Audiencia sendo construida para remarketing futuro</li>
+          <li>Primeiros seguidores organicos nas redes</li>
+        </ul>
+        <div class="fase-meta">
+          <div class="fm-label">Meta da fase</div>
+          <div class="fm-val">Infraestrutura completa e rastreamento ativo antes de gastar R$ 1 em anuncio</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fase-card">
+      <div class="fase-header f2">
+        <div class="fh-num">Fase 02</div>
+        <div class="fh-nome">Trafego Pago</div>
+        <div class="fh-periodo">Setembro — Outubro 2026</div>
+      </div>
+      <div class="fase-body">
+        <ul>
+          <li>Meta Ads — campanha de geracao de leads para construtoras</li>
+          <li>Google Ads — busca por "argamassa polimerica" e termos correlatos</li>
+          <li>Testes A/B de criativos e copys</li>
+          <li>Remarketing para visitantes do site</li>
+          <li>Otimizacao das campanhas com dados das primeiras semanas</li>
+          <li>Meta de 10 avaliacoes no Google Meu Negocio</li>
+        </ul>
+        <div class="fase-meta">
+          <div class="fm-label">Meta da fase</div>
+          <div class="fm-val">Primeiros 15–20 leads qualificados de construtoras e incorporadoras</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fase-card">
+      <div class="fase-header f3">
+        <div class="fh-num">Fase 03</div>
+        <div class="fh-nome">Escala</div>
+        <div class="fh-periodo">Novembro — Dezembro 2026</div>
+      </div>
+      <div class="fase-body">
+        <ul>
+          <li>Escalar investimento nos canais com melhor CPL</li>
+          <li>Blog com conteudo tecnico para SEO organico</li>
+          <li>Cases reais de obra como conteudo de prova social</li>
+          <li>Audiencias lookalike baseadas em leads convertidos</li>
+          <li>Relatorio de ROI por canal para decisoes de 2027</li>
+          <li>Operacao de marketing rodando de forma autonoma</li>
+        </ul>
+        <div class="fase-meta">
+          <div class="fm-label">Meta da fase</div>
+          <div class="fm-val">30+ leads/mes consistentes, custo por lead otimizado, maquina funcionando</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- GRAFICO DE CRESCIMENTO -->
+<div class="grafico-section" style="padding:80px 0;">
+<div class="container">
+  <div class="s-tag">Projecao</div>
+  <div class="s-title">Crescimento esperado mês a mês</div>
+  <div class="s-sub">Estimativas conservadoras baseadas em benchmarks do setor B2B construcao civil.</div>
+
+  <div class="grafico-wrap">
+    <div class="grafico">
+      <div class="grafico-area">
+        <div class="grafico-grid">
+          <div class="grafico-grid-line"></div>
+          <div class="grafico-grid-line"></div>
+          <div class="grafico-grid-line"></div>
+          <div class="grafico-grid-line"></div>
+          <div class="grafico-grid-line"></div>
+        </div>
+
+        <!-- BARRAS -->
+        <div class="grafico-bars">
+
+          <!-- JUL -->
+          <div class="grafico-col">
+            <div class="bar-tooltip">0 leads</div>
+            <div class="bar-group">
+              <div class="bar leads" style="height:2%;"></div>
+              <div class="bar seguidores" style="height:4%;"></div>
+            </div>
+          </div>
+
+          <!-- AGO -->
+          <div class="grafico-col">
+            <div class="bar-tooltip">0–3 leads</div>
+            <div class="bar-group">
+              <div class="bar leads" style="height:4%;"></div>
+              <div class="bar seguidores" style="height:10%;"></div>
+            </div>
+          </div>
+
+          <!-- SET -->
+          <div class="grafico-col">
+            <div class="bar-tooltip">8–12 leads</div>
+            <div class="bar-group">
+              <div class="bar leads" style="height:25%;"></div>
+              <div class="bar seguidores" style="height:22%;"></div>
+            </div>
+          </div>
+
+          <!-- OUT -->
+          <div class="grafico-col">
+            <div class="bar-tooltip">15–20 leads</div>
+            <div class="bar-group">
+              <div class="bar leads" style="height:45%;"></div>
+              <div class="bar seguidores" style="height:40%;"></div>
+            </div>
+          </div>
+
+          <!-- NOV -->
+          <div class="grafico-col">
+            <div class="bar-tooltip">22–28 leads</div>
+            <div class="bar-group">
+              <div class="bar leads" style="height:68%;"></div>
+              <div class="bar seguidores" style="height:62%;"></div>
+            </div>
+          </div>
+
+          <!-- DEZ -->
+          <div class="grafico-col">
+            <div class="bar-tooltip">30+ leads</div>
+            <div class="bar-group">
+              <div class="bar leads" style="height:100%;"></div>
+              <div class="bar seguidores" style="height:90%;"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="grafico-labels-x">
+        <span>Julho</span><span>Agosto</span><span>Setembro</span><span>Outubro</span><span>Novembro</span><span>Dezembro</span>
+      </div>
+
+      <div class="grafico-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--laranja);"></div> Leads qualificados/mes</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.25);"></div> Seguidores acumulados (escala relativa)</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- METRICAS FINAIS -->
+<div style="padding:80px 0;">
+<div class="container">
+  <div class="s-tag">Onde chegar</div>
+  <div class="s-title">Metas ao final de dezembro de 2026</div>
+  <div class="metricas-grid">
+    <div class="metrica-card">
+      <div class="mc-icon">📥</div>
+      <div class="mc-val">30+</div>
+      <div class="mc-label">Leads qualificados por mes</div>
+      <div class="mc-prazo">construtoras e incorporadoras</div>
+    </div>
+    <div class="metrica-card">
+      <div class="mc-icon">📱</div>
+      <div class="mc-val">500+</div>
+      <div class="mc-label">Seguidores nas redes sociais</div>
+      <div class="mc-prazo">perfil qualificado, nao comprado</div>
+    </div>
+    <div class="metrica-card">
+      <div class="mc-icon">⭐</div>
+      <div class="mc-val">10+</div>
+      <div class="mc-label">Avaliacoes no Google</div>
+      <div class="mc-prazo">top 3 busca local</div>
+    </div>
+    <div class="metrica-card">
+      <div class="mc-icon">🔍</div>
+      <div class="mc-val">Top 3</div>
+      <div class="mc-label">Google para busca local de argamassa</div>
+      <div class="mc-prazo">Presidente Prudente e regiao</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CANAIS -->
+<div class="canais-section" style="padding:80px 0;">
+<div class="container">
+  <div class="s-tag">Canais</div>
+  <div class="s-title">Como cada canal contribui para o resultado</div>
+  <div class="canais-grid">
+
+    <div class="canal-card">
+      <div class="canal-header">
+        <div class="canal-icon ig">📸</div>
+        <div>
+          <div class="canal-nome">Instagram</div>
+          <div class="canal-tipo">Organico + Stories + Reels</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Autoridade de marca</span><span class="cbl-val">Alta</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:85%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Geracao de leads direta</span><span class="cbl-val">Media</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:55%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Custo por resultado</span><span class="cbl-val">Baixo</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:75%; background:var(--verde);"></div></div>
+        </div>
+        <div class="canal-metas">
+          <div class="canal-meta-item"><div class="cmv">500+</div><div class="cml">Seguidores</div></div>
+          <div class="canal-meta-item"><div class="cmv">3x</div><div class="cml">Posts/semana</div></div>
+          <div class="canal-meta-item"><div class="cmv">6 meses</div><div class="cml">Horizonte</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="canal-card">
+      <div class="canal-header">
+        <div class="canal-icon fb">f</div>
+        <div>
+          <div class="canal-nome">Meta Ads</div>
+          <div class="canal-tipo">Facebook + Instagram Ads</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Alcance segmentado B2B</span><span class="cbl-val">Alto</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:90%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Geracao de leads direta</span><span class="cbl-val">Alta</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:80%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Custo por lead estimado</span><span class="cbl-val">R$ 30–60</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:65%;background:var(--verde);"></div></div>
+        </div>
+        <div class="canal-metas">
+          <div class="canal-meta-item"><div class="cmv">R$1.500</div><div class="cml">Verba/mes</div></div>
+          <div class="canal-meta-item"><div class="cmv">25–50</div><div class="cml">Leads/mes</div></div>
+          <div class="canal-meta-item"><div class="cmv">Set/26</div><div class="cml">Inicio</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="canal-card">
+      <div class="canal-header">
+        <div class="canal-icon ga">G</div>
+        <div>
+          <div class="canal-nome">Google Ads</div>
+          <div class="canal-tipo">Busca paga por intencao</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Intencao de compra</span><span class="cbl-val">Muito Alta</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:95%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Volume de busca local</span><span class="cbl-val">Medio</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:50%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Custo por clique estimado</span><span class="cbl-val">R$ 2–6</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:70%;background:var(--verde);"></div></div>
+        </div>
+        <div class="canal-metas">
+          <div class="canal-meta-item"><div class="cmv">R$800</div><div class="cml">Verba/mes</div></div>
+          <div class="canal-meta-item"><div class="cmv">10–20</div><div class="cml">Leads/mes</div></div>
+          <div class="canal-meta-item"><div class="cmv">Set/26</div><div class="cml">Inicio</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="canal-card">
+      <div class="canal-header">
+        <div class="canal-icon goog">📍</div>
+        <div>
+          <div class="canal-nome">Google Meu Negocio</div>
+          <div class="canal-tipo">Busca local organica</div>
+        </div>
+      </div>
+      <div class="canal-body">
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Presenca local no Google</span><span class="cbl-val">Alta</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:88%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Credibilidade / avaliacoes</span><span class="cbl-val">Alta</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:80%;"></div></div>
+        </div>
+        <div class="canal-bar-wrap">
+          <div class="canal-bar-label"><span class="cbl-name">Custo</span><span class="cbl-val">Zero</span></div>
+          <div class="canal-bar-bg"><div class="canal-bar-fill" style="width:100%;background:var(--verde);"></div></div>
+        </div>
+        <div class="canal-metas">
+          <div class="canal-meta-item"><div class="cmv">R$ 0</div><div class="cml">Custo/mes</div></div>
+          <div class="canal-meta-item"><div class="cmv">10+</div><div class="cml">Avaliacoes</div></div>
+          <div class="canal-meta-item"><div class="cmv">Top 3</div><div class="cml">Google local</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- INVESTIMENTO -->
+<div style="padding:80px 0;">
+<div class="container">
+  <div class="s-tag">Investimento</div>
+  <div class="s-title">Quanto custa estruturar a operacao</div>
+  <div class="invest-grid">
+
+    <div>
+      <h3 style="font-size:18px;font-weight:800;color:var(--azul);margin-bottom:20px;">Plano Crescimento — detalhamento mensal</h3>
+      <table class="invest-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th style="text-align:right;">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Setup inicial (site + perfis + posts)</td>
+            <td>R$ 3.500 <span style="font-size:11px;color:var(--sub);font-weight:400;">(unico)</span></td>
+          </tr>
+          <tr>
+            <td>Gestao mensal (conteudo + ads)</td>
+            <td>R$ 2.800 / mes</td>
+          </tr>
+          <tr>
+            <td>Verba Meta Ads</td>
+            <td>R$ 1.000 / mes</td>
+          </tr>
+          <tr>
+            <td>Verba Google Ads</td>
+            <td>R$ 500 / mes</td>
+          </tr>
+          <tr class="total">
+            <td>Total mensal (meses 3–6)</td>
+            <td>R$ 4.300 / mes</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="invest-note">* Verba de midia (Meta + Google Ads) paga diretamente nas plataformas pelo cliente. Os R$ 2.800 cobrem gestao, producao de conteudo e relatorios.</div>
+    </div>
+
+    <div class="invest-right">
+      <h3>Por que vale o investimento</h3>
+
+      <div class="roi-item">
+        <div class="ri-label">1 obra de pavimento 820m² economizada</div>
+        <div class="ri-val">R$ 15–40k</div>
+      </div>
+      <div class="roi-item">
+        <div class="ri-label">Custo estimado por lead qualificado</div>
+        <div class="ri-val">R$ 40–80</div>
+      </div>
+      <div class="roi-item">
+        <div class="ri-label">Leads gerados no mes 6 (meta)</div>
+        <div class="ri-val">30+</div>
+      </div>
+      <div class="roi-item">
+        <div class="ri-label">Taxa de conversao estimada B2B</div>
+        <div class="ri-val">10–20%</div>
+      </div>
+      <div class="roi-item">
+        <div class="ri-label">Clientes fechados no mes 6 (estimado)</div>
+        <div class="ri-val">3–6 obras</div>
+      </div>
+
+      <div class="roi-destaque">
+        <div class="rd-label">Uma obra fechada paga o investimento</div>
+        <div class="rd-val">do mes inteiro</div>
+        <div class="rd-sub">com margem sobrando</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">ME<span>P</span></div>
+  <p>mepmassa.com.br · (18) 99688-1384 · Presidente Prudente, SP</p>
+  <p style="margin-top:8px;">Perspectiva de Crescimento Digital · Junho 2026</p>
+</footer>
+
+</body>
+</html>

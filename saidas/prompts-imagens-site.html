@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Prompts para Geração de Imagens</title>
+<style>
+:root { --azul: #1A2B4D; --laranja: #F28C28; --branco: #fff; --cinza: #f5f6f8; --borda: #e5e7eb; --sub: #6b7280; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a; color:#fff; padding: 48px 40px; }
+
+h1 { font-size:28px; font-weight:900; margin-bottom:6px; }
+.page-sub { font-size:14px; color:rgba(255,255,255,0.4); margin-bottom:8px; }
+.page-divider { width:60px; height:3px; background:var(--laranja); margin: 16px 0 48px; }
+
+.intro {
+  background: rgba(242,140,40,0.08); border: 1px solid rgba(242,140,40,0.2);
+  border-left: 4px solid var(--laranja);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 22px; margin-bottom: 48px;
+  font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7;
+}
+.intro strong { color: var(--laranja); }
+
+/* GRID */
+.prompts-grid { display:flex; flex-direction:column; gap:32px; max-width:900px; }
+
+.prompt-card {
+  background: #111827; border-radius: 12px; overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.prompt-header {
+  background: var(--azul); padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.prompt-header-left { display:flex; align-items:center; gap:14px; }
+.prompt-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--laranja); color: #fff;
+  font-size: 14px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.prompt-title { font-size: 16px; font-weight: 800; color: #fff; }
+.prompt-use { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.prompt-format {
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+  font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+.prompt-body { padding: 20px 24px; }
+
+.prompt-text {
+  background: #1a2235; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+  padding: 18px 20px; font-size: 14px; line-height: 1.8; color: #e2e8f0;
+  position: relative; cursor: pointer;
+  transition: border-color .2s;
+}
+.prompt-text:hover { border-color: var(--laranja); }
+.copy-hint {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 11px; color: rgba(255,255,255,0.3);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+.prompt-notes { margin-top: 14px; display:flex; flex-direction:column; gap:8px; }
+.prompt-note {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5;
+}
+.prompt-note::before { content: '→'; color: var(--laranja); font-weight:700; flex-shrink:0; }
+
+/* ONDE USAR */
+.onde-usar {
+  display: flex; gap: 8px; flex-wrap:wrap; margin-top: 14px;
+}
+.ou-tag {
+  font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+  background: rgba(26,43,77,0.8); color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.ou-tag.destaque { background: rgba(242,140,40,0.15); color: var(--laranja); border-color: rgba(242,140,40,0.3); }
+
+/* VARIAÇÕES */
+.variacoes { margin-top:16px; }
+.variacoes-titulo { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.35); margin-bottom:10px; }
+.variacao {
+  background: rgba(255,255,255,0.03); border-radius:6px; padding:12px 16px;
+  font-size:13px; color:rgba(255,255,255,0.6); line-height:1.6; margin-bottom:8px;
+  border-left: 2px solid rgba(255,255,255,0.1); cursor:pointer;
+  transition: border-color .2s;
+}
+.variacao:hover { border-left-color: var(--laranja); color:rgba(255,255,255,0.8); }
+.variacao:last-child { margin-bottom:0; }
+
+/* DICAS */
+.dicas-section { margin-top:48px; max-width:900px; }
+.dicas-title { font-size:18px; font-weight:800; margin-bottom:20px; }
+.dicas-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.dica {
+  background:#111827; border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:20px;
+}
+.dica h4 { font-size:14px; font-weight:700; color:var(--laranja); margin-bottom:8px; }
+.dica p { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6; }
+</style>
+</head>
+<body>
+
+<h1>MEP Massas — Prompts para Imagens</h1>
+<p class="page-sub">Prompts prontos para usar no ChatGPT · Cole exatamente como está</p>
+<div class="page-divider"></div>
+
+<div class="intro">
+  <strong>Como usar:</strong> Cole cada prompt diretamente no ChatGPT com o modelo GPT-4o (que tem DALL-E 3 integrado). Se precisar ajustar, mude apenas a parte em <strong>[colchetes]</strong>. Peça sempre em inglês para melhores resultados — os prompts abaixo já estão em inglês.
+</div>
+
+<div class="prompts-grid">
+
+  <!-- PROMPT 1 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">1</div>
+        <div>
+          <div class="prompt-title">Hero Banner — Obra + Produto</div>
+          <div class="prompt-use">Seção principal do site (imagem de fundo do hero)</div>
+        </div>
+      </div>
+      <div class="prompt-format">1920×600 · Banner</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Professional construction site photography, wide angle shot of a large-scale brick masonry wall under construction in Brazil. Bricklayers working efficiently on a clean, organized construction site. Strong industrial lighting with golden hour sun. Modern commercial or residential building structure visible in background. Professional B2B atmosphere. Deep navy blue and warm orange color tones. Photorealistic, high resolution, cinematic composition. No text, no logos.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Hero do site</span>
+        <span class="ou-tag">Banner principal</span>
+        <span class="ou-tag">Fundo da seção inicial</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">Gera um fundo perfeito para colocar o balde e os textos por cima no site</div>
+        <div class="prompt-note">Peça 3 variações e escolha a que tiver melhor composição com espaço à esquerda para o texto</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 2 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">2</div>
+        <div>
+          <div class="prompt-title">Foto do Produto — Balde Branco MEP</div>
+          <div class="prompt-use">Cards de produto, seção de produtos</div>
+        </div>
+      </div>
+      <div class="prompt-format">1:1 · Produto</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Professional product photography of a white plastic construction bucket (balde), 25kg, sitting on a clean light gray or white studio surface. Subtle shadow underneath. Soft studio lighting from the left. Clean background gradient from white to light blue-gray. Label area on the front of the bucket is blank/white (no text). The bucket looks premium and industrial. Product shot style, sharp focus, high-end commercial photography. No text, no logos on the bucket.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Cards de produto</span>
+        <span class="ou-tag">Seção produtos</span>
+        <span class="ou-tag">Posts Instagram</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">Gera o balde limpo — depois você adiciona a logo MEP por cima em qualquer editor</div>
+        <div class="prompt-note">Peça também a versão preta para o produto "Secagem Rápida"</div>
+      </div>
+      <div class="variacoes">
+        <div class="variacoes-titulo">Variações para pedir</div>
+        <div class="variacao">Mesma coisa mas com o balde preto — para o produto Secagem Rápida</div>
+        <div class="variacao">Mesma coisa mas balde pequeno (5kg) — para o produto compacto</div>
+        <div class="variacao">Três baldes na mesma cena: 1 grande (25kg) ao centro, 2 pequenos (5kg) nas laterais</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 3 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">3</div>
+        <div>
+          <div class="prompt-title">Pedreiro Aplicando na Obra</div>
+          <div class="prompt-use">Seção "Como Usar", posts de Instagram, banner</div>
+        </div>
+      </div>
+      <div class="prompt-format">4:3 · Cena de obra</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Professional construction photography, Brazilian bricklayer (pedreiro) laying bricks on a wall using a piping bag or mortar bag applicator tool. Clean, organized construction site. Worker wearing safety equipment — hard hat, gloves, safety boots. The mortar application is precise and clean, no mess. Warm natural lighting. Background shows a large modern building under construction. Photorealistic, professional B2B photography style. No text, no logos.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Como usar</span>
+        <span class="ou-tag">Posts Instagram</span>
+        <span class="ou-tag">Seção aplicações</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">O "piping bag applicator" é o saco aplicador do MEP — instrui o AI a mostrar essa ferramenta</div>
+        <div class="prompt-note">Se quiser focar no produto, adicione: "with a white 25kg bucket visible nearby"</div>
+      </div>
+      <div class="variacoes">
+        <div class="variacoes-titulo">Variações para pedir</div>
+        <div class="variacao">Close-up das mãos do pedreiro aplicando argamassa diretamente nos tijolos com saco aplicador — fundo desfocado mostrando alvenaria</div>
+        <div class="variacao">Vista aérea de uma equipe pequena de pedreiros trabalhando em um pavimento grande, obra comercial, organizada e limpa</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 4 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">4</div>
+        <div>
+          <div class="prompt-title">Comparativo Visual — Pilha de Sacos vs Balde</div>
+          <div class="prompt-use">Seção comparativo, posts Instagram, apresentação</div>
+        </div>
+      </div>
+      <div class="prompt-format">16:9 · Comparativo</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Split composition product photography. Left side: a large messy pile of 40+ sand bags, cement bags and gravel on a rough concrete floor, overwhelming and chaotic. Right side: a single clean white 25kg plastic bucket on the same floor, minimalist and organized. Both sides shot on the same neutral concrete warehouse floor. Dramatic lighting contrast between the two sides. Clean dividing line in the center. Professional industrial photography. No text, no labels on products.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Seção comparativo</span>
+        <span class="ou-tag">Posts Instagram</span>
+        <span class="ou-tag">Apresentação ao cliente</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">Esta imagem é o argumento de vendas mais forte — vale pedir 5 variações</div>
+        <div class="prompt-note">Depois você adiciona os textos "24.000 kg" e "1.200 kg" por cima usando Canva ou o HTML do site</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 5 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">5</div>
+        <div>
+          <div class="prompt-title">Alvenaria Concluída — Resultado Final</div>
+          <div class="prompt-use">Seção "Inspire-se", depoimentos, Instagram</div>
+        </div>
+      </div>
+      <div class="prompt-format">4:3 · Resultado</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Professional construction photography, a perfectly finished brick or block masonry wall in a large commercial construction site in Brazil. The mortar joints are clean, precise and uniform. The wall is straight and aligned. Well-lit construction environment, professional atmosphere. In the background, steel framework or scaffolding of a large building under construction. Photorealistic, high quality, sharp details. No people, no text, no logos.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Seção resultados</span>
+        <span class="ou-tag">Depoimentos</span>
+        <span class="ou-tag">Feed Instagram</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">Mostra o resultado final — parece alvenaria aplicada com MEP, junta limpa e precisa</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 6 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">6</div>
+        <div>
+          <div class="prompt-title">Obra de Grande Porte — Construtora</div>
+          <div class="prompt-use">Background de seções, apresentação, posts LinkedIn</div>
+        </div>
+      </div>
+      <div class="prompt-format">16:9 · Institucional</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Wide-angle aerial or eye-level professional photography of a large-scale commercial building construction site in Brazil. Multiple floors under construction, concrete structure, steel framework, organized scaffolding. Professional workers on site. Clean and well-managed construction environment showing scale and efficiency. Blue sky or overcast sky background. Cinematic industrial photography, deep of field, high resolution. No text, no logos, no visible product brands.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Fundo de seções</span>
+        <span class="ou-tag">Apresentação</span>
+        <span class="ou-tag">Seção institucional</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 7 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">7</div>
+        <div>
+          <div class="prompt-title">Posts Instagram — Fundo Abstrato da Marca</div>
+          <div class="prompt-use">Posts com texto sobreposto, stories, reels</div>
+        </div>
+      </div>
+      <div class="prompt-format">1:1 · Social</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Abstract geometric background inspired by industrial construction materials. Deep navy blue (#1A2B4D) as the dominant color with warm orange (#F28C28) geometric accents. Hexagonal shapes in the background, subtle and professional. Clean lines suggesting construction, structure and precision. No text, no people. Suitable as a background for social media posts with text overlay. Square format, modern and minimal.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Posts com texto</span>
+        <span class="ou-tag">Stories</span>
+        <span class="ou-tag">Destaques do Instagram</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">Gera fundos abstratos no azul e laranja da MEP — você coloca os textos por cima no Canva</div>
+        <div class="prompt-note">Peça 6 variações diferentes para ter opções para vários posts</div>
+      </div>
+      <div class="variacoes">
+        <div class="variacoes-titulo">Variações para pedir</div>
+        <div class="variacao">Versão com textura de concreto sutil ao fundo, tom azul escuro, detalhes em laranja</div>
+        <div class="variacao">Versão com linhas geométricas inspiradas em planta baixa de construção, azul e laranja</div>
+        <div class="variacao">Versão com bokeh de canteiro de obra ao fundo, desfocado, com overlay laranja sutil</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMPT 8 -->
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-num">8</div>
+        <div>
+          <div class="prompt-title">Engenheiro ou Diretor de Obras</div>
+          <div class="prompt-use">Depoimentos, seção "Quem usa MEP"</div>
+        </div>
+      </div>
+      <div class="prompt-format">1:1 · Retrato</div>
+    </div>
+    <div class="prompt-body">
+      <div class="prompt-text">
+        <div class="copy-hint">clique para copiar</div>
+        Professional portrait photography of a Brazilian civil engineer or construction manager, male, 35-50 years old, wearing a hard hat and safety vest or business casual attire. Confident and professional expression. Construction site or modern office building in the blurred background. Natural warm lighting. Shot from chest up. Professional headshot style. No text, photorealistic.
+      </div>
+      <div class="onde-usar">
+        <span class="ou-tag destaque">Depoimentos</span>
+        <span class="ou-tag">Seção clientes</span>
+        <span class="ou-tag">Prova social</span>
+      </div>
+      <div class="prompt-notes">
+        <div class="prompt-note">Mude "male" para "female" e "engineer" para "project manager" para gerar a foto da Eng.ª Lucia Ribeiro</div>
+        <div class="prompt-note">Para o João Carlos (mestre de obras): adicione "experienced master builder, wearing work clothes and hard hat, weathered hands"</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DICAS -->
+<div class="dicas-section">
+  <div class="dicas-title">Dicas para melhores resultados no ChatGPT</div>
+  <div class="dicas-grid">
+
+    <div class="dica">
+      <h4>Peça variações</h4>
+      <p>Depois de gerar, escreva: "Gere 3 variações desta imagem com pequenas diferenças na composição e iluminação". Sempre haverá uma versão melhor do que a primeira.</p>
+    </div>
+
+    <div class="dica">
+      <h4>Controle as cores</h4>
+      <p>Se as cores saírem erradas, adicione ao final do prompt: "Color palette: deep navy blue #1A2B4D and warm orange #F28C28, minimal use of other colors."</p>
+    </div>
+
+    <div class="dica">
+      <h4>Proporção correta</h4>
+      <p>Para o ChatGPT, especifique no texto: "wide landscape format" (16:9 para banners), "square format" (1:1 para posts), "vertical format" (9:16 para stories).</p>
+    </div>
+
+    <div class="dica">
+      <h4>Fundo sem texto</h4>
+      <p>Sempre termine o prompt com "No text, no logos, no watermarks, no brand names visible." O DALL-E tende a adicionar textos aleatórios — essa linha previne.</p>
+    </div>
+
+    <div class="dica">
+      <h4>Qualidade profissional</h4>
+      <p>Sempre inclua: "professional photography, high resolution, sharp focus, photorealistic". Evita resultados com aspecto de IA genérico.</p>
+    </div>
+
+    <div class="dica">
+      <h4>Contexto brasileiro</h4>
+      <p>Para obras e pessoas, adicione "in Brazil" ou "Brazilian construction style". Faz diferença na aparência das pessoas e no estilo dos canteiros gerados.</p>
+    </div>
+
+    <div class="dica">
+      <h4>Produto sem logo</h4>
+      <p>Gere sempre os baldes SEM logo. Depois você coloca a identidade visual da MEP por cima no Canva ou Photoshop. Fica mais profissional do que tentar gerar com logo.</p>
+    </div>
+
+    <div class="dica">
+      <h4>Ordem das imagens</h4>
+      <p>Comece pelo Prompt 4 (comparativo) e Prompt 2 (produto). São as imagens mais importantes para o site e posts. Depois avance para as demais.</p>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

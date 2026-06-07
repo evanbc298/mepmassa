@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MEP — Verso das Embalagens</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #E8E8E8;
+      padding: 60px 24px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .page-header .tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: #888; display: block; margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-size: 28px; font-weight: 900; color: #1A2B4D; letter-spacing: -0.5px;
+    }
+    .page-header h1 span { color: #F28C28; }
+
+    /* GRID */
+    .grid {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .col-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: #F28C28;
+    }
+
+    /* ══ VERSO BISNAGA ══ */
+    .verso-bisnaga {
+      width: 200px;
+      background: #1A2B4D;
+      border-radius: 14px 14px 22px 22px;
+      overflow: hidden;
+      clip-path: polygon(18% 0%, 82% 0%, 100% 5%, 100% 100%, 0% 100%, 0% 5%);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    /* ══ VERSO BALDE ══ */
+    .verso-balde {
+      width: 340px;
+      background: #1A2B4D;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    /* ── SHARED INNER COMPONENTS ── */
+
+    /* Orange top strip */
+    .verso-top {
+      background: #F28C28;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .verso-top .brand {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .verso-top .t-mep {
+      font-size: 14px; font-weight: 900; color: white; letter-spacing: -0.5px;
+    }
+    .verso-top .validade-box {
+      text-align: right;
+    }
+    .verso-top .validade-label {
+      font-size: 7px; font-weight: 700; color: rgba(255,255,255,0.6);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .verso-top .validade-val {
+      font-size: 11px; font-weight: 800; color: white;
+    }
+
+    /* Section header */
+    .sec-header {
+      font-size: 8px; font-weight: 800; letter-spacing: 3px;
+      text-transform: uppercase; color: #F28C28;
+      padding: 12px 14px 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 2px;
+    }
+
+    /* MODO DE USO */
+    .steps { padding: 8px 14px 12px; display: flex; flex-direction: column; gap: 8px; }
+    .step { display: flex; align-items: flex-start; gap: 9px; }
+    .step-num {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #F28C28; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+      font-size: 9px; font-weight: 900; color: white;
+    }
+    .step-text {
+      font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.85);
+      line-height: 1.4; padding-top: 3px;
+    }
+    .step-text strong { color: white; }
+
+    /* SPECS TABLE */
+    .specs { padding: 6px 14px 12px; display: flex; flex-direction: column; gap: 5px; }
+    .spec-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .spec-key {
+      font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .spec-val {
+      font-size: 9px; font-weight: 800; color: white; text-align: right;
+    }
+    .spec-val.highlight { color: #F28C28; }
+
+    /* WARNINGS */
+    .warnings { padding: 6px 14px 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .warn-item {
+      display: flex; align-items: center; gap: 5px;
+    }
+    .warn-icon {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; flex-shrink: 0;
+    }
+    .warn-text {
+      font-size: 7.5px; color: rgba(255,255,255,0.5); line-height: 1.3;
+    }
+
+    /* ARMAZENAGEM */
+    .storage { padding: 6px 14px 10px; }
+    .storage p {
+      font-size: 8px; color: rgba(255,255,255,0.55); line-height: 1.6;
+    }
+
+    /* FOOTER LEGAL */
+    .legal-footer {
+      background: rgba(0,0,0,0.25);
+      padding: 10px 14px;
+      margin-top: 4px;
+    }
+    .legal-footer .company-name {
+      font-size: 8px; font-weight: 800; color: white;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;
+    }
+    .legal-footer .legal-line {
+      font-size: 7px; color: rgba(255,255,255,0.4); line-height: 1.6;
+    }
+    .legal-footer .legal-line span { color: rgba(255,255,255,0.6); }
+    .legal-footer .sac-line {
+      margin-top: 5px; display: flex; align-items: center; gap: 6px;
+    }
+    .legal-footer .sac-badge {
+      background: #F28C28; border-radius: 3px;
+      padding: 2px 6px;
+      font-size: 7px; font-weight: 800; color: white; letter-spacing: 0.5px;
+    }
+    .legal-footer .sac-num {
+      font-size: 8px; font-weight: 700; color: white;
+    }
+    .legal-footer .sac-site {
+      font-size: 7px; color: #F28C28; margin-left: auto;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 0 14px;
+    }
+
+    /* BALDE EXTRAS — wider layout tweaks */
+    .balde-steps  { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 14px 12px; }
+    .balde-specs  { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 6px 14px 12px; }
+    .balde-warns  { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px 14px 10px; }
+
+    .cert-row {
+      display: flex; gap: 8px; padding: 8px 14px 10px;
+      align-items: center;
+    }
+    .cert-badge {
+      border: 1.5px solid rgba(255,165,0,0.4);
+      border-radius: 50px;
+      padding: 4px 10px;
+      font-size: 7px; font-weight: 700; color: #F28C28;
+      text-align: center; white-space: nowrap;
+    }
+
+    /* LOTE / VALIDADE strip */
+    .lote-strip {
+      background: rgba(0,0,0,0.2);
+      padding: 6px 14px;
+      display: flex; gap: 24px;
+    }
+    .lote-item { display: flex; flex-direction: column; }
+    .lote-label {
+      font-size: 7px; font-weight: 700; color: rgba(255,255,255,0.35);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .lote-val {
+      font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+    }
+
+    .note {
+      font-size: 11px; color: #aaa;
+      max-width: 200px; text-align: center; line-height: 1.5;
+    }
+    .note.wide { max-width: 340px; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="tag">UX de Embalagem — Verso</span>
+  <h1>MEP Massas — <span>Verso das Embalagens</span></h1>
+</div>
+
+<div class="grid">
+
+  <!-- ════════════════ BISNAGA ════════════════ -->
+  <div class="col">
+    <span class="col-label">Bisnaga 1kg</span>
+
+    <div class="verso-bisnaga">
+
+      <!-- Top -->
+      <div class="verso-top">
+        <div class="brand">
+          <svg width="22" height="22" viewBox="0 0 120 112">
+            <polygon points="60,10 100,33 60,56 20,33" fill="rgba(255,255,255,0.95)"/>
+            <polygon points="20,33 60,56 60,102 20,79" fill="rgba(255,255,255,0.5)"/>
+            <polygon points="100,33 100,79 60,102 60,56" fill="rgba(255,255,255,0.75)"/>
+          </svg>
+          <span class="t-mep">MEP</span>
+        </div>
+        <div class="validade-box">
+          <div class="validade-label">Validade</div>
+          <div class="validade-val">5 anos</div>
+        </div>
+      </div>
+
+      <!-- Modo de uso -->
+      <div class="sec-header">Modo de uso</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Prepare</strong> a superfície: limpa, úmida, sem poeira</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Abra</strong> a bisnaga e aplique direto na junta</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Nivele</strong> o bloco com batidas leves</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Aguarde</strong> 30 min para pega inicial</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Specs -->
+      <div class="sec-header">Especificações</div>
+      <div class="specs">
+        <div class="spec-row">
+          <span class="spec-key">Resistência</span>
+          <span class="spec-val highlight">4 MPa</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Norma</span>
+          <span class="spec-val">NBR 13279</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Pega</span>
+          <span class="spec-val">30 min</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Cura total</span>
+          <span class="spec-val">48 horas</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Rendimento</span>
+          <span class="spec-val">~1 m²/kg</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Temperatura</span>
+          <span class="spec-val">5°C a 40°C</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Warnings -->
+      <div class="sec-header">Cuidados</div>
+      <div class="warnings">
+        <div class="warn-item">
+          <div class="warn-icon">🧤</div>
+          <div class="warn-text">Use luvas e óculos de proteção</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">👁</div>
+          <div class="warn-text">Contato com olhos: lavar com água</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">🚸</div>
+          <div class="warn-text">Manter longe de crianças</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">📦</div>
+          <div class="warn-text">Armazenar em local seco e fresco</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Lote / Validade -->
+      <div class="lote-strip">
+        <div class="lote-item">
+          <span class="lote-label">Lote</span>
+          <span class="lote-val">__________</span>
+        </div>
+        <div class="lote-item">
+          <span class="lote-label">Fabricação</span>
+          <span class="lote-val">__/__/____</span>
+        </div>
+      </div>
+
+      <!-- Legal footer -->
+      <div class="legal-footer">
+        <div class="company-name">MEP Indústria e Comércio Ltda</div>
+        <div class="legal-line">
+          CNPJ: <span>73.717.119/0001-84</span><br>
+          Rua 3500, 97 · Balneário Camboriú/SC · CEP 88340-589<br>
+          <span style="color:rgba(255,255,255,0.25);font-size:6px;">* Endereço provisório — sujeito a atualização</span>
+        </div>
+        <div class="sac-line">
+          <span class="sac-badge">SAC</span>
+          <span class="sac-num">(18) 99688-1384</span>
+          <span class="sac-site">mepmassa.com.br</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">Verso compacto — prioriza modo de uso e specs. Espaço limitado.</div>
+  </div>
+
+  <!-- ════════════════ BALDE 25KG ════════════════ -->
+  <div class="col">
+    <span class="col-label">Balde 25kg</span>
+
+    <div class="verso-balde">
+
+      <!-- Top -->
+      <div class="verso-top">
+        <div class="brand">
+          <svg width="24" height="24" viewBox="0 0 120 112">
+            <polygon points="60,10 100,33 60,56 20,33" fill="rgba(255,255,255,0.95)"/>
+            <polygon points="20,33 60,56 60,102 20,79" fill="rgba(255,255,255,0.5)"/>
+            <polygon points="100,33 100,79 60,102 60,56" fill="rgba(255,255,255,0.75)"/>
+          </svg>
+          <span class="t-mep">MEP MASSAS</span>
+        </div>
+        <div class="validade-box">
+          <div class="validade-label">Validade do produto fechado</div>
+          <div class="validade-val">5 anos</div>
+        </div>
+      </div>
+
+      <!-- Modo de uso -->
+      <div class="sec-header">Modo de uso</div>
+      <div class="balde-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Limpe</strong> a superfície: sem poeira, graxa ou resíduos</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Umedeça</strong> levemente a superfície antes de aplicar</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Aplique</strong> a massa diretamente com colher de pedreiro</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Posicione</strong> o bloco e nivele com batidas leves</div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-text"><strong>Ajuste</strong> o prumo antes dos 30 min de pega</div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-text"><strong>Aguarde</strong> 48h para cura total antes de sobrecarregar</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Specs -->
+      <div class="sec-header">Especificações Técnicas</div>
+      <div class="balde-specs">
+        <div class="spec-row">
+          <span class="spec-key">Resistência</span>
+          <span class="spec-val highlight">4 MPa</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Norma</span>
+          <span class="spec-val">NBR 13279</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Pega inicial</span>
+          <span class="spec-val">30 min</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Cura total</span>
+          <span class="spec-val">48 horas</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Rendimento</span>
+          <span class="spec-val">até 25 m²</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Consumo</span>
+          <span class="spec-val">~1 kg/m²</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Temperatura</span>
+          <span class="spec-val">5°C a 40°C</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Umidade relativa</span>
+          <span class="spec-val">≤ 85% UR</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Aplicações -->
+      <div class="sec-header">Indicado para</div>
+      <div class="storage" style="padding-bottom:10px;">
+        <p>Bloco de concreto · Cerâmico · Tijolo baiano · Muros à vista · Churrasqueiras · Reparos e reformas em alvenaria</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Armazenagem -->
+      <div class="sec-header">Armazenagem</div>
+      <div class="storage">
+        <p>Manter em local seco, ventilado e ao abrigo de luz solar direta. Não empilhar mais de 4 unidades. Após aberto, consumir em até 24 horas. Temperatura ideal de armazenagem: 5°C a 35°C.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Certificações -->
+      <div class="sec-header">Certificações</div>
+      <div class="cert-row">
+        <div class="cert-badge">ABNT NBR 13279</div>
+        <div class="cert-badge">Fabricado no Brasil</div>
+        <div class="cert-badge">Menos Resíduo</div>
+        <div class="cert-badge">Sem Betoneira</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Cuidados -->
+      <div class="sec-header">Segurança e Cuidados</div>
+      <div class="balde-warns">
+        <div class="warn-item">
+          <div class="warn-icon">🧤</div>
+          <div class="warn-text">Use luvas e óculos de proteção durante aplicação</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">👁</div>
+          <div class="warn-text">Contato com olhos: lavar com água corrente por 15 min</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">🚸</div>
+          <div class="warn-text">Manter fora do alcance de crianças e animais</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">☎</div>
+          <div class="warn-text">Ingestão acidental: consultar médico imediatamente</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">♻</div>
+          <div class="warn-text">Descarte a embalagem conforme normas locais</div>
+        </div>
+        <div class="warn-item">
+          <div class="warn-icon">💧</div>
+          <div class="warn-text">Não despejar resíduo em ralos ou corpos d'água</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Lote strip -->
+      <div class="lote-strip">
+        <div class="lote-item">
+          <span class="lote-label">Lote</span>
+          <span class="lote-val">______________</span>
+        </div>
+        <div class="lote-item">
+          <span class="lote-label">Fabricação</span>
+          <span class="lote-val">__/__/______</span>
+        </div>
+        <div class="lote-item">
+          <span class="lote-label">Validade</span>
+          <span class="lote-val">__/__/______</span>
+        </div>
+      </div>
+
+      <!-- Legal footer -->
+      <div class="legal-footer">
+        <div class="company-name">MEP Indústria e Comércio Ltda</div>
+        <div class="legal-line">
+          CNPJ: <span>73.717.119/0001-84</span> &nbsp;·&nbsp;
+          Rua 3500, 97 · Balneário Camboriú/SC · CEP 88.340-589<br>
+          <span style="color:rgba(255,255,255,0.25);font-size:6px;">* Dados provisórios — sujeito a atualização</span>
+        </div>
+        <div class="sac-line">
+          <span class="sac-badge">SAC</span>
+          <span class="sac-num">(18) 99688-1384</span>
+          <span class="sac-site">mepmassa.com.br</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note wide">Verso completo — 6 passos, specs técnicas, certificações, armazenagem, segurança e dados legais.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

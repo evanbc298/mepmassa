@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP Massas — Proposta de Parceria Comercial</title>
+<style>
+:root {
+  --azul: #1A2B4D; --azul2: #0d1b35; --azul3: #1e3a6e;
+  --laranja: #F28C28; --laranja2: #e07010;
+  --branco: #fff; --cinza: #f5f6f8; --borda: #e5e7eb;
+  --texto: #1c1e21; --sub: #6b7280;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:var(--branco); color:var(--texto); }
+
+/* CAPA */
+.capa {
+  min-height:100vh; background:linear-gradient(145deg,#071220 0%,#0d1b35 40%,#1A2B4D 80%,#1e3a6e 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:80px 60px; position:relative; overflow:hidden;
+}
+.capa-hex { position:absolute; opacity:0.06; }
+.capa-badge {
+  display:inline-block; background:rgba(242,140,40,0.15); border:1px solid rgba(242,140,40,0.3);
+  color:var(--laranja); font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:2px; padding:7px 18px; border-radius:20px; margin-bottom:28px;
+}
+.capa-logo { font-size:80px; font-weight:900; color:#fff; letter-spacing:6px; margin-bottom:4px; }
+.capa-logo span { color:var(--laranja); }
+.capa-div { width:60px; height:4px; background:var(--laranja); margin:28px auto; }
+.capa h1 { font-size:36px; font-weight:900; color:#fff; line-height:1.25; max-width:680px; }
+.capa .capa-sub { font-size:17px; color:rgba(255,255,255,0.5); margin-top:14px; }
+.capa-meta {
+  margin-top:60px; display:flex; gap:60px; justify-content:center;
+  border-top:1px solid rgba(255,255,255,0.1); padding-top:40px;
+}
+.capa-meta-item .cm-val { font-size:28px; font-weight:900; color:var(--laranja); }
+.capa-meta-item .cm-label { font-size:12px; color:rgba(255,255,255,0.35); margin-top:4px; text-transform:uppercase; letter-spacing:1px; }
+.capa-data { position:absolute; bottom:36px; font-size:13px; color:rgba(255,255,255,0.25); letter-spacing:1px; text-transform:uppercase; }
+
+/* CONTAINER */
+.container { max-width:960px; margin:0 auto; padding:0 60px; }
+section { padding:80px 0; border-bottom:1px solid var(--borda); }
+section:last-of-type { border-bottom:none; }
+.s-tag { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--laranja); margin-bottom:10px; }
+.s-title { font-size:32px; font-weight:900; color:var(--azul); line-height:1.2; margin-bottom:12px; }
+.s-sub { font-size:16px; color:var(--sub); line-height:1.7; max-width:620px; }
+
+/* INTRO */
+.intro-box {
+  background:var(--cinza); border-radius:10px; padding:32px 36px; margin-top:40px;
+  border-left:4px solid var(--laranja);
+}
+.intro-box p { font-size:15px; color:var(--texto); line-height:1.8; }
+.intro-box p + p { margin-top:14px; }
+.intro-box strong { color:var(--azul); font-weight:700; }
+
+/* MODELO 3 PARTES */
+.modelo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:56px; border:1px solid var(--borda); border-radius:12px; overflow:hidden; }
+.modelo-item { padding:36px 28px; position:relative; }
+.modelo-item:not(:last-child) { border-right:1px solid var(--borda); }
+.modelo-num { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--sub); margin-bottom:12px; }
+.modelo-icon { font-size:36px; margin-bottom:16px; }
+.modelo-item h3 { font-size:20px; font-weight:900; color:var(--azul); margin-bottom:10px; }
+.modelo-item p { font-size:14px; color:var(--sub); line-height:1.7; }
+.modelo-item.destaque { background:var(--azul); }
+.modelo-item.destaque .modelo-num { color:rgba(255,255,255,0.4); }
+.modelo-item.destaque h3 { color:#fff; }
+.modelo-item.destaque p { color:rgba(255,255,255,0.6); }
+.modelo-tag { display:inline-block; margin-top:14px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:4px 12px; border-radius:20px; }
+.modelo-item:not(.destaque) .modelo-tag { background:var(--cinza); color:var(--sub); }
+.modelo-item.destaque .modelo-tag { background:rgba(242,140,40,0.2); color:var(--laranja); }
+
+/* CAMPO EM BRANCO */
+.campo {
+  display:inline-block; border-bottom:2px solid var(--laranja); min-width:80px;
+  color:var(--azul); font-weight:700;
+}
+
+/* TABELA DE ESCOPO */
+.escopo-table { width:100%; border-collapse:collapse; margin-top:40px; }
+.escopo-table th { text-align:left; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--sub); padding:0 0 14px; border-bottom:2px solid var(--borda); }
+.escopo-table td { padding:16px 0; border-bottom:1px solid var(--borda); font-size:14px; vertical-align:top; }
+.escopo-table td:first-child { font-weight:600; color:var(--azul); width:30%; padding-right:20px; }
+.escopo-table td:last-child { color:var(--sub); }
+.escopo-table tr:last-child td { border-bottom:none; }
+.etag { display:inline-block; font-size:11px; font-weight:700; padding:2px 10px; border-radius:20px; margin-left:8px; }
+.etag.setup { background:#e8f5e9; color:#16a34a; }
+.etag.mensal { background:#eff6ff; color:#2563eb; }
+.etag.share { background:#fff7ed; color:var(--laranja2); }
+
+/* MODELO FINANCEIRO */
+.financeiro-section { background:var(--azul); }
+.financeiro-section .s-tag { color:var(--laranja); }
+.financeiro-section .s-title { color:#fff; }
+.financeiro-section .s-sub { color:rgba(255,255,255,0.5); }
+
+.fin-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px; }
+.fin-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:28px; }
+.fin-card h3 { font-size:16px; font-weight:800; color:#fff; margin-bottom:6px; }
+.fin-card .fc-desc { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:20px; line-height:1.6; }
+.fin-linha { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.fin-linha:last-child { border-bottom:none; padding-bottom:0; }
+.fin-linha .fl-label { font-size:13px; color:rgba(255,255,255,0.55); }
+.fin-linha .fl-val { font-size:15px; font-weight:700; color:#fff; }
+.fin-linha .fl-val.laranja { color:var(--laranja); }
+.fin-linha .fl-val.campo-neg { border-bottom:2px solid var(--laranja); min-width:80px; display:inline-block; color:var(--laranja); }
+
+.fin-nota { background:rgba(242,140,40,0.1); border:1px solid rgba(242,140,40,0.25); border-radius:8px; padding:18px 20px; margin-top:20px; font-size:13px; color:rgba(255,255,255,0.65); line-height:1.7; }
+.fin-nota strong { color:var(--laranja); }
+
+/* ALINHAMENTO DE INTERESSES */
+.align-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px; }
+.align-card { border-radius:10px; padding:28px; }
+.align-card.vc { background:var(--cinza); border:1px solid var(--borda); }
+.align-card.mep { background:var(--azul); }
+.align-card h3 { font-size:16px; font-weight:800; margin-bottom:16px; }
+.align-card.vc h3 { color:var(--azul); }
+.align-card.mep h3 { color:#fff; }
+.align-item { display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; font-size:14px; line-height:1.5; }
+.align-item:last-child { margin-bottom:0; }
+.align-card.vc .align-item { color:var(--texto); }
+.align-card.mep .align-item { color:rgba(255,255,255,0.7); }
+.align-item .ai-mark { color:var(--laranja); font-weight:700; flex-shrink:0; }
+
+/* CRONOGRAMA FINANCEIRO */
+.cron-fin { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:48px; }
+.cf-item { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:22px 18px; text-align:center; }
+.cf-item .cf-periodo { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.4); margin-bottom:8px; }
+.cf-item .cf-val { font-size:22px; font-weight:900; color:var(--laranja); line-height:1; margin-bottom:6px; }
+.cf-item .cf-desc { font-size:12px; color:rgba(255,255,255,0.45); line-height:1.4; }
+
+/* CONDICOES */
+.cond-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px; }
+.cond-item { background:var(--cinza); border-radius:8px; padding:20px 22px; border-left:3px solid var(--borda); }
+.cond-item.ok { border-left-color:var(--laranja); }
+.cond-item h4 { font-size:14px; font-weight:700; color:var(--azul); margin-bottom:6px; }
+.cond-item p { font-size:13px; color:var(--sub); line-height:1.6; }
+
+/* ASSINATURA */
+.assinatura-section { background:var(--azul2); }
+.assinatura-inner { max-width:960px; margin:0 auto; padding:80px 60px; }
+.assin-titulo { font-size:28px; font-weight:900; color:#fff; text-align:center; margin-bottom:10px; }
+.assin-sub { font-size:16px; color:rgba(255,255,255,0.45); text-align:center; margin-bottom:60px; }
+.assin-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+.assin-parte h4 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.35); margin-bottom:20px; }
+.assin-line { border-bottom:1px solid rgba(255,255,255,0.15); margin-bottom:12px; height:44px; }
+.assin-info { font-size:13px; color:rgba(255,255,255,0.4); line-height:1.7; }
+.assin-data { text-align:center; font-size:14px; color:rgba(255,255,255,0.3); margin-top:48px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.08); }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="capa">
+  <svg class="capa-hex" style="top:-100px;right:-80px;" width="540" height="540" viewBox="0 0 540 540">
+    <polygon points="270,27 499,148 499,392 270,513 41,392 41,148" fill="none" stroke="white" stroke-width="54"/>
+  </svg>
+  <svg class="capa-hex" style="bottom:-60px;left:-60px;" width="280" height="280" viewBox="0 0 280 280">
+    <polygon points="140,14 259,77 259,203 140,266 21,203 21,77" fill="none" stroke="white" stroke-width="28"/>
+  </svg>
+  <div class="capa-badge">Parceria Comercial</div>
+  <div class="capa-logo">ME<span>P</span></div>
+  <div class="capa-div"></div>
+  <h1>Proposta de Parceria<br>em Marketing e Crescimento Digital</h1>
+  <div class="capa-sub">Setup · Gestao Mensal · Participacao nos Resultados</div>
+  <div class="capa-meta">
+    <div class="capa-meta-item"><div class="cm-val">3</div><div class="cm-label">componentes</div></div>
+    <div class="capa-meta-item"><div class="cm-val">6</div><div class="cm-label">meses iniciais</div></div>
+    <div class="capa-meta-item"><div class="cm-val">∞</div><div class="cm-label">renovacao automatica</div></div>
+  </div>
+  <div class="capa-data">Junho de 2026 · Confidencial</div>
+</div>
+
+<!-- APRESENTACAO -->
+<div class="container">
+<section>
+  <div class="s-tag">Contexto</div>
+  <div class="s-title">Por que essa proposta e diferente</div>
+  <div class="intro-box">
+    <p>Esta nao e uma proposta de servico comum. E um modelo de <strong>parceria com alinhamento de interesses</strong> — onde o sucesso comercial da MEP Massas se reflete diretamente na remuneracao de quem constroi e opera a estrutura de marketing.</p>
+    <p>O modelo e composto por tres partes: um <strong>investimento inicial de setup</strong> que cobre a construcao de toda a infraestrutura digital, uma <strong>mensalidade de gestao</strong> que mantém a operacao rodando, e uma <strong>participacao percentual no faturamento mensal</strong> da MEP enquanto a parceria estiver ativa.</p>
+    <p>Esse formato garante que os esforcos de marketing estejam sempre focados em resultado real — nao apenas em metricas de vaidade.</p>
+  </div>
+</section>
+
+<!-- MODELO -->
+<section>
+  <div class="s-tag">Estrutura</div>
+  <div class="s-title">Os 3 componentes da parceria</div>
+  <div class="s-sub">Cada componente tem uma funcao especifica. Juntos, formam um modelo sustentavel para ambas as partes.</div>
+
+  <div class="modelo-grid">
+    <div class="modelo-item">
+      <div class="modelo-num">Componente 01</div>
+      <div class="modelo-icon">🔧</div>
+      <h3>Setup Inicial</h3>
+      <p>Pagamento unico que cobre a construcao completa da infraestrutura digital — site, perfis nas redes sociais, agente de IA, configuracao de pixels, primeiros posts e identidade visual aplicada.</p>
+      <span class="modelo-tag">Pagamento unico · Na assinatura</span>
+    </div>
+    <div class="modelo-item destaque">
+      <div class="modelo-num">Componente 02</div>
+      <div class="modelo-icon">⚙️</div>
+      <h3>Mensalidade de Gestao</h3>
+      <p>Valor fixo mensal que cobre a gestao continua — producao de conteudo, gestao das campanhas pagas (Meta Ads + Google Ads), relatorios mensais e evolucao estrategica.</p>
+      <span class="modelo-tag">Fixo mensal · A partir do mes 1</span>
+    </div>
+    <div class="modelo-item">
+      <div class="modelo-num">Componente 03</div>
+      <div class="modelo-icon">📈</div>
+      <h3>Participacao no Faturamento</h3>
+      <p>Percentual sobre o faturamento mensal da MEP enquanto a parceria estiver ativa. Quando a MEP cresce, a remuneracao cresce junto — incentivo direto para maximizar resultado.</p>
+      <span class="modelo-tag">% do faturamento · Mensal</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESCOPO -->
+<section>
+  <div class="s-tag">Entregaveis</div>
+  <div class="s-title">O que cada componente inclui</div>
+
+  <table class="escopo-table">
+    <thead>
+      <tr>
+        <th>Entregavel</th>
+        <th>Descricao</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Novo site MEP <span class="etag setup">Setup</span></td>
+        <td>Landing page profissional com comparativo tecnico, secao de produtos, formulario de orcamento, pixel do Meta e tag do Google instalados.</td>
+      </tr>
+      <tr>
+        <td>Perfis nas redes <span class="etag setup">Setup</span></td>
+        <td>Instagram e Facebook configurados com identidade visual, bio, destaques e os primeiros 5 posts publicados.</td>
+      </tr>
+      <tr>
+        <td>Google Meu Negocio <span class="etag setup">Setup</span></td>
+        <td>Perfil verificado, categoria, descricao, fotos e perguntas/respostas cadastradas.</td>
+      </tr>
+      <tr>
+        <td>Agente de IA <span class="etag setup">Setup</span></td>
+        <td>Bot de pre-atendimento no site e WhatsApp — qualifica leads, calcula economia e agenda contato humano.</td>
+      </tr>
+      <tr>
+        <td>Gestao de conteudo <span class="etag mensal">Mensal</span></td>
+        <td>Producao e publicacao de 2–3 posts por semana no Instagram e Facebook com legenda e hashtags.</td>
+      </tr>
+      <tr>
+        <td>Gestao de trafego pago <span class="etag mensal">Mensal</span></td>
+        <td>Criacao, gestao e otimizacao das campanhas no Meta Ads, Google Ads e YouTube Ads. Verba de midia paga pela MEP diretamente nas plataformas.</td>
+      </tr>
+      <tr>
+        <td>YouTube Ads <span class="etag mensal">Mensal</span></td>
+        <td>Campanhas de video no YouTube segmentadas para engenheiros, compradores e diretores de construtoras e incorporadoras. Pre-roll com o comparativo do produto (sacos vs balde) e demonstracao em obra. Cria consciencia antes da pesquisa no Google.</td>
+      </tr>
+      <tr>
+        <td>Prospeccao ativa automatizada <span class="etag setup">Setup</span><span class="etag mensal">Mensal</span></td>
+        <td>Mapeamento automatico de construtoras e incorporadoras ativas na regiao por CNAE. Identificacao do contato certo (comprador, gerente de obras, engenheiro). Envio automatico de abordagem personalizada via <strong>email ou WhatsApp</strong> (canal a definir) com proposta de calcular a economia da proxima obra. Agendamento de reuniao integrado ao agente de IA.</td>
+      </tr>
+      <tr>
+        <td>Relatorio mensal <span class="etag mensal">Mensal</span></td>
+        <td>Relatorio com metricas de leads, custo por lead, desempenho por canal e acoes para o mes seguinte.</td>
+      </tr>
+      <tr>
+        <td>Participacao no resultado <span class="etag share">Parceria</span></td>
+        <td>Percentual sobre o faturamento mensal da MEP Massas enquanto a parceria estiver ativa — independente do canal de origem da venda.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+</div>
+
+<!-- MODELO FINANCEIRO -->
+<div class="financeiro-section">
+<div class="container">
+<section style="border:none;">
+  <div class="s-tag">Valores</div>
+  <div class="s-title">Modelo financeiro da parceria</div>
+  <div class="s-sub">Os valores abaixo serao definidos em reuniao. Os campos marcados ficam em aberto para negociacao.</div>
+
+  <div class="fin-grid">
+
+    <div class="fin-card">
+      <h3>Setup Inicial</h3>
+      <div class="fc-desc">Pagamento unico na assinatura do contrato. Cobre toda a construcao da infraestrutura digital.</div>
+      <div class="fin-linha">
+        <span class="fl-label">Valor do setup</span>
+        <span class="fl-val laranja">R$ 5.380</span>
+      </div>
+      <div class="fin-linha">
+        <span class="fl-label">Forma de pagamento</span>
+        <span class="fl-val" style="color:rgba(255,255,255,0.5);">A definir</span>
+      </div>
+      <div class="fin-linha">
+        <span class="fl-label">Quando vence</span>
+        <span class="fl-val" style="color:rgba(255,255,255,0.5);">Na assinatura</span>
+      </div>
+      <div class="fin-linha">
+        <span class="fl-label">Prazo de entrega</span>
+        <span class="fl-val" style="color:rgba(255,255,255,0.7);">14–21 dias</span>
+      </div>
+    </div>
+
+    <div class="fin-card">
+      <h3>Mensalidade de Gestao</h3>
+      <div class="fc-desc">Valor fixo mensal. Inclui gestao de conteudo, trafego pago e relatorio. Nao inclui verba de midia.</div>
+      <div class="fin-linha">
+        <span class="fl-label">Mensalidade fixa</span>
+        <span class="fl-val laranja">R$ 1.930 / mês</span>
+      </div>
+      <div class="fin-linha">
+        <span class="fl-label">Verba de midia (Meta + Google)</span>
+        <span class="fl-val" style="color:rgba(255,255,255,0.5);">Paga pela MEP</span>
+      </div>
+      <div class="fin-linha">
+        <span class="fl-label">Vencimento</span>
+        <span class="fl-val" style="color:rgba(255,255,255,0.5);">A definir (dia X)</span>
+      </div>
+      <div class="fin-linha">
+        <span class="fl-label">Inicio da cobranca</span>
+        <span class="fl-val" style="color:rgba(255,255,255,0.7);">Mes 1 apos setup</span>
+      </div>
+    </div>
+
+    <div class="fin-card" style="grid-column:1/-1;border:1px solid rgba(242,140,40,0.3);background:rgba(242,140,40,0.06);">
+      <h3 style="color:var(--laranja);">Participacao no Faturamento</h3>
+      <div class="fc-desc">Percentual sobre o faturamento mensal bruto da MEP Massas enquanto a parceria estiver ativa.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px;">
+        <div class="fin-linha" style="flex-direction:column;align-items:flex-start;gap:4px;border:none;padding:0;">
+          <span class="fl-label">Percentual</span>
+          <span class="fl-val campo-neg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+        <div class="fin-linha" style="flex-direction:column;align-items:flex-start;gap:4px;border:none;padding:0;">
+          <span class="fl-label">Base de calculo</span>
+          <span class="fl-val" style="font-size:13px;color:rgba(255,255,255,0.6);">Faturamento bruto mensal</span>
+        </div>
+        <div class="fin-linha" style="flex-direction:column;align-items:flex-start;gap:4px;border:none;padding:0;">
+          <span class="fl-label">Inicio</span>
+          <span class="fl-val" style="color:rgba(255,255,255,0.5);">A definir</span>
+        </div>
+        <div class="fin-linha" style="flex-direction:column;align-items:flex-start;gap:4px;border:none;padding:0;">
+          <span class="fl-label">Comprovacao</span>
+          <span class="fl-val" style="font-size:13px;color:rgba(255,255,255,0.6);">NF / extrato mensal</span>
+        </div>
+      </div>
+      <div class="fin-nota"><strong>Logica da participacao:</strong> O percentual sobre faturamento cria alinhamento real de interesses. Quanto mais a MEP vende — por qualquer canal — mais a parceria rende para ambos. Isso significa que toda decisao de marketing e feita com foco em resultado de caixa, nao em metricas de vaidade.</div>
+    </div>
+
+  </div>
+
+  <!-- PROJECAO -->
+  <div style="margin-top:16px;">
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.35);margin-bottom:16px;">Exemplo de como a participacao escala com o crescimento da MEP</div>
+    <div class="cron-fin">
+      <div class="cf-item">
+        <div class="cf-periodo">Mes 1–2 (fundacao)</div>
+        <div class="cf-val" style="font-size:14px;color:rgba(255,255,255,0.3);">Em construcao</div>
+        <div class="cf-desc">Estrutura sendo montada. Participacao ainda nao ativa ou em valor minimo.</div>
+      </div>
+      <div class="cf-item">
+        <div class="cf-periodo">Mes 3–4 (trafego ativo)</div>
+        <div class="cf-val">X%</div>
+        <div class="cf-desc">Sobre o faturamento real do periodo. Primeiros leads convertidos.</div>
+      </div>
+      <div class="cf-item">
+        <div class="cf-periodo">Mes 5–6 (escala)</div>
+        <div class="cf-val">X%</div>
+        <div class="cf-desc">Faturamento crescendo. Participacao cresce junto automaticamente.</div>
+      </div>
+      <div class="cf-item" style="border-color:rgba(242,140,40,0.3);background:rgba(242,140,40,0.08);">
+        <div class="cf-periodo">Renovacao (mes 7+)</div>
+        <div class="cf-val">X%</div>
+        <div class="cf-desc">Parceria renovada automaticamente. Percentual pode ser revisto por acordo.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</div>
+</div>
+
+<!-- ALINHAMENTO DE INTERESSES -->
+<div class="container">
+<section>
+  <div class="s-tag">Por que funciona</div>
+  <div class="s-title">Alinhamento de interesses das duas partes</div>
+  <div class="s-sub">Cada parte ganha quando a outra cresce. Esse e o fundamento do modelo.</div>
+
+  <div class="align-grid">
+    <div class="align-card vc">
+      <h3>O que voce garante</h3>
+      <div class="align-item"><span class="ai-mark">+</span> Setup pago independente de resultado — cobre o trabalho inicial</div>
+      <div class="align-item"><span class="ai-mark">+</span> Mensalidade fixa que cobre os custos operacionais mensais</div>
+      <div class="align-item"><span class="ai-mark">+</span> Participacao no faturamento que cresce conforme a MEP cresce</div>
+      <div class="align-item"><span class="ai-mark">+</span> Quanto melhor o trabalho de marketing, maior a sua remuneracao</div>
+      <div class="align-item"><span class="ai-mark">+</span> Parceria de longo prazo — nao uma venda e tchau</div>
+    </div>
+    <div class="align-card mep">
+      <h3>O que a MEP garante</h3>
+      <div class="align-item"><span class="ai-mark">+</span> Profissional 100% focado em crescimento — nao em horas trabalhadas</div>
+      <div class="align-item"><span class="ai-mark">+</span> Estrutura completa montada com visao de resultado, nao de entrega</div>
+      <div class="align-item"><span class="ai-mark">+</span> Parceiro que tem interesse direto em maximizar as vendas</div>
+      <div class="align-item"><span class="ai-mark">+</span> Custo de marketing proporcional ao faturamento — cresce junto</div>
+      <div class="align-item"><span class="ai-mark">+</span> Transparencia total sobre resultados — relatorio mensal detalhado</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section>
+  <div class="s-tag">Diferenciais da Parceria</div>
+  <div class="s-title">Dois entregaveis que poucas agencias oferecem</div>
+  <div class="s-sub">Alem da gestao padrao de redes e anuncios, esta parceria inclui duas frentes que geram vantagem competitiva real para a MEP.</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;">
+
+    <!-- YOUTUBE ADS -->
+    <div style="border-radius:12px;overflow:hidden;border:1px solid var(--borda);">
+      <div style="background:var(--azul);padding:28px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.45);margin-bottom:8px;">Novo canal</div>
+        <div style="font-size:24px;font-weight:900;color:#fff;margin-bottom:8px;">YouTube Ads</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;">Anuncios de video para engenheiros e compradores de construtoras antes mesmo de pesquisarem no Google.</div>
+      </div>
+      <div style="padding:28px;background:var(--cinza);">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Pre-roll mostrando o comparativo: pilha de sacos vs 1 balde MEP</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Segmentacao por cargo (engenheiro, comprador, diretor de obras)</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Remarketing para quem visitou o site mas nao converteu</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Custo por visualizacao entre R$ 0,05 e R$ 0,30 — altamente eficiente</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Constroi reconhecimento de marca antes da decisao de compra</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROSPECCAO AUTOMATIZADA -->
+    <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(242,140,40,0.3);">
+      <div style="background:var(--laranja);padding:28px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.65);margin-bottom:8px;">Diferencial exclusivo</div>
+        <div style="font-size:24px;font-weight:900;color:#fff;margin-bottom:8px;">Prospeccao Ativa Automatizada</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.6;">A MEP nao espera o cliente chegar — vai ativamente atras das construtoras certas.</div>
+      </div>
+      <div style="padding:28px;background:#fff9f0;border:1px solid rgba(242,140,40,0.15);border-top:none;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Mapeamento automatico de construtoras ativas por CNAE na regiao</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Identificacao do contato certo: comprador, gerente de obras, engenheiro</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Mensagem personalizada oferecendo calculo gratuito de economia da obra</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Canal de contato: <strong>email ou WhatsApp</strong> — a definir em reuniao</div>
+          <div style="display:flex;gap:10px;font-size:14px;color:var(--texto);"><span style="color:var(--laranja);font-weight:700;">—</span> Agendamento automatico de reuniao integrado ao agente de IA</div>
+        </div>
+        <div style="margin-top:20px;background:rgba(242,140,40,0.1);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--texto);line-height:1.6;border-left:3px solid var(--laranja);">
+          <strong>Exemplo de abordagem:</strong><br>
+          "Oi [nome], vi que a [construtora] esta com obras em andamento. O MEP substitui a argamassa convencional e reduz o custo em ate 40%. Posso te mandar o calculo para a sua proxima obra?"
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONDICOES -->
+<section>
+  <div class="s-tag">Condicoes</div>
+  <div class="s-title">O que precisa estar claro antes de assinar</div>
+
+  <div class="cond-grid">
+    <div class="cond-item ok">
+      <h4>Prazo minimo</h4>
+      <p>Parceria com prazo minimo de 6 meses. Marketing digital tem curva de maturacao — resultados expressivos aparecem a partir do mes 3. Contratos abaixo de 6 meses nao permitem estrategia consistente.</p>
+    </div>
+    <div class="cond-item ok">
+      <h4>Comprovacao do faturamento</h4>
+      <p>A participacao e calculada sobre o faturamento bruto mensal comprovado via nota fiscal ou extrato. Transparencia e condicao de funcionamento do modelo.</p>
+    </div>
+    <div class="cond-item ok">
+      <h4>Verba de midia separada</h4>
+      <p>O investimento em Meta Ads e Google Ads e pago pela MEP diretamente nas plataformas. A mensalidade cobre apenas a gestao — nao a verba. Isso garante transparencia total dos gastos com trafego.</p>
+    </div>
+    <div class="cond-item ok">
+      <h4>Exclusividade regional</h4>
+      <p>A ser definido em contrato — se a parceria inclui exclusividade de atuacao para o segmento de argamassa polimerica na regiao de Presidente Prudente ou em escala nacional.</p>
+    </div>
+    <div class="cond-item ok">
+      <h4>Fornecimento de materiais</h4>
+      <p>A MEP se compromete a fornecer fotos reais de obra, depoimentos de clientes e atualizacoes de produto. A qualidade do conteudo depende diretamente do material fornecido.</p>
+    </div>
+    <div class="cond-item ok">
+      <h4>Renovacao automatica</h4>
+      <p>Apos o periodo inicial de 6 meses, a parceria se renova automaticamente por periodos iguais. Qualquer das partes pode encerrar com aviso previo de 30 dias antes do fim do periodo.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ASSINATURA -->
+<div class="assinatura-section">
+  <div class="assinatura-inner">
+    <div class="assin-titulo">Aceite da Proposta</div>
+    <div class="assin-sub">Ao assinar abaixo, as partes concordam com os termos desta proposta de parceria.</div>
+
+    <div class="assin-grid">
+      <div class="assin-parte">
+        <h4>Contratante — MEP Massas</h4>
+        <div class="assin-line"></div>
+        <div class="assin-info">
+          Nome: ___________________________<br>
+          Cargo: ___________________________<br>
+          CPF/CNPJ: ___________________________
+        </div>
+      </div>
+      <div class="assin-parte">
+        <h4>Contratado — Gestor de Marketing</h4>
+        <div class="assin-line"></div>
+        <div class="assin-info">
+          Nome: ___________________________<br>
+          CPF/CNPJ: ___________________________<br>
+          Contato: ___________________________
+        </div>
+      </div>
+    </div>
+
+    <div class="assin-data">
+      Presidente Prudente, _______ de __________________ de 2026<br><br>
+      <span style="font-size:12px;">Este documento e uma proposta comercial. Um contrato formal sera elaborado apos alinhamento dos valores.</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

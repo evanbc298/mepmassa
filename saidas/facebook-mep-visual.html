@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Facebook Page</title>
+<style>
+:root {
+  --azul: #1A2B4D;
+  --laranja: #F28C28;
+  --laranja2: #e07010;
+  --branco: #fff;
+  --fb-bg: #f0f2f5;
+  --fb-card: #fff;
+  --fb-border: #e4e6ea;
+  --fb-text: #1c1e21;
+  --fb-sub: #65676b;
+  --fb-blue: #1877f2;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: #0a0e1a; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; }
+
+/* PAGE HEADER */
+.page-header { text-align:center; padding: 60px 40px 20px; }
+.page-header h1 { font-size: 30px; font-weight: 900; }
+.page-header p { font-size: 14px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+.page-divider { width: 60px; height: 3px; background: var(--laranja); margin: 16px auto 0; }
+
+.sec-label { text-align:center; padding: 48px 40px 16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:var(--laranja); }
+.sec-title { text-align:center; font-size:22px; font-weight:900; padding:0 40px 36px; }
+
+/* ===================== FACEBOOK MOCKUP ===================== */
+.fb-browser {
+  max-width: 980px; margin: 0 auto 80px; padding: 0 30px;
+}
+.fb-browser-bar {
+  background: #2d2d2d; border-radius: 10px 10px 0 0;
+  padding: 10px 16px; display: flex; align-items: center; gap: 10px;
+}
+.fb-dots { display:flex; gap:6px; }
+.fb-dots span { width:12px;height:12px;border-radius:50%; }
+.fb-dots span:nth-child(1) { background:#ff5f57; }
+.fb-dots span:nth-child(2) { background:#febc2e; }
+.fb-dots span:nth-child(3) { background:#28c840; }
+.fb-url-bar { flex:1; background:#1a1a1a; border-radius:6px; padding:6px 14px; font-size:12px; color:rgba(255,255,255,0.4); }
+
+/* FACEBOOK UI */
+.fb-page { background: var(--fb-bg); border-radius: 0 0 10px 10px; overflow:hidden; }
+
+/* FB TOPBAR */
+.fb-topbar {
+  background: #fff; height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; border-bottom: 1px solid var(--fb-border);
+  position: sticky; top:0; z-index:10;
+}
+.fb-topbar-logo { font-size: 28px; font-weight: 900; color: var(--fb-blue); }
+.fb-topbar-search { background: #f0f2f5; border-radius: 20px; padding: 7px 14px; font-size: 14px; color: var(--fb-sub); display:flex; align-items:center; gap:6px; }
+.fb-topbar-actions { display:flex; gap:8px; }
+.fb-topbar-icon { width:36px; height:36px; border-radius:50%; background:#e4e6ea; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer; }
+
+/* COVER */
+.fb-cover {
+  position: relative; height: 280px; overflow: hidden;
+  background: linear-gradient(135deg, #0d1b35 0%, #1A2B4D 50%, #1e3a6e 100%);
+}
+.fb-cover-inner {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+/* Elementos decorativos da capa */
+.cover-hex { position:absolute; opacity:0.08; }
+.cover-text-left {
+  position: absolute; left: 48px; top: 50%; transform: translateY(-50%);
+  z-index: 2;
+}
+.cover-text-left .cover-tag { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--laranja);margin-bottom:10px; }
+.cover-text-left h2 { font-size:36px;font-weight:900;color:#fff;line-height:1.2; }
+.cover-text-left h2 span { color:var(--laranja); }
+.cover-text-left p { font-size:13px;color:rgba(255,255,255,0.6);margin-top:10px;max-width:260px;line-height:1.5; }
+.cover-right {
+  position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 12px; z-index: 2;
+}
+.cover-stat {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; padding: 12px 20px; text-align: center;
+  backdrop-filter: blur(4px);
+}
+.cover-stat .cs-val { font-size: 24px; font-weight: 900; color: var(--laranja); line-height:1; }
+.cover-stat .cs-label { font-size: 10px; color: rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px; margin-top:3px; }
+
+/* PROFILE SECTION */
+.fb-profile-section {
+  background: #fff; padding: 0 24px 0;
+  border-bottom: 1px solid var(--fb-border);
+}
+.fb-profile-row { display:flex; align-items: flex-end; gap: 16px; padding-bottom: 12px; position:relative; }
+.fb-avatar-wrapper {
+  margin-top: -40px; flex-shrink: 0;
+}
+.fb-avatar {
+  width: 110px; height: 110px; border-radius: 50%;
+  background: var(--azul);
+  border: 4px solid #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 900; color: var(--laranja);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.fb-page-name-block { flex: 1; padding-bottom: 4px; }
+.fb-page-name { font-size: 24px; font-weight: 800; color: var(--fb-text); }
+.fb-page-cat { font-size: 13px; color: var(--fb-sub); margin-top: 2px; }
+.fb-page-followers { font-size: 13px; color: var(--fb-sub); margin-top: 4px; }
+.fb-page-followers span { font-weight: 700; color: var(--fb-text); }
+.fb-actions-row { display:flex; gap:8px; align-items:center; padding-bottom:4px; }
+.fb-btn { padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor:pointer; border:none; }
+.fb-btn-primary { background: var(--fb-blue); color: #fff; }
+.fb-btn-secondary { background: #e4e6ea; color: var(--fb-text); }
+
+/* NAV TABS */
+.fb-tabs { display:flex; border-top: 1px solid var(--fb-border); padding: 0 16px; }
+.fb-tab { padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--fb-sub); cursor:pointer; border-bottom: 3px solid transparent; }
+.fb-tab.active { color: var(--fb-blue); border-bottom-color: var(--fb-blue); }
+
+/* MAIN CONTENT */
+.fb-content { display: grid; grid-template-columns: 360px 1fr; gap: 16px; padding: 16px; }
+
+/* SIDEBAR */
+.fb-sidebar { display: flex; flex-direction: column; gap: 12px; }
+.fb-sidebar-card { background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.fb-sidebar-card h3 { font-size: 17px; font-weight: 800; color: var(--fb-text); margin-bottom: 12px; }
+.fb-info-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+.fb-info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.fb-info-text { font-size: 14px; color: var(--fb-text); line-height: 1.5; }
+.fb-info-text span { color: var(--fb-sub); font-size: 13px; display:block; }
+.fb-photos-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:4px; }
+.fb-photo-thumb { aspect-ratio:1; border-radius:4px; overflow:hidden; }
+.fb-photo-thumb div { width:100%;height:100%;display:flex;align-items:center;justify-content:center; }
+
+/* FEED */
+.fb-feed { display: flex; flex-direction: column; gap: 12px; }
+
+/* POST CARD */
+.fb-post {
+  background: #fff; border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden;
+}
+.fb-post-header { display:flex; align-items:center; gap:10px; padding: 12px 16px; }
+.fb-post-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--azul); display:flex; align-items:center; justify-content:center;
+  font-size: 12px; font-weight: 900; color: var(--laranja); flex-shrink:0;
+}
+.fb-post-meta { flex:1; }
+.fb-post-name { font-size: 14px; font-weight: 700; color: var(--fb-text); }
+.fb-post-time { font-size: 12px; color: var(--fb-sub); display:flex; align-items:center; gap:4px; }
+.fb-post-more { color: var(--fb-sub); font-size: 20px; line-height:1; cursor:pointer; }
+.fb-post-text { padding: 0 16px 12px; font-size: 14px; color: var(--fb-text); line-height: 1.6; }
+.fb-post-text a { color: var(--fb-blue); text-decoration:none; }
+.fb-post-image { width:100%; display:block; }
+
+/* IMAGEM DO POST (canvas visual) */
+.fb-post-canvas { width:100%; aspect-ratio: 1.91/1; position:relative; overflow:hidden; }
+.fb-post-canvas-square { width:100%; aspect-ratio: 1/1; position:relative; overflow:hidden; }
+
+/* REACTIONS BAR */
+.fb-reactions-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px; border-top: 1px solid var(--fb-border);
+}
+.fb-reactions-count { font-size: 14px; color: var(--fb-sub); display:flex; align-items:center; gap:4px; }
+.fb-reactions-btns { display:flex; gap: 0; }
+.fb-reaction-btn {
+  flex: 1; display:flex; align-items:center; justify-content:center; gap:6px;
+  padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600;
+  color: var(--fb-sub); cursor:pointer; transition: background .15s;
+}
+.fb-reaction-btn:hover { background: var(--fb-bg); }
+.fb-share-bar { display:flex; gap:0; border-top: 1px solid var(--fb-border); }
+
+/* ===================== VISUAIS DOS POSTS ===================== */
+
+/* POST 1 — COVER STYLE */
+.pf1 {
+  width:100%; height:100%;
+  background: linear-gradient(135deg, #0d1b35 0%, #1A2B4D 60%, #1e3a6e 100%);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 32px 40px; position: relative; overflow: hidden;
+}
+.pf1 .hex-bg { position:absolute; right:-60px; bottom:-60px; opacity:0.08; }
+.pf1-left {}
+.pf1-left .tag { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:12px; }
+.pf1-left h2 { font-size:32px;font-weight:900;color:#fff;line-height:1.2; }
+.pf1-left h2 span { color:var(--laranja); }
+.pf1-left p { font-size:13px;color:rgba(255,255,255,0.6);margin-top:10px;line-height:1.5;max-width:220px; }
+.pf1-right { display:flex; flex-direction:column; gap:10px; flex-shrink:0; }
+.pf1-stat { background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:12px 18px; text-align:center; }
+.pf1-stat .pv { font-size:28px;font-weight:900;color:var(--laranja);line-height:1; }
+.pf1-stat .pl { font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:3px; }
+
+/* POST 2 — COMPARATIVO WIDE */
+.pf2 {
+  width:100%;height:100%;
+  background: var(--azul2,#0d1b35);
+  display:grid; grid-template-columns:1fr auto 1fr;
+  align-items:center; padding: 28px 36px; gap:16px; position:relative; overflow:hidden;
+}
+.pf2-lado { text-align:center; }
+.pf2-lado .pl-tag { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);margin-bottom:8px; }
+.pf2-lado .pl-val { font-size:48px;font-weight:900;line-height:1; }
+.pf2-lado.conv .pl-val { color:rgba(255,255,255,0.25);text-decoration:line-through;font-size:40px; }
+.pf2-lado.mep .pl-val { color:var(--laranja); }
+.pf2-lado .pl-sub { font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4; }
+.pf2-lado.mep .pl-sub { color:rgba(242,140,40,0.6); }
+.pf2-vs { font-size:20px;font-weight:900;color:rgba(255,255,255,0.15);text-align:center; }
+.pf2-balde { margin-top:12px; }
+.pf2 .bottom-bar {
+  position:absolute; bottom:0; left:0; right:0;
+  background: rgba(242,140,40,0.1); border-top:1px solid rgba(242,140,40,0.2);
+  padding:8px 36px; display:flex; justify-content:space-between; align-items:center;
+}
+.pf2 .bottom-bar span { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px; }
+.pf2 .bottom-bar .bl { color:rgba(255,255,255,0.3); }
+.pf2 .bottom-bar .br { color:var(--laranja); }
+
+/* POST 3 — GRID 4 NUMEROS (WIDE) */
+.pf3 { width:100%;height:100%; display:grid; grid-template-columns:repeat(4,1fr); }
+.pf3-col { display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:24px 20px;position:relative;overflow:hidden; }
+.pf3-col:nth-child(1) { background:var(--azul); }
+.pf3-col:nth-child(2) { background:var(--laranja); }
+.pf3-col:nth-child(3) { background:#0d1b35; }
+.pf3-col:nth-child(4) { background:var(--azul3,#1e3a6e); }
+.pf3-col .hex-d { position:absolute;top:-20px;right:-20px;opacity:0.1; }
+.pf3-col .cn { font-size:44px;font-weight:900;color:rgba(255,255,255,0.9);line-height:1; }
+.pf3-col .cl { font-size:11px;font-weight:700;color:rgba(255,255,255,0.65);margin-top:6px;text-transform:uppercase;letter-spacing:0.5px; }
+.pf3-col .cs { font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;line-height:1.4; }
+.pf3-div { width:1px; background:rgba(255,255,255,0.1); }
+
+/* POST 4 — COMO USAR (WIDE) */
+.pf4 {
+  width:100%;height:100%;
+  background:#fff;
+  display:flex;align-items:center;gap:0;position:relative;overflow:hidden;
+}
+.pf4-left { width:220px;height:100%;background:var(--azul);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;flex-shrink:0;position:relative;overflow:hidden; }
+.pf4-left .hex-l { position:absolute;bottom:-30px;left:-30px;opacity:0.1; }
+.pf4-left .tag-l { font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:12px;text-align:center; }
+.pf4-left .titulo-l { font-size:20px;font-weight:900;color:#fff;text-align:center;line-height:1.3; }
+.pf4-left .balde-l { margin-top:20px; }
+.pf4-right { flex:1;padding:24px 28px;display:flex;flex-direction:column;justify-content:center;gap:16px; }
+.pf4-passo { display:flex;align-items:flex-start;gap:14px; }
+.pf4-num { width:32px;height:32px;border-radius:50%;background:var(--azul);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.pf4-text h4 { font-size:14px;font-weight:800;color:var(--azul); }
+.pf4-text p { font-size:12px;color:#666;line-height:1.5;margin-top:2px; }
+.pf4-resultado { background:var(--azul);border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between; }
+.pf4-resultado span { font-size:11px;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px; }
+.pf4-resultado strong { font-size:15px;font-weight:900;color:var(--laranja); }
+
+/* POST 5 — DEPOIMENTO (WIDE) */
+.pf5 {
+  width:100%;height:100%;
+  background:var(--azul);
+  display:flex;align-items:center;padding:36px 40px;gap:40px;position:relative;overflow:hidden;
+}
+.pf5 .strip { position:absolute;top:0;left:0;width:6px;height:100%;background:var(--laranja); }
+.pf5 .hex-bg5 { position:absolute;right:-80px;top:-80px;opacity:0.06; }
+.pf5-quote { flex:1; }
+.pf5-quote .aspas { font-size:80px;color:rgba(242,140,40,0.2);font-family:Georgia,serif;line-height:0.8;margin-bottom:8px; }
+.pf5-quote .texto { font-size:20px;font-weight:700;color:#fff;line-height:1.5; }
+.pf5-quote .autor { margin-top:20px; }
+.pf5-quote .autor-nome { font-size:14px;font-weight:800;color:var(--laranja); }
+.pf5-quote .autor-cargo { font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px; }
+.pf5-dados { flex-shrink:0; display:flex;flex-direction:column;gap:12px; }
+.pf5-dado { background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:14px 20px;text-align:center; }
+.pf5-dado .dv { font-size:28px;font-weight:900;color:var(--laranja);line-height:1; }
+.pf5-dado .dl { font-size:10px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-top:3px;line-height:1.4; }
+
+/* SECTION POSTS */
+.posts-section { padding: 0 30px 80px; max-width: 980px; margin: 0 auto; }
+.posts-stack { display: flex; flex-direction: column; gap: 48px; }
+.post-block { display: flex; flex-direction: column; gap: 12px; }
+.post-block-label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja); }
+.post-block-desc { font-size:13px;color:rgba(255,255,255,0.4);margin-top:2px; }
+.post-caption-fb { background:#111827;border-radius:8px;padding:16px 20px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;margin-top:4px; }
+.post-caption-fb strong { color:var(--laranja); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>MEP Massas — Facebook</h1>
+  <p>Pagina completa + 5 posts adaptados para o Facebook</p>
+  <div class="page-divider"></div>
+</div>
+
+<!-- ======================== FB PAGE MOCKUP ======================== -->
+<div class="sec-label">01 — Pagina</div>
+<div class="sec-title">Como a pagina MEP aparece no Facebook</div>
+
+<div class="fb-browser">
+  <div class="fb-browser-bar">
+    <div class="fb-dots"><span></span><span></span><span></span></div>
+    <div class="fb-url-bar">facebook.com/mepmassa</div>
+  </div>
+
+  <div class="fb-page">
+
+    <!-- TOPBAR -->
+    <div class="fb-topbar">
+      <div class="fb-topbar-logo">f</div>
+      <div class="fb-topbar-search">🔍 Pesquisar no Facebook</div>
+      <div class="fb-topbar-actions">
+        <div class="fb-topbar-icon">🏠</div>
+        <div class="fb-topbar-icon">👥</div>
+        <div class="fb-topbar-icon">▶</div>
+        <div class="fb-topbar-icon">🛒</div>
+      </div>
+    </div>
+
+    <!-- COVER PHOTO -->
+    <div class="fb-cover">
+      <div class="fb-cover-inner">
+        <!-- HEXAGONOS DECORATIVOS -->
+        <svg class="cover-hex" style="top:-80px;left:-80px;" width="400" height="400" viewBox="0 0 400 400">
+          <polygon points="200,20 370,110 370,290 200,380 30,290 30,110" fill="none" stroke="white" stroke-width="40"/>
+        </svg>
+        <svg class="cover-hex" style="bottom:-60px;right:200px;" width="200" height="200" viewBox="0 0 200 200">
+          <polygon points="100,10 185,55 185,145 100,190 15,145 15,55" fill="none" stroke="white" stroke-width="20"/>
+        </svg>
+
+        <!-- BALDE DECORATIVO -->
+        <div style="position:absolute;right:140px;top:50%;transform:translateY(-50%);opacity:0.12;">
+          <svg width="160" height="180" viewBox="0 0 160 180">
+            <path d="M 38 30 Q 80 8 122 30" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <polygon points="20,38 140,38 122,165 38,165" fill="white"/>
+            <rect x="20" y="22" width="120" height="20" rx="5" fill="white"/>
+            <rect x="36" y="60" width="88" height="60" rx="5" fill="rgba(0,0,0,0.2)"/>
+            <text x="80" y="95" text-anchor="middle" font-size="24" font-weight="900" fill="white" font-family="Arial">MEP</text>
+            <text x="80" y="140" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.5)" font-family="Arial">25 kg</text>
+          </svg>
+        </div>
+
+        <div class="cover-text-left">
+          <div class="cover-tag">Argamassa Polimerica</div>
+          <h2>Construa mais.<br>Gaste <span>menos.</span></h2>
+          <p>Produto pronto para uso. Sem betoneira, sem mistura. Para construtoras e incorporadoras.</p>
+        </div>
+
+        <div class="cover-right">
+          <div class="cover-stat"><div class="cs-val">4x</div><div class="cs-label">mais rapida</div></div>
+          <div class="cover-stat"><div class="cs-val">40%</div><div class="cs-label">economia</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE SECTION -->
+    <div class="fb-profile-section">
+      <div class="fb-profile-row">
+        <div class="fb-avatar-wrapper">
+          <div class="fb-avatar">MEP</div>
+        </div>
+        <div class="fb-page-name-block">
+          <div class="fb-page-name">MEP Massas</div>
+          <div class="fb-page-cat">Material de Construcao · Empresa</div>
+          <div class="fb-page-followers"><span>0</span> curtidas · <span>0</span> seguidores</div>
+        </div>
+        <div class="fb-actions-row">
+          <button class="fb-btn fb-btn-primary">+ Curtir pagina</button>
+          <button class="fb-btn fb-btn-secondary">Seguir</button>
+          <button class="fb-btn fb-btn-secondary">Compartilhar</button>
+          <button class="fb-btn fb-btn-secondary">···</button>
+        </div>
+      </div>
+      <div class="fb-tabs">
+        <div class="fb-tab active">Publicacoes</div>
+        <div class="fb-tab">Sobre</div>
+        <div class="fb-tab">Fotos</div>
+        <div class="fb-tab">Videos</div>
+        <div class="fb-tab">Avaliações</div>
+        <div class="fb-tab">Mais ▾</div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="fb-content">
+
+      <!-- SIDEBAR -->
+      <div class="fb-sidebar">
+
+        <div class="fb-sidebar-card">
+          <h3>Sobre</h3>
+          <div class="fb-info-item">
+            <div class="fb-info-icon">📦</div>
+            <div class="fb-info-text">Argamassa polimerica pronta para uso. Sem mistura, sem betoneira, zero desperdicio.</div>
+          </div>
+          <div class="fb-info-item">
+            <div class="fb-info-icon">📍</div>
+            <div class="fb-info-text">Presidente Prudente, SP<span>Atende todo o Brasil</span></div>
+          </div>
+          <div class="fb-info-item">
+            <div class="fb-info-icon">🌐</div>
+            <div class="fb-info-text" style="color:#1877f2;">mepmassa.com.br</div>
+          </div>
+          <div class="fb-info-item">
+            <div class="fb-info-icon">📞</div>
+            <div class="fb-info-text">(18) 99688-1384</div>
+          </div>
+          <div class="fb-info-item">
+            <div class="fb-info-icon">📧</div>
+            <div class="fb-info-text">contato@mepmassa.com.br</div>
+          </div>
+        </div>
+
+        <div class="fb-sidebar-card">
+          <h3>Fotos</h3>
+          <div class="fb-photos-grid">
+            <div class="fb-photo-thumb"><div style="background:var(--azul);"><span style="font-size:18px;font-weight:900;color:var(--laranja);">4x</span></div></div>
+            <div class="fb-photo-thumb"><div style="background:var(--laranja);"><span style="font-size:18px;font-weight:900;color:#fff;">40%</span></div></div>
+            <div class="fb-photo-thumb"><div style="background:#0d1b35;"><span style="font-size:14px;font-weight:900;color:var(--laranja);text-align:center;max-width:50px;">MEP</span></div></div>
+            <div class="fb-photo-thumb"><div style="background:var(--azul3,#1e3a6e);"><span style="font-size:18px;font-weight:900;color:#fff;">3x</span></div></div>
+            <div class="fb-photo-thumb"><div style="background:var(--laranja2,#e07010);"><span style="font-size:18px;font-weight:900;color:#fff;">95%</span></div></div>
+            <div class="fb-photo-thumb"><div style="background:var(--azul);"><span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);text-align:center;max-width:48px;text-transform:uppercase;letter-spacing:1px;">como usar</span></div></div>
+          </div>
+        </div>
+
+        <div class="fb-sidebar-card">
+          <h3>Informacoes de contato</h3>
+          <div style="background:var(--azul);border-radius:8px;padding:14px;text-align:center;cursor:pointer;">
+            <div style="font-size:14px;font-weight:700;color:#fff;">Enviar mensagem</div>
+          </div>
+          <div style="margin-top:10px;background:#e4e6ea;border-radius:8px;padding:14px;text-align:center;cursor:pointer;">
+            <div style="font-size:14px;font-weight:700;color:var(--fb-text);">Saiba mais</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FEED -->
+      <div class="fb-feed">
+
+        <!-- POST 1 — LANCAMENTO (formato paisagem) -->
+        <div class="fb-post">
+          <div class="fb-post-header">
+            <div class="fb-post-avatar">M</div>
+            <div class="fb-post-meta">
+              <div class="fb-post-name">MEP Massas</div>
+              <div class="fb-post-time">Agora · 🌐</div>
+            </div>
+            <div class="fb-post-more">···</div>
+          </div>
+          <div class="fb-post-text">
+            Chegou o MEP — argamassa polimerica pronta para uso. Sem betoneira, sem mistura, sem desperdicio.<br>
+            4x mais rapida · 40% mais economica · 3x mais resistente · 95% menos agua na obra.<br>
+            Calcule a economia da sua obra: <a href="#">mepmassa.com.br/calculadora-de-custos</a>
+          </div>
+          <div class="fb-post-canvas">
+            <div class="pf1" style="width:100%;height:100%;">
+              <svg class="hex-bg" width="300" height="300" viewBox="0 0 300 300">
+                <polygon points="150,15 277,82 277,218 150,285 23,218 23,82" fill="none" stroke="white" stroke-width="40"/>
+              </svg>
+              <div class="pf1-left">
+                <div class="tag">Argamassa Polimerica</div>
+                <h2>A revolucao<br>na <span>construcao</span><br>civil chegou.</h2>
+                <p>Produto pronto. Sem mistura. Sem betoneira. Sem desperdicio.</p>
+              </div>
+              <div class="pf1-right">
+                <div class="pf1-stat"><div class="pv">4x</div><div class="pl">mais rapida</div></div>
+                <div class="pf1-stat"><div class="pv">40%</div><div class="pl">economia</div></div>
+                <div class="pf1-stat"><div class="pv">3x</div><div class="pl">mais resistente</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="fb-reactions-bar">
+            <div class="fb-reactions-count">Seja o primeiro a reagir</div>
+            <div>0 comentarios · 0 compartilhamentos</div>
+          </div>
+          <div class="fb-share-bar">
+            <div class="fb-reaction-btn">👍 Curtir</div>
+            <div class="fb-reaction-btn">💬 Comentar</div>
+            <div class="fb-reaction-btn">↗ Compartilhar</div>
+          </div>
+        </div>
+
+        <!-- POST 2 — COMPARATIVO -->
+        <div class="fb-post">
+          <div class="fb-post-header">
+            <div class="fb-post-avatar">M</div>
+            <div class="fb-post-meta">
+              <div class="fb-post-name">MEP Massas</div>
+              <div class="fb-post-time">1 dia · 🌐</div>
+            </div>
+            <div class="fb-post-more">···</div>
+          </div>
+          <div class="fb-post-text">
+            Um pavimento de 820 m²: a argamassa convencional exige 24.000 kg de material. O MEP resolve com 1.200 kg — 1 pallet.<br><br>
+            Menos transporte, menos estoque, menos peso no canteiro, menos custo. Os numeros sao tecnicos, nao estimativas.
+          </div>
+          <div class="fb-post-canvas">
+            <div class="pf2" style="width:100%;height:100%;">
+              <div class="pf2-lado conv">
+                <div class="pl-tag">Argamassa Convencional</div>
+                <div class="pl-val">24.000 kg</div>
+                <div class="pl-sub">areia + cimento + agua + betoneira</div>
+                <!-- sacos decorativos -->
+                <svg width="70" height="50" viewBox="0 0 70 50" style="margin-top:10px;opacity:0.3;">
+                  <rect x="2" y="22" width="28" height="20" rx="3" fill="white"/>
+                  <rect x="8" y="8" width="28" height="20" rx="3" fill="white"/>
+                  <rect x="34" y="22" width="28" height="20" rx="3" fill="white"/>
+                  <rect x="28" y="8" width="28" height="20" rx="3" fill="white"/>
+                </svg>
+              </div>
+              <div class="pf2-vs">VS</div>
+              <div class="pf2-lado mep">
+                <div class="pl-tag">MEP Polimerica</div>
+                <div class="pl-val">1.200 kg</div>
+                <div class="pl-sub">1 pallet · pronto para usar</div>
+                <div class="pf2-balde">
+                  <svg width="70" height="80" viewBox="0 0 70 80">
+                    <path d="M 18 14 Q 35 3 52 14" stroke="#F28C28" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <polygon points="10,18 60,18 52,70 18,70" fill="#F28C28"/>
+                    <rect x="10" y="11" width="50" height="10" rx="3" fill="#e07010"/>
+                    <rect x="16" y="28" width="38" height="24" rx="3" fill="rgba(0,0,0,0.2)"/>
+                    <text x="35" y="43" text-anchor="middle" font-size="10" font-weight="900" fill="white" font-family="Arial">MEP</text>
+                    <text x="35" y="76" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.4)" font-family="Arial">25 kg</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="bottom-bar">
+                <span class="bl">Pavimento 820 m²</span>
+                <span class="br">ate 40% de reducao no custo total</span>
+              </div>
+            </div>
+          </div>
+          <div class="fb-reactions-bar">
+            <div class="fb-reactions-count">Seja o primeiro a reagir</div>
+            <div>0 comentarios · 0 compartilhamentos</div>
+          </div>
+          <div class="fb-share-bar">
+            <div class="fb-reaction-btn">👍 Curtir</div>
+            <div class="fb-reaction-btn">💬 Comentar</div>
+            <div class="fb-reaction-btn">↗ Compartilhar</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== 5 POSTS COMPLETOS ======================== -->
+<div class="sec-label">02 — Posts Adaptados</div>
+<div class="sec-title">5 posts prontos para o Facebook</div>
+
+<div class="posts-section">
+<div class="posts-stack">
+
+  <!-- POST 1 -->
+  <div class="post-block">
+    <div class="post-block-label">Post 1 — Lancamento da pagina</div>
+    <div class="post-block-desc">Formato paisagem (1.91:1). Apresentacao da marca com estatisticas.</div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4);">
+      <div style="aspect-ratio:1.91/1;position:relative;overflow:hidden;">
+        <div class="pf1" style="width:100%;height:100%;">
+          <svg class="hex-bg" width="400" height="400" viewBox="0 0 400 400">
+            <polygon points="200,20 370,110 370,290 200,380 30,290 30,110" fill="none" stroke="white" stroke-width="40"/>
+          </svg>
+          <div style="position:absolute;right:200px;top:50%;transform:translateY(-50%);opacity:0.1;">
+            <svg width="140" height="160" viewBox="0 0 140 160">
+              <path d="M 33 26 Q 70 6 107 26" stroke="white" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <polygon points="18,32 122,32 106,144 34,144" fill="white"/>
+              <rect x="18" y="20" width="104" height="16" rx="4" fill="white"/>
+              <rect x="32" y="52" width="76" height="52" rx="4" fill="rgba(0,0,0,0.2)"/>
+              <text x="70" y="82" text-anchor="middle" font-size="20" font-weight="900" fill="white" font-family="Arial">MEP</text>
+            </svg>
+          </div>
+          <div class="pf1-left">
+            <div class="tag">Argamassa Polimerica</div>
+            <h2>A revolucao<br>na <span>construcao</span><br>civil chegou.</h2>
+            <p>Produto pronto. Sem mistura. Sem betoneira. Para construtoras e incorporadoras.</p>
+          </div>
+          <div class="pf1-right">
+            <div class="pf1-stat"><div class="pv">4x</div><div class="pl">mais rapida</div></div>
+            <div class="pf1-stat"><div class="pv">40%</div><div class="pl">economia</div></div>
+            <div class="pf1-stat"><div class="pv">3x</div><div class="pl">mais resistente</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-caption-fb"><strong>Legenda:</strong> Chegou o MEP — argamassa polimerica pronta para uso. Sem betoneira, sem mistura, sem desperdicio. 4x mais rapida, 40% mais economica, 3x mais resistente, 95% menos agua na obra. Uma tecnologia que ja esta mudando canteiros em todo o Brasil. Calcule a economia da sua proxima obra no link: mepmassa.com.br/calculadora-de-custos<br><br>#mepmassa #argamassamep #construcaocivil #construtora #incorporadora #argamassapolimerica</div>
+  </div>
+
+  <!-- POST 2 -->
+  <div class="post-block">
+    <div class="post-block-label">Post 2 — Comparativo tecnico</div>
+    <div class="post-block-desc">Dado concreto com impacto visual. Balde MEP vs sacos convencionais.</div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4);">
+      <div style="aspect-ratio:1.91/1;position:relative;overflow:hidden;">
+        <!-- IMAGEM REAL -->
+        <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2017_13_44.png"
+             style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        <!-- OVERLAY COM DADOS -->
+        <div style="position:absolute;bottom:0;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);">
+          <div style="padding:16px 24px;border-right:1px solid rgba(255,255,255,0.15);">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.4);margin-bottom:4px;">Argamassa Convencional</div>
+            <div style="font-size:28px;font-weight:900;color:rgba(255,255,255,0.35);text-decoration:line-through;">24.000 kg</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);">areia + cimento + betoneira</div>
+          </div>
+          <div style="padding:16px 24px;">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(242,140,40,0.7);margin-bottom:4px;">MEP Polimerica</div>
+            <div style="font-size:28px;font-weight:900;color:#F28C28;">1.200 kg</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.5);">1 pallet · pronto para usar</div>
+          </div>
+        </div>
+        <!-- TAG TOPO -->
+        <div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);background:#F28C28;color:#fff;font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;">Pavimento 820 m² · Ate 40% de reducao</div>
+      </div>
+    </div>
+    <div class="post-caption-fb"><strong>Legenda:</strong> Um pavimento de 820 m² com argamassa convencional exige 24.000 kg de material — areia, cimento, agua e betoneira. O MEP resolve com 1.200 kg. Um pallet. Pronto para usar.<br><br>Menos transporte. Menos estoque. Menos peso no canteiro. Menos custo. Os numeros sao do comparativo tecnico do produto — nao estimativas.<br><br>Calcule o da sua obra: mepmassa.com.br/calculadora-de-custos<br><br>#mepmassa #construcaocivil #argamassa #construtora #reducaodecusto</div>
+  </div>
+
+  <!-- POST 3 -->
+  <div class="post-block">
+    <div class="post-block-label">Post 3 — Os 4 numeros</div>
+    <div class="post-block-desc">4 colunas com cada diferencial. Forte, direto, ideal para compartilhar.</div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4);">
+      <div style="aspect-ratio:1.91/1;position:relative;overflow:hidden;">
+        <div class="pf3" style="width:100%;height:100%;">
+          <div class="pf3-col">
+            <svg class="hex-d" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="white" stroke-width="16"/></svg>
+            <div class="cn">4x</div>
+            <div class="cl">Mais Rapida</div>
+            <div class="cs">Sem mistura, sem betoneira, sem espera</div>
+          </div>
+          <div class="pf3-col">
+            <svg class="hex-d" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="16"/></svg>
+            <div class="cn">40%</div>
+            <div class="cl">Mais Economica</div>
+            <div class="cs">Reducao real no custo total da obra</div>
+          </div>
+          <div class="pf3-col">
+            <svg class="hex-d" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="white" stroke-width="16"/></svg>
+            <div class="cn">3x</div>
+            <div class="cl">Mais Resistente</div>
+            <div class="cs">Tecnologia polimerica superior</div>
+          </div>
+          <div class="pf3-col">
+            <svg class="hex-d" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="none" stroke="white" stroke-width="16"/></svg>
+            <div class="cn">95%</div>
+            <div class="cl">Menos Agua</div>
+            <div class="cs">Obra mais sustentavel e eficiente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-caption-fb"><strong>Legenda:</strong> 4 numeros que mudam o orcamento de qualquer obra.<br><br>4x mais rapida — produto pronto, sem betoneira, sem mistura<br>40% mais economica — menos material, menos transporte, zero desperdicio<br>3x mais resistente — tecnologia polimerica comprovada<br>95% menos agua — obra mais limpa e sustentavel<br><br>Compartilhe com quem decide o material da proxima obra.<br><br>#argamassamep #mepmassa #construcaocivil #engenharia #construtora #incorporadora</div>
+  </div>
+
+  <!-- POST 4 -->
+  <div class="post-block">
+    <div class="post-block-label">Post 4 — Como usar</div>
+    <div class="post-block-desc">Educativo e pratico. Balde como elemento central. Fundo azul + branco.</div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4);">
+      <div style="aspect-ratio:1.91/1;position:relative;overflow:hidden;">
+        <!-- FOTO PEDREIRO COMO FUNDO -->
+        <img src="../compara%C3%A7%C3%A3o/ChatGPT%20Image%202%20de%20jun.%20de%202026%2C%2021_10_15.png"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;">
+        <div style="position:absolute;inset:0;background:rgba(13,27,53,0.82);z-index:1;"></div>
+        <div class="pf4" style="width:100%;height:100%;position:relative;z-index:2;background:transparent;">
+          <div class="pf4-left" style="background:rgba(242,140,40,0.15);border-right:1px solid rgba(242,140,40,0.2);">
+            <svg class="hex-l" width="120" height="120" viewBox="0 0 120 120"><polygon points="60,6 112,33 112,87 60,114 8,87 8,33" fill="none" stroke="white" stroke-width="18"/></svg>
+            <div class="tag-l">3 Passos</div>
+            <div class="titulo-l">Como usar o MEP na obra</div>
+            <div class="balde-l">
+              <svg width="90" height="104" viewBox="0 0 90 104">
+                <ellipse cx="45" cy="100" rx="28" ry="5" fill="rgba(0,0,0,0.1)"/>
+                <path d="M 22 20 Q 45 6 68 20" stroke="rgba(255,255,255,0.4)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <polygon points="14,24 76,24 66,92 24,92" fill="#F28C28"/>
+                <rect x="14" y="16" width="62" height="12" rx="4" fill="#e07010"/>
+                <rect x="22" y="36" width="46" height="32" rx="4" fill="rgba(0,0,0,0.2)"/>
+                <text x="45" y="55" text-anchor="middle" font-size="13" font-weight="900" fill="white" font-family="Arial">MEP</text>
+                <text x="45" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)" font-family="Arial">25 kg</text>
+              </svg>
+            </div>
+          </div>
+          <div class="pf4-right">
+            <div class="pf4-passo">
+              <div class="pf4-num">1</div>
+              <div class="pf4-text"><h4>Abra a embalagem</h4><p>Produto 100% pronto. Sem adicionar agua, areia ou cimento. Sem preparo.</p></div>
+            </div>
+            <div class="pf4-passo">
+              <div class="pf4-num">2</div>
+              <div class="pf4-text"><h4>Prepare a superficie</h4><p>Limpe com vassoura ou pincel. Sem poeira para aderencia maxima.</p></div>
+            </div>
+            <div class="pf4-passo">
+              <div class="pf4-num">3</div>
+              <div class="pf4-text"><h4>Aplique direto</h4><p>Saco aplicador na alvenaria. Zero desperdicio. Canteiro limpo.</p></div>
+            </div>
+            <div class="pf4-resultado" style="background:rgba(242,140,40,0.2);border:1px solid rgba(242,140,40,0.4);">
+              <span style="color:rgba(255,255,255,0.6);">Resultado</span>
+              <strong>4x mais rapido · 40% mais barato</strong>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-caption-fb"><strong>Legenda:</strong> Tres passos. E so isso.<br><br>1. Abre o balde — produto pronto, sem adicionar nada<br>2. Limpa a superficie — vassoura ou pincel<br>3. Aplica direto com o saco aplicador na alvenaria<br><br>Sem betoneira. Sem mistura. Sem poeira. Qualquer pedreiro usa no primeiro dia. O resultado: obra 4x mais rapida, custo 40% menor, canteiro mais organizado.<br><br>Fale com a gente: (18) 99688-1384 | mepmassa.com.br<br><br>#mepmassa #argamassamep #obrarapida #construcaocivil #pedreiro #mestredeobrass</div>
+  </div>
+
+  <!-- POST 5 -->
+  <div class="post-block">
+    <div class="post-block-label">Post 5 — Depoimento</div>
+    <div class="post-block-desc">Prova social em formato paisagem. Tom humano, dados reais ao lado.</div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.4);">
+      <div style="aspect-ratio:1.91/1;position:relative;overflow:hidden;">
+        <div class="pf5" style="width:100%;height:100%;">
+          <div class="strip"></div>
+          <svg class="hex-bg5" width="320" height="320" viewBox="0 0 320 320"><polygon points="160,16 298,88 298,232 160,304 22,232 22,88" fill="none" stroke="white" stroke-width="50"/></svg>
+          <div class="pf5-quote">
+            <div class="aspas">"</div>
+            <div class="texto">Comecei a trabalhar com o MEP e minha qualidade de vida mudou.</div>
+            <div class="autor">
+              <div class="autor-nome">Cintia Costa</div>
+              <div class="autor-cargo">Operadora de obra · Presidente Prudente, SP</div>
+            </div>
+          </div>
+          <div class="pf5-dados">
+            <div class="pf5-dado"><div class="dv">95%</div><div class="dl">menos peso<br>carregado</div></div>
+            <div class="pf5-dado"><div class="dv">Zero</div><div class="dl">barulho de<br>betoneira</div></div>
+            <div class="pf5-dado"><div class="dv">4x</div><div class="dl">mais<br>rapida</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-caption-fb"><strong>Legenda:</strong> "Comecei a trabalhar com o MEP e minha qualidade de vida mudou." — Cintia Costa, operadora de obra.<br><br>Sem carregar sacos de areia e cimento. Sem betoneira. Sem poeira. 95% menos peso por turno. Obra silenciosa, canteiro mais limpo, pedreiro com mais disposicao para produzir.<br><br>O produto muda a obra. A obra muda o dia de quem trabalha nela.<br><br>Fale com a gente: (18) 99688-1384<br><br>#mepmassa #canteiro #qualidadedevida #construcaocivil #pedreiro #argamassamep</div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
