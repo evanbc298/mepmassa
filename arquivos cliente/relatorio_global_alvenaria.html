@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Executivo e Estudo de Viabilidade Global</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm 15mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8.5pt;
+                color: #718096;
+            }
+            @bottom-left {
+                content: "Relatório de Engenharia: Massa Polimérica e Blocos Retificados";
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 8.5pt;
+                color: #718096;
+            }
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #2d3748;
+            background-color: #ffffff;
+            line-height: 1.5;
+            font-size: 10pt;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Header Banner */
+        .header-banner {
+            background-color: #1a365d;
+            color: #ffffff;
+            margin: -18mm -15mm 20px -15mm;
+            padding: 25px 15mm;
+            border-bottom: 4px solid #d69e2e;
+        }
+
+        .header-banner h1 {
+            font-size: 16pt;
+            margin: 0 0 5px 0;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .header-banner .subtitle {
+            font-size: 10.5pt;
+            color: #e2e8f0;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .meta-container {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+
+        .meta-table {
+            display: table;
+            width: 100%;
+        }
+
+        .meta-row {
+            display: table-row;
+        }
+
+        .meta-cell {
+            display: table-cell;
+            padding: 3px 5px;
+            font-size: 9.5pt;
+        }
+
+        .meta-cell.label {
+            font-weight: bold;
+            color: #4a5568;
+            width: 15%;
+        }
+
+        h2 {
+            font-size: 13pt;
+            color: #1a365d;
+            border-left: 4px solid #d69e2e;
+            padding-left: 8px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 11pt;
+            color: #2c5282;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 12px;
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* Stat Callouts */
+        .stats-table {
+            width: 100%;
+            margin: 15px 0;
+            border-collapse: collapse;
+            border: none;
+        }
+
+        .stats-table td {
+            border: none;
+            padding: 0 10px 0 0;
+            width: 50%;
+        }
+
+        .stat-card {
+            background-color: #ebf8ff;
+            border-top: 3px solid #3182ce;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat-card.orange {
+            background-color: #fffaf0;
+            border-top: 3px solid #dd6b20;
+        }
+
+        .stat-value {
+            font-size: 15pt;
+            font-weight: bold;
+            color: #2b6cb0;
+            margin-bottom: 2px;
+        }
+
+        .stat-card.orange .stat-value {
+            color: #dd6b20;
+        }
+
+        .stat-label {
+            font-size: 8.5pt;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        /* Tables */
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 9.5pt;
+            page-break-inside: avoid;
+        }
+
+        table.data-table th {
+            background-color: #2d3748;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: left;
+            padding: 8px 10px;
+            border: 1px solid #2d3748;
+        }
+
+        table.data-table td {
+            padding: 8px 10px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        table.data-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+
+        .badge-red {
+            background-color: #fed7d7;
+            color: #9b2c2c;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 8.5pt;
+        }
+
+        .badge-green {
+            background-color: #c6f6d5;
+            color: #22543d;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 8.5pt;
+        }
+
+        .highlight-box {
+            background-color: #fffaf0;
+            border-left: 4px solid #dd6b20;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            page-break-inside: avoid;
+        }
+
+        .highlight-box h4 {
+            margin: 0 0 6px 0;
+            color: #dd6b20;
+            font-size: 10pt;
+            text-transform: uppercase;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+            font-size: 8.5pt;
+            color: #718096;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CADERNO 1 -->
+    <div class="header-banner">
+        <h1>Relatório Executivo e Estudo de Viabilidade Global</h1>
+        <div class="subtitle">Caderno 1: Análise Operacional, Cronograma e Estudo de Caso (820 m²)</div>
+    </div>
+
+    <div class="meta-container">
+        <div class="meta-table">
+            <div class="meta-row">
+                <div class="meta-cell label">Destinatário:</div>
+                <div class="meta-cell">Diretoria de Engenharia / Construtor</div>
+                <div class="meta-cell label">Assunto:</div>
+                <div class="meta-cell">Alvenaria de Vedação Racionalizada</div>
+            </div>
+            <div class="meta-row">
+                <div class="meta-cell label">Escopo:</div>
+                <div class="meta-cell">820 m² de parede útil</div>
+                <div class="meta-cell label">Data:</div>
+                <div class="meta-cell">Junho de 2026</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>1. Objetivo Técnico</h2>
+    <p>
+        Este caderno apresenta uma análise abrangente e consolidada sobre a viabilidade operacional e financeira do uso de <strong>argamassa polimérica</strong> para assentamento de alvenaria de vedação. O foco central é demonstrar a dependência mútua entre a precisão geométrica dos blocos e a espessura do revestimento final (reboco), estabelecendo diretrizes práticas para o canteiro.
+    </p>
+
+    <h2>2. O Risco Geométrico: Massa Polimérica + Bloco Comum</h2>
+    <p>
+        Embora a argamassa polimérica ofereça ganhos expressivos na velocidade de elevação, pesquisas de universidades brasileiras (USP, UFSC, UTFPR) evidenciam um grave risco de custo oculto quando o sistema utiliza blocos convencionais (não retificados):
+    </p>
+    <ul>
+        <li><strong>Inflexibilidade da Junta Seca:</strong> A espessura da junta polimérica curada varia entre <span class="math">1	ext{ mm}</span> e <span class="math">3	ext{ mm}</span>. Ela possui capacidade nula de absorver imperfeições ou variações de altura dos blocos através da colher de pedreiro.</li>
+        <li><strong>Efeito Cascata no Prumo:</strong> Desvios milimétricos na fabricação do bloco comum são integralmente transmitidos e acumulados fiada por fiada. Ensaios registram desvios de prumo de face entre <span class="math">15	ext{ mm}</span> e <span class="math">20	ext{ mm}</span> no topo de paredes com pé-direito padrão de <span class="math">2,80	ext{ m}</span>.</li>
+        <li><strong>Superconsumo de Reboco:</strong> Para compensar a sinuosidade e o desaprumo da parede na etapa de acabamento, o emboço/reboco necessita atingir espessuras críticas de <span class="math">25	ext{ mm}</span> a <span class="math">35	ext{ mm}</span> para aprumar a face da pintura.</li>
+    </ul>
+
+    <div class="highlight-box">
+        <h4>Conclusão dos Estudos Nacionais</h4>
+        <p>A aparente economia financeira obtida na compra de blocos comuns é completamente anulada na fase de reboco grosso, devido ao consumo excedente de cimento, areia e mão de obra necessários para corrigir a alvenaria torta.</p>
+    </div>
+
+    <h2>3. A Solução de Engenharia: Blocos Retificados</h2>
+    <p>
+        A literatura de industrialização da alvenaria estabelece que o <strong>bloco retificado</strong> (com precisão dimensional mecânica calibrada inferior a <span class="math">0,5	ext{ mm}</span>) é o insumo obrigatório para viabilizar este sistema:
+    </p>
+    <ul>
+        <li><strong>Estabilidade do Prumo:</strong> O prumo final mantém-se rigorosamente estável, com desvios máximos inferiores a <span class="math">3	ext{ mm}</span>, cumprindo com folga os critérios da norma de desempenho <strong>NBR 15575</strong>.</li>
+        <li><strong>Substituição por Camada Fina (3 mm):</strong> Como a alvenaria resulta perfeitamente plana, elimina-se o reboco convencional de <span class="math">20	ext{ mm}</span>. Aplica-se diretamente gesso corrido ou massa fina projetada com espessura de apenas <span class="math">3	ext{ mm}</span>.</li>
+    </ul>
+
+    <h2>4. Estudo de Caso Prático: Dimencionamento para 820 m²</h2>
+    <p>
+        Para fundamentar a viabilidade, realizou-se o dimensionamento de um pavimento real com 820 m² de paredes (<span class="math">1.640	ext{ m²}</span> de revestimento considerando duas faces) utilizando blocos padrão de <span class="math">14 	imes 19 	imes 39	ext{ cm}</span>:
+    </p>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">Insumo / Parâmetro</th>
+                <th style="width: 37.5%;">Método Tradicional (Bloco Comum + Reboco de 2 cm)</th>
+                <th style="width: 37.5%;">Método Racionalizado (Retificado + Reboco de 3 mm)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Quantidade de Blocos</strong></td>
+                <td><strong>10.500 un.</strong> (Inclui 8% de perda operacional).</td>
+                <td><strong>10.000 un.</strong> (Perda reduzida para 3% devido à resistência do bloco).</td>
+            </tr>
+            <tr>
+                <td><strong>Massa de Assentamento</strong></td>
+                <td><strong>12.300 kg</strong> (Argamassa convencional).</td>
+                <td><strong>1.230 kg</strong> (Massa polimérica pronta).</td>
+            </tr>
+            <tr>
+                <td><strong>Massa de Reboco (Total)</strong></td>
+                <td><strong>59.040 kg</strong> (Massa grossa sarrafeada).</td>
+                <td><strong>8.856 kg</strong> (Gesso ou reboco fino de película).</td>
+            </tr>
+            <tr>
+                <td><strong>Prazo Total de Execução</strong></td>
+                <td><strong>177 dias operacionais</strong> (Equipe padrão).</td>
+                <td><strong>68 dias operacionais</strong> (Redução de 61%).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="stats-table">
+        <tr>
+            <td>
+                <div class="stat-card orange">
+                    <div class="stat-value">121,7 Toneladas</div>
+                    <div class="stat-label">Carga de Alvenaria: Tradicional</div>
+                </div>
+            </td>
+            <td>
+                <div class="stat-card">
+                    <div class="stat-value">62,1 Toneladas</div>
+                    <div class="stat-label">Carga de Alvenaria: Racionalizado</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <p style="font-weight: bold; color: #2c5282; text-align: center;">
+        ➔ Alívio Estrutural de 59,6 toneladas (-49% de peso próprio sobre vigas e fundações).
+    </p>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Item do Orçamento (820 m²)</th>
+                <th>Custo Tradicional</th>
+                <th>Custo Racionalizado</th>
+                <th>Análise do Trade-Off Financeiro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Blocos de Vedação</td>
+                <td>R$ 16.800,00</td>
+                <td>R$ 28.000,00</td>
+                <td>Bloco retificado possui maior custo de aquisição.</td>
+            </tr>
+            <tr>
+                <td>Argamassa de Assentamento</td>
+                <td>R$ 7.400,00</td>
+                <td>R$ 11.000,00</td>
+                <td>Polimérica tem custo unitário superior à convencional.</td>
+            </tr>
+            <tr>
+                <td>Argamassa de Reboco / Gesso</td>
+                <td>R$ 35.400,00</td>
+                <td>R$ 14.100,00</td>
+                <td><span class="badge-green">Economia de R$ 21.300,00</span> com a camada de 3 mm.</td>
+            </tr>
+            <tr>
+                <td>Mão de Obra Direta</td>
+                <td>R$ 48.000,00</td>
+                <td>R$ 26.000,00</td>
+                <td><span class="badge-green">Economia de R$ 22.000,00</span> pelo ganho de prazo.</td>
+            </tr>
+            <tr style="background-color: #edf2f7; font-weight: bold;">
+                <td>CUSTO GLOBAL DO PACOTE</td>
+                <td>R$ 107.600,00</td>
+                <td>R$ 79.100,00</td>
+                <td>Economia Real de R$ 28.500,00 (<span class="badge-green">-26,5%</span>)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- CADERNO 2 -->
+    <div class="page-break"></div>
+    <div class="header-banner">
+        <h1>Relatório Executivo e Estudo de Viabilidade Global</h1>
+        <div class="subtitle">Caderno 2: Fronteiras Técnicas - Alvenaria Estrutural e Benchmark Internacional</div>
+    </div>
+
+    <h2>1. Argamassa Polimérica em Alvenaria Estrutural</h2>
+    <p>
+        O uso de ligantes poliméricos em alvenaria estrutural (onde os blocos suportam as cargas mecânicas do edifício) impõe severas restrições técnicas e normativas que divergem do sistema de vedação. Os ensaios mecânicos de laboratório (USP, UFMG, UFSCar) apontam comportamentos distintos para os esforços atuantes:
+    </p>
+    <ul>
+        <li><strong>Resistência à Compressão Axial (Conformidade):</strong> Ensaios de compressão vertical em prismas e miniparedes revelam excelente desempenho. A espessura reduzida da junta (<span class="math">2	ext{ mm}</span>) otimiza o contato bloco a bloco, igualando ou superando a resistência obtida com juntas tradicionais de cimento.</li>
+        <li><strong>Resistência à Tração por Flexão (Ponto Crítico):</strong> A resina polimérica apresenta uma <strong>ruptura frágil</strong>. Sob ações horizontais (pressão de ventos ou recalques), o sistema rompe de forma abrupta, sem capacidade de deformação prévia (ductilidade), o que acende um alerta de segurança nos cálculos estruturais.</li>
+    </ul>
+
+    <h2>2. O Impasse Normativo Nacional</h2>
+    <p>
+        A regulamentação legal é o maior obstáculo para a difusão do sistema estrutural colado no cenário brasileiro:
+    </p>
+    <p>
+        A norma matriz de alvenaria estrutural, a <strong>ABNT NBR 16868</strong>, foi integralmente balizada para argamassas minerais tradicionais com espessura de junta horizontal de <span class="math">10	ext{ mm}</span>. Legalmente, não há respaldo normativo explícito para o cálculo de estruturas utilizando juntas milimétricas de resina. Qualquer aplicação neste sentido transfere 100% da responsabilidade jurídica e civil para o projetista calculista, exigindo a execução de ensaios privados caros (laudos via IPT ou Falcão Bauer) para aprovação do projeto.
+    </p>
+
+    <div class="highlight-box" style="border-left-color: #3182ce; background-color: #ebf8ff;">
+        <h4 style="color: #2b6cb0;">Mitigação Técnica e Sistemas Híbridos</h4>
+        <p style="color: #2d3748;">Para viabilizar o uso estrutural em habitações de baixa carga (casas térreas e sobrados), a engenharia aplica sistemas híbridos: o preenchimento dos furos do bloco estrutural retificado com <strong>graute líquido</strong> e armaduras verticais de aço nos cantos e vãos. O graute assume os esforços de tração e flexão, blindando a fragilidade da cola polimérica.</p>
+    </div>
+
+    <h2>3. Benchmark Internacional: O Cenário Global</h2>
+    <p>
+        O confronto dos resultados brasileiros com investigações internacionais (Europa, EUA e Ásia) demonstra que o sistema de junta delgada é amplamente consolidado fora do país, indicando caminhos de evolução tecnológica:
+    </p>
+    
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 25%;">Variável</th>
+                <th style="width: 37.5%;">Abordagem Prática no Brasil</th>
+                <th style="width: 37.5%;">Abordagem Prática Internacional</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Requisitos do Insumo</strong></td>
+                <td>O mercado imobiliário ainda tenta, por razões de custo, aplicar polimérica em blocos comuns, gerando falhas de prumo.</td>
+                <td>O bloco retificado é um padrão técnico indissociável desde 1990 (Alemanha/Holanda). O bloco comum é proibido neste sistema.</td>
+            </tr>
+            <tr>
+                <td><strong>Revestimento e Acabamento</strong></td>
+                <td>Foco em reduzir a espessura do reboco de cimento para uma camada fina de gesso de 3 mm a 5 mm.</td>
+                <td><strong>Eliminação total do reboco.</strong> Aplicação direta de pintura texturizada sobre o bloco ou colagem de drywall (Eurocode 6 / ASTM).</td>
+            </tr>
+            <tr>
+                <td><strong>Segurança Estrutural</strong></td>
+                <td>Restrições estritas e resistência dos calculistas devido à baixa ductilidade e falta de histórico sísmico.</td>
+                <td>Validado em mesas sísmicas (Universidade do Minho). Estabilização por telas metálicas ultrafinas de junta (ex: armadura Murfor).</td>
+            </tr>
+            <tr>
+                <td><strong>Status Regulatório</strong></td>
+                <td>Fase de transição. Falta de textos dedicados a polímeros nas normas de alvenaria estrutural.</td>
+                <td>Totalmente regulamentado. O <strong>Eurocode 6</strong> (Europa) e o <strong>ACI 530</strong> (EUA) possuem anexos de cálculo específicos.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. Diretrizes e Recomendações Estratégicas para o Construtor</h2>
+    <p>
+        A união dos dados analíticos nacionais com o histórico de sucesso internacional permite fixar as seguintes recomendações para a construtora:
+    </p>
+    <p>
+        1. <strong>Industrialização Consciente:</strong> A argamassa polimérica deve ser tratada como um sistema industrializado e não como um substituto direto da colher de pedreiro. Ela exige, obrigatoriamente, o uso de blocos retificados.
+    </p>
+    <p>
+        2. <strong>Foco no Custo Global:</strong> Suprimentos não deve reter a análise financeira no preço de compra do bloco retificado, mas sim computar a economia de <span class="badge-green">50 toneladas de argamassa</span> que deixam de ser transportadas, rodadas e aplicadas nas paredes.
+    </p>
+    <p>
+        3. <strong>Restrição Estrutural Temporária:</strong> Manter o uso da massa polimérica restrito à <strong>alvenaria de vedação</strong>. A expansão para alvenaria estrutural deve ser limitada a edificações térreas, condicionada a ensaios prévios de laboratório em prismas, até a devida atualização da NBR 16868.
+    </p>
+
+    <div class="footer-note">
+        * Relatório Técnico Unificado reunindo indexadores SINAPI, critérios normativos ABNT, Eurocode 6 e diretrizes da Associação Nacional de Tecnologia do Ambiente Construído (ANTAC).
+    </div>
+
+</body>
+</html>

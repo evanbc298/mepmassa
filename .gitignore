@@ -21,6 +21,7 @@ node_modules/
 *.log
 *.tmp
 
-# Drop zone do usuário (só o README vai versionado)
+# Drop zone do usuário (README e arquivos .md versionados)
 dados/*
 !dados/README.md
+!dados/*.md

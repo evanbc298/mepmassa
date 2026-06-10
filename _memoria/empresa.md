@@ -99,6 +99,19 @@ Branco, Gelo, Palha, Areia, Pérola, Marfim, Algodão Egípcio, Camurça, Pêsse
 - João Carlos — mestre de obras (20+ anos de experiência)
 - Cintia Costa — operadora de pedreira: "Comecei a trabalhar com o MEP e minha qualidade de vida mudou"
 
+## Dados técnicos comprovados (estudo 820m²)
+
+Relatórios técnicos do cliente validam os diferenciais do produto com números reais de obra:
+- **-26,5% no custo total** da alvenaria pronta (R$28.500 de economia em 820m²)
+- **-109 dias de prazo** (177 dias → 68 dias operacionais)
+- **-59,6 toneladas de peso** sobre a estrutura e fundação (-49%)
+- **-80% de CO₂**, **-87% de água**, **-96% de resíduo (entulho)**
+- Velocidade 2,5x maior no assentamento e 2,7x no revestimento
+
+Dados completos em: `dados/estudo_comparativo_820m2.md`
+
+---
+
 ## Contexto adicional
 
 Empresa em fase de estruturação — marketing sendo construído do zero a partir de junho de 2026.
