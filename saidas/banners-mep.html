@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Banners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; font-family:'Barlow',sans-serif; }
+a { text-decoration:none; color:inherit; }
+
+/* ─── SLIDER ─── */
+.slider { position:relative; width:100%; overflow:hidden; }
+.track { display:flex; will-change:transform; transition:transform .7s cubic-bezier(.77,0,.175,1); }
+.banner { min-width:100%; position:relative; overflow:hidden; height:520px; display:flex; align-items:center; }
+
+/* Botões */
+.ctrl { position:absolute; top:50%; transform:translateY(-50%); z-index:20;
+  width:52px; height:52px; border-radius:50%; border:2px solid rgba(255,255,255,0.2);
+  background:rgba(0,0,0,0.25); backdrop-filter:blur(8px);
+  color:#fff; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:all .2s; }
+.ctrl:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.4); }
+.ctrl.prev { left:24px; }
+.ctrl.next { right:24px; }
+
+/* Dots */
+.dots { position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; z-index:20; }
+.dot { width:6px; height:6px; border-radius:3px; background:rgba(255,255,255,0.35); cursor:pointer; transition:all .35s; }
+.dot.on { width:28px; background:#fff; }
+
+/* Progress bar */
+.prog { position:absolute; bottom:0; left:0; height:3px; background:rgba(255,255,255,0.85); z-index:20;
+  animation:prog 5s linear infinite; }
+@keyframes prog { from{width:0} to{width:100%} }
+
+/* ─── UTILITÁRIOS ─── */
+.inner { max-width:1280px; margin:0 auto; padding:0 80px; width:100%;
+  position:relative; z-index:5; display:grid; align-items:center; height:100%; }
+.eyebrow { font-size:11px; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+  display:inline-flex; align-items:center; gap:10px; margin-bottom:18px; }
+.eyebrow::before { content:''; width:32px; height:2px; background:currentColor; }
+.h1 { font-family:'Barlow Condensed',sans-serif; font-weight:900; line-height:.92; letter-spacing:-.03em; text-transform:uppercase; }
+.sub { font-size:16px; font-weight:500; line-height:1.65; margin-top:16px; }
+.ctas { display:flex; gap:14px; margin-top:32px; align-items:center; flex-wrap:wrap; }
+.btn-solid { padding:15px 36px; border-radius:4px; font-size:13px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; transition:all .2s; display:inline-block; }
+.btn-ghost { padding:13px 34px; border-radius:4px; font-size:13px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; border:2px solid; transition:all .2s; display:inline-block; }
+.pill { display:inline-flex; align-items:center; gap:6px; padding:5px 14px; border-radius:20px;
+  font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+
+/* ══════════════════════════════════════════
+   BANNER 1 — MEP MASSAS · LARANJA
+══════════════════════════════════════════ */
+.b1 { background:#F28C28; }
+
+.b1-noise {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 80% 80% at 75% 50%, rgba(255,255,255,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 90%, rgba(0,0,0,.10) 0%, transparent 60%);
+}
+.b1-diagonal {
+  position:absolute; inset:0;
+  background:linear-gradient(105deg, transparent 52%, rgba(226,112,16,.45) 52%);
+}
+.b1-ring {
+  position:absolute; border-radius:50%; border:1px solid rgba(255,255,255,.12);
+}
+
+.b1 .inner { grid-template-columns:1fr 400px; gap:40px; }
+
+.b1-text .eyebrow { color:rgba(255,255,255,.75); }
+.b1-text .h1 { font-size:clamp(64px,7.5vw,96px); color:#fff; }
+.b1-text .h1 .navy { color:#1A2B4D; }
+.b1-text .sub { color:rgba(255,255,255,.78); max-width:420px; }
+
+.b1-metrics { display:flex; gap:0; margin-top:32px;
+  border-top:1px solid rgba(255,255,255,.2); padding-top:24px; }
+.b1-metric { flex:1; border-right:1px solid rgba(255,255,255,.15); padding-right:20px; margin-right:20px; }
+.b1-metric:last-child { border-right:none; }
+.b1-metric .val { font-family:'Barlow Condensed',sans-serif; font-size:38px; font-weight:900; color:#fff; line-height:1; }
+.b1-metric .lbl { font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-top:4px; }
+
+.b1-text .btn-solid { background:#1A2B4D; color:#fff; }
+.b1-text .btn-solid:hover { background:#0d1b35; }
+.b1-text .btn-ghost { border-color:rgba(255,255,255,.4); color:#fff; }
+.b1-text .btn-ghost:hover { background:rgba(255,255,255,.1); }
+
+.b1-produto { display:flex; align-items:flex-end; justify-content:center; position:relative; height:100%; }
+.b1-glow { position:absolute; width:360px; height:360px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.18) 0%, transparent 65%);
+  top:50%; left:50%; transform:translate(-50%,-50%); }
+.b1-produto img { width:320px; filter:drop-shadow(0 32px 64px rgba(0,0,0,.3));
+  position:relative; z-index:2; animation:levitate 3.5s ease-in-out infinite; }
+.b1-badge { position:absolute; top:60px; right:-10px; z-index:3;
+  background:#1A2B4D; color:#fff; padding:10px 16px; border-radius:8px;
+  font-size:11px; font-weight:700; line-height:1.4; text-align:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.25); }
+.b1-badge strong { font-size:20px; display:block; color:#F28C28; }
+
+@keyframes levitate {
+  0%,100% { transform:translateY(0) rotate(0deg); }
+  33% { transform:translateY(-14px) rotate(.5deg); }
+  66% { transform:translateY(-6px) rotate(-.5deg); }
+}
+
+/* ══════════════════════════════════════════
+   BANNER 2 — MEP COLOR · ESCURO
+══════════════════════════════════════════ */
+.b2 { background:#07101e; }
+
+.b2-grad {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 85% 30%, rgba(201,168,76,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 60% at 85% 75%, rgba(193,18,31,.15) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 50% at 60% 50%, rgba(242,140,40,.08) 0%, transparent 60%);
+}
+.b2-line {
+  position:absolute; left:50%; top:0; bottom:0; width:1px;
+  background:linear-gradient(to bottom, transparent, rgba(255,255,255,.06) 30%, rgba(255,255,255,.06) 70%, transparent);
+}
+
+.b2 .inner { grid-template-columns:520px 1fr; gap:60px; }
+
+.b2-text .eyebrow { color:#F28C28; }
+.b2-text .h1 { font-size:clamp(60px,7vw,88px); color:#fff; }
+.b2-text .h1 em { color:#F28C28; font-style:normal; }
+.b2-text .sub { color:rgba(255,255,255,.55); max-width:400px; }
+
+.b2-linhas { display:flex; flex-direction:column; gap:8px; margin-top:22px; }
+.b2-linha { display:flex; align-items:center; gap:10px; }
+.b2-linha-ic { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.b2-linha-txt { font-size:13px; font-weight:600; color:rgba(255,255,255,.6); }
+
+.b2-text .btn-solid { background:#F28C28; color:#fff; }
+.b2-text .btn-solid:hover { background:#c06010; }
+.b2-text .btn-ghost { border-color:rgba(255,255,255,.2); color:rgba(255,255,255,.7); }
+.b2-text .btn-ghost:hover { border-color:rgba(255,255,255,.5); color:#fff; }
+
+.b2-produtos { display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:flex-end; height:100%; padding:40px 0; }
+.b2-produto { display:flex; flex-direction:column; align-items:center; gap:0; transition:transform .3s; }
+.b2-produto:hover { transform:translateY(-10px); }
+.b2-produto img { width:100%; max-width:148px; filter:drop-shadow(0 24px 48px rgba(0,0,0,.6)); }
+.b2-produto:nth-child(2) { margin-top:-30px; }
+.b2-produto:nth-child(4) { margin-top:-30px; }
+.b2-prod-lbl { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.2em;
+  color:rgba(255,255,255,.3); margin-top:10px; }
+
+/* ══════════════════════════════════════════
+   BANNER 3 — EDITORIAL · FOTO DE OBRA
+══════════════════════════════════════════ */
+.b3 {
+  background:#1A2B4D;
+  background-image:url('obra-alvenaria.png');
+  background-size:cover;
+  background-position:center 30%;
+}
+.b3-ov {
+  position:absolute; inset:0;
+  background:linear-gradient(100deg,
+    rgba(7,16,30,.04) 0%,
+    rgba(7,16,30,.25) 35%,
+    rgba(7,16,30,.82) 65%,
+    rgba(7,16,30,.95) 100%);
+}
+
+.b3 .inner { grid-template-columns:1fr 480px; gap:60px; }
+
+.b3-text { grid-column:2; }
+.b3-text .eyebrow { color:#F28C28; }
+.b3-text .h1 { font-size:clamp(52px,6vw,76px); color:#fff; }
+.b3-text .h1 em { color:#F28C28; font-style:normal; }
+.b3-text .sub { color:rgba(255,255,255,.6); max-width:400px; }
+
+.b3-dados { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:24px; }
+.b3-dado { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+  border-radius:8px; padding:14px 16px; text-align:center; }
+.b3-dado .dv { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:900; color:#F28C28; line-height:1; }
+.b3-dado .dl { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.4); margin-top:4px; }
+
+.b3-text .btn-solid { background:#F28C28; color:#fff; }
+.b3-text .btn-solid:hover { background:#c06010; }
+.b3-text .btn-ghost { border-color:rgba(255,255,255,.25); color:rgba(255,255,255,.75); }
+.b3-text .btn-ghost:hover { color:#fff; border-color:#fff; }
+
+/* ══════════════════════════════════════════
+   BANNER 4 — CALCULADORA · SPLIT
+══════════════════════════════════════════ */
+.b4 { background:#1A2B4D; }
+
+.b4-split-right {
+  position:absolute; right:0; top:0; bottom:0; width:44%;
+  background:#F28C28;
+  clip-path:polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.b4-split-right::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 80% at 80% 50%, rgba(255,255,255,.12) 0%, transparent 60%);
+}
+
+.b4 .inner { grid-template-columns:1fr 1fr; gap:0; }
+
+.b4-left .eyebrow { color:rgba(255,255,255,.5); }
+.b4-left .h1 { font-size:clamp(48px,5.5vw,72px); color:#fff; }
+.b4-left .h1 em { color:#F28C28; font-style:normal; }
+.b4-left .sub { color:rgba(255,255,255,.55); max-width:380px; }
+.b4-left .btn-solid { background:#F28C28; color:#fff; }
+.b4-left .btn-solid:hover { background:#c06010; }
+.b4-left .btn-ghost { border-color:rgba(255,255,255,.2); color:rgba(255,255,255,.65); }
+.b4-left .btn-ghost:hover { color:#fff; border-color:rgba(255,255,255,.5); }
+
+.b4-right { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; padding-left:60px; }
+.b4-numero { font-family:'Barlow Condensed',sans-serif; font-size:140px; font-weight:900;
+  color:#fff; line-height:.85; letter-spacing:-.04em; text-shadow:0 4px 60px rgba(0,0,0,.2); }
+.b4-numero-sub { font-size:15px; font-weight:700; color:rgba(255,255,255,.75);
+  text-transform:uppercase; letter-spacing:.2em; margin-top:4px; }
+.b4-cards { display:grid; grid-template-columns:1fr 1fr; gap:10px; width:100%; max-width:280px; }
+.b4-card { background:rgba(255,255,255,.12); border-radius:10px; padding:14px 16px; text-align:center; }
+.b4-card .cv { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:900; color:#fff; }
+.b4-card .cl { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.55); margin-top:3px; }
+
+/* Linhas decorativas fundo */
+.b4-lines { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.b4-line { position:absolute; width:1px; background:rgba(255,255,255,.04); top:0; bottom:0; }
+
+/* ── MOBILE ── */
+@media (max-width:900px) {
+  .banner { height:auto; min-height:480px; padding:48px 0; }
+  .inner { max-width:100%; padding:0 28px; grid-template-columns:1fr !important; gap:32px; }
+  .h1 { font-size:clamp(42px,11vw,64px) !important; }
+
+  /* Banner 1 */
+  .b1-produto { display:none; }
+  .b1-text .btn-solid, .b1-text .btn-ghost { padding:14px 24px; font-size:12px; }
+
+  /* Banner 2 */
+  .b2-produtos { display:none; }
+  .b2 .inner { grid-template-columns:1fr !important; }
+
+  /* Banner 3 */
+  .b3 .inner { grid-template-columns:1fr !important; }
+  .b3-text { grid-column:1 !important; }
+  .b3-ov { background:linear-gradient(to bottom, rgba(7,16,30,.6) 0%, rgba(7,16,30,.9) 50%, rgba(7,16,30,.97) 100%) !important; }
+
+  /* Banner 4 */
+  .b4-split-right { display:none; }
+  .b4-right { display:none; }
+
+  /* Shared */
+  .sub { font-size:14px !important; }
+  .b1-metrics { gap:0; }
+  .b3-dados { grid-template-columns:repeat(3,1fr); gap:8px; }
+  .ctrl { width:40px; height:40px; font-size:14px; }
+  .ctrl.prev { left:12px; }
+  .ctrl.next { right:12px; }
+}
+
+@media (max-width:540px) {
+  .banner { padding:40px 0; }
+  .inner { padding:0 20px; }
+  .b3-dados { grid-template-columns:1fr 1fr; }
+  .b3-dados .b3-dado:last-child { grid-column:span 2; }
+  .b4-cards { display:none; }
+  .ctas { flex-direction:column; align-items:flex-start; }
+  .btn-solid, .btn-ghost { width:100%; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="track" id="track">
+
+    <!-- ── BANNER 1: MEP MASSAS ── -->
+    <div class="banner b1">
+      <div class="b1-noise"></div>
+      <div class="b1-diagonal"></div>
+      <div class="b1-ring" style="width:600px;height:600px;top:-200px;right:-100px;"></div>
+      <div class="b1-ring" style="width:300px;height:300px;bottom:-100px;left:35%;"></div>
+      <div class="inner">
+        <div class="b1-text">
+          <div class="eyebrow">Argamassa Polimerica · Pronta para Uso</div>
+          <div class="h1">
+            A MASSA QUE<br>
+            CHEGA <span class="navy">PRONTA.</span><br>
+            VOCE APLICA.
+          </div>
+          <div class="sub">Sem betoneira, sem desperdicio, sem complicacao.<br>Tecnologia polimerica que multiplica a produtividade da obra.</div>
+          <div class="b1-metrics">
+            <div class="b1-metric"><div class="val">4×</div><div class="lbl">Mais rapida</div></div>
+            <div class="b1-metric"><div class="val">40%</div><div class="lbl">Mais economica</div></div>
+            <div class="b1-metric"><div class="val">Zero</div><div class="lbl">Desperdicio</div></div>
+          </div>
+          <div class="ctas">
+            <a href="#contato" class="btn-solid">Solicitar Orcamento</a>
+            <a href="#comparativo" class="btn-ghost">Ver Comparativo</a>
+          </div>
+        </div>
+        <div class="b1-produto">
+          <div class="b1-glow"></div>
+          <img src="balde-25kg-v2.png.png" alt="MEP Massas 25kg">
+          <div class="b1-badge">Rende<strong>25 m²</strong>por balde</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BANNER 2: MEP COLOR ── -->
+    <div class="banner b2">
+      <div class="b2-grad"></div>
+      <div class="b2-line"></div>
+      <div class="inner">
+        <div class="b2-text">
+          <div class="eyebrow">Linha de Tintas</div>
+          <div class="h1">MEP<br><em>COLOR.</em><br>QUATRO<br>LINHAS.</div>
+          <div class="sub">Do interior ao exterior. Da parede ao piso. Uma linha completa com qualidade MEP.</div>
+          <div class="b2-linhas">
+            <div class="b2-linha"><div class="b2-linha-ic" style="background:#C9A84C"></div><span class="b2-linha-txt">Premium — maxima durabilidade interna e externa</span></div>
+            <div class="b2-linha"><div class="b2-linha-ic" style="background:#F28C28"></div><span class="b2-linha-txt">Economica — alto rendimento por litro</span></div>
+            <div class="b2-linha"><div class="b2-linha-ic" style="background:#C1121F"></div><span class="b2-linha-txt">Pisos e Quadras — resistencia ao trafego pesado</span></div>
+            <div class="b2-linha"><div class="b2-linha-ic" style="background:#9CA3AF"></div><span class="b2-linha-txt">Esmalte Acrilico — madeiras e metais</span></div>
+          </div>
+          <div class="ctas">
+            <a href="#mep-color" class="btn-solid">Ver Linha Completa</a>
+            <a href="#contato" class="btn-ghost">Solicitar Orcamento</a>
+          </div>
+        </div>
+        <div class="b2-produtos">
+          <div class="b2-produto">
+            <img src="bucket-premium.png" alt="Premium">
+            <div class="b2-prod-lbl">Premium</div>
+          </div>
+          <div class="b2-produto">
+            <img src="bucket-esmalte.png" alt="Esmalte">
+            <div class="b2-prod-lbl">Esmalte</div>
+          </div>
+          <div class="b2-produto">
+            <img src="bucket-pisos.png" alt="Pisos">
+            <div class="b2-prod-lbl">Pisos</div>
+          </div>
+          <div class="b2-produto">
+            <img src="bucket-economica.png" alt="Economica">
+            <div class="b2-prod-lbl">Economica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BANNER 3: EDITORIAL FOTO ── -->
+    <div class="banner b3">
+      <div class="b3-ov"></div>
+      <div class="inner">
+        <div class="b3-text">
+          <div class="eyebrow">Resultado comprovado em obra</div>
+          <div class="h1">
+            MESMA OBRA.<br>
+            <em>METADE</em><br>
+            DO TEMPO.
+          </div>
+          <div class="sub">Construtoras que adotam o MEP entregam mais rapido, gastam menos e produzem com mais qualidade.</div>
+          <div class="b3-dados">
+            <div class="b3-dado"><div class="dv">-109</div><div class="dl">Dias de obra</div></div>
+            <div class="b3-dado"><div class="dv">-26%</div><div class="dl">Custo total</div></div>
+            <div class="b3-dado"><div class="dv">-49%</div><div class="dl">Menos peso</div></div>
+          </div>
+          <div class="ctas">
+            <a href="#contato" class="btn-solid">Falar com Consultor</a>
+            <a href="#comparativo" class="btn-ghost">Ver Dados de Obra</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BANNER 4: CALCULADORA ── -->
+    <div class="banner b4">
+      <div class="b4-split-right"></div>
+      <div class="b4-lines">
+        <div class="b4-line" style="left:20%"></div>
+        <div class="b4-line" style="left:40%"></div>
+        <div class="b4-line" style="left:60%"></div>
+      </div>
+      <div class="inner">
+        <div class="b4-left">
+          <div class="eyebrow">Ferramenta Gratuita</div>
+          <div class="h1">
+            QUANTO SUA<br>
+            OBRA PODE<br>
+            <em>ECONOMIZAR?</em>
+          </div>
+          <div class="sub">Informe a metragem e veja em segundos o quanto o MEP economiza na sua obra — comparado com a argamassa convencional.</div>
+          <div class="ctas">
+            <a href="https://mep.ind.br/calculadora-de-custos" class="btn-solid">Calcular Agora — Gratis</a>
+            <a href="#contato" class="btn-ghost">Falar com Vendas</a>
+          </div>
+        </div>
+        <div class="b4-right">
+          <div>
+            <div class="b4-numero">40%</div>
+            <div class="b4-numero-sub">de economia media</div>
+          </div>
+          <div class="b4-cards">
+            <div class="b4-card"><div class="cv">4×</div><div class="cl">Mais rapida</div></div>
+            <div class="b4-card"><div class="cv">3×</div><div class="cl">Resistente</div></div>
+            <div class="b4-card"><div class="cv">95%</div><div class="cl">Menos agua</div></div>
+            <div class="b4-card"><div class="cv">Zero</div><div class="cl">Desperdicio</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /track -->
+
+  <button class="ctrl prev" onclick="move(-1)">&#8592;</button>
+  <button class="ctrl next" onclick="move(1)">&#8594;</button>
+  <div class="dots" id="dots"></div>
+  <div class="prog" id="prog"></div>
+</div>
+
+<script>
+var current = 0;
+var total = document.querySelectorAll('.banner').length;
+var track = document.getElementById('track');
+var dotsEl = document.getElementById('dots');
+var progEl = document.getElementById('prog');
+var timer;
+
+// Dots
+for(var i=0;i<total;i++){
+  var d = document.createElement('div');
+  d.className='dot'+(i===0?' on':'');
+  d.setAttribute('data-i',i);
+  d.onclick=function(){ goTo(+this.getAttribute('data-i')); };
+  dotsEl.appendChild(d);
+}
+
+function goTo(n){
+  current=(n+total)%total;
+  track.style.transform='translateX(-'+current+'00%)';
+  document.querySelectorAll('.dot').forEach(function(d,i){ d.className='dot'+(i===current?' on':''); });
+  resetTimer();
+}
+function move(dir){ goTo(current+dir); }
+
+function resetTimer(){
+  progEl.style.animation='none';
+  void progEl.offsetWidth;
+  progEl.style.animation='prog 5s linear infinite';
+  clearInterval(timer);
+  timer=setInterval(function(){ goTo(current+1); },5000);
+}
+
+// Keyboard
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft') move(-1);
+  if(e.key==='ArrowRight') move(1);
+});
+
+// Touch/swipe
+var sx=0;
+track.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; });
+track.addEventListener('touchend',function(e){
+  var dx=e.changedTouches[0].clientX-sx;
+  if(Math.abs(dx)>50) move(dx<0?1:-1);
+});
+
+resetTimer();
+</script>
+
+</body>
+</html>

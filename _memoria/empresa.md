@@ -86,12 +86,14 @@ Branco, Gelo, Palha, Areia, Pérola, Marfim, Algodão Egípcio, Camurça, Pêsse
 
 ## Contato comercial
 
-- Email: argamassamep@gmail.com
-- Telefone: (18) 99688-1384
+- Email: ind.mepmassas@gmail.com
+- Telefone / WhatsApp: (47) 99695-8399
+- Localizacao: Balneario Camboriu, SC
+- Site: www.mep.ind.br
 
 ## Ferramentas de apoio ao cliente
 
-- Calculadora de consumo: mepmassa.com.br/calculadora-de-custos
+- Calculadora de consumo: mep.ind.br/calculadora-de-custos
 
 ## Depoimentos já registrados no site
 

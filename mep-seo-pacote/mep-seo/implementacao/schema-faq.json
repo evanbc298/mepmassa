@@ -1,0 +1,72 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é argamassa polimérica MEP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A argamassa polimérica MEP é uma massa pronta industrializada, à base de polímeros e aditivos especiais, desenvolvida para substituir a argamassa convencional preparada em obra. Ela já vem na consistência ideal de uso, eliminando a necessidade de mistura em betoneira, reduzindo o desperdício em até 40% e acelerando a obra em até 3x em comparação ao método tradicional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto rende um balde de 25kg de argamassa polimérica MEP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Um balde de 25kg de argamassa polimérica MEP rende em média de 1,5 a 2,0 m² em assentamento de blocos de 14x19x39cm com junta de 1cm, dependendo do tipo de bloco e da espessura aplicada. Use nossa calculadora gratuita no site para uma estimativa exata da sua obra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Em quais aplicações a argamassa polimérica MEP pode ser usada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A argamassa polimérica MEP é indicada para: alvenaria de vedação (tijolos e blocos em geral), muros estruturais e muros à vista, churrasqueiras (alta resistência ao calor), e reparos e reformas em geral. Não é recomendada para uso estrutural em pilares e vigas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre argamassa polimérica e argamassa convencional?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A argamassa convencional (cimento + areia + cal + água) precisa ser preparada em obra, com betoneira, e tem alto índice de desperdício (até 30%). A argamassa polimérica MEP vem pronta, com composição balanceada de fábrica, gerando 3x mais velocidade, 40% menos desperdício e 3x mais resistência à aderência, segundo testes de campo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como aplicar a argamassa polimérica MEP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O processo de aplicação tem 4 passos: 1) Prepare os blocos (limpos, umedecidos e alinhados), 2) Aplique a massa com colher de pedreiro ou bisnaga, em camada uniforme, 3) Assente o bloco e ajuste o prumo/nível, 4) Aguarde a cura inicial (24h) e faça o acabamento. Não é necessário adicionar água ou qualquer outro produto à massa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A MEP COLOR tem tinta para qual tipo de superfície?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A linha MEP COLOR possui 4 produtos: Premium (acabamento superior para paredes internas e externas), Esmalte (para madeiras e metais), Pisos e Quadras (alta resistência para tráfego intenso) e Econômica (custo-benefício para grandes áreas). Cada uma tem indicação específica de substrato e ambiente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês entregam para todo o Brasil?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Atendemos principalmente Santa Catarina e regiões Sul do Brasil (PR, RS), com logística dedicada. Para outras regiões, consulte nosso time comercial pelo WhatsApp (47) 99695-8399 para cotação de frete e prazo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como comprar a argamassa polimérica MEP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Você pode solicitar orçamento diretamente pelo site no botão 'Solicitar Orçamento', pelo WhatsApp (47) 99695-8399 ou pelo e-mail ind.mepmassas@gmail.com. Para construtoras e revendas, temos condições especiais de parceria."
+      }
+    }
+  ]
+}
+</script>

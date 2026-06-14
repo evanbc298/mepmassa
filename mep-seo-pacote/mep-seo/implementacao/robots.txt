@@ -1,0 +1,60 @@
+# robots.txt — MEP Indústria
+# https://www.mep.ind.br/robots.txt
+# Permite indexação de todas as páginas públicas, bloqueia caminhos internos/admin,
+# aponta pro sitemap e declara o bot do Google AI explicitamente.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /*?*
+Disallow: /tmp/
+Disallow: /.git/
+
+# Bots específicos que vale a pena liberar explicitamente
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Bots de IA (importante pra GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemap
+Sitemap: https://www.mep.ind.br/sitemap.xml
+
+# Host canônico
+Host: https://www.mep.ind.br

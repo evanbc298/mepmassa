@@ -1,0 +1,135 @@
+<!-- ======================================================
+     OTIMIZAÇÃO DE IMAGENS — substituir todas as <img> por
+     estas versões otimizadas.
+     
+     Regras:
+     1. Converter PNGs pesados para WebP (manter PNG como fallback)
+     2. SEMPRE adicionar width e height (evita CLS)
+     3. SEMPRE adicionar loading="lazy" (exceto na LCP)
+     4. SEMPRE adicionar decoding="async"
+     5. IMAGEM LCP recebe fetchpriority="high" e loading="eager"
+     6. ALT descritivo (keyword quando natural, sem stuffing)
+     ====================================================== -->
+
+<!-- ❌ ANTES (problema: 1MB+, sem dimensões, sem lazy) -->
+<img src="balde-25kg-v2.png.png" alt="Massa MEP — Balde 25kg">
+
+<!-- ✅ DEPOIS (WebP + dimensões + lazy + async + alt descritivo) -->
+<picture>
+  <source srcset="balde-25kg-v2.webp" type="image/webp">
+  <source srcset="balde-25kg-v2.png" type="image/png">
+  <img src="balde-25kg-v2.png"
+       alt="Balde de 25kg de argamassa polimérica MEP Massas — pronta para uso"
+       width="500"
+       height="500"
+       loading="eager"
+       fetchpriority="high"
+       decoding="async">
+</picture>
+
+<!-- Logo (sempre eager, é marca) -->
+<img src="logo-mep.svg"
+     alt="MEP Indústria — argamassa polimérica e tintas"
+     width="180"
+     height="48"
+     loading="eager"
+     fetchpriority="high"
+     decoding="async">
+
+<!-- Produtos MEP Massas (lazy, exceto o primeiro) -->
+<picture>
+  <source srcset="barrica-25kg.webp" type="image/webp">
+  <img src="barrica-25kg.png"
+       alt="Barrica de 25kg de argamassa polimérica MEP para obras de grande porte"
+       width="300"
+       height="300"
+       loading="lazy"
+       decoding="async">
+</picture>
+
+<picture>
+  <source srcset="bisnaga-3kg.webp" type="image/webp">
+  <img src="bisnaga-3kg.png"
+       alt="Bisnaga de 3kg de argamassa polimérica MEP para pequenos reparos"
+       width="300"
+       height="300"
+       loading="lazy"
+       decoding="async">
+</picture>
+
+<picture>
+  <source srcset="bisnaga-1kg.webp" type="image/webp">
+  <img src="bisnaga-1kg.png"
+       alt="Bisnaga de 1kg de massa MEP para reparos rápidos"
+       width="300"
+       height="300"
+       loading="lazy"
+       decoding="async">
+</picture>
+
+<!-- Produtos MEP COLOR -->
+<picture>
+  <source srcset="bucket-premium.webp" type="image/webp">
+  <img src="bucket-premium.png"
+       alt="MEP COLOR Premium — tinta acrílica de acabamento superior"
+       width="300"
+     height="300"
+     loading="lazy"
+     decoding="async">
+</picture>
+
+<picture>
+  <source srcset="bucket-esmalte.webp" type="image/webp">
+  <img src="bucket-esmalte.png"
+       alt="MEP COLOR Esmalte — esmalte sintético para madeiras e metais"
+       width="300"
+       height="300"
+       loading="lazy"
+       decoding="async">
+</picture>
+
+<picture>
+  <source srcset="bucket-pisos.webp" type="image/webp">
+  <img src="bucket-pisos.png"
+       alt="MEP COLOR Pisos e Quadras — tinta de alta resistência para tráfego intenso"
+       width="300"
+       height="300"
+       loading="lazy"
+       decoding="async">
+</picture>
+
+<picture>
+  <source srcset="bucket-economica.webp" type="image/webp">
+  <img src="bucket-economica.png"
+       alt="MEP COLOR Econômica — tinta acrílica de ótimo custo-benefício"
+       width="300"
+       height="300"
+       loading="lazy"
+       decoding="async">
+</picture>
+
+<!-- ======================================================
+     COMANDOS PARA CONVERTER PNG → WEBP (rodar localmente)
+     ====================================================== -->
+<!--
+# Requer cwebp (Google) instalado: https://developers.google.com/speed/webp/download
+# macOS:   brew install webp
+# Linux:   sudo apt-get install webp
+
+# Converter cada PNG para WebP (qualidade 80 = ótimo equilíbrio)
+cwebp -q 80 balde-25kg-v2.png.png -o balde-25kg-v2.webp
+cwebp -q 80 barrica-25kg.png.png    -o barrica-25kg.webp
+cwebp -q 80 bisnaga-3kg.png.png     -o bisnaga-3kg.webp
+cwebp -q 80 bisnaga-1kg.png.png     -o bisnaga-1kg.webp
+cwebp -q 80 bucket-premium.png      -o bucket-premium.webp
+cwebp -q 80 bucket-esmalte.png      -o bucket-esmalte.webp
+cwebp -q 80 bucket-pisos.png        -o bucket-pisos.webp
+cwebp -q 80 bucket-economica.png    -o bucket-economica.webp
+
+# Ou em lote (bash):
+for f in *.png; do
+  cwebp -q 80 "$f" -o "${f%.png}.webp"
+done
+
+# Tamanho esperado: redução de 60-80% no peso.
+-->

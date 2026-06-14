@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Painel do Projeto</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;900&display=swap');
+:root {
+  --az: #1A2B4D; --az2: #0d1b35; --az3: #07101e;
+  --or: #F28C28; --or2: #c06010;
+  --ok: #22c55e; --ok2: rgba(34,197,94,0.1); --ok3: rgba(34,197,94,0.25);
+  --wip: #F28C28; --wip2: rgba(242,140,40,0.1); --wip3: rgba(242,140,40,0.3);
+  --nd: rgba(255,255,255,0.15); --nd2: rgba(255,255,255,0.04); --nd3: rgba(255,255,255,0.1);
+  --block: rgba(239,68,68,0.1); --block2: rgba(239,68,68,0.3); --block-c: #f87171;
+  --t08: rgba(255,255,255,0.08); --t15: rgba(255,255,255,0.15);
+  --t40: rgba(255,255,255,0.40); --t60: rgba(255,255,255,0.60);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Barlow','Segoe UI',Arial,sans-serif; background:var(--az3); color:#fff; min-height:100vh; }
+
+/* HEADER */
+.hd { background:linear-gradient(135deg,var(--az3),var(--az2) 60%,var(--az)); padding:40px 60px 44px; border-bottom:1px solid var(--t08); }
+.hd-inner { max-width:1140px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+.hd-logo { font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:900; letter-spacing:4px; color:#fff; margin-bottom:10px; }
+.hd-logo span { color:var(--or); }
+.hd-title { font-family:'Barlow Condensed',sans-serif; font-size:42px; font-weight:900; line-height:1; color:#fff; }
+.hd-title em { color:var(--or); font-style:normal; }
+.hd-sub { font-size:14px; color:var(--t40); margin-top:8px; }
+.hd-stats { display:flex; gap:12px; flex-wrap:wrap; }
+.hd-stat { padding:14px 20px; background:var(--t08); border:1px solid var(--t08); border-radius:8px; text-align:center; min-width:90px; }
+.hd-stat .sv { font-size:28px; font-weight:900; line-height:1; }
+.hd-stat .sl { font-size:11px; color:var(--t40); margin-top:4px; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+.sv-ok { color:var(--ok); }
+.sv-wip { color:var(--or); }
+.sv-nd { color:var(--t40); }
+
+/* LEGENDA */
+.legend { max-width:1140px; margin:0 auto; padding:20px 60px; display:flex; gap:20px; align-items:center; border-bottom:1px solid var(--t08); flex-wrap:wrap; }
+.lg { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--t40); text-transform:uppercase; letter-spacing:1px; }
+.lg-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+
+/* BODY */
+.body { max-width:1140px; margin:0 auto; padding:40px 60px 80px; display:flex; flex-direction:column; gap:32px; }
+
+/* CATEGORIA */
+.cat {}
+.cat-header { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.cat-icon { font-size:20px; }
+.cat-title { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:900; letter-spacing:0.5px; color:#fff; }
+.cat-count { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--t40); background:var(--t08); padding:3px 10px; border-radius:3px; }
+
+/* TABELA DE TAREFAS */
+.task-table { border:1px solid var(--t08); border-radius:10px; overflow:hidden; }
+.task-head { display:grid; grid-template-columns:28px 1fr 140px 180px 90px; gap:0; background:rgba(255,255,255,0.03); border-bottom:1px solid var(--t08); padding:10px 20px; }
+.task-head span { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--t40); }
+.task-row { display:grid; grid-template-columns:28px 1fr 140px 180px 90px; gap:0; padding:14px 20px; border-bottom:1px solid var(--t08); align-items:center; transition:background .15s; }
+.task-row:last-child { border-bottom:none; }
+.task-row:hover { background:rgba(255,255,255,0.02); }
+
+/* STATUS BADGE */
+.sb { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; padding:4px 10px; border-radius:4px; white-space:nowrap; }
+.sb-ok { background:var(--ok2); color:var(--ok); border:1px solid var(--ok3); }
+.sb-wip { background:var(--wip2); color:var(--wip); border:1px solid var(--wip3); }
+.sb-nd { background:var(--nd2); color:var(--t40); border:1px solid var(--t08); }
+.sb-block { background:var(--block); color:var(--block-c); border:1px solid var(--block2); }
+
+/* TAREFA */
+.task-check { width:18px; height:18px; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0; }
+.task-check.ok { background:var(--ok2); border:1.5px solid var(--ok3); color:var(--ok); }
+.task-check.wip { background:var(--wip2); border:1.5px solid var(--wip3); color:var(--or); }
+.task-check.nd { background:var(--nd2); border:1.5px solid var(--t08); color:transparent; }
+.task-check.block { background:var(--block); border:1.5px solid var(--block2); color:var(--block-c); }
+
+.task-nome { font-size:14px; font-weight:600; color:#fff; line-height:1.3; }
+.task-nome.dim { color:var(--t60); }
+.task-detalhe { font-size:12px; color:var(--t40); margin-top:3px; line-height:1.4; }
+
+.task-file { font-size:11px; font-weight:600; color:#818cf8; background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.18); padding:3px 8px; border-radius:3px; display:inline-block; margin-top:4px; font-family:monospace; }
+.task-file-img { color:#22d3ee; background:rgba(6,182,212,0.08); border-color:rgba(6,182,212,0.18); }
+
+.task-resp { font-size:11px; font-weight:700; color:var(--t40); }
+.task-resp .r-tag { display:inline-block; padding:3px 8px; border-radius:3px; font-size:10px; letter-spacing:0.5px; }
+.r-claude { background:rgba(99,102,241,0.1); color:#a5b4fc; border:1px solid rgba(99,102,241,0.2); }
+.r-cliente { background:rgba(251,191,36,0.1); color:#fbbf24; border:1px solid rgba(251,191,36,0.2); }
+.r-designer { background:rgba(244,114,182,0.1); color:#f472b6; border:1px solid rgba(244,114,182,0.2); }
+.r-gpt { background:rgba(52,211,153,0.1); color:#34d399; border:1px solid rgba(52,211,153,0.2); }
+
+/* FOOTER */
+footer { background:var(--az2); border-top:1px solid var(--t08); padding:22px 60px; display:flex; justify-content:space-between; align-items:center; }
+footer span { font-size:12px; color:var(--t40); }
+footer strong { color:var(--or); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-inner">
+    <div>
+      <div class="hd-logo">ME<span>P</span></div>
+      <div class="hd-title">Painel do <em>Projeto</em></div>
+      <div class="hd-sub">Controle de entregas — Marketing Digital · Junho 2026</div>
+    </div>
+    <div class="hd-stats">
+      <div class="hd-stat"><div class="sv sv-ok">8</div><div class="sl">Concluido</div></div>
+      <div class="hd-stat"><div class="sv sv-wip">6</div><div class="sl">Andamento</div></div>
+      <div class="hd-stat"><div class="sv sv-nd">14</div><div class="sl">Pendente</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGENDA -->
+<div class="legend">
+  <div class="lg"><div class="lg-dot" style="background:var(--ok)"></div> Concluido</div>
+  <div class="lg"><div class="lg-dot" style="background:var(--or)"></div> Em andamento</div>
+  <div class="lg"><div class="lg-dot" style="background:rgba(255,255,255,0.2)"></div> Pendente</div>
+  <div class="lg"><div class="lg-dot" style="background:#f87171"></div> Bloqueado (aguarda cliente)</div>
+  &nbsp;·&nbsp;
+  <div class="lg"><span class="r-tag r-claude" style="font-size:10px;padding:2px 7px;">Claude</span> eu faço</div>
+  <div class="lg"><span class="r-tag r-gpt" style="font-size:10px;padding:2px 7px;">GPT</span> gerar imagem</div>
+  <div class="lg"><span class="r-tag r-cliente" style="font-size:10px;padding:2px 7px;">Cliente</span> aprovacao/acao</div>
+  <div class="lg"><span class="r-tag r-designer" style="font-size:10px;padding:2px 7px;">Designer</span> arte final</div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- 1. EMBALAGENS -->
+  <div class="cat">
+    <div class="cat-header">
+      <span class="cat-icon">📦</span>
+      <span class="cat-title">Embalagens e Rotulos</span>
+      <span class="cat-count">6 tarefas</span>
+    </div>
+    <div class="task-table">
+      <div class="task-head">
+        <span></span><span>Entrega</span><span>Status</span><span>Responsavel</span><span>Arquivo</span>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check ok">✓</div>
+        <div>
+          <div class="task-nome">Rotulo balde 25kg — MEP Massas</div>
+          <div class="task-detalhe">Foto real do produto com rotulo aplicado</div>
+          <span class="task-file task-file-img">balde-25kg-v2.png.png</span>
+        </div>
+        <div><span class="sb sb-ok">Concluido</span></div>
+        <div><span class="r-tag r-cliente">Cliente</span></div>
+        <div>✓</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check ok">✓</div>
+        <div>
+          <div class="task-nome">Rotulo barrica 25kg — MEP Massas</div>
+          <div class="task-detalhe">Imagem gerada com identidade MEP</div>
+          <span class="task-file task-file-img">barrica-25kg.png.png</span>
+        </div>
+        <div><span class="sb sb-ok">Concluido</span></div>
+        <div><span class="r-tag r-gpt">GPT</span></div>
+        <div>✓</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check wip">↻</div>
+        <div>
+          <div class="task-nome">Saco aplicador 3kg — versao final</div>
+          <div class="task-detalhe">V1 ok, v2 com mais informacao (diferenciais, rendimento, icones) — prompt pronto, falta gerar</div>
+          <span class="task-file task-file-img">bisnaga-3kg.png.png</span>
+        </div>
+        <div><span class="sb sb-wip">Gerando</span></div>
+        <div><span class="r-tag r-gpt">GPT</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check wip">↻</div>
+        <div>
+          <div class="task-nome">Saco aplicador 1kg — versao final</div>
+          <div class="task-detalhe">Mesmo prompt do 3kg, tamanho menor. Prompt pronto, falta gerar.</div>
+        </div>
+        <div><span class="sb sb-wip">Gerando</span></div>
+        <div><span class="r-tag r-gpt">GPT</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check block">!</div>
+        <div>
+          <div class="task-nome dim">Arte final rotulo balde 14L — MEP COLOR</div>
+          <div class="task-detalhe">Adaptar arte PrudenCOLLOR: trocar logo, navy + laranja, manter dimensoes 41,7×19,2cm</div>
+        </div>
+        <div><span class="sb sb-block">Aguarda</span></div>
+        <div><span class="r-tag r-designer">Designer</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check block">!</div>
+        <div>
+          <div class="task-nome dim">Arte final rotulo balde 3,6L — MEP COLOR</div>
+          <div class="task-detalhe">Adaptar arte PrudenCOLLOR: mesma estrutura, dimensoes 24,6×14,1cm</div>
+        </div>
+        <div><span class="sb sb-block">Aguarda</span></div>
+        <div><span class="r-tag r-designer">Designer</span></div>
+        <div>—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. SITE -->
+  <div class="cat">
+    <div class="cat-header">
+      <span class="cat-icon">🌐</span>
+      <span class="cat-title">Site Institucional</span>
+      <span class="cat-count">5 tarefas</span>
+    </div>
+    <div class="task-table">
+      <div class="task-head">
+        <span></span><span>Entrega</span><span>Status</span><span>Responsavel</span><span>Arquivo</span>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check ok">✓</div>
+        <div>
+          <div class="task-nome">Site v3 — MEP Massas + MEP COLOR</div>
+          <div class="task-detalhe">Hero com foto real, 4 produtos MEP Massas, secao MEP COLOR, comparativo, como usar, contato</div>
+          <span class="task-file">site-mep-v3.html</span>
+        </div>
+        <div><span class="sb sb-ok">Concluido</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>✓</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check wip">↻</div>
+        <div>
+          <div class="task-nome">Atualizar site com sacos aplicadores v2</div>
+          <div class="task-detalhe">Substituir imagens das bisnagas quando as versoes finais estiverem prontas</div>
+        </div>
+        <div><span class="sb sb-wip">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check block">!</div>
+        <div>
+          <div class="task-nome dim">Publicar no dominio mepmassa.com.br</div>
+          <div class="task-detalhe">Subir os arquivos no servidor de hospedagem</div>
+        </div>
+        <div><span class="sb sb-block">Aguarda</span></div>
+        <div><span class="r-tag r-cliente">Cliente</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Instalar Pixel Meta + Google Tag</div>
+          <div class="task-detalhe">Obrigatorio antes de iniciar anuncios pagos. Precisa de acesso ao painel do site.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Google Meu Negocio</div>
+          <div class="task-detalhe">Perfil empresarial com fotos, categoria, horario e contato. Aparece no Maps e busca local.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-cliente">Cliente</span></div>
+        <div>—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. INSTAGRAM / CONTEUDO -->
+  <div class="cat">
+    <div class="cat-header">
+      <span class="cat-icon">📱</span>
+      <span class="cat-title">Instagram e Conteudo</span>
+      <span class="cat-count">6 tarefas</span>
+    </div>
+    <div class="task-table">
+      <div class="task-head">
+        <span></span><span>Entrega</span><span>Status</span><span>Responsavel</span><span>Arquivo</span>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check ok">✓</div>
+        <div>
+          <div class="task-nome">Prompts para carrossel MEP COLOR (6 slides)</div>
+          <div class="task-detalhe">Capa com os 4 baldes + 1 slide por linha + CTA. Prompts prontos para gerar no GPT.</div>
+        </div>
+        <div><span class="sb sb-ok">Pronto</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>✓</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check ok">✓</div>
+        <div>
+          <div class="task-nome">Prompts para carrossel MEP Massas (5 slides)</div>
+          <div class="task-detalhe">Produto hero, obra real, comparativo, linha completa, resultado. Prompts prontos.</div>
+        </div>
+        <div><span class="sb sb-ok">Pronto</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>✓</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check wip">↻</div>
+        <div>
+          <div class="task-nome">Gerar imagens dos carrosseis no GPT</div>
+          <div class="task-detalhe">11 imagens no total — usar os prompts que o Claude gerou. Capa do MEP COLOR ja foi gerada.</div>
+        </div>
+        <div><span class="sb sb-wip">Gerando</span></div>
+        <div><span class="r-tag r-gpt">GPT</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Montar layout dos carrosseis com copy</div>
+          <div class="task-detalhe">Adicionar textos, headlines e CTA sobre as imagens — Canva ou HTML</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Calendario editorial — 30 dias</div>
+          <div class="task-detalhe">Plano de publicacao com datas, formatos e temas. Instagram orgânico.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Briefing para Reels de aplicacao</div>
+          <div class="task-detalhe">Roteiro de video mostrando o saco aplicador em uso real na obra. Gravar com cliente.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. ANUNCIOS PAGOS -->
+  <div class="cat">
+    <div class="cat-header">
+      <span class="cat-icon">📣</span>
+      <span class="cat-title">Anuncios Pagos</span>
+      <span class="cat-count">4 tarefas · apos site publicado</span>
+    </div>
+    <div class="task-table">
+      <div class="task-head">
+        <span></span><span>Entrega</span><span>Status</span><span>Responsavel</span><span>Arquivo</span>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Meta Ads — campanha MEP Massas</div>
+          <div class="task-detalhe">Publico: construtoras, engenheiros, arquitetos. Criativo: carrossel de diferenciais. Objetivo: leads.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Meta Ads — campanha MEP COLOR</div>
+          <div class="task-detalhe">Publico: pintores, construtoras, revendas. Criativo: carrossel colorido 4 produtos.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Google Ads — busca</div>
+          <div class="task-detalhe">Palavras-chave: argamassa polimerica, massa pronta alvenaria, tinta para obra. CTA para calculadora.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Remarketing — visitantes do site</div>
+          <div class="task-detalhe">Anuncio para quem visitou mas nao converteu. Criativo com prova social.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 5. CAPTACAO -->
+  <div class="cat">
+    <div class="cat-header">
+      <span class="cat-icon">🎯</span>
+      <span class="cat-title">Captacao e Relacionamento</span>
+      <span class="cat-count">3 tarefas</span>
+    </div>
+    <div class="task-table">
+      <div class="task-head">
+        <span></span><span>Entrega</span><span>Status</span><span>Responsavel</span><span>Arquivo</span>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Landing page de captacao</div>
+          <div class="task-detalhe">Pagina focada em conversao para campanhas pagas. Formulario + prova social + calculadora.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Sequencia de follow-up WhatsApp</div>
+          <div class="task-detalhe">3 a 5 mensagens para leads que preencheram formulario. Conteudo de valor + CTA comercial.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+      <div class="task-row">
+        <div class="task-check nd"></div>
+        <div>
+          <div class="task-nome dim">Relatorio mensal de resultados</div>
+          <div class="task-detalhe">Leads gerados, custo por lead, alcance, conversoes. Template padrao para enviar ao cliente todo mes.</div>
+        </div>
+        <div><span class="sb sb-nd">Pendente</span></div>
+        <div><span class="r-tag r-claude">Claude</span></div>
+        <div>—</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROXIMOS 3 PASSOS -->
+  <div style="background:rgba(242,140,40,0.06);border:1px solid rgba(242,140,40,0.2);border-radius:10px;padding:28px 32px;">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--or);margin-bottom:16px;">Proximos 3 passos — fazer agora</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="width:26px;height:26px;border-radius:50%;background:rgba(242,140,40,0.15);border:1.5px solid rgba(242,140,40,0.4);color:var(--or);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#fff;">Gerar sacos aplicadores 3kg e 1kg v2 no GPT</div>
+          <div style="font-size:12px;color:var(--t40);margin-top:3px;">Usar o prompt detalhado (estilo Argapoli) que o Claude gerou. Salvar como bisnaga-3kg-v2.png.png e bisnaga-1kg-v2.png.png na pasta saidas.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="width:26px;height:26px;border-radius:50%;background:rgba(242,140,40,0.15);border:1.5px solid rgba(242,140,40,0.4);color:var(--or);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#fff;">Gerar imagens dos carrosseis no GPT</div>
+          <div style="font-size:12px;color:var(--t40);margin-top:3px;">11 imagens no total — prompts ja estao prontos. Salvar na pasta saidas. Depois o Claude monta o layout com o copy.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div style="width:26px;height:26px;border-radius:50%;background:rgba(242,140,40,0.15);border:1.5px solid rgba(242,140,40,0.4);color:var(--or);font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#fff;">Publicar o site no mepmassa.com.br</div>
+          <div style="font-size:12px;color:var(--t40);margin-top:3px;">Subir os arquivos no servidor. Depois o Claude instala o Pixel Meta e Google Tag para habilitar os anuncios pagos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>MEP Industria · <strong>argamassamep@gmail.com</strong> · (18) 99688-1384</span>
+  <span>Painel do Projeto · Junho 2026</span>
+</footer>
+
+</body>
+</html>

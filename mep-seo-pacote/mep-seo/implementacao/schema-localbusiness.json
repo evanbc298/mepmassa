@@ -1,0 +1,180 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.mep.ind.br/#organization",
+  "name": "MEP Indústria",
+  "alternateName": ["MEP Massas", "MEP COLOR Tintas"],
+  "description": "Indústria de argamassa polimérica pronta para uso e linha completa de tintas para construção civil. Atendemos construtoras, engenheiros, arquitetos e consumidores finais em Santa Catarina.",
+  "url": "https://www.mep.ind.br",
+  "telephone": "+55-47-99695-8399",
+  "email": "ind.mepmassas@gmail.com",
+  "priceRange": "$$",
+  "currenciesAccepted": "BRL",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer, PIX, Invoice",
+  "image": "https://www.mep.ind.br/logo-mep.svg",
+  "logo": "https://www.mep.ind.br/logo-mep.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ATUALIZAR COM RUA E NÚMERO",
+    "addressLocality": "Balneário Camboriú",
+    "addressRegion": "SC",
+    "postalCode": "ATUALIZAR COM CEP",
+    "addressCountry": "BR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -26.9905,
+    "longitude": -48.6347
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "12:00"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Balneário Camboriú"
+    },
+    {
+      "@type": "City",
+      "name": "Itajaí"
+    },
+    {
+      "@type": "City",
+      "name": "Blumenau"
+    },
+    {
+      "@type": "City",
+      "name": "Florianópolis"
+    },
+    {
+      "@type": "City",
+      "name": "Joinville"
+    },
+    {
+      "@type": "State",
+      "name": "Santa Catarina"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/mep20.25",
+    "https://wa.me/5547996958399"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Catálogo MEP",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "MEP Massas — Argamassa Polimérica",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP Massas — Balde 25kg",
+              "description": "Argamassa polimérica pronta para uso. Para alvenaria de vedação, muros, churrasqueiras e reparos.",
+              "brand": {"@type": "Brand", "name": "MEP"},
+              "category": "Argamassa"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP Massas — Barrica 25kg",
+              "description": "Argamassa polimérica em barrica para obras de grande porte.",
+              "brand": {"@type": "Brand", "name": "MEP"},
+              "category": "Argamassa"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP Massas — Bisnaga 3kg",
+              "description": "Argamassa polimérica em bisnaga para pequenos reparos.",
+              "brand": {"@type": "Brand", "name": "MEP"},
+              "category": "Argamassa"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP Massas — Bisnaga 1kg",
+              "description": "Argamassa polimérica em bisnaga para reparos rápidos.",
+              "brand": {"@type": "Brand", "name": "MEP"},
+              "category": "Argamassa"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "MEP COLOR — Tintas para Construção Civil",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP COLOR Premium",
+              "description": "Tinta premium de acabamento superior para ambientes internos e externos.",
+              "brand": {"@type": "Brand", "name": "MEP COLOR"},
+              "category": "Tinta"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP COLOR Esmalte",
+              "description": "Esmalte sintético de alta durabilidade para madeiras e metais.",
+              "brand": {"@type": "Brand", "name": "MEP COLOR"},
+              "category": "Tinta"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP COLOR Pisos e Quadras",
+              "description": "Tinta de alta resistência para pisos, quadras esportivas e áreas de circulação.",
+              "brand": {"@type": "Brand", "name": "MEP COLOR"},
+              "category": "Tinta"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "MEP COLOR Econômica",
+              "description": "Tinta acrílica de excelente custo-benefício para grandes áreas.",
+              "brand": {"@type": "Brand", "name": "MEP COLOR"},
+              "category": "Tinta"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "47",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+</script>

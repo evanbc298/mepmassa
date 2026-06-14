@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Apresentação de Rótulos 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --az:#1A2B4D; --or:#F28C28; --bg:#07101e;
+  --t72: rgba(255,255,255,.72); --t40:rgba(255,255,255,.40);
+  --t16:rgba(255,255,255,.16); --t08:rgba(255,255,255,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:#fff;overflow-x:hidden}
+
+/* ─── UTILITIES ─── */
+.tag{font-size:10px;font-weight:800;letter-spacing:5px;text-transform:uppercase;color:var(--or)}
+.rule{border:none;border-top:1px solid var(--t08);margin:0}
+strong{font-weight:700}
+
+/* ─── CAPA ─── */
+.capa{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:80px 72px;position:relative;overflow:hidden;
+}
+.capa-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#02080F 0%,#0D1F3A 55%,#1A2B4D 100%);
+}
+.capa-glow{
+  position:absolute;bottom:-200px;right:-100px;
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(242,140,40,.18) 0%,transparent 65%);
+  pointer-events:none;
+}
+.capa-glow2{
+  position:absolute;top:-100px;left:30%;
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(26,43,77,.8) 0%,transparent 70%);
+  pointer-events:none;
+}
+.capa-content{position:relative;z-index:1;max-width:900px}
+.capa-tag{margin-bottom:28px}
+.capa-h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(72px,11vw,140px);font-weight:900;line-height:.88;
+  letter-spacing:-3px;text-transform:uppercase;margin-bottom:36px;
+}
+.capa-h1 span{color:var(--or)}
+.capa-sub{
+  font-size:clamp(15px,2vw,18px);font-weight:300;color:var(--t72);
+  max-width:560px;line-height:1.7;margin-bottom:56px;
+}
+.capa-pills{display:flex;gap:12px;flex-wrap:wrap}
+.pill{
+  padding:8px 18px;border-radius:4px;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  border:1px solid var(--t16);color:var(--t72);
+}
+.pill.active{background:var(--or);border-color:var(--or);color:#fff}
+.capa-scroll{
+  position:absolute;bottom:40px;right:72px;z-index:1;
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--t40);
+}
+.scroll-line{width:40px;height:1px;background:var(--t16)}
+
+/* ─── NAV ─── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(7,16,30,.90);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--t08);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 72px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;
+  text-decoration:none;color:#fff;padding:14px 0;
+}
+.nav-logo span{color:var(--or)}
+.nav-links{display:flex;gap:0}
+.nav-links a{
+  padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--t40);text-decoration:none;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s;
+}
+.nav-links a:hover{color:#fff;border-color:var(--or)}
+
+/* ─── SECTION BASE ─── */
+.sec{max-width:1280px;margin:0 auto;padding:120px 72px}
+.sec-sm{max-width:1280px;margin:0 auto;padding:80px 72px}
+@media(max-width:900px){.sec,.sec-sm{padding:80px 32px}}
+.sec-head{margin-bottom:72px}
+.sec-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(140px,20vw,220px);
+  font-weight:900;line-height:.8;letter-spacing:-6px;
+  color:rgba(255,255,255,.04);position:absolute;top:-20px;left:60px;
+  pointer-events:none;user-select:none;
+}
+.sec-wrap{position:relative}
+.sec-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(44px,6vw,72px);font-weight:900;line-height:.95;
+  text-transform:uppercase;letter-spacing:-1.5px;margin-top:16px;
+}
+.sec-title em{color:var(--or);font-style:normal}
+.sec-desc{margin-top:20px;font-size:16px;color:var(--t72);max-width:600px;line-height:1.75;font-weight:300}
+
+/* ─── ARQUITETURA ─── */
+.arq-cols{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+@media(max-width:700px){.arq-cols{grid-template-columns:1fr}}
+.arq-col{
+  background:rgba(255,255,255,.03);border:1px solid var(--t08);
+  padding:48px 40px;
+}
+.arq-col:hover{background:rgba(255,255,255,.05)}
+.arq-col-tag{margin-bottom:20px}
+.arq-col-h{
+  font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;
+  text-transform:uppercase;line-height:1;letter-spacing:-.5px;margin-bottom:20px;
+}
+.arq-col-h em{color:var(--or);font-style:normal}
+.arq-col p{font-size:14px;color:var(--t72);line-height:1.75;font-weight:300}
+.arq-col p+p{margin-top:12px}
+.arq-col-bar{height:3px;background:var(--or);width:48px;margin-bottom:24px}
+
+/* ─── MEP MASSAS HERO ─── */
+.massas-hero{
+  position:relative;height:70vh;min-height:500px;overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.massas-hero img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;
+  filter:brightness(.45);
+}
+.massas-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(7,16,30,1) 0%,rgba(7,16,30,.3) 60%,transparent 100%);
+}
+.massas-hero-content{
+  position:relative;z-index:1;padding:72px;max-width:900px;
+}
+.massas-hero-content h2{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(52px,8vw,96px);font-weight:900;line-height:.9;
+  text-transform:uppercase;letter-spacing:-2px;margin:16px 0 24px;
+}
+.massas-hero-content h2 em{color:var(--or);font-style:normal}
+.massas-hero-content p{font-size:16px;color:var(--t72);font-weight:300;max-width:520px;line-height:1.7}
+
+/* ─── MASSAS ROTULO SECTION ─── */
+.massas-rotulo{
+  display:grid;grid-template-columns:340px 1fr;gap:80px;align-items:start;
+}
+@media(max-width:1000px){.massas-rotulo{grid-template-columns:1fr;gap:48px}}
+
+/* CSS label mockup — melhorado */
+.label-stack{display:flex;flex-direction:column;align-items:center;gap:32px}
+.label-caption{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--t40)}
+
+.label-25{
+  width:300px;
+  border-radius:10px;overflow:hidden;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.08),
+    0 40px 100px rgba(0,0,0,.7),
+    0 0 80px rgba(242,140,40,.12);
+}
+.lb-top{
+  background:var(--or);padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.lb-top-logo{
+  display:flex;align-items:center;gap:10px;
+}
+.lb-top-brand{font-weight:900;font-size:22px;color:#fff;letter-spacing:-.5px}
+.lb-top-cert{font-size:8px;font-weight:700;color:rgba(255,255,255,.6);text-align:right;line-height:1.4;text-transform:uppercase;letter-spacing:.5px}
+.lb-mid{background:var(--az);padding:18px 20px 20px}
+.lb-ptu{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--or);color:#fff;
+  font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 12px 5px 8px;border-radius:20px;margin-bottom:14px;
+}
+.lb-ptu-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5)}
+.lb-nome{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:52px;line-height:.88;color:#fff;
+  text-transform:uppercase;letter-spacing:-1px;margin-bottom:16px;
+}
+.lb-4x{
+  background:var(--or);border-radius:8px;
+  padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.lb-4x-n{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:38px;color:#fff;line-height:1;
+}
+.lb-4x-t{font-size:10px;font-weight:700;color:rgba(255,255,255,.85);text-transform:uppercase;line-height:1.35}
+.lb-bens{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.lb-bens li{
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:600;color:rgba(255,255,255,.75);text-transform:uppercase;letter-spacing:.5px;
+}
+.lb-ico{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(242,140,40,.15);border:1px solid rgba(242,140,40,.4);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--or);font-size:10px;flex-shrink:0;
+}
+.lb-tec{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:12px;
+  font-size:9px;color:rgba(255,255,255,.38);font-weight:600;text-transform:uppercase;letter-spacing:.5px;line-height:1.7;
+}
+.lb-tec b{color:rgba(255,255,255,.55)}
+.lb-bot{
+  background:#0a1829;padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.lb-bot-info{font-size:8px;color:rgba(255,255,255,.28);font-weight:600;text-transform:uppercase;letter-spacing:.5px;line-height:1.7}
+.lb-qr{
+  width:32px;height:32px;background:#fff;border-radius:3px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1.5px;padding:3px;flex-shrink:0;
+}
+.lb-qr span{background:#1A2B4D;border-radius:1px}
+.lb-qr span:nth-child(3),.lb-qr span:nth-child(7),.lb-qr span:nth-child(12),.lb-qr span:nth-child(18),.lb-qr span:nth-child(22){background:transparent}
+.lb-kg{
+  background:var(--or);border-radius:6px;
+  padding:5px 10px;text-align:center;font-weight:900;font-size:13px;color:#fff;line-height:1.2;
+}
+.lb-kg small{display:block;font-size:8px;font-weight:600;opacity:.75;text-transform:uppercase}
+
+/* bisnaga label */
+.label-bsn{
+  width:110px;border-radius:8px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.07);
+}
+.bsn-top{background:var(--or);padding:8px 10px;display:flex;align-items:center;gap:6px}
+.bsn-brand{font-weight:900;font-size:12px;color:#fff}
+.bsn-body{background:var(--az);padding:10px;text-align:center}
+.bsn-tag{font-size:6px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--or);margin-bottom:5px}
+.bsn-nome{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;
+  color:#fff;text-transform:uppercase;line-height:.95;margin-bottom:7px;
+}
+.bsn-kg{
+  display:inline-block;background:var(--or);color:#fff;
+  font-size:8px;font-weight:900;padding:3px 8px;border-radius:4px;text-transform:uppercase;
+}
+
+/* balde photo */
+.balde-photo-wrap{
+  position:relative;margin-bottom:8px;
+}
+.balde-photo-wrap img{
+  width:300px;border-radius:10px;
+  box-shadow:0 40px 80px rgba(0,0,0,.7);
+  filter:brightness(.9) contrast(1.05);
+}
+.balde-photo-badge{
+  position:absolute;bottom:16px;left:16px;right:16px;
+  background:rgba(7,16,30,.88);backdrop-filter:blur(10px);
+  border:1px solid var(--t08);border-radius:8px;
+  padding:10px 14px;
+  font-size:11px;font-weight:600;color:var(--t72);line-height:1.5;
+  text-align:center;
+}
+
+/* ─── ANNOTATIONS ─── */
+.anots{display:flex;flex-direction:column;gap:36px}
+.anot{display:flex;gap:20px;align-items:flex-start}
+.anot-n{
+  font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;
+  color:rgba(242,140,40,.20);line-height:1;flex-shrink:0;width:52px;text-align:right;
+}
+.anot-body h4{
+  font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;
+  color:#fff;margin-bottom:6px;
+}
+.anot-body p{font-size:14px;color:var(--t72);line-height:1.7;font-weight:300}
+
+/* ─── VARIANTES ─── */
+.var-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:80px}
+@media(max-width:1100px){.var-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.var-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:400px){.var-grid{grid-template-columns:1fr}}
+.var-card{
+  padding:0;background:rgba(255,255,255,.03);
+  border:1px solid var(--t08);
+  transition:background .2s;
+  overflow:hidden;
+}
+.var-card:hover{background:rgba(255,255,255,.05)}
+.var-card-img{
+  height:260px;overflow:hidden;position:relative;
+  background:#111a28;
+  display:flex;align-items:center;justify-content:center;
+}
+.var-card-img img{
+  width:100%;height:100%;object-fit:contain;
+  padding:16px;
+  filter:brightness(1.05);
+  transition:transform .5s ease;
+}
+.var-card:hover .var-card-img img{transform:scale(1.06)}
+.var-card-body{padding:32px 32px 36px}
+.var-card-tag{margin-bottom:16px}
+.var-card h3{
+  font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;
+  text-transform:uppercase;letter-spacing:-.3px;margin-bottom:16px;
+}
+.var-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.var-card li{
+  font-size:13px;color:var(--t72);display:flex;align-items:flex-start;gap:10px;font-weight:300;
+}
+.var-card li::before{
+  content:'';width:5px;height:5px;border-radius:50%;background:var(--or);
+  flex-shrink:0;margin-top:7px;
+}
+
+/* ─── COLOR SECTION HEADER ─── */
+.color-brand-row{
+  display:flex;align-items:center;gap:24px;margin-bottom:80px;
+  padding:40px 48px;
+  background:rgba(255,255,255,.02);border:1px solid var(--t08);border-radius:2px;
+}
+.color-brand-logo{
+  display:flex;align-items:center;gap:14px;flex-shrink:0;
+}
+.color-brand-name{
+  font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;
+  line-height:1;letter-spacing:-1px;
+}
+.color-brand-name em{color:var(--or);font-style:normal}
+.color-brand-sub{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--t40);margin-top:4px}
+.color-brand-divider{width:1px;height:60px;background:var(--t08);flex-shrink:0}
+.color-brand-desc{font-size:15px;color:var(--t72);line-height:1.75;font-weight:300}
+
+/* ─── COLOR PRODUCT ROWS ─── */
+.color-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--t08);border-radius:2px;overflow:hidden;
+  margin-bottom:3px;
+  transition:box-shadow .3s;
+}
+.color-row:hover{box-shadow:0 20px 60px rgba(0,0,0,.4)}
+@media(max-width:900px){.color-row{grid-template-columns:1fr}}
+
+.color-row-img{
+  position:relative;overflow:hidden;min-height:460px;
+}
+.color-row-img img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;
+  padding:24px;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));
+  z-index:1;
+  transition:transform .4s ease;
+}
+.color-row:hover .color-row-img img{transform:scale(1.05)}
+.color-row-glow{
+  position:absolute;inset:0;opacity:.35;
+  background:radial-gradient(circle at 50% 60%,var(--glow-color,#F28C28) 0%,transparent 65%);
+  pointer-events:none;
+}
+.color-row-info{
+  padding:52px 48px;display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--t08);
+}
+@media(max-width:900px){.color-row-info{border-left:none;border-top:1px solid var(--t08)}}
+
+.cr-badge{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;
+}
+.cr-badge-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cr-badge-txt{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--t72)}
+
+.cr-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(42px,5vw,64px);font-weight:900;line-height:.95;
+  text-transform:uppercase;letter-spacing:-1px;margin-bottom:24px;
+}
+.cr-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.cr-pill{
+  font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 12px;border-radius:3px;
+  background:rgba(255,255,255,.05);color:var(--t40);
+  border:1px solid var(--t08);
+}
+.cr-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.cr-feats li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--t72);font-weight:300;line-height:1.5}
+.cr-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.cr-rationale{
+  padding:16px 18px;
+  border-left:2px solid var(--t08);
+  background:rgba(255,255,255,.02);
+}
+.cr-rationale-label{font-size:8px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--t40);margin-bottom:6px}
+.cr-rationale p{font-size:13px;color:var(--t40);line-height:1.65;font-style:italic;font-weight:300}
+.cr-swatches{display:flex;align-items:center;gap:6px;margin-top:20px;flex-wrap:wrap}
+.cr-swatch{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12)}
+.cr-swatch-mais{font-size:10px;color:var(--t40);font-weight:600;margin-left:4px}
+.cr-volume{margin-top:14px;font-size:12px;color:var(--t40)}
+.cr-volume strong{font-size:18px;color:var(--t72)}
+
+.placeholder-balde{
+  width:220px;height:260px;
+  border-radius:8px;
+  border:1px dashed rgba(255,255,255,.10);
+  background:rgba(255,255,255,.02);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;
+  color:var(--t40);font-size:12px;text-align:center;font-style:italic;
+}
+
+/* ─── PRINCIPIOS ─── */
+.princ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+@media(max-width:800px){.princ-grid{grid-template-columns:1fr}}
+.princ-card{
+  padding:40px 32px;background:rgba(255,255,255,.03);
+  border:1px solid var(--t08);
+  position:relative;overflow:hidden;
+}
+.princ-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--or);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.princ-card:hover::before{transform:scaleX(1)}
+.princ-bg-num{
+  position:absolute;bottom:-20px;right:-10px;
+  font-family:'Barlow Condensed',sans-serif;font-size:120px;font-weight:900;
+  color:rgba(255,255,255,.03);line-height:1;pointer-events:none;
+}
+.princ-icon{
+  width:44px;height:44px;border-radius:8px;
+  background:rgba(242,140,40,.08);border:1px solid rgba(242,140,40,.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:20px;
+}
+.princ-card h4{
+  font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;
+  color:#fff;margin-bottom:10px;
+}
+.princ-card p{font-size:13px;color:var(--t72);line-height:1.7;font-weight:300}
+
+/* ─── FOOTER ─── */
+.footer{
+  padding:64px 72px;border-top:1px solid var(--t08);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+}
+.footer-brand{
+  font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;letter-spacing:-.5px;
+}
+.footer-brand em{color:var(--or);font-style:normal}
+.footer-info{font-size:12px;color:var(--t40);line-height:1.8}
+.footer-info a{color:var(--or);text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- ══ CAPA ══ -->
+<section class="capa">
+  <div class="capa-bg"></div>
+  <div class="capa-glow"></div>
+  <div class="capa-glow2"></div>
+  <div class="capa-content">
+    <p class="tag capa-tag">Apresentação Interna · Junho 2026</p>
+    <h1 class="capa-h1">Rótulos<br><span>MEP</span></h1>
+    <p class="capa-sub">O conceito visual de cada embalagem — MEP Massas e MEP COLOR — e a lógica de cada decisão de design.</p>
+    <div class="capa-pills">
+      <div class="pill active">MEP Massas</div>
+      <div class="pill">MEP COLOR</div>
+      <div class="pill">Identidade Unificada</div>
+    </div>
+  </div>
+  <div class="capa-scroll">
+    <div class="scroll-line"></div>
+    <span>Rolar para ver</span>
+  </div>
+</section>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <a class="nav-logo" href="#">
+    <svg width="24" height="21" viewBox="0 0 100 86" fill="none">
+      <polygon points="50,0 100,25 50,50 0,25" fill="#fff"/>
+      <polygon points="0,25 50,50 50,86 0,61" fill="#1A2B4D"/>
+      <polygon points="100,25 50,50 50,86 100,61" fill="#F28C28"/>
+    </svg>
+    MEP <span>&nbsp;INDÚSTRIA</span>
+  </a>
+  <div class="nav-links">
+    <a href="#arquitetura">Arquitetura</a>
+    <a href="#massas">MEP Massas</a>
+    <a href="#color">MEP COLOR</a>
+    <a href="#principios">Princípios</a>
+  </div>
+</nav>
+
+<!-- ══ 01 ARQUITETURA ══ -->
+<div id="arquitetura">
+  <div class="sec">
+    <div class="sec-head sec-wrap">
+      <div class="sec-num">01</div>
+      <p class="tag">01 — Arquitetura de Marca</p>
+      <h2 class="sec-title">Uma marca,<br><em>duas linhas</em></h2>
+      <p class="sec-desc">MEP é a marca guarda-chuva. Abaixo dela, dois produtos com identidade própria — mas a mesma linguagem visual: industrial, técnica e direta.</p>
+    </div>
+    <div class="arq-cols">
+      <div class="arq-col">
+        <div class="arq-col-bar"></div>
+        <p class="tag arq-col-tag">Linha 01</p>
+        <div class="arq-col-h">MEP <em>Massas</em></div>
+        <p>Argamassa polimérica pronta para uso. Produto principal da indústria, voltado para assentamento de alvenaria de vedação.</p>
+        <p style="margin-top:12px">Público: pedreiros, mestres de obras, engenheiros e diretores de construtoras.</p>
+        <p style="margin-top:12px"><strong>Identidade:</strong> azul escuro dominante, laranja como destaque técnico. Rótulo com hierarquia clara — o benefício principal em destaque máximo.</p>
+      </div>
+      <div class="arq-col">
+        <div class="arq-col-bar" style="background:linear-gradient(90deg,#C9A84C,var(--or))"></div>
+        <p class="tag arq-col-tag">Linha 02</p>
+        <div class="arq-col-h">MEP <em>COLOR</em></div>
+        <p>Linha completa de tintas para construção civil e acabamento profissional. Modelo white-label com rótulo MEP COLOR.</p>
+        <p style="margin-top:12px">Público: pintores, aplicadores, construtoras e distribuidores de materiais de construção.</p>
+        <p style="margin-top:12px"><strong>Identidade:</strong> mesma base azul escuro da marca, com faixa de cor diferenciando cada linha no ponto de venda.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ══ 02 MEP MASSAS ══ -->
+<div id="massas">
+
+  <!-- HERO FOTO -->
+  <div class="massas-hero">
+    <img src="obra-alvenaria.png" alt="Obra com MEP Massas">
+    <div class="massas-hero-overlay"></div>
+    <div class="massas-hero-content">
+      <p class="tag">02 — MEP Massas</p>
+      <h2>O rótulo do<br>produto <em>principal</em></h2>
+      <p>Cada elemento do rótulo foi projetado para funcionar como vendedor silencioso no canteiro — capturar atenção, comunicar o benefício central e gerar credibilidade técnica, nessa ordem.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="massas-rotulo">
+
+      <!-- COLUNA ESQUERDA: LABEL + BALDE FOTO -->
+      <div class="label-stack">
+
+        <!-- Foto do balde real -->
+        <div class="balde-photo-wrap">
+          <img src="mep-massas-balde.png" alt="Balde MEP Massas" style="width:300px;border-radius:10px;box-shadow:0 40px 80px rgba(0,0,0,.7)">
+          <div class="balde-photo-badge">Balde MEP Massas — produto físico</div>
+        </div>
+
+        <div style="height:24px"></div>
+        <div class="label-caption">Balde 25 kg — produto</div>
+
+        <div class="balde-photo-wrap">
+          <img src="balde-25kg-v2.png.png" alt="Balde MEP Massas 25kg" style="width:300px;border-radius:10px;box-shadow:0 40px 80px rgba(0,0,0,.7)">
+          <div class="balde-photo-badge">Balde 25 kg · Argamassa Polimérica</div>
+        </div>
+
+        <div style="height:40px"></div>
+
+        <!-- Fotos das bisnagas -->
+        <div style="display:flex;gap:20px;align-items:flex-start">
+          <div class="balde-photo-wrap" style="flex:1">
+            <img src="bisnaga-1kg.png.png" alt="Bisnaga MEP 1kg" style="width:100%;border-radius:10px;box-shadow:0 40px 80px rgba(0,0,0,.7)">
+            <div class="balde-photo-badge">1 kg · Amostra</div>
+          </div>
+          <div class="balde-photo-wrap" style="flex:1">
+            <img src="bisnaga-3kg.png.png" alt="Bisnaga MEP 3kg" style="width:100%;border-radius:10px;box-shadow:0 40px 80px rgba(0,0,0,.7)">
+            <div class="balde-photo-badge">3 kg · Aplicação</div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- COLUNA DIREITA: ANOTAÇÕES -->
+      <div class="anots">
+        <div class="anot">
+          <div class="anot-n">1</div>
+          <div class="anot-body">
+            <h4>Banda laranja no topo</h4>
+            <p>A primeira coisa que o olho vê numa prateleira ou no chão do canteiro é o topo do balde. O laranja garante que a MEP seja identificada antes de qualquer outro produto ao redor. O cubo + "MEP" em branco entregam reconhecimento de marca imediato sem nenhuma poluição visual.</p>
+          </div>
+        </div>
+        <div class="anot">
+          <div class="anot-n">2</div>
+          <div class="anot-body">
+            <h4>Tag "Pronto para uso"</h4>
+            <p>A principal objeção de mercado é a desconfiança com algo diferente da betoneira. "Pronto para uso" aparece antes do nome do produto — resolve a dúvida antes de ela surgir. Quem chega sem conhecimento prévio entende o conceito em dois segundos.</p>
+          </div>
+        </div>
+        <div class="anot">
+          <div class="anot-n">3</div>
+          <div class="anot-body">
+            <h4>Nome "Massa MEP" em tamanho máximo</h4>
+            <p>O nome do produto ocupa o maior espaço do rótulo porque é o elemento de busca em obra — o pedreiro pede pelo nome, o encarregado separa pelo nome. Tipografia condensed ultrabold entrega impacto sem precisar de área extra.</p>
+          </div>
+        </div>
+        <div class="anot">
+          <div class="anot-n">4</div>
+          <div class="anot-body">
+            <h4>Badge "4×" como argumento central</h4>
+            <p>O número é o dado mais impactante para quem decide a compra. Velocidade de assentamento 2,5× maior, revestimento 2,7× mais rápido — sintetizados em "4×" como comparativo global do sistema. O badge laranja garante que esse número se destaque mesmo com o balde sujo ou à distância.</p>
+          </div>
+        </div>
+        <div class="anot">
+          <div class="anot-n">5</div>
+          <div class="anot-body">
+            <h4>Três benefícios com ícone geométrico</h4>
+            <p>O canteiro é barulhento e o tempo de leitura é mínimo. Três ícones circulares + texto curto entregam os diferenciais em leitura rápida: tempo de pega (quem programa produção), sem betoneira (quem calcula custo de equipe), economia (quem fecha orçamento). Nenhuma palavra a mais.</p>
+          </div>
+        </div>
+        <div class="anot">
+          <div class="anot-n">6</div>
+          <div class="anot-body">
+            <h4>Rodapé técnico + QR code</h4>
+            <p>Para o engenheiro e o arquiteto que fazem especificação, a resistência 4 MPa e a certificação NBR 13279 precisam estar visíveis. O QR code é a ponte entre o produto físico e o conteúdo digital — aponta para o tutorial de aplicação no site, reduzindo dúvidas no primeiro pedido.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARIANTES -->
+    <div style="margin-top:80px;padding-top:72px;border-top:1px solid var(--t08);margin-bottom:0">
+      <p class="tag" style="margin-bottom:12px">Linha de Formatos</p>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:-1px;margin-bottom:8px">Três embalagens, <em style="color:var(--or);font-style:normal">uma linguagem</em></h3>
+      <p style="font-size:14px;color:var(--t72);font-weight:300;max-width:520px;line-height:1.75;margin-bottom:40px">Do primeiro teste no canteiro até o pallet completo em obra — cada formato carrega a mesma identidade e os mesmos elementos de comunicação.</p>
+    </div>
+    <div class="var-grid" style="margin-top:0">
+      <div class="var-card">
+        <div class="var-card-img">
+          <img src="bisnaga-1kg.png.png" alt="Bisnaga MEP 1kg" style="object-fit:contain">
+        </div>
+        <div class="var-card-body">
+          <p class="tag var-card-tag">Formato 01</p>
+          <h3>Bisnaga<br>1 kg</h3>
+          <ul>
+            <li>Amostra para o primeiro contato — pedreiro testa sem risco</li>
+            <li>Rende até 1 m² de alvenaria</li>
+            <li>Aplicação direta, sem ferramenta adicional</li>
+            <li>Rótulo reduzido mantém hierarquia: logo · produto · peso</li>
+          </ul>
+        </div>
+      </div>
+      <div class="var-card">
+        <div class="var-card-img">
+          <img src="bisnaga-3kg.png.png" alt="Bisnaga MEP 3kg" style="object-fit:contain">
+        </div>
+        <div class="var-card-body">
+          <p class="tag var-card-tag">Formato 02</p>
+          <h3>Bisnaga<br>3 kg</h3>
+          <ul>
+            <li>Formato médio para reparos e obras pontuais</li>
+            <li>Rende até 3 m² de alvenaria</li>
+            <li>Aplicação direta pelo bico — sem colher nem betoneira</li>
+            <li>Mesma hierarquia visual do balde — marca legível no canteiro</li>
+          </ul>
+        </div>
+      </div>
+      <div class="var-card">
+        <div class="var-card-img">
+          <img src="mep-massas-balde.png" alt="Balde MEP Massas 20kg" style="object-position:center 20%">
+        </div>
+        <div class="var-card-body">
+          <p class="tag var-card-tag">Formato 03</p>
+          <h3>Balde<br>20 kg</h3>
+          <ul>
+            <li>Formato intermediário para obras menores ou início de contrato</li>
+            <li>Rende até 20 m² de alvenaria</li>
+            <li>Mesmo layout do balde 25 kg — badge de peso ajustado</li>
+            <li>Reduz a barreira de entrada para testar em escala</li>
+          </ul>
+        </div>
+      </div>
+      <div class="var-card">
+        <div class="var-card-img">
+          <img src="balde-25kg-v2.png.png" alt="Balde MEP Massas 25kg">
+        </div>
+        <div class="var-card-body">
+          <p class="tag var-card-tag">Formato 04</p>
+          <h3>Balde<br>25 kg</h3>
+          <ul>
+            <li>Produto principal — obras de médio e grande porte</li>
+            <li>Rende até 25 m² de alvenaria</li>
+            <li>1 pallet (1.200 kg · 48 baldes) cobre 820 m²</li>
+            <li>Rótulo completo com todos os elementos de comunicação</li>
+          </ul>
+        </div>
+      </div>
+      <div class="var-card">
+        <div class="var-card-img">
+          <img src="barrica-25kg.png.png" alt="Barrica MEP 25kg">
+        </div>
+        <div class="var-card-body">
+          <p class="tag var-card-tag">Formato 05</p>
+          <h3>Barrica<br>25 kg</h3>
+          <ul>
+            <li>Embalagem industrial — redução de custo de produção</li>
+            <li>Rende até 25 m² de alvenaria</li>
+            <li>Tampa preta com corpo branco — mesma identidade de marca</li>
+            <li>Opção para distribuidores e compras em volume</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ══ 03 MEP COLOR ══ -->
+<div id="color">
+  <div class="sec">
+    <div class="sec-head sec-wrap">
+      <div class="sec-num">03</div>
+      <p class="tag">03 — MEP COLOR</p>
+      <h2 class="sec-title">Linha de<br><em>tintas</em></h2>
+      <p class="sec-desc">A MEP COLOR mantém a base azul escuro e a tipografia industrial da marca. A diferença está na faixa de cor de cada linha — sistema visual que cria hierarquia imediata no ponto de venda.</p>
+    </div>
+
+    <!-- INTRO BRAND -->
+    <div class="color-brand-row">
+      <div class="color-brand-logo">
+        <svg width="44" height="38" viewBox="0 0 100 86" fill="none">
+          <defs>
+            <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E63946"/>
+              <stop offset="33%" stop-color="#F28C28"/>
+              <stop offset="66%" stop-color="#FFD60A"/>
+              <stop offset="100%" stop-color="#4CC9F0"/>
+            </linearGradient>
+          </defs>
+          <polygon points="50,0 100,25 50,50 0,25" fill="url(#cg)"/>
+          <polygon points="0,25 50,50 50,86 0,61" fill="#1A2B4D"/>
+          <polygon points="100,25 50,50 50,86 100,61" fill="#F28C28"/>
+        </svg>
+        <div>
+          <div class="color-brand-name">MEP <em>COLOR</em></div>
+          <div class="color-brand-sub">Tintas · Linha Completa</div>
+        </div>
+      </div>
+      <div class="color-brand-divider"></div>
+      <p class="color-brand-desc">
+        O cubo da MEP COLOR usa faces com gradiente multicolorido — o mesmo símbolo da marca, agora comunicando variedade. A faixa de cor no topo de cada balde é o código visual que organiza o portfólio na prateleira: o cliente aprende em uma compra e usa nas próximas.
+      </p>
+    </div>
+
+    <!-- PRODUTO: PREMIUM -->
+    <div class="color-row" style="--glow-color:#C9A84C">
+      <div class="color-row-img" style="background:#0C1A2E">
+        <div class="color-row-glow"></div>
+        <img src="bucket-premium.png" alt="Linha Premium">
+      </div>
+      <div class="color-row-info">
+        <div class="cr-badge">
+          <div class="cr-badge-dot" style="background:#C9A84C"></div>
+          <span class="cr-badge-txt">Linha Premium</span>
+        </div>
+        <div class="cr-title">Tinta<br>Acrílica<br>Premium</div>
+        <div class="cr-pills">
+          <span class="cr-pill">Interior</span>
+          <span class="cr-pill">Exterior</span>
+          <span class="cr-pill">Alvenaria</span>
+        </div>
+        <ul class="cr-feats">
+          <li><div class="cr-dot" style="background:#C9A84C"></div>Alta durabilidade — resistente a intempéries</li>
+          <li><div class="cr-dot" style="background:#C9A84C"></div>Alta cobertura em menos demãos</li>
+          <li><div class="cr-dot" style="background:#C9A84C"></div>Alvenaria interna e externa</li>
+        </ul>
+        <div class="cr-rationale">
+          <div class="cr-rationale-label">Por que dourado</div>
+          <p>O dourado posiciona o produto como o mais valioso da linha antes da leitura. Quem escolhe a Premium quer durabilidade e não quer reparar cedo — o rótulo reforça esse contrato no ponto de venda.</p>
+        </div>
+        <div class="cr-swatches">
+          <div class="cr-swatch" style="background:#fff"></div>
+          <div class="cr-swatch" style="background:#F5F0E8"></div>
+          <div class="cr-swatch" style="background:#E8DCC8"></div>
+          <div class="cr-swatch" style="background:#ADD8E6"></div>
+          <div class="cr-swatch" style="background:#9E9E9E"></div>
+          <div class="cr-swatch" style="background:#D4A5A5"></div>
+          <span class="cr-swatch-mais">+30 cores</span>
+        </div>
+        <div class="cr-volume"><strong>18L</strong> · 3,6L</div>
+      </div>
+    </div>
+
+    <!-- PRODUTO: ECONÔMICA -->
+    <div class="color-row" style="--glow-color:#F28C28">
+      <div class="color-row-info" style="border-left:none;border-right:1px solid var(--t08)">
+        <div class="cr-badge">
+          <div class="cr-badge-dot" style="background:#F28C28"></div>
+          <span class="cr-badge-txt">Linha Econômica</span>
+        </div>
+        <div class="cr-title">Tinta<br>Acrílica<br>Econômica</div>
+        <div class="cr-pills">
+          <span class="cr-pill">Superfícies Internas</span>
+          <span class="cr-pill">Alvenaria</span>
+        </div>
+        <ul class="cr-feats">
+          <li><div class="cr-dot" style="background:#F28C28"></div>Alto rendimento por litro</li>
+          <li><div class="cr-dot" style="background:#F28C28"></div>Fácil aplicação — rolo e brocha</li>
+          <li><div class="cr-dot" style="background:#F28C28"></div>Acabamento nivelado em obra</li>
+        </ul>
+        <div class="cr-rationale">
+          <div class="cr-rationale-label">Por que laranja</div>
+          <p>Laranja da própria marca MEP — reforça energia e acessibilidade sem conotação de baixa qualidade. Econômica em custo, não em resultado.</p>
+        </div>
+        <div class="cr-swatches">
+          <div class="cr-swatch" style="background:#fff"></div>
+          <div class="cr-swatch" style="background:#F8F6F0"></div>
+          <div class="cr-swatch" style="background:#F0EBE0"></div>
+          <div class="cr-swatch" style="background:#DDD5C0"></div>
+          <span class="cr-swatch-mais">+cores</span>
+        </div>
+        <div class="cr-volume"><strong>18L</strong> · 3,6L</div>
+      </div>
+      <div class="color-row-img" style="background:#0C1A2E">
+        <div class="color-row-glow"></div>
+        <img src="bucket-economica.png" alt="Linha Econômica">
+      </div>
+    </div>
+
+    <!-- PRODUTO: PISOS -->
+    <div class="color-row" style="--glow-color:#C1121F">
+      <div class="color-row-img" style="background:#0C1A2E">
+        <div class="color-row-glow"></div>
+        <img src="bucket-pisos.png" alt="Pisos e Quadras">
+      </div>
+      <div class="color-row-info">
+        <div class="cr-badge">
+          <div class="cr-badge-dot" style="background:#C1121F"></div>
+          <span class="cr-badge-txt">Uso Profissional</span>
+        </div>
+        <div class="cr-title">Pisos<br>e Quadras</div>
+        <div class="cr-pills">
+          <span class="cr-pill">Calçadas</span>
+          <span class="cr-pill">Quadras</span>
+          <span class="cr-pill">Cimentados</span>
+          <span class="cr-pill">Pisos</span>
+        </div>
+        <ul class="cr-feats">
+          <li><div class="cr-dot" style="background:#C1121F"></div>Alta resistência ao tráfego pesado</li>
+          <li><div class="cr-dot" style="background:#C1121F"></div>Exterior e interior</li>
+          <li><div class="cr-dot" style="background:#C1121F"></div>Inclui cores de demarcação viária</li>
+        </ul>
+        <div class="cr-rationale">
+          <div class="cr-rationale-label">Por que vermelho</div>
+          <p>Vermelho comunica resistência e intensidade de uso — o mesmo vermelho de sinalização de segurança. Posiciona a linha como produto de trabalho pesado, não de acabamento doméstico.</p>
+        </div>
+        <div class="cr-swatches">
+          <div class="cr-swatch" style="background:#FFD700"></div>
+          <div class="cr-swatch" style="background:#CC1111"></div>
+          <div class="cr-swatch" style="background:#228B22"></div>
+          <div class="cr-swatch" style="background:#808080"></div>
+          <div class="cr-swatch" style="background:#1A237E"></div>
+          <div class="cr-swatch" style="background:#111"></div>
+          <span class="cr-swatch-mais">10 cores</span>
+        </div>
+        <div class="cr-volume"><strong>18L</strong> · 3,6L</div>
+      </div>
+    </div>
+
+    <!-- PRODUTO: ESMALTE -->
+    <div class="color-row" style="--glow-color:#6B7280">
+      <div class="color-row-info" style="border-left:none;border-right:1px solid var(--t08)">
+        <div class="cr-badge">
+          <div class="cr-badge-dot" style="background:#6B7280"></div>
+          <span class="cr-badge-txt">Base de Água</span>
+        </div>
+        <div class="cr-title">Esmalte<br>Acrílico</div>
+        <div class="cr-pills">
+          <span class="cr-pill">Madeiras</span>
+          <span class="cr-pill">Metais</span>
+          <span class="cr-pill">Exterior</span>
+          <span class="cr-pill">Interior</span>
+        </div>
+        <ul class="cr-feats">
+          <li><div class="cr-dot" style="background:#6B7280"></div>Secagem rápida — base água</li>
+          <li><div class="cr-dot" style="background:#6B7280"></div>Acabamento liso e durável</li>
+          <li><div class="cr-dot" style="background:#6B7280"></div>Aplicação em madeiras e metais</li>
+        </ul>
+        <div class="cr-rationale">
+          <div class="cr-rationale-label">Por que cinza</div>
+          <p>Cinza neutro reforça o caráter técnico e versátil — não é tinta de parede, é proteção de superfície. O tom metálico remete ao próprio substrato que o esmalte vai proteger.</p>
+        </div>
+        <div class="cr-swatches">
+          <div class="cr-swatch" style="background:#111"></div>
+          <div class="cr-swatch" style="background:#F0EDE4"></div>
+          <div class="cr-swatch" style="background:#fff"></div>
+          <span class="cr-swatch-mais">Preto · Gelo · Branco</span>
+        </div>
+        <div class="cr-volume"><strong>18L</strong> · 3,6L</div>
+      </div>
+      <div class="color-row-img" style="background:#0C1A2E">
+        <div class="color-row-glow"></div>
+        <img src="bucket-esmalte.png" alt="Esmalte">
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- ══ 04 PRINCIPIOS ══ -->
+<div id="principios">
+  <div class="sec">
+    <div class="sec-head sec-wrap">
+      <div class="sec-num">04</div>
+      <p class="tag">04 — Princípios Visuais</p>
+      <h2 class="sec-title">O fio que<br><em>une tudo</em></h2>
+      <p class="sec-desc">Todos os rótulos MEP compartilham seis princípios. Qualquer produto da linha é reconhecido como MEP antes de ser lido.</p>
+    </div>
+    <div class="princ-grid">
+      <div class="princ-card">
+        <div class="princ-bg-num">1</div>
+        <div class="princ-icon">◼</div>
+        <h4>Fundo azul escuro</h4>
+        <p>#1A2B4D em todos os rótulos. Transmite confiança e solidez para o público B2B de construção civil. Nenhum produto usa fundo claro — isso diferencia a MEP da prateleira convencional.</p>
+      </div>
+      <div class="princ-card">
+        <div class="princ-bg-num">2</div>
+        <div class="princ-icon" style="color:var(--or)">▲</div>
+        <h4>Laranja funcional</h4>
+        <p>O laranja (#F28C28) marca apenas o que o cliente precisa registrar rápido: nome da marca, badge de benefício, faixa de linha. Não é decorativo — cada uso do laranja tem uma função específica.</p>
+      </div>
+      <div class="princ-card">
+        <div class="princ-bg-num">3</div>
+        <div class="princ-icon">⬡</div>
+        <h4>Cubo como símbolo</h4>
+        <p>O cubo isométrico aparece em todos os rótulos. Na MEP Massas, faces em azul e laranja. Na MEP COLOR, faces com gradiente multicolorido. Mesmo símbolo, leituras distintas por linha.</p>
+      </div>
+      <div class="princ-card">
+        <div class="princ-bg-num">4</div>
+        <div class="princ-icon">T</div>
+        <h4>Tipografia condensed</h4>
+        <p>Barlow Condensed ultrabold para nomes de produto e dados de destaque. Permite texto grande sem ocupar área demais — essencial em rótulos onde cada milímetro de fundo visível conta.</p>
+      </div>
+      <div class="princ-card">
+        <div class="princ-bg-num">5</div>
+        <div class="princ-icon">≡</div>
+        <h4>Três zonas de leitura</h4>
+        <p><strong>Topo:</strong> marca e linha. <strong>Meio:</strong> produto e benefício principal. <strong>Rodapé:</strong> dados técnicos e logística. Cada zona responde a um perfil diferente na cadeia de decisão de compra.</p>
+      </div>
+      <div class="princ-card">
+        <div class="princ-bg-num">6</div>
+        <div class="princ-icon">⊘</div>
+        <h4>Zero elemento sem função</h4>
+        <p>Nenhum ícone genérico, nenhum gradiente decorativo, nenhum texto de enchimento. Cada elemento existe para comunicar algo específico. Se não comunica, não está no rótulo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<hr class="rule">
+<footer class="footer">
+  <div>
+    <div class="footer-brand">MEP <em>INDÚSTRIA</em></div>
+  </div>
+  <div class="footer-info">
+    <a href="https://www.mepmassa.com.br">www.mepmassa.com.br</a><br>
+    argamassamep@gmail.com · (18) 99688-1384<br>
+    Presidente Prudente, SP · Junho 2026
+  </div>
+</footer>
+
+</body>
+</html>

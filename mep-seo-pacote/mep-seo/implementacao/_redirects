@@ -1,0 +1,24 @@
+# Netlify _redirects — MEP Indústria
+# Força HTTPS, www canônico, e redirecionamentos de URLs antigas.
+
+# Força HTTPS
+http://mep.ind.br/* https://www.mep.ind.br/:splat 301!
+http://www.mep.ind.br/* https://www.mep.ind.br/:splat 301!
+
+# Força www
+https://mep.ind.br/* https://www.mep.ind.br/:splat 301!
+
+# Redirects de URLs antigas (se você tinha outro site)
+# /produtos/argamassa       /mep-massas/                  301
+# /tintas                   /mep-color/                   301
+# /balde-25kg              /mep-massas/                  301
+
+# Páginas de erro personalizadas
+# /404.html  404
+
+# Headers de segurança (adicione também no netlify.toml se preferir)
+# /*
+#   X-Frame-Options: DENY
+#   X-Content-Type-Options: nosniff
+#   Referrer-Policy: strict-origin-when-cross-origin
+#   Permissions-Policy: camera=(), microphone=(), geolocation=(self)
