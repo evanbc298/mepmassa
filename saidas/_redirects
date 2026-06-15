@@ -1,3 +1,1 @@
-http://mep.ind.br/* https://www.mep.ind.br/:splat 301!
-http://www.mep.ind.br/* https://www.mep.ind.br/:splat 301!
-https://mep.ind.br/* https://www.mep.ind.br/:splat 301!
+# Redirects gerenciados pelo Netlify Dashboard (Domain management > HTTPS > Force HTTPS)
