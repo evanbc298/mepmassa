@@ -319,9 +319,11 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .color-products-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; }
 .color-prod-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); overflow:hidden; transition:background .25s; cursor:pointer; }
 .color-prod-card:hover { background:rgba(255,255,255,0.07); }
-.color-prod-img { height:320px; display:flex; align-items:center; justify-content:center; padding:24px; position:relative; }
-.color-prod-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 50% 70%, var(--glow,#F28C28) 0%, transparent 65%); opacity:0.22; }
-.color-prod-img img { width:auto; height:240px; max-width:88%; object-fit:contain; position:relative; z-index:1; filter:drop-shadow(0 24px 48px rgba(0,0,0,0.45)); transition:transform .45s; }
+.color-prod-img { height:320px; display:flex; align-items:center; justify-content:center; padding:24px; position:relative; background:radial-gradient(ellipse at 50% 20%, #243c6a 0%, #1A2B4D 45%, #0d1420 100%); }
+.color-prod-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 50% 65%, var(--glow,#F28C28) 0%, transparent 55%); opacity:0.32; }
+.color-prod-img::before { content:''; position:absolute; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%); top:50%; left:50%; transform:translate(-50%,-55%); pointer-events:none; }
+.color-prod-img::after { content:''; position:absolute; bottom:20px; left:50%; transform:translateX(-50%); width:140px; height:18px; border-radius:50%; background:radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%); pointer-events:none; }
+.color-prod-img img { width:auto; height:240px; max-width:88%; object-fit:contain; position:relative; z-index:1; filter:drop-shadow(0 12px 24px rgba(0,0,0,0.5)); transition:transform .45s; }
 .color-prod-card:hover .color-prod-img img { transform:scale(1.07) translateY(-8px); }
 .color-prod-info { padding:28px 24px; border-top:1px solid rgba(255,255,255,0.06); }
 .color-prod-line { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
@@ -1034,19 +1036,19 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         </div>
         <div class="produto-info">
           <div class="produto-nome">Bisnaga MEP — 3 kg</div>
-          <div class="produto-desc">Formato medio para reparos e obras pontuais. Aplicacao direta pelo bico. Rende ate 3 m².</div>
+          <div class="produto-desc">Ideal para reparos e obras pontuais. Corte o bico e aplique direto. Rende ate 3 m².</div>
           <a href="#contato" class="produto-cta">Solicitar Orcamento</a>
         </div>
       </div>
 
       <div class="produto-card">
-        <div class="produto-badge-tag destaque">Amostra</div>
+        <div class="produto-badge-tag">Novo</div>
         <div class="produto-img-foto">
-          <img src="bisnaga-1kg.webp" alt="Bisnaga MEP 1kg">
+          <img src="bisnaga-5kg.webp" alt="Bisnaga MEP 5kg">
         </div>
         <div class="produto-info">
-          <div class="produto-nome">Bisnaga MEP — 1 kg</div>
-          <div class="produto-desc">Amostra para primeiro contato. Aplicacao direta sem ferramenta. Rende ate 1 m².</div>
+          <div class="produto-nome">Bisnaga MEP — 5 kg</div>
+          <div class="produto-desc">Maior rendimento em obras de medio porte. Corte o bico e aplique direto. Rende ate 5 m².</div>
           <a href="#contato" class="produto-cta">Solicitar Orcamento</a>
         </div>
       </div>
