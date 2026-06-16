@@ -263,6 +263,10 @@ header { background: var(--branco); border-bottom: 1px solid var(--borda); posit
 .header-cta { background: var(--laranja); color: var(--branco); padding: 10px 22px; border-radius: 6px; font-size:14px; font-weight:700; transition: opacity .2s; }
 .header-cta:hover { opacity:.88; color:#fff; }
 
+/* STICKY HEADER WRAPPER */
+#site-header { position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0); transition: box-shadow .3s; }
+#site-header.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.10); }
+
 /* NAV */
 nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .nav-inner { max-width:1200px; margin:0 auto; padding:0 40px; display:flex; gap:0; }
@@ -803,6 +807,9 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   </div>
 </div>
 
+<!-- HEADER + NAV STICKY WRAPPER -->
+<div id="site-header">
+
 <!-- HEADER -->
 <header>
   <div class="header-inner">
@@ -826,6 +833,8 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <a href="#contato" class="nav-item">Contato</a>
   </div>
 </nav>
+
+</div><!-- /site-header -->
 
 <!-- HERO -->
 <div class="hero">
@@ -2038,6 +2047,12 @@ document.getElementById('f-btn').addEventListener('click', function() {
   if (msg) texto += ' Observação: ' + msg;
 
   window.open('https://wa.me/5547996958399?text=' + encodeURIComponent(texto), '_blank');
+});
+
+// Shadow no header ao rolar
+var siteHeader = document.getElementById('site-header');
+window.addEventListener('scroll', function() {
+  siteHeader.classList.toggle('scrolled', window.scrollY > 10);
 });
 
 // Nav scroll ativo
