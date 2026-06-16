@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha Técnica — Massa MEP Argamassa Polimérica</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Arial, sans-serif; color: #1a1a1a; background: #fff; font-size: 13px; }
+
+  .page { max-width: 800px; margin: 0 auto; padding: 40px; }
+
+  /* Cabeçalho */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #1A2B4D; padding-bottom: 20px; margin-bottom: 28px; }
+  .header-logo { display: flex; flex-direction: column; }
+  .logo-nome { font-size: 28px; font-weight: 900; color: #1A2B4D; letter-spacing: -1px; }
+  .logo-sub { font-size: 11px; color: #F28C28; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+  .header-doc { text-align: right; }
+  .doc-titulo { font-size: 16px; font-weight: 700; color: #1A2B4D; }
+  .doc-rev { font-size: 11px; color: #666; margin-top: 4px; }
+
+  /* Badge norma */
+  .norma-badge { display: inline-block; background: #1A2B4D; color: #fff; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 4px; letter-spacing: .5px; margin-bottom: 24px; }
+
+  /* Seção */
+  .sec { margin-bottom: 28px; }
+  .sec-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #F28C28; border-bottom: 1px solid #e5e7eb; padding-bottom: 6px; margin-bottom: 14px; }
+
+  /* Tabela de dados */
+  table { width: 100%; border-collapse: collapse; }
+  table th { background: #1A2B4D; color: #fff; font-size: 11px; font-weight: 700; padding: 8px 12px; text-align: left; text-transform: uppercase; letter-spacing: .5px; }
+  table td { padding: 9px 12px; border-bottom: 1px solid #f0f0f0; font-size: 13px; vertical-align: top; }
+  table tr:nth-child(even) td { background: #f8f9fb; }
+  table td:first-child { font-weight: 600; color: #374151; width: 45%; }
+  table td.destaque { font-weight: 700; color: #1A2B4D; }
+
+  /* Grid 2 colunas */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* Tabela consumo */
+  .consumo-table { width: 100%; border-collapse: collapse; }
+  .consumo-table th { background: #F28C28; color: #fff; font-size: 11px; font-weight: 700; padding: 8px 12px; text-align: center; }
+  .consumo-table td { padding: 9px 12px; border-bottom: 1px solid #f0f0f0; font-size: 13px; text-align: center; }
+  .consumo-table tr:nth-child(even) td { background: #f8f9fb; }
+  .consumo-table td:first-child { text-align: left; font-weight: 600; }
+
+  /* Alerta */
+  .alerta { background: #fff8f0; border-left: 4px solid #F28C28; padding: 12px 16px; font-size: 12px; color: #666; margin-top: 12px; line-height: 1.6; }
+  .alerta strong { color: #1A2B4D; }
+
+  /* Rodapé */
+  .footer { margin-top: 36px; padding-top: 20px; border-top: 2px solid #1A2B4D; display: flex; justify-content: space-between; align-items: flex-end; }
+  .footer-empresa { font-size: 12px; color: #666; line-height: 1.7; }
+  .footer-empresa strong { color: #1A2B4D; font-size: 13px; }
+  .footer-qr { text-align: right; font-size: 11px; color: #999; }
+
+  /* Print */
+  @media print {
+    body { font-size: 12px; }
+    .page { padding: 20px; max-width: 100%; }
+    .no-print { display: none; }
+  }
+
+  /* Botão imprimir (só tela) */
+  .btn-print { display: block; width: fit-content; margin: 0 auto 32px; background: #1A2B4D; color: #fff; padding: 12px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; cursor: pointer; border: none; letter-spacing: .5px; }
+  @media print { .btn-print { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <button class="btn-print no-print" onclick="window.print()">Imprimir / Salvar como PDF</button>
+
+  <!-- Cabeçalho -->
+  <div class="header">
+    <div class="header-logo">
+      <div class="logo-nome">MEP</div>
+      <div class="logo-sub">Massas · Argamassa Polimérica</div>
+    </div>
+    <div class="header-doc">
+      <div class="doc-titulo">Ficha Técnica do Produto</div>
+      <div class="doc-rev">Massa MEP — Argamassa Polimérica Pronta para Uso</div>
+      <div class="doc-rev">Rev. 01 · Jun/2026</div>
+    </div>
+  </div>
+
+  <div class="norma-badge">Conforme ABNT NBR 16590 · RESISTÊNCIA 4 MPa · NBR 13279</div>
+
+  <!-- Identificação -->
+  <div class="sec">
+    <div class="sec-title">Identificação do Produto</div>
+    <table>
+      <tr><td>Produto</td><td class="destaque">Massa MEP — Argamassa Polimérica Pronta para Uso</td></tr>
+      <tr><td>Fabricante</td><td>MEP Indústria e Comércio Ltda</td></tr>
+      <tr><td>CNPJ</td><td>62.205.954/0001-98</td></tr>
+      <tr><td>Sede</td><td>Balneário Camboriú, SC — Brasil</td></tr>
+      <tr><td>Website</td><td>www.mep.ind.br</td></tr>
+      <tr><td>SAC / Vendas</td><td>(47) 99695-8399 · ind.mepmassas@gmail.com</td></tr>
+      <tr><td>Aplicação</td><td class="destaque">Exclusivo para alvenaria de VEDAÇÃO. Não utilizar em alvenaria estrutural.</td></tr>
+    </table>
+  </div>
+
+  <!-- Dados técnicos / Embalagens -->
+  <div class="grid2">
+
+    <div class="sec">
+      <div class="sec-title">Desempenho Técnico</div>
+      <table>
+        <tr><td>Resistência à compressão</td><td class="destaque">4 MPa (NBR 13279)</td></tr>
+        <tr><td>Norma de referência</td><td>ABNT NBR 16590</td></tr>
+        <tr><td>Tempo de pega inicial</td><td>30 minutos</td></tr>
+        <tr><td>Cura total</td><td>72 horas</td></tr>
+        <tr><td>Espessura da junta</td><td>1,5 mm a 3 mm</td></tr>
+        <tr><td>Temperatura de aplicação</td><td>5°C a 40°C</td></tr>
+        <tr><td>Validade</td><td>12 meses (embalagem fechada)</td></tr>
+        <tr><td>Garantia de fabricação</td><td>12 meses</td></tr>
+      </table>
+    </div>
+
+    <div class="sec">
+      <div class="sec-title">Embalagens Disponíveis</div>
+      <table>
+        <tr><td>Barrica</td><td class="destaque">25 kg</td></tr>
+        <tr><td>Balde</td><td class="destaque">25 kg</td></tr>
+        <tr><td>Bisnaga</td><td class="destaque">3 kg · 5 kg</td></tr>
+        <tr><td>Saco</td><td class="destaque">5 kg</td></tr>
+      </table>
+
+      <div class="sec-title" style="margin-top:20px;">Comparativo de Produtividade</div>
+      <table>
+        <tr><td>Velocidade vs. convencional</td><td class="destaque">4x mais rápida</td></tr>
+        <tr><td>Redução de custo total</td><td class="destaque">Até 40%</td></tr>
+        <tr><td>Desperdício de material</td><td class="destaque">&lt;1%</td></tr>
+        <tr><td>Consumo de água na obra</td><td class="destaque">95% menor</td></tr>
+        <tr><td>Equipamento necessário</td><td>Nenhum (sem betoneira)</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Consumo por tipo de bloco -->
+  <div class="sec">
+    <div class="sec-title">Consumo por Tipo de Bloco / Tijolo</div>
+    <table class="consumo-table">
+      <thead>
+        <tr>
+          <th style="text-align:left;">Tipo de Bloco</th>
+          <th>Consumo (kg/m²)</th>
+          <th>Rendimento — Barrica 25 kg</th>
+          <th>Rendimento — Bisnaga 3 kg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bloco 14 cm</td>
+          <td>2,0 – 2,3 kg/m²</td>
+          <td>~11 m²</td>
+          <td>~1,4 m²</td>
+        </tr>
+        <tr>
+          <td>Bloco 19 cm (padrão)</td>
+          <td>1,6 – 1,9 kg/m²</td>
+          <td>~14 m²</td>
+          <td>~1,8 m²</td>
+        </tr>
+        <tr>
+          <td>Bloco 30 cm</td>
+          <td>1,0 – 1,3 kg/m²</td>
+          <td>~21 m²</td>
+          <td>~2,6 m²</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="alerta">
+      <strong>Obs.:</strong> O rendimento final pode variar conforme a técnica de aplicação, qualidade e absorção dos blocos/tijolos. Valores obtidos em condições controladas de ensaio.
+    </div>
+  </div>
+
+  <!-- Modo de aplicação -->
+  <div class="sec">
+    <div class="sec-title">Modo de Aplicação</div>
+    <table>
+      <tr><td>1. Preparação</td><td>Verifique se os blocos estão limpos, secos e bem nivelados.</td></tr>
+      <tr><td>2. Aplicação</td><td>Corte a ponta da bisnaga ou aplique com colher de pedreiro. Aplique 2 cordões de massa de aproximadamente 10 mm de diâmetro sobre a superfície do bloco.</td></tr>
+      <tr><td>3. Assentamento</td><td>Assente o bloco imediatamente e ajuste o prumo e nível.</td></tr>
+      <tr><td>4. Cura</td><td>Aguarde mínimo 24h para resistência inicial. Cura total em 72 horas.</td></tr>
+    </table>
+    <div class="alerta">
+      <strong>Não adicionar água ou qualquer aditivo.</strong> O produto já vem na consistência ideal para uso direto.
+    </div>
+  </div>
+
+  <!-- Armazenamento -->
+  <div class="sec">
+    <div class="sec-title">Armazenamento e Transporte</div>
+    <table>
+      <tr><td>Local</td><td>Ambiente seco, coberto e arejado, protegido de umidade e luz solar direta.</td></tr>
+      <tr><td>Temperatura</td><td>5°C a 35°C</td></tr>
+      <tr><td>Empilhamento máximo</td><td>4 unidades (barrica/balde)</td></tr>
+      <tr><td>Validade após abertura</td><td>Utilizar em até 48 horas após abertura da embalagem.</td></tr>
+    </table>
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer">
+    <div class="footer-empresa">
+      <strong>MEP Indústria e Comércio Ltda</strong><br>
+      CNPJ: 62.205.954/0001-98 · Balneário Camboriú, SC<br>
+      (47) 99695-8399 · ind.mepmassas@gmail.com · www.mep.ind.br
+    </div>
+    <div class="footer-qr">
+      Ficha Técnica Rev.01<br>
+      Jun/2026
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
