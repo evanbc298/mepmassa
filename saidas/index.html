@@ -245,8 +245,8 @@
   --dark: #07101e;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--branco); color: var(--texto); }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--branco); color: var(--texto); overflow-x:hidden; }
 a { text-decoration:none; color:inherit; }
 
 /* TOPBAR */
@@ -590,6 +590,55 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .mep-chat { width:calc(100vw - 24px); right:12px; bottom:90px; }
 }
 
+/* ===== MODAL TINTA ===== */
+.tinta-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px);}
+.tinta-overlay.ativo{display:flex;}
+.tinta-modal{background:#07101e;border:1px solid rgba(255,255,255,0.08);border-radius:16px;width:100%;max-width:880px;max-height:92vh;overflow-y:auto;position:relative;display:flex;flex-direction:column;}
+.tinta-modal::-webkit-scrollbar{width:4px;}
+.tinta-modal::-webkit-scrollbar-track{background:transparent;}
+.tinta-modal::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.12);border-radius:2px;}
+.tm-header{padding:28px 32px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.tm-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;color:var(--laranja);margin-bottom:8px;}
+.tm-title{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;color:#fff;line-height:1.1;}
+.tm-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.06);border:none;cursor:pointer;color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+.tm-close:hover{background:rgba(255,255,255,0.14);}
+.tm-body{display:grid;grid-template-columns:200px 1fr;gap:0;padding:24px 32px 32px;}
+.tm-left{display:flex;flex-direction:column;align-items:center;gap:16px;padding-right:28px;border-right:1px solid rgba(255,255,255,0.06);}
+.tm-prod-img{width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,0.5));}
+.tm-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.tm-pill{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:5px 10px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);white-space:nowrap;}
+.tm-spec{text-align:center;}
+.tm-spec-val{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--laranja);line-height:1;}
+.tm-spec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,0.3);margin-top:4px;}
+.tm-right{padding-left:28px;display:flex;flex-direction:column;gap:24px;}
+/* Cores */
+.tm-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.28em;color:rgba(255,255,255,0.35);margin-bottom:12px;}
+.tm-cores{display:flex;flex-wrap:wrap;gap:8px;}
+.tm-cor{width:36px;height:36px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s;position:relative;flex-shrink:0;}
+.tm-cor:hover{transform:scale(1.15);}
+.tm-cor.sel{border-color:#fff;transform:scale(1.12);}
+.tm-cor-nome{font-size:12px;font-weight:600;color:rgba(255,255,255,0.55);min-height:18px;margin-top:4px;}
+/* Tamanho */
+.tm-sizes{display:flex;gap:10px;}
+.tm-size{padding:10px 20px;border:1px solid rgba(255,255,255,0.12);border-radius:6px;background:transparent;color:rgba(255,255,255,0.55);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
+.tm-size.sel{border-color:var(--laranja);color:#fff;background:rgba(242,140,40,0.12);}
+/* Calculadora */
+.tm-calc{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px;}
+.tm-calc-row{display:flex;align-items:center;gap:12px;}
+.tm-calc-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:11px 14px;color:#fff;font-size:14px;font-weight:600;font-family:inherit;outline:none;}
+.tm-calc-input:focus{border-color:var(--laranja);}
+.tm-calc-input::placeholder{color:rgba(255,255,255,0.2);}
+.tm-calc-btn{padding:11px 18px;background:var(--azul);border:none;border-radius:6px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit;}
+.tm-calc-result{margin-top:14px;display:none;}
+.tm-calc-result.vis{display:block;}
+.tm-calc-latas{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:#fff;line-height:1;}
+.tm-calc-latas span{color:var(--laranja);}
+.tm-calc-detalhe{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;}
+/* CTA */
+.tm-cta{display:block;background:#25D366;color:#fff;padding:14px 24px;border-radius:8px;text-align:center;font-size:15px;font-weight:700;transition:opacity .2s;text-decoration:none;}
+.tm-cta:hover{opacity:.88;}
+.tm-cta-aviso{font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:8px;}
+
 /* MOBILE */
 @media (max-width:900px) {
   .topbar { display:none; }
@@ -624,6 +673,16 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .deps-grid { grid-template-columns:1fr; gap:16px; }
   .specs-grid, .quem-grid { grid-template-columns:1fr !important; gap:32px !important; }
   .quem-stats { grid-template-columns:repeat(2,1fr) !important; }
+  [style*="padding:0 40px"] { padding:0 20px !important; }
+  [style*="padding: 0 40px"] { padding:0 20px !important; }
+  .tm-body{grid-template-columns:1fr;padding:16px 20px 24px;}
+  .tm-left{flex-direction:row;flex-wrap:wrap;padding-right:0;border-right:none;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .tm-right{padding-left:0;}
+  .tm-header{padding:20px 20px 0;}
+  .tm-title{font-size:24px;}
+  .tm-sizes{flex-wrap:wrap;}
+  .tm-calc-row{flex-wrap:wrap;}
+  .tm-calc-btn{width:100%;}
   .calc-input-row { flex-direction:column; align-items:stretch; }
   .calc-btn { width:100%; }
   .calc-results-grid { grid-template-columns:repeat(2,1fr); }
@@ -1123,7 +1182,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 
     <div class="color-products-grid">
 
-      <div class="color-prod-card">
+      <div class="color-prod-card" onclick="abrirTinta('premium')">
         <div class="color-prod-img" style="--glow:#C9A84C">
           <div class="color-prod-glow"></div>
           <img src="bucket-premium.webp" alt="MEP COLOR Premium">
@@ -1140,11 +1199,11 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
             <span class="color-prod-pill">Alvenaria</span>
           </div>
           <div class="color-prod-desc">Alta durabilidade e cobertura superior. Máximo desempenho em alvenaria interna e externa.</div>
-          <a href="#contato" class="color-prod-cta">Solicitar Orçamento</a>
+          <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
 
-      <div class="color-prod-card">
+      <div class="color-prod-card" onclick="abrirTinta('economica')">
         <div class="color-prod-img" style="--glow:#F28C28">
           <div class="color-prod-glow"></div>
           <img src="bucket-economica.webp" alt="MEP COLOR Econômica">
@@ -1160,11 +1219,11 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
             <span class="color-prod-pill">Alvenaria</span>
           </div>
           <div class="color-prod-desc">Alto rendimento por litro. Fácil aplicação com rolo e brocha. Acabamento nivelado em obra.</div>
-          <a href="#contato" class="color-prod-cta">Solicitar Orçamento</a>
+          <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
 
-      <div class="color-prod-card">
+      <div class="color-prod-card" onclick="abrirTinta('pisos')">
         <div class="color-prod-img" style="--glow:#C1121F">
           <div class="color-prod-glow"></div>
           <img src="bucket-pisos.webp" alt="MEP COLOR Pisos e Quadras">
@@ -1181,11 +1240,11 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
             <span class="color-prod-pill">Pisos</span>
           </div>
           <div class="color-prod-desc">Alta resistência ao tráfego pesado. Inclui cores de demarcação viária. Interior e exterior.</div>
-          <a href="#contato" class="color-prod-cta">Solicitar Orçamento</a>
+          <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
 
-      <div class="color-prod-card">
+      <div class="color-prod-card" onclick="abrirTinta('esmalte')">
         <div class="color-prod-img" style="--glow:#6B7280">
           <div class="color-prod-glow"></div>
           <img src="bucket-esmalte.webp" alt="MEP COLOR Esmalte">
@@ -1202,7 +1261,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
             <span class="color-prod-pill">Ext · Int</span>
           </div>
           <div class="color-prod-desc">Secagem rápida. Acabamento liso e durável. Proteção profissional para madeiras e metais.</div>
-          <a href="#contato" class="color-prod-cta">Solicitar Orçamento</a>
+          <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
 
@@ -1710,7 +1769,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="sh-tag">A Empresa</div>
       <div class="sh-title">Quem é a MEP</div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div class="quem-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
       <div>
         <p style="font-size:16px;line-height:1.8;color:var(--sub);margin-bottom:20px;">A MEP é uma indústria brasileira de insumos para construção civil, com sede em Balneário Camboriú, SC. Desenvolvemos e comercializamos soluções que substituem processos lentos, pesados e de alto custo por alternativas mais inteligentes, limpas e eficientes.</p>
         <p style="font-size:16px;line-height:1.8;color:var(--sub);margin-bottom:32px;">Nossa missão é simples: entregar ao construtor um produto que ele possa usar no primeiro dia, com resultado profissional, sem desperdício e com custo real menor do que a argamassa convencional.</p>
@@ -1763,7 +1822,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="sh-title">Solicite um orçamento</div>
       <div class="sh-sub">Atendemos construtoras e incorporadoras em todo o Brasil.</div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+    <div class="quem-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="display:flex;gap:16px;align-items:flex-start;">
           <div style="width:44px;height:44px;background:var(--azul);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -2118,6 +2177,153 @@ document.getElementById('calc-m2').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') calcular();
 });
 
+/* ── MODAL TINTA ── */
+var TINTAS = {
+  premium: {
+    tag: 'Acrílica Premium',
+    nome: 'Tinta Acrílica Premium',
+    img: 'bucket-premium.webp',
+    pills: ['Interior','Exterior','Alvenaria'],
+    rendimento: 11,
+    sizes: ['3,6L','18L'],
+    sizesLitros: [3.6, 18],
+    cores: [
+      {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Palha',hex:'#E8D49A'},
+      {nome:'Areia',hex:'#D4B896'},{nome:'Pérola',hex:'#E0D5C8'},{nome:'Marfim',hex:'#F0EAD6'},
+      {nome:'Algodão Egípcio',hex:'#E4D8C4'},{nome:'Pêssego',hex:'#F0B080'},{nome:'Concreto',hex:'#A09080'},
+      {nome:'Cromio',hex:'#B0B8C4'},{nome:'Elefante',hex:'#828282'},{nome:'Bronze Lenda',hex:'#9A8060'},
+      {nome:'Verde Kiwi',hex:'#8AAA5A'},{nome:'Camurça',hex:'#C8A878'}
+    ]
+  },
+  economica: {
+    tag: 'Látex Econômico',
+    nome: 'Tinta Acrílica Econômica',
+    img: 'bucket-economica.webp',
+    pills: ['Superfícies Internas','Alvenaria'],
+    rendimento: 9,
+    sizes: ['3,6L','18L'],
+    sizesLitros: [3.6, 18],
+    cores: [
+      {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Palha',hex:'#E8D49A'},
+      {nome:'Areia',hex:'#D4B896'},{nome:'Pérola',hex:'#E0D5C8'},{nome:'Marfim',hex:'#F0EAD6'},
+      {nome:'Algodão Egípcio',hex:'#E4D8C4'},{nome:'Pêssego',hex:'#F0B080'},{nome:'Concreto',hex:'#A09080'},
+      {nome:'Cromio',hex:'#B0B8C4'},{nome:'Elefante',hex:'#828282'},{nome:'Bronze Lenda',hex:'#9A8060'},
+      {nome:'Verde Kiwi',hex:'#8AAA5A'},{nome:'Camurça',hex:'#C8A878'}
+    ]
+  },
+  pisos: {
+    tag: 'Pisos e Quadras',
+    nome: 'Tinta para Pisos e Quadras',
+    img: 'bucket-pisos.webp',
+    pills: ['Calçadas','Quadras Esportivas','Pisos','Cimentados'],
+    rendimento: 3,
+    sizes: ['3,6L','18L'],
+    sizesLitros: [3.6, 18],
+    cores: [
+      {nome:'Amarelo',hex:'#F5C200'},{nome:'Amarelo Demarcação',hex:'#F0DC00'},{nome:'Vermelho Segurança',hex:'#CC0000'},
+      {nome:'Vermelho',hex:'#990000'},{nome:'Concreto',hex:'#8B7D6B'},{nome:'Verde',hex:'#1A4A1A'},
+      {nome:'Cinza Chumbo',hex:'#464646'},{nome:'Cinza',hex:'#888888'},{nome:'Azul',hex:'#1A2B6B'},
+      {nome:'Preto',hex:'#111111'},{nome:'Marrom',hex:'#5A2D0C'},{nome:'Grafite',hex:'#3C3C3C'}
+    ]
+  },
+  esmalte: {
+    tag: 'Esmalte Base Água',
+    nome: 'Esmalte Acrílico',
+    img: 'bucket-esmalte.webp',
+    pills: ['Madeiras','Metais','Interior','Exterior'],
+    rendimento: 9,
+    sizes: ['3,6L'],
+    sizesLitros: [3.6],
+    cores: [
+      {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Preto',hex:'#111111'}
+    ]
+  }
+};
+
+var _tintaAtual = null;
+var _corSel = null;
+var _sizeSel = 0;
+
+function abrirTinta(id) {
+  _tintaAtual = TINTAS[id];
+  _corSel = null;
+  _sizeSel = 0;
+  var t = _tintaAtual;
+  var el = document.getElementById('tintaModal');
+
+  document.getElementById('tm-tag').textContent = t.tag;
+  document.getElementById('tm-nome').textContent = t.nome;
+  document.getElementById('tm-img').src = t.img;
+  document.getElementById('tm-img').alt = t.nome;
+  document.getElementById('tm-rend').textContent = t.rendimento + ' m²/L';
+
+  var pills = document.getElementById('tm-pills');
+  pills.innerHTML = t.pills.map(function(p){return '<span class="tm-pill">'+p+'</span>';}).join('');
+
+  var cores = document.getElementById('tm-cores');
+  cores.innerHTML = t.cores.map(function(c,i){
+    var borda = (c.hex==='#FFFFFF'||c.hex==='#F4F0E8'||c.hex==='#F0EAD6'||c.hex==='#E4D8C4'||c.hex==='#E0D5C8'||c.hex==='#E8D49A') ? 'border:1px solid rgba(255,255,255,0.18);' : '';
+    return '<div class="tm-cor" style="background:'+c.hex+';'+borda+'" title="'+c.nome+'" onclick="selecionarCor('+i+')"></div>';
+  }).join('');
+
+  var sizes = document.getElementById('tm-sizes');
+  sizes.innerHTML = t.sizes.map(function(s,i){
+    return '<button class="tm-size'+(i===0?' sel':'')+'" onclick="selecionarSize('+i+')">'+s+'</button>';
+  }).join('');
+
+  document.getElementById('tm-area').value = '';
+  document.getElementById('tm-result').classList.remove('vis');
+  document.getElementById('tm-cor-nome').textContent = 'Selecione uma cor';
+  atualizarCTA();
+
+  el.classList.add('ativo');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharTinta() {
+  document.getElementById('tintaModal').classList.remove('ativo');
+  document.body.style.overflow = '';
+}
+
+function selecionarCor(i) {
+  _corSel = i;
+  document.querySelectorAll('.tm-cor').forEach(function(el,idx){el.classList.toggle('sel',idx===i);});
+  document.getElementById('tm-cor-nome').textContent = _tintaAtual.cores[i].nome;
+  atualizarCTA();
+}
+
+function selecionarSize(i) {
+  _sizeSel = i;
+  document.querySelectorAll('.tm-size').forEach(function(el,idx){el.classList.toggle('sel',idx===i);});
+  var res = document.getElementById('tm-result');
+  if (res.classList.contains('vis')) calcularTinta();
+  atualizarCTA();
+}
+
+function calcularTinta() {
+  var area = parseFloat(document.getElementById('tm-area').value);
+  if (!area || area <= 0) return;
+  var litrosLata = _tintaAtual.sizesLitros[_sizeSel];
+  var rendTotal = _tintaAtual.rendimento * litrosLata;
+  var latas = Math.ceil((area * 2) / rendTotal);
+  var result = document.getElementById('tm-result');
+  document.getElementById('tm-latas-num').textContent = latas;
+  document.getElementById('tm-latas-label').textContent = latas === 1 ? 'lata' : 'latas';
+  document.getElementById('tm-latas-size').textContent = _tintaAtual.sizes[_sizeSel];
+  document.getElementById('tm-calc-detalhe').textContent = 'Para '+area+' m² com 2 demãos · rendimento estimado: '+_tintaAtual.rendimento+' m²/L';
+  result.classList.add('vis');
+  atualizarCTA();
+}
+
+function atualizarCTA() {
+  var cor = _corSel !== null ? _tintaAtual.cores[_corSel].nome : null;
+  var size = _tintaAtual ? _tintaAtual.sizes[_sizeSel] : '';
+  var res = document.getElementById('tm-result');
+  var latas = res && res.classList.contains('vis') ? document.getElementById('tm-latas-num').textContent : null;
+  var msg = 'Olá, vim pelo site MEP e tenho interesse na ' + (_tintaAtual ? _tintaAtual.nome : '') + (cor ? ' — Cor: ' + cor : '') + (size ? ' — Embalagem: ' + size : '') + (latas ? ' — Quantidade: ' + latas + ' lata(s)' : '') + '. Pode me passar mais informações?';
+  document.getElementById('tm-wa').href = 'https://wa.me/5547996958399?text=' + encodeURIComponent(msg);
+}
+
 /* ── LIGHTBOX VIDEO ── */
 function abrirVideo(id) {
   var lb = document.getElementById('videoLightbox');
@@ -2194,6 +2400,66 @@ document.addEventListener('keydown', function(e) {
   });
 })();
 </script>
+
+<!-- MODAL TINTAS MEP COLOR -->
+<div class="tinta-overlay" id="tintaModal" onclick="if(event.target===this)fecharTinta()">
+  <div class="tinta-modal">
+
+    <div class="tm-header">
+      <div>
+        <div class="tm-tag" id="tm-tag"></div>
+        <div class="tm-title" id="tm-nome"></div>
+      </div>
+      <button class="tm-close" onclick="fecharTinta()">&#x2715;</button>
+    </div>
+
+    <div class="tm-body">
+
+      <div class="tm-left">
+        <img class="tm-prod-img" id="tm-img" src="" alt="">
+        <div class="tm-pills" id="tm-pills"></div>
+        <div class="tm-spec">
+          <div class="tm-spec-val" id="tm-rend"></div>
+          <div class="tm-spec-lbl">Rendimento estimado</div>
+        </div>
+      </div>
+
+      <div class="tm-right">
+
+        <div>
+          <div class="tm-section-title">Cores disponíveis</div>
+          <div class="tm-cores" id="tm-cores"></div>
+          <div class="tm-cor-nome" id="tm-cor-nome">Selecione uma cor</div>
+        </div>
+
+        <div>
+          <div class="tm-section-title">Embalagem</div>
+          <div class="tm-sizes" id="tm-sizes"></div>
+        </div>
+
+        <div>
+          <div class="tm-section-title">Calculadora de tinta</div>
+          <div class="tm-calc">
+            <div class="tm-calc-row">
+              <input class="tm-calc-input" id="tm-area" type="number" placeholder="Área em m²" min="1">
+              <button class="tm-calc-btn" onclick="calcularTinta()">Calcular</button>
+            </div>
+            <div class="tm-calc-result" id="tm-result">
+              <div class="tm-calc-latas"><span id="tm-latas-num">0</span> <span id="tm-latas-label">latas</span> de <span id="tm-latas-size"></span></div>
+              <div class="tm-calc-detalhe" id="tm-calc-detalhe"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <a class="tm-cta" id="tm-wa" href="#" target="_blank">Solicitar pelo WhatsApp</a>
+          <div class="tm-cta-aviso">Rendimento estimado para 2 demãos em superfície lisa. Pode variar conforme o substrato.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
