@@ -774,9 +774,18 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 /* SL Banner 2 — COLOR */
 .slb2 { background:#07101e; }
 .slb2-grad { position:absolute; inset:0;
-  background:radial-gradient(ellipse 55% 70% at 85% 30%, rgba(201,168,76,.18) 0%, transparent 55%),
-             radial-gradient(ellipse 45% 60% at 85% 75%, rgba(193,18,31,.15) 0%, transparent 50%),
-             radial-gradient(ellipse 35% 50% at 60% 50%, rgba(242,140,40,.08) 0%, transparent 60%); }
+  background:
+    radial-gradient(ellipse 38% 52% at 76% 20%, rgba(201,168,76,.32) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 44% at 97% 22%, rgba(107,114,128,.22) 0%, transparent 55%),
+    radial-gradient(ellipse 34% 48% at 76% 82%, rgba(193,18,31,.28) 0%, transparent 55%),
+    radial-gradient(ellipse 32% 46% at 97% 80%, rgba(242,140,40,.26) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(10,18,36,.55) 0%, transparent 70%); }
+.slb2-ring { position:absolute; right:-60px; top:50%; transform:translateY(-50%); width:620px; height:620px; pointer-events:none; }
+.slb2-lines { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.slb2-corner-gold { position:absolute; top:0; right:42%; width:3px; height:100%; background:linear-gradient(to bottom, rgba(201,168,76,0) 0%, rgba(201,168,76,.18) 30%, rgba(201,168,76,.18) 70%, rgba(201,168,76,0) 100%); }
+.slb2-corner-red  { position:absolute; bottom:0; right:0; width:42%; height:3px; background:linear-gradient(to left, rgba(193,18,31,0) 0%, rgba(193,18,31,.18) 30%, rgba(193,18,31,.18) 80%, rgba(193,18,31,0) 100%); }
+.slb2-dots { position:absolute; right:40%; bottom:0; top:0; width:1px; pointer-events:none; background:repeating-linear-gradient(to bottom, transparent 0px, transparent 12px, rgba(255,255,255,.04) 12px, rgba(255,255,255,.04) 13px); }
+.slb2-badge-color { position:absolute; left:0; top:0; width:4px; height:100%; background:linear-gradient(to bottom,#C9A84C 0%,#F28C28 33%,#C1121F 66%,#6B7280 100%); opacity:.7; }
 .slb2 .sl-inner { grid-template-columns:500px 1fr; gap:60px; }
 .slb2-txt .sl-eyebrow { color:#F28C28; }
 .slb2-txt .sl-h1 { color:#fff; }
@@ -975,6 +984,17 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <!-- Banner 2: MEP COLOR -->
     <div class="sl-banner slb2">
       <div class="slb2-grad"></div>
+      <div class="slb2-badge-color"></div>
+      <div class="slb2-corner-gold"></div>
+      <div class="slb2-corner-red"></div>
+      <div class="slb2-dots"></div>
+      <svg class="slb2-ring" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="310" cy="310" r="300" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <circle cx="310" cy="310" r="230" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <circle cx="310" cy="310" r="155" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+        <line x1="10" y1="310" x2="610" y2="310" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+        <line x1="310" y1="10" x2="310" y2="610" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+      </svg>
       <div class="sl-inner">
         <div class="slb2-txt">
           <div class="sl-eyebrow">Linha de Tintas</div>
