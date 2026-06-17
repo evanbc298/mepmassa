@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; }
+
+.slide {
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 560px 1fr;
+}
+
+/* PAINEL ESQUERDO */
+.left-panel {
+  background: #07101e;
+  display: flex;
+  flex-direction: column;
+  padding: 64px 60px 56px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Linha laranja vertical no topo */
+.left-panel:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #F28C28;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: auto;
+}
+.logo-img {
+  height: 34px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+.logo-sep {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,0.18);
+}
+.logo-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+}
+
+/* HEADLINE */
+.headline-area {
+  margin-top: 52px;
+}
+
+.art-tag {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.36em;
+  color: #F28C28;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.art-tag:before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: #F28C28;
+  flex-shrink: 0;
+}
+
+.headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 52px;
+}
+.headline em {
+  font-style: normal;
+  color: #F28C28;
+}
+
+/* NÚMEROS */
+.stats-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.stat-row {
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.stat-row:last-child {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  margin-bottom: 8px;
+}
+.stat-row.conv .stat-label { color: rgba(255,255,255,0.3); }
+.stat-row.mep  .stat-label { color: #F28C28; }
+
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.stat-row.conv .stat-num { color: rgba(255,255,255,0.25); }
+.stat-row.mep  .stat-num { color: #fff; }
+
+.num-value {
+  font-size: 120px;
+}
+.num-unit {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.stat-row.mep .num-unit { color: #F28C28; }
+
+.stat-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+}
+.stat-row.conv .stat-sub { color: rgba(255,255,255,0.2); }
+.stat-row.mep  .stat-sub { color: rgba(255,255,255,0.45); }
+
+/* RESULTADO */
+.resultado {
+  margin-top: 36px;
+}
+.resultado-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.resultado-num span { color: #F28C28; }
+.resultado-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.55;
+}
+
+/* RODAPÉ ESQUERDO */
+.left-footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-cta {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+}
+.footer-cta strong {
+  color: #F28C28;
+  font-weight: 700;
+}
+.footer-handle {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.04em;
+}
+
+/* PAINEL DIREITO — FOTO */
+.right-panel {
+  position: relative;
+  overflow: hidden;
+}
+.right-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: contrast(1.15) brightness(0.85) saturate(1.1);
+}
+.right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(7,16,30,0.85) 0%,
+    rgba(7,16,30,0.45) 30%,
+    rgba(7,16,30,0.1) 100%
+  );
+}
+
+/* BADGE NA FOTO */
+.right-badge {
+  position: absolute;
+  bottom: 56px;
+  right: 40px;
+  background: rgba(7,16,30,0.82);
+  border: 1px solid rgba(242,140,40,0.35);
+  border-radius: 10px;
+  padding: 20px 24px;
+  backdrop-filter: blur(4px);
+}
+.rb-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #F28C28;
+  margin-bottom: 8px;
+}
+.rb-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.rb-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <!-- PAINEL ESQUERDO -->
+  <div class="left-panel">
+
+    <div class="logo-row">
+      <img class="logo-img" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/logo-mep.svg" alt="MEP">
+      <div class="logo-sep"></div>
+      <div class="logo-sub">Argamassa Polimérica</div>
+    </div>
+
+    <div class="headline-area">
+      <div class="art-tag">Dado real · 820 m²</div>
+      <div class="headline">A conta que<br>a maioria<br>não <em>faz.</em></div>
+    </div>
+
+    <div class="stats-block">
+
+      <div class="stat-row conv">
+        <div class="stat-label">Argamassa convencional</div>
+        <div class="stat-num">
+          <div class="num-value">24.000</div>
+          <div class="num-unit">kg</div>
+        </div>
+        <div class="stat-sub">29,27 kg por m² de alvenaria</div>
+      </div>
+
+      <div class="stat-row mep">
+        <div class="stat-label">MEP Massas</div>
+        <div class="stat-num">
+          <div class="num-value">1.200</div>
+          <div class="num-unit">kg</div>
+        </div>
+        <div class="stat-sub">1,5 kg por m² · mesmo serviço</div>
+      </div>
+
+    </div>
+
+    <div class="resultado">
+      <div class="resultado-num"><span>20×</span> menos material.</div>
+      <div class="resultado-sub">
+        Menos frete · menos peso · menos resíduo<br>
+        4× mais rápido na execução
+      </div>
+    </div>
+
+    <div class="left-footer">
+      <div class="footer-cta">mep.ind.br · <strong>(47) 99695-8399</strong></div>
+      <div class="footer-handle">@mep.industria</div>
+    </div>
+
+  </div>
+
+  <!-- PAINEL DIREITO — FOTO -->
+  <div class="right-panel">
+    <img class="right-photo"
+         src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/foto-predio.jpg"
+         alt="Obra MEP">
+    <div class="right-overlay"></div>
+
+    <div class="right-badge">
+      <div class="rb-label">Economia real</div>
+      <div class="rb-value">−26,5%</div>
+      <div class="rb-sub">no custo total de alvenaria</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

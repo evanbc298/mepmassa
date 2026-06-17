@@ -3,12 +3,48 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.mep.ind.br/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.mep.ind.br/balde-25kg-v2.png.png</image:loc>
       <image:title>MEP Massas — Argamassa Polimérica 25kg</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.mep.ind.br/blog/</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mep.ind.br/blog/massa-polimerica-rendimento-m2.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mep.ind.br/blog/como-aplicar-massa-polimerica.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mep.ind.br/blog/massa-polimerica-tempo-de-cura.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mep.ind.br/blog/massa-polimerica-vs-argamassa-convencional.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mep.ind.br/blog/como-escolher-argamassa-polimerica.html</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
