@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; flex-direction: column; gap: 0; }
+
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ─── ELEMENTOS COMUNS ─── */
+  .logo-bar {
+    position: absolute;
+    top: 52px; left: 64px; right: 64px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 20;
+  }
+  .logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700;
+    letter-spacing: 0.18em; color: #fff;
+    text-transform: uppercase;
+  }
+  .counter {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 400;
+    letter-spacing: 0.22em; color: rgba(255,255,255,0.35);
+  }
+  .tag {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.32em;
+    color: #F28C28;
+  }
+  .orange-rule {
+    width: 48px; height: 3px; background: #F28C28;
+  }
+
+  /* ══════════════════════════════
+     SLIDE 1 — CAPA
+  ══════════════════════════════ */
+  .s1 {
+    background-image: url('file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/foto-predio.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
+  .s1-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      105deg,
+      rgba(15,25,50,0.92) 0%,
+      rgba(15,25,50,0.80) 50%,
+      rgba(15,25,50,0.35) 100%
+    );
+    z-index: 1;
+  }
+  .s1-content {
+    position: absolute; inset: 0;
+    padding: 148px 64px 80px;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    z-index: 3;
+  }
+  .s1-tag { margin-bottom: 20px; }
+  .s1-rule { margin: 20px 0 28px; }
+  .s1-headline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 68px; font-weight: 700;
+    line-height: 1.02; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 24px;
+    max-width: 640px;
+  }
+  .s1-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px; font-weight: 400;
+    line-height: 1.65; color: rgba(255,255,255,0.65);
+    max-width: 520px; margin-bottom: 56px;
+  }
+  .s1-footer {
+    display: flex; align-items: center; gap: 28px;
+  }
+  .s1-badge {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .s1-swipe {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+  }
+
+  /* ══════════════════════════════
+     SLIDE 2 — PRODUTO
+  ══════════════════════════════ */
+  .s2 { background: #0f1932; }
+
+  /* Foto da barrica à direita */
+  .s2-photo {
+    position: absolute;
+    right: -40px; bottom: 0;
+    width: 560px; height: 100%;
+    z-index: 2;
+  }
+  .s2-photo img {
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: right bottom;
+    filter: drop-shadow(0 0 60px rgba(0,0,0,0.6));
+  }
+  /* Gradiente que funde a foto com o fundo — fade curto pra não encobrir a barrica */
+  .s2-fade {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to right,
+      #0f1932 32%,
+      rgba(15,25,50,0.55) 46%,
+      rgba(15,25,50,0.0) 58%
+    );
+    z-index: 3;
+  }
+
+  .s2-content {
+    position: absolute; inset: 0;
+    padding: 148px 64px 80px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    z-index: 4; max-width: 560px;
+  }
+  .s2-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 28px;
+  }
+  .s2-tag { margin-bottom: 16px; }
+  .s2-rule { margin: 16px 0 28px; }
+  .s2-headline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 66px; font-weight: 700;
+    line-height: 1.04; letter-spacing: -0.025em;
+    color: #fff; margin-bottom: 36px;
+  }
+  .s2-headline em { color: #F28C28; font-style: normal; }
+  .s2-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 40px;
+  }
+  .s2-list li {
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px; font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .s2-list li::before {
+    content: '';
+    display: block;
+    width: 6px; height: 6px;
+    background: #F28C28;
+    border-radius: 50%;
+    margin-top: 9px; flex-shrink: 0;
+  }
+  .s2-cert {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ══════════════════════════════
+     SLIDE 3 — APLICAÇÃO
+  ══════════════════════════════ */
+  .s3 {
+    background-image: url('file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/foto-usar-essa.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .s3-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(15,25,50,0.88) 0%,
+      rgba(15,25,50,0.70) 55%,
+      rgba(15,25,50,0.20) 100%
+    );
+    z-index: 1;
+  }
+  .s3-content {
+    position: absolute; inset: 0;
+    padding: 148px 64px 80px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    z-index: 3; max-width: 660px;
+  }
+  .s3-tag { margin-bottom: 20px; }
+  .s3-headline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 72px; font-weight: 700;
+    line-height: 1.02; letter-spacing: -0.025em;
+    color: #fff; margin-bottom: 14px;
+  }
+  .s3-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px; font-weight: 400;
+    color: rgba(255,255,255,0.55); margin-bottom: 44px;
+  }
+  .s3-rule { margin-bottom: 44px; }
+  .s3-steps {
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .s3-step {
+    display: flex; align-items: flex-start; gap: 24px;
+  }
+  .s3-step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px; font-weight: 700;
+    color: #F28C28; line-height: 1;
+    flex-shrink: 0; width: 44px;
+  }
+  .s3-step-text {}
+  .s3-step-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 24px; font-weight: 600;
+    color: #fff; margin-bottom: 5px;
+  }
+  .s3-step-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px; font-weight: 400;
+    color: rgba(255,255,255,0.55); line-height: 1.55;
+  }
+  .s3-handle {
+    position: absolute; bottom: 60px; left: 64px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 400;
+    color: rgba(255,255,255,0.25); letter-spacing: 0.06em;
+    z-index: 3;
+  }
+
+  /* ══════════════════════════════
+     SLIDE 4 — DADOS
+  ══════════════════════════════ */
+  .s4 {
+    background-image: url('file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/foto-edificio-obra.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
+  .s4-overlay {
+    position: absolute; inset: 0;
+    background: rgba(12,20,42,0.82);
+    z-index: 1;
+  }
+  .s4-content {
+    position: absolute; inset: 0;
+    padding: 148px 64px 80px;
+    display: flex; flex-direction: column;
+    z-index: 3;
+  }
+  .s4-tag { margin-bottom: 20px; }
+  .s4-rule { margin: 20px 0 32px; }
+  .s4-headline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 52px; font-weight: 700;
+    line-height: 1.06; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 56px;
+    max-width: 640px;
+  }
+  .s4-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px; flex: 1;
+  }
+  .s4-item {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+    position: relative;
+  }
+  .s4-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 32px;
+    width: 32px; height: 2px;
+    background: #F28C28;
+  }
+  .s4-val {
+    font-family: 'Barlow', sans-serif;
+    font-size: 56px; font-weight: 700;
+    letter-spacing: -0.03em; color: #fff;
+    line-height: 1; margin-bottom: 10px;
+  }
+  .s4-val span { color: #F28C28; }
+  .s4-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px; font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+  .s4-note {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px; font-weight: 400;
+    color: rgba(255,255,255,0.2);
+    margin-top: 24px; letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════════════
+     SLIDE 5 — CTA
+  ══════════════════════════════ */
+  .s5 { background: #0f1932; }
+
+  /* Linha laranja no topo */
+  .s5-top-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px; background: #F28C28; z-index: 2;
+  }
+
+  .s5-content {
+    position: absolute; inset: 0;
+    padding: 80px 64px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    z-index: 3;
+  }
+  .s5-top {
+    display: flex; flex-direction: column;
+  }
+  .s5-logo-area {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 0;
+  }
+  .s5-logo-icon {
+    width: 48px; height: 48px;
+  }
+  .s5-logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px; font-weight: 700;
+    letter-spacing: 0.2em; color: #fff;
+    text-transform: uppercase;
+  }
+
+  .s5-middle {
+    display: flex; flex-direction: column;
+  }
+  .s5-tag { margin-bottom: 24px; }
+  .s5-headline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 62px; font-weight: 700;
+    line-height: 1.04; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .s5-rule { margin-bottom: 28px; }
+  .s5-body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px; font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65; max-width: 580px;
+  }
+
+  .s5-bottom {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .s5-btn {
+    display: inline-flex; align-items: center;
+    background: #F28C28;
+    padding: 18px 44px; border-radius: 4px;
+    width: fit-content;
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px; font-weight: 600;
+    color: #fff; letter-spacing: 0.04em;
+  }
+  .s5-contact {
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px; font-weight: 400;
+    color: rgba(255,255,255,0.4);
+  }
+  .s5-contact strong {
+    color: rgba(255,255,255,0.65);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════ -->
+<div class="slide s1">
+  <div class="s1-overlay"></div>
+  <div class="logo-bar">
+    <span class="logo-text">MEP Massas</span>
+    <span class="counter">01 / 05</span>
+  </div>
+  <div class="s1-content">
+    <div class="tag s1-tag">Argamassa Polimérica · Balneário Camboriú, SC</div>
+    <div class="orange-rule s1-rule"></div>
+    <h1 class="s1-headline">A massa que<br>chega pronta.</h1>
+    <p class="s1-sub">Sem betoneira. Sem mistura. Você aplica direto e a obra avança.</p>
+    <div class="s1-footer">
+      <span class="s1-badge">@mep.industria</span>
+      <span class="s1-swipe">← deslize para ver</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SLIDE 2 — PRODUTO
+══════════════════════════════ -->
+<div class="slide s2">
+  <div class="s2-photo">
+    <img src="file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/barrica-25kg.webp" alt="Barrica MEP 25kg">
+  </div>
+  <div class="s2-fade"></div>
+  <div class="logo-bar" style="z-index:10;">
+    <span class="logo-text">MEP Massas</span>
+    <span class="counter">02 / 05</span>
+  </div>
+  <div class="s2-content">
+    <div class="s2-brand">MEP Massas</div>
+    <div class="tag s2-tag">O produto</div>
+    <div class="orange-rule s2-rule"></div>
+    <h2 class="s2-headline"><em>4×</em> mais rápida<br>que a argamassa<br>convencional.</h2>
+    <ul class="s2-list">
+      <li>Pronta para uso — sem mistura</li>
+      <li>Aplicação em bisnaga ou colher</li>
+      <li>Tempo em aberto: até 5 minutos</li>
+      <li>Cura inicial em 24h, total em 72h</li>
+    </ul>
+    <span class="s2-cert">Certificada ABNT NBR 16590</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SLIDE 3 — APLICAÇÃO
+══════════════════════════════ -->
+<div class="slide s3">
+  <div class="s3-overlay"></div>
+  <div class="logo-bar">
+    <span class="logo-text">MEP Massas</span>
+    <span class="counter">03 / 05</span>
+  </div>
+  <div class="s3-content">
+    <div class="tag s3-tag">Como aplicar</div>
+    <h2 class="s3-headline">3 passos.<br>Parede pronta.</h2>
+    <p class="s3-sub">Qualquer pedreiro aplica no primeiro dia.</p>
+    <div class="orange-rule s3-rule"></div>
+    <div class="s3-steps">
+      <div class="s3-step">
+        <span class="s3-step-num">01</span>
+        <div class="s3-step-text">
+          <div class="s3-step-title">Abra e aplique</div>
+          <div class="s3-step-desc">Dois cordões de 1 cm sobre o bloco. Sem preparo, sem betoneira.</div>
+        </div>
+      </div>
+      <div class="s3-step">
+        <span class="s3-step-num">02</span>
+        <div class="s3-step-text">
+          <div class="s3-step-title">Assente e ajuste</div>
+          <div class="s3-step-desc">Posicione e acerte nível e prumo. Tempo em aberto: até 5 min.</div>
+        </div>
+      </div>
+      <div class="s3-step">
+        <span class="s3-step-num">03</span>
+        <div class="s3-step-text">
+          <div class="s3-step-title">Cure e siga</div>
+          <div class="s3-step-desc">Resistência em 24h. Cura total em 72h. Pronto para reboco.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="s3-handle">@mep.industria</div>
+</div>
+
+<!-- ══════════════════════════════
+     SLIDE 4 — DADOS
+══════════════════════════════ -->
+<div class="slide s4">
+  <div class="s4-overlay"></div>
+  <div class="logo-bar">
+    <span class="logo-text">MEP Massas</span>
+    <span class="counter">04 / 05</span>
+  </div>
+  <div class="s4-content">
+    <div class="tag s4-tag">Resultado em obra</div>
+    <div class="orange-rule s4-rule"></div>
+    <h2 class="s4-headline">Os números de uma<br>obra mais eficiente.</h2>
+    <div class="s4-grid">
+      <div class="s4-item">
+        <div class="s4-val">40<span>%</span></div>
+        <div class="s4-label">redução no custo total da obra</div>
+      </div>
+      <div class="s4-item">
+        <div class="s4-val">95<span>%</span></div>
+        <div class="s4-label">menos água no canteiro</div>
+      </div>
+      <div class="s4-item">
+        <div class="s4-val">−80<span>%</span></div>
+        <div class="s4-label">emissão de CO₂ vs. convencional</div>
+      </div>
+      <div class="s4-item">
+        <div class="s4-val">Zero</div>
+        <div class="s4-label">desperdício de material</div>
+      </div>
+    </div>
+    <div class="s4-note">Comparativo MEP vs. argamassa convencional · pavimento 820 m²</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SLIDE 5 — CTA
+══════════════════════════════ -->
+<div class="slide s5">
+  <div class="s5-top-line"></div>
+  <div class="logo-bar">
+    <span class="logo-text">MEP Massas</span>
+    <span class="counter">05 / 05</span>
+  </div>
+  <div class="s5-content">
+    <div class="s5-top"><!-- espaço intencional --></div>
+    <div class="s5-middle">
+      <div class="tag s5-tag">Construtoras e incorporadoras · SC, PR e SP</div>
+      <h2 class="s5-headline">Peça uma proposta<br>para sua obra.</h2>
+      <div class="orange-rule s5-rule"></div>
+      <p class="s5-body">Entrega direta. Certificação ABNT. Atendimento especializado para obras de qualquer porte.</p>
+    </div>
+    <div class="s5-bottom">
+      <div class="s5-btn">mep.ind.br</div>
+      <div class="s5-contact">
+        <strong>(47) 99695-8399</strong> · WhatsApp disponível · @mep.industria
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
