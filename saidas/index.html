@@ -488,6 +488,20 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .btn-calc-wa { background:var(--laranja); color:#fff; padding:14px 32px; border-radius:6px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; transition:opacity .2s; }
 .btn-calc-wa:hover { opacity:.88; color:#fff; }
 
+/* SOFT GATE */
+.calc-lead-gate { display:none; background:rgba(242,140,40,0.1); border:1.5px solid rgba(242,140,40,0.35); border-radius:10px; padding:20px 24px; margin-top:20px; margin-bottom:8px; flex-direction:row; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+.calc-lead-gate.show { display:flex; }
+.clg-left { flex:1; min-width:200px; }
+.clg-title { font-size:16px; font-weight:800; color:#fff; line-height:1.2; margin-bottom:4px; }
+.clg-sub { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.5; }
+.clg-right { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.clg-input { background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.18); border-radius:6px; padding:12px 16px; color:#fff; font-size:15px; font-weight:600; font-family:inherit; outline:none; width:180px; transition:border-color .2s; }
+.clg-input:focus { border-color:var(--laranja); }
+.clg-input::placeholder { color:rgba(255,255,255,0.25); font-weight:400; }
+.clg-btn { background:var(--laranja); color:#fff; padding:12px 20px; border-radius:6px; font-size:13px; font-weight:700; border:none; cursor:pointer; font-family:inherit; letter-spacing:.04em; white-space:nowrap; transition:opacity .2s; }
+.clg-btn:hover { opacity:.88; }
+@media(max-width:900px) { .calc-lead-gate { flex-direction:column; align-items:flex-start; } .clg-right { width:100%; } .clg-input { width:100%; flex:1; } .clg-btn { width:100%; } }
+
 /* INSTAGRAM */
 .ig-section { padding:70px 0; }
 .ig-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
@@ -1610,9 +1624,21 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
           <div class="cc-compare" id="cr-dias-conv">— dias convencional</div>
         </div>
       </div>
+      <!-- SOFT GATE — captura de lead após calcular -->
+      <div class="calc-lead-gate" id="calc-lead-gate">
+        <div class="clg-left">
+          <div class="clg-title">Receba esse comparativo em PDF</div>
+          <div class="clg-sub">Custo por m², logística e embalagens — pronto para apresentar à diretoria da obra.</div>
+        </div>
+        <div class="clg-right">
+          <input type="tel" id="clg-wa" placeholder="(47) 99999-9999" class="clg-input" maxlength="20">
+          <button onclick="enviarLeadCalc()" class="clg-btn">Receber PDF pelo WhatsApp</button>
+        </div>
+      </div>
+
       <div class="calc-cta-row">
-        <div class="calc-cta-txt">Quer receber uma proposta com esses numeros? <strong>Fale com um consultor agora.</strong></div>
-        <a href="https://wa.me/5547996958399" class="btn-calc-wa" id="btn-calc-wa" target="_blank">Solicitar Orçamento pelo WhatsApp</a>
+        <div class="calc-cta-txt">Prefere falar diretamente? <strong>Solicite uma proposta comercial agora.</strong></div>
+        <a href="https://wa.me/5547996958399" class="btn-calc-wa" id="btn-calc-wa" target="_blank">Solicitar Orçamento Direto de Fábrica</a>
       </div>
     </div>
   </div>
@@ -1633,7 +1659,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <a href="mailto:ind.mepmassas@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20MEP"
          style="display:flex;align-items:center;gap:12px;background:var(--azul);color:#fff;padding:16px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-        Enviar e-mail para cotação
+        Solicitar Cotação por E-mail
       </a>
     </div>
     <div style="border-top:1px solid var(--borda);padding-top:28px;">
@@ -1838,9 +1864,9 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 <div class="sec sec-bg" id="contato">
   <div class="sec-inner">
     <div class="sec-header">
-      <div class="sh-tag">Fale Conosco</div>
-      <div class="sh-title">Solicite um orçamento</div>
-      <div class="sh-sub">Atendemos construtoras e incorporadoras em todo o Brasil.</div>
+      <div class="sh-tag">Orçamento Direto de Fábrica</div>
+      <div class="sh-title">Solicite sua proposta comercial</div>
+      <div class="sh-sub">Atendimento direto da equipe comercial MEP. Sem intermediários, com suporte técnico incluso.</div>
     </div>
     <div class="quem-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
       <div style="display:flex;flex-direction:column;gap:20px;">
@@ -2191,7 +2217,20 @@ function calcular() {
 
   var res = document.getElementById('calc-results');
   res.classList.add('show');
+  document.getElementById('calc-lead-gate').classList.add('show');
   res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function enviarLeadCalc() {
+  var wa = document.getElementById('clg-wa').value.replace(/\D/g,'');
+  var m2 = document.getElementById('calc-m2').value || '?';
+  var baldes = document.getElementById('cr-baldes').textContent || '?';
+  var economiaTxt = document.getElementById('cr-economia') ? document.getElementById('cr-economia').textContent : '';
+  if (!wa || wa.length < 10) { document.getElementById('clg-wa').focus(); return; }
+  var num = wa.length === 11 ? '55' + wa : wa.length === 10 ? '550' + wa : '55' + wa;
+  var msg = 'Olá! Calculei minha obra pelo site da MEP:\n\n• Área: ' + m2 + ' m²\n• Embalagens MEP: ' + baldes + '\n\nGostaria de receber o comparativo em PDF com custo detalhado.';
+  if (typeof gtag !== 'undefined') gtag('event', 'lead_calc_whatsapp', { event_category: 'lead', event_label: 'soft_gate_calc' });
+  window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank');
 }
 document.getElementById('calc-m2').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') calcular();
