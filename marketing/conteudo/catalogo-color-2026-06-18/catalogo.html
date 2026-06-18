@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #555; display: flex; flex-direction: column; gap: 12mm; padding: 12mm; font-family: 'Barlow', sans-serif; }
+
+.spread {
+  width: 420mm;
+  height: 297mm;
+  display: flex;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 4mm 16mm rgba(0,0,0,0.5);
+}
+.spread:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 0.25mm;
+  background: rgba(0,0,0,0.15);
+  z-index: 10;
+}
+.panel {
+  width: 210mm;
+  height: 297mm;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════
+   SPREAD 1 — EXTERIOR
+   ══════════════════════════════════════ */
+
+/* ── CONTRACAPA ── */
+.panel-cc {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 11mm 10mm 9mm;
+}
+
+.cc-header {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-bottom: 6mm;
+  padding-bottom: 6mm;
+  border-bottom: 0.3mm solid #e5e7eb;
+}
+.cc-header img { height: 9mm; }
+.cc-header-text {}
+.cc-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 5mm;
+  font-weight: 800;
+  color: #07101e;
+  line-height: 1;
+}
+.cc-brand-sub {
+  font-size: 2.5mm;
+  font-weight: 600;
+  color: #F28C28;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.cc-intro {
+  font-size: 3.5mm;
+  color: #374151;
+  line-height: 1.65;
+  margin-bottom: 7mm;
+}
+
+.cc-section-title {
+  font-size: 2.5mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #9ca3af;
+  margin-bottom: 3mm;
+}
+
+.cc-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+  margin-bottom: 6mm;
+}
+.cc-line {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  padding: 2.5mm 3.5mm;
+  border: 0.3mm solid #f0f0f0;
+  border-radius: 1.5mm;
+  background: #fafafa;
+}
+.cc-line-dot {
+  width: 5mm;
+  height: 5mm;
+  border-radius: 1mm;
+  flex-shrink: 0;
+}
+.cc-line-name {
+  font-size: 3.2mm;
+  font-weight: 700;
+  color: #07101e;
+}
+.cc-line-spec {
+  font-size: 2.4mm;
+  color: #9ca3af;
+  margin-top: 0.3mm;
+}
+
+.cc-divider {
+  height: 0.3mm;
+  background: #e5e7eb;
+  margin: 5mm 0;
+}
+
+.cc-contact-title {
+  font-size: 2.5mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #07101e;
+  margin-bottom: 3mm;
+}
+.cc-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 2.5mm;
+  margin-bottom: 2mm;
+}
+.cc-contact-row span { font-size: 3mm; color: #374151; }
+
+.cc-cert {
+  margin-top: 5mm;
+  padding: 3mm 4mm;
+  background: #f5f6f8;
+  border-radius: 2mm;
+  border-left: 2mm solid #F28C28;
+}
+.cc-cert-label { font-size: 2.3mm; font-weight: 700; color: #07101e; margin-bottom: 1mm; }
+.cc-cert-val { font-size: 2.3mm; color: #6b7280; }
+
+.cc-cnpj {
+  font-size: 2.3mm;
+  color: #c4c9d4;
+  margin-top: auto;
+  padding-top: 5mm;
+}
+
+
+/* ── CAPA ── */
+.panel-capa {
+  background: #07101e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.capa-accent-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2mm;
+  background: linear-gradient(90deg, #F28C28 0%, #C9A84C 60%, transparent 100%);
+}
+.capa-accent-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2.5mm;
+  background: linear-gradient(90deg, #F28C28 0%, #C9A84C 50%, #F28C28 100%);
+}
+.capa-glow-1 {
+  position: absolute;
+  width: 130mm; height: 130mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242,140,40,0.14) 0%, transparent 70%);
+  top: -40mm; right: -30mm;
+}
+.capa-glow-2 {
+  position: absolute;
+  width: 90mm; height: 90mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%);
+  bottom: 30mm; left: -20mm;
+}
+
+.capa-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 9mm 11mm 8mm;
+}
+
+/* TOP: brand */
+.capa-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 5mm;
+}
+.capa-eyebrow {
+  font-size: 2.5mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.38em;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 3mm;
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+}
+.capa-eyebrow:before,.capa-eyebrow:after {
+  content: '';
+  width: 8mm;
+  height: 0.3mm;
+  background: rgba(242,140,40,0.5);
+}
+.capa-logo-mep {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22mm;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.capa-logo-sub {
+  font-size: 3.5mm;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  margin-top: 1mm;
+}
+
+/* MASSAS section */
+.capa-brand-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.capa-section-bar {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin-bottom: 3mm;
+}
+.capa-section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4.5mm;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.05em;
+}
+.capa-section-accent {
+  flex: 1;
+  height: 0.3mm;
+  background: rgba(255,255,255,0.12);
+}
+.capa-section-tag {
+  font-size: 2.3mm;
+  font-weight: 700;
+  color: #F28C28;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Products row */
+.capa-products-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6mm;
+  flex: 1;
+}
+.capa-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2mm;
+}
+.capa-product img {
+  filter: drop-shadow(0 3mm 10mm rgba(0,0,0,0.6));
+}
+.capa-product-label {
+  font-size: 2.3mm;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Divider between brands */
+.capa-brand-divider {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  margin: 4mm 0;
+}
+.capa-brand-divider-line {
+  flex: 1;
+  height: 0.3mm;
+  background: rgba(255,255,255,0.1);
+}
+.capa-brand-divider-dot {
+  width: 2mm;
+  height: 2mm;
+  background: #F28C28;
+  border-radius: 50%;
+}
+
+/* Bottom */
+.capa-bottom-info {
+  text-align: center;
+  padding-top: 4mm;
+  border-top: 0.3mm solid rgba(255,255,255,0.08);
+  margin-top: 2mm;
+}
+.capa-url {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4mm;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+}
+.capa-insta {
+  font-size: 2.8mm;
+  color: rgba(255,255,255,0.25);
+  margin-top: 0.8mm;
+}
+
+
+/* ══════════════════════════════════════
+   SPREAD 2 — INTERIOR
+   ══════════════════════════════════════ */
+
+/* ── MASSAS PANEL ── */
+.panel-massas {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.massas-header {
+  background: #07101e;
+  padding: 6mm 8mm 5mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.massas-header-left {}
+.massas-tag {
+  font-size: 2.5mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #F28C28;
+  margin-bottom: 1mm;
+}
+.massas-nome {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8mm;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.massas-header-logo {
+  height: 8mm;
+  opacity: 0.5;
+}
+
+.massas-stats {
+  display: flex;
+  background: rgba(242,140,40,0.08);
+  border-bottom: 0.3mm solid #e5e7eb;
+  flex-shrink: 0;
+}
+.massas-stat {
+  flex: 1;
+  padding: 4mm 5mm;
+  border-right: 0.3mm solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+.massas-stat:last-child { border-right: none; }
+.massas-stat-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 7mm;
+  font-weight: 900;
+  color: #07101e;
+  line-height: 1;
+}
+.massas-stat-val em {
+  font-size: 3.5mm;
+  font-weight: 500;
+  font-style: normal;
+  color: #6b7280;
+}
+.massas-stat-label {
+  font-size: 2.3mm;
+  color: #9ca3af;
+  margin-top: 0.8mm;
+  line-height: 1.3;
+}
+
+.massas-desc {
+  font-size: 3mm;
+  color: #6b7280;
+  line-height: 1.6;
+  padding: 4mm 8mm;
+  border-bottom: 0.3mm solid #f0f0f0;
+  flex-shrink: 0;
+}
+
+.massas-produtos-title {
+  font-size: 2.5mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #9ca3af;
+  padding: 3.5mm 8mm 0;
+  flex-shrink: 0;
+}
+
+.massas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  flex: 1;
+}
+.massas-prod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5mm 6mm;
+  border-right: 0.3mm solid #f0f0f0;
+  border-bottom: 0.3mm solid #f0f0f0;
+  text-align: center;
+}
+.massas-prod:nth-child(2n) { border-right: none; }
+.massas-prod:nth-child(3),.massas-prod:nth-child(4) { border-bottom: none; }
+
+.massas-prod img {
+  height: 36mm;
+  margin-bottom: 3mm;
+  filter: drop-shadow(0 2mm 5mm rgba(0,0,0,0.15));
+}
+.massas-prod-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4.5mm;
+  font-weight: 700;
+  color: #07101e;
+  line-height: 1.1;
+  margin-bottom: 1.5mm;
+}
+.massas-prod-desc {
+  font-size: 2.5mm;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+.massas-prod-tag {
+  display: inline-block;
+  margin-top: 2mm;
+  background: rgba(242,140,40,0.1);
+  color: #F28C28;
+  font-size: 2.2mm;
+  font-weight: 700;
+  padding: 0.8mm 2.5mm;
+  border-radius: 1mm;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.massas-cert {
+  padding: 3mm 8mm;
+  background: #f5f6f8;
+  border-top: 0.3mm solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  flex-shrink: 0;
+}
+.massas-cert-badge {
+  background: #07101e;
+  color: #F28C28;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 3mm;
+  font-weight: 800;
+  padding: 1.5mm 3mm;
+  border-radius: 1mm;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.massas-cert-text {
+  font-size: 2.5mm;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+
+/* ── COLOR PANEL ── */
+.panel-color {
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-left: 0.5mm solid #e5e7eb;
+}
+
+.color-header {
+  background: #07101e;
+  padding: 6mm 8mm 5mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  position: relative;
+}
+.color-header:after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1.5mm;
+  background: linear-gradient(90deg, #F28C28, #C9A84C, #F28C28);
+}
+.color-tag { font-size: 2.5mm; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; color: #F28C28; margin-bottom: 1mm; }
+.color-nome {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8mm;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+.color-nome span { color: #F28C28; }
+.color-header-img { height: 11mm; opacity: 0.6; }
+
+/* product blocks */
+.color-prod {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.4mm solid #e5e7eb;
+  flex: 1;
+}
+.color-prod:last-child { border-bottom: none; }
+
+.color-prod-head {
+  display: flex;
+  align-items: center;
+  padding: 3mm 8mm;
+  gap: 3mm;
+  background: #f5f6f8;
+  border-bottom: 0.3mm solid #e5e7eb;
+}
+.color-prod-img {
+  height: 14mm;
+  filter: drop-shadow(0 1mm 4mm rgba(0,0,0,0.2));
+  flex-shrink: 0;
+}
+.color-prod-info { flex: 1; }
+.color-prod-tag {
+  font-size: 2.2mm;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #F28C28;
+  margin-bottom: 0.5mm;
+}
+.color-prod-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 4.8mm;
+  font-weight: 800;
+  color: #07101e;
+  line-height: 1;
+}
+.color-prod-specs {
+  display: flex;
+  gap: 3mm;
+  margin-top: 1mm;
+}
+.color-prod-spec {
+  font-size: 2.3mm;
+  color: #9ca3af;
+}
+.color-prod-spec strong { color: #07101e; font-size: 2.8mm; }
+
+.color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5mm;
+  padding: 3mm 8mm;
+  align-content: flex-start;
+}
+.sw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sw-color {
+  border-radius: 1.2mm;
+  border: 0.25mm solid rgba(0,0,0,0.08);
+}
+.sw-name {
+  font-size: 1.8mm;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 0.8mm;
+  line-height: 1.2;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════
+     SPREAD 1 — EXTERIOR
+     ═══════════════════════════ -->
+<div class="spread" id="spread-capa">
+
+  <!-- CONTRACAPA -->
+  <div class="panel panel-cc">
+
+    <div class="cc-header">
+      <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/logo-mep.svg" alt="MEP">
+      <div class="cc-header-text">
+        <div class="cc-brand">MEP INDÚSTRIA</div>
+        <div class="cc-brand-sub">Balneário Camboriú · SC</div>
+      </div>
+    </div>
+
+    <div class="cc-intro">
+      Fabricamos soluções completas para a construção civil: argamassa polimérica certificada e linha completa de tintas. Qualidade, performance e suporte técnico local.
+    </div>
+
+    <div class="cc-section-title">MEP Massas — Argamassa Polimérica</div>
+    <div class="cc-lines" style="margin-bottom:4mm;">
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:#07101e;"></div>
+        <div>
+          <div class="cc-line-name">Balde 25 kg</div>
+          <div class="cc-line-spec">1,5 kg/m² · 4× mais rápido · ABNT 491.001/25</div>
+        </div>
+      </div>
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:#1A2B4D;"></div>
+        <div>
+          <div class="cc-line-name">Barrica 25 kg</div>
+          <div class="cc-line-spec">Grandes obras · fácil empilhamento</div>
+        </div>
+      </div>
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:#2D4A6A;"></div>
+        <div>
+          <div class="cc-line-name">Bisnaga 3 kg</div>
+          <div class="cc-line-spec">Reparos e churrasqueiras</div>
+        </div>
+      </div>
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:#3D6090;"></div>
+        <div>
+          <div class="cc-line-name">Bisnaga 1 kg</div>
+          <div class="cc-line-spec">Reparos pontuais</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-divider"></div>
+
+    <div class="cc-section-title">MEP COLOR — Linha de Tintas</div>
+    <div class="cc-lines">
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:linear-gradient(135deg,#F4F0E8,#C8A878);"></div>
+        <div>
+          <div class="cc-line-name">Tinta Acrílica Premium</div>
+          <div class="cc-line-spec">Interior e exterior · 14 cores · 8,3 m²/L</div>
+        </div>
+      </div>
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:linear-gradient(135deg,#E4D8C4,#D4B896);"></div>
+        <div>
+          <div class="cc-line-name">Tinta Acrílica Econômica</div>
+          <div class="cc-line-spec">Interior · 14 cores · 4,7 m²/L</div>
+        </div>
+      </div>
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:linear-gradient(135deg,#F5C200,#CC0000);"></div>
+        <div>
+          <div class="cc-line-name">Tinta para Pisos e Quadras</div>
+          <div class="cc-line-spec">Pisos e quadras · 12 cores · 5,6 m²/L</div>
+        </div>
+      </div>
+      <div class="cc-line">
+        <div class="cc-line-dot" style="background:linear-gradient(135deg,#F4F0E8,#828282);border:0.3mm solid #e5e7eb;"></div>
+        <div>
+          <div class="cc-line-name">Esmalte Acrílico Base Água</div>
+          <div class="cc-line-spec">Madeiras e metais · 3 cores · 8,3 m²/L</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-divider"></div>
+
+    <div class="cc-contact-title">Contato e pedidos</div>
+    <div class="cc-contact-row">
+      <svg width="3.5mm" height="3.5mm" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012 .998h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      <span>(47) 99695-8399</span>
+    </div>
+    <div class="cc-contact-row">
+      <svg width="3.5mm" height="3.5mm" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <span>mep.ind.br</span>
+    </div>
+    <div class="cc-contact-row">
+      <svg width="3.5mm" height="3.5mm" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span>@mep.industria</span>
+    </div>
+
+    <div class="cc-cert">
+      <div class="cc-cert-label">Certificação ABNT</div>
+      <div class="cc-cert-val">ABNT 491.001/25 · Válida até jan/2028 · MEP Massas Polimérica</div>
+    </div>
+
+    <div class="cc-cnpj">MEP Indústria · CNPJ 59.599.259/0001-00 · Balneário Camboriú, SC</div>
+
+  </div>
+
+
+  <!-- CAPA -->
+  <div class="panel panel-capa">
+    <div class="capa-accent-top"></div>
+    <div class="capa-accent-bottom"></div>
+    <div class="capa-glow-1"></div>
+    <div class="capa-glow-2"></div>
+
+    <div class="capa-inner">
+
+      <!-- brand name -->
+      <div class="capa-top">
+        <div class="capa-eyebrow">Catálogo de Produtos 2026</div>
+        <div class="capa-logo-mep">MEP</div>
+        <div class="capa-logo-sub">Massas &amp; Color Tintas</div>
+      </div>
+
+      <!-- MEP MASSAS section -->
+      <div class="capa-brand-section" style="flex:1.1;">
+        <div class="capa-section-bar">
+          <div class="capa-section-tag">Argamassa Polimérica</div>
+          <div class="capa-section-accent"></div>
+          <div class="capa-section-label">MEP Massas</div>
+        </div>
+        <div class="capa-products-row">
+          <div class="capa-product">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/balde-25kg-v2.webp" style="height:78mm;" alt="Balde MEP">
+            <div class="capa-product-label">Balde 25 kg</div>
+          </div>
+          <div class="capa-product">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/barrica-25kg.webp" style="height:78mm;" alt="Barrica MEP">
+            <div class="capa-product-label">Barrica 25 kg</div>
+          </div>
+          <div class="capa-product" style="align-self:center;">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bisnaga-3kg.webp" style="height:52mm;" alt="Bisnaga 3kg">
+            <div class="capa-product-label">Bisnaga 3 kg</div>
+          </div>
+          <div class="capa-product" style="align-self:center;">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bisnaga-1kg.webp" style="height:38mm;" alt="Bisnaga 1kg">
+            <div class="capa-product-label">Bisnaga 1 kg</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div class="capa-brand-divider">
+        <div class="capa-brand-divider-line"></div>
+        <div class="capa-brand-divider-dot"></div>
+        <div class="capa-brand-divider-line"></div>
+      </div>
+
+      <!-- MEP COLOR section -->
+      <div class="capa-brand-section" style="flex:0.9;">
+        <div class="capa-section-bar">
+          <div class="capa-section-tag">Tintas e Revestimentos</div>
+          <div class="capa-section-accent"></div>
+          <div class="capa-section-label">MEP Color</div>
+        </div>
+        <div class="capa-products-row">
+          <div class="capa-product">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-premium.webp" style="height:54mm;" alt="Premium">
+            <div class="capa-product-label">Premium</div>
+          </div>
+          <div class="capa-product">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-economica.webp" style="height:54mm;" alt="Econômica">
+            <div class="capa-product-label">Econômica</div>
+          </div>
+          <div class="capa-product">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-pisos.webp" style="height:54mm;" alt="Pisos">
+            <div class="capa-product-label">Pisos</div>
+          </div>
+          <div class="capa-product">
+            <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-esmalte.webp" style="height:54mm;" alt="Esmalte">
+            <div class="capa-product-label">Esmalte</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom -->
+      <div class="capa-bottom-info">
+        <div class="capa-url">mep.ind.br</div>
+        <div class="capa-insta">@mep.industria · (47) 99695-8399</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════
+     SPREAD 2 — INTERIOR
+     ═══════════════════════════ -->
+<div class="spread" id="spread-interior">
+
+  <!-- MEP MASSAS PANEL -->
+  <div class="panel panel-massas">
+
+    <div class="massas-header">
+      <div class="massas-header-left">
+        <div class="massas-tag">Argamassa Polimérica</div>
+        <div class="massas-nome">MEP Massas</div>
+      </div>
+      <img class="massas-header-logo" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/logo-mep.svg" alt="MEP">
+    </div>
+
+    <div class="massas-stats">
+      <div class="massas-stat">
+        <div class="massas-stat-val">1,5<em> kg/m²</em></div>
+        <div class="massas-stat-label">Consumo por m²<br>de alvenaria</div>
+      </div>
+      <div class="massas-stat">
+        <div class="massas-stat-val">4×<em> mais</em></div>
+        <div class="massas-stat-label">Velocidade de<br>execução</div>
+      </div>
+      <div class="massas-stat">
+        <div class="massas-stat-val">−40%<em></em></div>
+        <div class="massas-stat-label">No custo de<br>mão de obra</div>
+      </div>
+      <div class="massas-stat">
+        <div class="massas-stat-val">−26,5%<em></em></div>
+        <div class="massas-stat-label">No custo total<br>de alvenaria</div>
+      </div>
+    </div>
+
+    <div class="massas-desc">
+      Argamassa polimérica certificada ABNT 491.001/25. Sem areia, sem betoneira — pronta para uso direto da embalagem. Indicada para alvenaria de blocos cerâmicos, blocos de concreto, muros, churrasqueiras e reparos em geral.
+    </div>
+
+    <div class="massas-produtos-title">Linha de Produtos</div>
+
+    <div class="massas-grid">
+      <div class="massas-prod">
+        <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/balde-25kg-v2.webp" alt="Balde 25kg">
+        <div class="massas-prod-name">Balde 25 kg</div>
+        <div class="massas-prod-desc">Produto principal para obras de médio e grande porte</div>
+        <div class="massas-prod-tag">Mais vendido</div>
+      </div>
+      <div class="massas-prod">
+        <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/barrica-25kg.webp" alt="Barrica 25kg">
+        <div class="massas-prod-name">Barrica 25 kg</div>
+        <div class="massas-prod-desc">Ideal para grandes volumes, fácil empilhamento e retirada</div>
+        <div class="massas-prod-tag">Grandes obras</div>
+      </div>
+      <div class="massas-prod">
+        <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bisnaga-3kg.webp" alt="Bisnaga 3kg">
+        <div class="massas-prod-name">Bisnaga 3 kg</div>
+        <div class="massas-prod-desc">Reparos, churrasqueiras e aplicações pontuais com precisão</div>
+        <div class="massas-prod-tag">Alta precisão</div>
+      </div>
+      <div class="massas-prod">
+        <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bisnaga-1kg.webp" alt="Bisnaga 1kg">
+        <div class="massas-prod-name">Bisnaga 1 kg</div>
+        <div class="massas-prod-desc">Retoques e reparos pontuais. Ideal para manutenção</div>
+        <div class="massas-prod-tag">Retoques</div>
+      </div>
+    </div>
+
+    <div class="massas-cert">
+      <div class="massas-cert-badge">ABNT 491.001/25</div>
+      <div class="massas-cert-text">Certificado válido até jan/2028 · Fabricação em Balneário Camboriú, SC · Suporte técnico presencial</div>
+    </div>
+
+  </div>
+
+
+  <!-- MEP COLOR PANEL -->
+  <div class="panel panel-color">
+
+    <div class="color-header">
+      <div>
+        <div class="color-tag">Linha de Tintas</div>
+        <div class="color-nome">MEP <span>Color</span></div>
+      </div>
+      <img class="color-header-img" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/logo-mep.svg" alt="MEP">
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="color-prod">
+      <div class="color-prod-head">
+        <img class="color-prod-img" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-premium.webp" alt="Premium">
+        <div class="color-prod-info">
+          <div class="color-prod-tag">Acrílica Premium</div>
+          <div class="color-prod-name">Tinta Acrílica Premium</div>
+          <div class="color-prod-specs">
+            <div class="color-prod-spec"><strong>8,3</strong> m²/L</div>
+            <div class="color-prod-spec"><strong>3,6L</strong> / <strong>18L</strong></div>
+            <div class="color-prod-spec">Interior · Exterior</div>
+          </div>
+        </div>
+      </div>
+      <div class="color-swatches">
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#FFFFFF;border:0.3mm solid #e5e7eb;"></div><div class="sw-name">Branco</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F4F0E8;"></div><div class="sw-name">Gelo</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#E8D49A;"></div><div class="sw-name">Palha</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#D4B896;"></div><div class="sw-name">Areia</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#E0D5C8;"></div><div class="sw-name">Pérola</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F0EAD6;"></div><div class="sw-name">Marfim</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#E4D8C4;"></div><div class="sw-name">Algodão</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F0B080;"></div><div class="sw-name">Pêssego</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#A09080;"></div><div class="sw-name">Concreto</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#B0B8C4;"></div><div class="sw-name">Cromio</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#828282;"></div><div class="sw-name">Elefante</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#9A8060;"></div><div class="sw-name">Bronze</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#8AAA5A;"></div><div class="sw-name">Verde Kiwi</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#C8A878;"></div><div class="sw-name">Camurça</div></div>
+      </div>
+    </div>
+
+    <!-- ECONÔMICA -->
+    <div class="color-prod">
+      <div class="color-prod-head">
+        <img class="color-prod-img" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-economica.webp" alt="Econômica">
+        <div class="color-prod-info">
+          <div class="color-prod-tag">Látex Econômico</div>
+          <div class="color-prod-name">Tinta Acrílica Econômica</div>
+          <div class="color-prod-specs">
+            <div class="color-prod-spec"><strong>4,7</strong> m²/L</div>
+            <div class="color-prod-spec"><strong>3,6L</strong> / <strong>18L</strong></div>
+            <div class="color-prod-spec">Superfícies Internas</div>
+          </div>
+        </div>
+      </div>
+      <div class="color-swatches">
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#FFFFFF;border:0.3mm solid #e5e7eb;"></div><div class="sw-name">Branco</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F4F0E8;"></div><div class="sw-name">Gelo</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#E8D49A;"></div><div class="sw-name">Palha</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#D4B896;"></div><div class="sw-name">Areia</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#E0D5C8;"></div><div class="sw-name">Pérola</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F0EAD6;"></div><div class="sw-name">Marfim</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#E4D8C4;"></div><div class="sw-name">Algodão</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F0B080;"></div><div class="sw-name">Pêssego</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#A09080;"></div><div class="sw-name">Concreto</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#B0B8C4;"></div><div class="sw-name">Cromio</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#828282;"></div><div class="sw-name">Elefante</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#9A8060;"></div><div class="sw-name">Bronze</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#8AAA5A;"></div><div class="sw-name">Verde Kiwi</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#C8A878;"></div><div class="sw-name">Camurça</div></div>
+      </div>
+    </div>
+
+    <!-- PISOS -->
+    <div class="color-prod">
+      <div class="color-prod-head">
+        <img class="color-prod-img" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-pisos.webp" alt="Pisos">
+        <div class="color-prod-info">
+          <div class="color-prod-tag">Pisos e Quadras</div>
+          <div class="color-prod-name">Tinta para Pisos</div>
+          <div class="color-prod-specs">
+            <div class="color-prod-spec"><strong>5,6</strong> m²/L</div>
+            <div class="color-prod-spec"><strong>3,6L</strong> / <strong>18L</strong></div>
+            <div class="color-prod-spec">Calçadas · Quadras</div>
+          </div>
+        </div>
+      </div>
+      <div class="color-swatches">
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F5C200;"></div><div class="sw-name">Amarelo</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#F0DC00;"></div><div class="sw-name">Am. Demarcação</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#CC0000;"></div><div class="sw-name">Verm. Segurança</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#990000;"></div><div class="sw-name">Vermelho</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#8B7D6B;"></div><div class="sw-name">Concreto</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#1A4A1A;"></div><div class="sw-name">Verde</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#464646;"></div><div class="sw-name">Cinza Chumbo</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#888888;"></div><div class="sw-name">Cinza</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#1A2B6B;"></div><div class="sw-name">Azul</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#111111;"></div><div class="sw-name">Preto</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#5A2D0C;"></div><div class="sw-name">Marrom</div></div>
+        <div class="sw"><div class="sw-color" style="width:17mm;height:11mm;background:#3C3C3C;"></div><div class="sw-name">Grafite</div></div>
+      </div>
+    </div>
+
+    <!-- ESMALTE -->
+    <div class="color-prod" style="border-bottom:none;">
+      <div class="color-prod-head">
+        <img class="color-prod-img" src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/bucket-esmalte.webp" alt="Esmalte">
+        <div class="color-prod-info">
+          <div class="color-prod-tag">Esmalte Base Água</div>
+          <div class="color-prod-name">Esmalte Acrílico</div>
+          <div class="color-prod-specs">
+            <div class="color-prod-spec"><strong>8,3</strong> m²/L</div>
+            <div class="color-prod-spec"><strong>3,6L</strong> / <strong>18L</strong></div>
+            <div class="color-prod-spec">Madeiras · Metais</div>
+          </div>
+        </div>
+      </div>
+      <div class="color-swatches">
+        <div class="sw"><div class="sw-color" style="width:55mm;height:11mm;background:#FFFFFF;border:0.3mm solid #e5e7eb;"></div><div class="sw-name">Branco</div></div>
+        <div class="sw"><div class="sw-color" style="width:55mm;height:11mm;background:#F4F0E8;"></div><div class="sw-name">Gelo</div></div>
+        <div class="sw"><div class="sw-color" style="width:55mm;height:11mm;background:#111111;"></div><div class="sw-name">Preto</div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
