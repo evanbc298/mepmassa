@@ -36,31 +36,35 @@
           </td>
         </tr>
 
-        <!-- CORPO -->
+        <!-- HERO COM IMAGEM -->
         <tr>
-          <td style="background:#ffffff;padding:40px 40px 32px;">
-
-            <!-- SAUDAÇÃO -->
-            <p style="margin:0 0 8px;font-size:18px;font-weight:700;color:#1a2b4d;">
-              Recebemos sua solicitação, <strong>{{contact.FIRSTNAME}}</strong>.
-            </p>
-            <p style="margin:0 0 28px;font-size:15px;color:#555555;line-height:1.7;">
-              Nossa equipe vai analisar os detalhes e retornar com um comparativo de custo personalizado para sua obra em até <strong>24 horas úteis</strong>.
-            </p>
-
-            <!-- DADOS RECEBIDOS -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f8fa;border-radius:8px;border:1px solid #e8e8e8;margin-bottom:28px;">
+          <td style="background:#1a2b4d;padding:0;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:16px 20px;border-bottom:1px solid #e8e8e8;">
-                  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999999;">Dados recebidos</span>
+                <td style="padding:32px 40px;vertical-align:middle;" width="55%">
+                  <p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#f28c28;text-transform:uppercase;letter-spacing:1px;">Recebemos sua solicitação</p>
+                  <p style="margin:0 0 12px;font-size:24px;font-weight:900;color:#ffffff;line-height:1.2;">Olá, <span style="color:#f28c28;">{{contact.FIRSTNAME}}</span>.</p>
+                  <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;">Nossa equipe vai retornar com um comparativo de custo personalizado para sua obra em até <strong style="color:#ffffff;">24 horas úteis</strong>.</p>
+                </td>
+                <td style="padding:16px 24px 16px 0;vertical-align:bottom;text-align:right;" width="45%">
+                  <img src="https://www.mep.ind.br/barrica-30kg.png" alt="Barrica MEP 30kg" width="150" style="display:block;margin-left:auto;max-width:150px;">
                 </td>
               </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- DADOS RECEBIDOS -->
+        <tr>
+          <td style="background:#ffffff;padding:32px 40px 0;">
+            <p style="margin:0 0 16px;font-size:12px;font-weight:700;color:#aaaaaa;text-transform:uppercase;letter-spacing:1px;">Dados recebidos</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f8fa;border-radius:8px;border:1px solid #e8e8e8;margin-bottom:32px;">
               <tr>
                 <td style="padding:12px 20px;border-bottom:1px solid #f0f0f0;">
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="font-size:13px;color:#888888;width:40%;">Empresa</td>
-                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.COMPANY}}</td>
+                      <td style="font-size:12px;color:#999999;width:40%;">Empresa</td>
+                      <td style="font-size:13px;font-weight:700;color:#1a2b4d;">{{contact.COMPANY}}</td>
                     </tr>
                   </table>
                 </td>
@@ -69,8 +73,8 @@
                 <td style="padding:12px 20px;border-bottom:1px solid #f0f0f0;">
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="font-size:13px;color:#888888;width:40%;">Contato</td>
-                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.FIRSTNAME}}</td>
+                      <td style="font-size:12px;color:#999999;width:40%;">Contato</td>
+                      <td style="font-size:13px;font-weight:700;color:#1a2b4d;">{{contact.FIRSTNAME}}</td>
                     </tr>
                   </table>
                 </td>
@@ -79,8 +83,8 @@
                 <td style="padding:12px 20px;border-bottom:1px solid #f0f0f0;">
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="font-size:13px;color:#888888;width:40%;">WhatsApp</td>
-                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.SMS}}</td>
+                      <td style="font-size:12px;color:#999999;width:40%;">WhatsApp</td>
+                      <td style="font-size:13px;font-weight:700;color:#1a2b4d;">{{contact.SMS}}</td>
                     </tr>
                   </table>
                 </td>
@@ -89,79 +93,113 @@
                 <td style="padding:12px 20px;">
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="font-size:13px;color:#888888;width:40%;">Metragem informada</td>
-                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.METRAGEM}} m²</td>
+                      <td style="font-size:12px;color:#999999;width:40%;">Metragem informada</td>
+                      <td style="font-size:13px;font-weight:700;color:#1a2b4d;">{{contact.METRAGEM}} m²</td>
                     </tr>
                   </table>
                 </td>
               </tr>
             </table>
+          </td>
+        </tr>
 
-            <!-- DIVISOR -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
+        <!-- NUMEROS -->
+        <tr>
+          <td style="background:#ffffff;padding:0 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1a2b4d;border-radius:8px;">
               <tr>
-                <td style="border-top:1px solid #eeeeee;padding-top:24px;">
-                  <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#1a2b4d;text-transform:uppercase;letter-spacing:1px;">Enquanto isso, conheça o produto</p>
-                </td>
-              </tr>
-            </table>
-
-            <!-- PRODUTO -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
-              <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;">
+                <td align="center" style="padding:24px 10px;">
+                  <p style="margin:0 0 16px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;">Por que construtoras escolhem a MEP</p>
                   <table cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="width:32px;height:32px;background:#1a2b4d;border-radius:6px;text-align:center;vertical-align:middle;">
-                        <span style="font-size:14px;font-weight:900;color:#f28c28;">1</span>
+                      <td align="center" style="padding:0 18px;border-right:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:30px;font-weight:900;color:#f28c28;line-height:1;">40%</div>
+                        <div style="font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Mais econômico</div>
                       </td>
-                      <td style="padding-left:12px;">
-                        <div style="font-size:13px;font-weight:700;color:#1a2b4d;">Sem betoneira, sem mistura</div>
-                        <div style="font-size:12px;color:#777777;margin-top:2px;">Produto pronto para uso — abre e aplica direto na parede.</div>
+                      <td align="center" style="padding:0 18px;border-right:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:30px;font-weight:900;color:#f28c28;line-height:1;">4X</div>
+                        <div style="font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Mais rápido</div>
                       </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;">
-                  <table cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                      <td style="width:32px;height:32px;background:#1a2b4d;border-radius:6px;text-align:center;vertical-align:middle;">
-                        <span style="font-size:14px;font-weight:900;color:#f28c28;">2</span>
+                      <td align="center" style="padding:0 18px;border-right:1px solid rgba(255,255,255,0.1);">
+                        <div style="font-size:30px;font-weight:900;color:#f28c28;line-height:1;">3X</div>
+                        <div style="font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Mais resistente</div>
                       </td>
-                      <td style="padding-left:12px;">
-                        <div style="font-size:13px;font-weight:700;color:#1a2b4d;">1 balde = 25 m² de alvenaria</div>
-                        <div style="font-size:12px;color:#777777;margin-top:2px;">Alto rendimento com zero desperdício. Estocagem 20x menor.</div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:10px 0;">
-                  <table cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                      <td style="width:32px;height:32px;background:#1a2b4d;border-radius:6px;text-align:center;vertical-align:middle;">
-                        <span style="font-size:14px;font-weight:900;color:#f28c28;">3</span>
-                      </td>
-                      <td style="padding-left:12px;">
-                        <div style="font-size:13px;font-weight:700;color:#1a2b4d;">Resistência 3x superior</div>
-                        <div style="font-size:12px;color:#777777;margin-top:2px;">Tecnologia polimérica com 12 meses de garantia de fábrica.</div>
+                      <td align="center" style="padding:0 18px;">
+                        <div style="font-size:30px;font-weight:900;color:#f28c28;line-height:1;">0%</div>
+                        <div style="font-size:10px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Desperdício</div>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
             </table>
+          </td>
+        </tr>
 
-            <!-- CTA DUPLO -->
-            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+        <!-- COMPARAÇÃO VISUAL -->
+        <tr>
+          <td style="background:#ffffff;padding:0 40px 32px;">
+            <p style="margin:0 0 16px;font-size:12px;font-weight:700;color:#aaaaaa;text-transform:uppercase;letter-spacing:1px;">O que muda na prática</p>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-radius:8px;overflow:hidden;">
+              <tr>
+                <td width="50%" style="background:#f0f0f0;padding:20px;vertical-align:top;">
+                  <p style="margin:0 0 6px;font-size:10px;font-weight:700;color:#999999;text-transform:uppercase;letter-spacing:1px;">Tradicional</p>
+                  <p style="margin:0 0 12px;font-size:18px;font-weight:900;color:#777777;">594kg<br>por quarto</p>
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr><td style="font-size:12px;color:#888888;padding:2px 0;">✗ &nbsp;Areia + cimento + água</td></tr>
+                    <tr><td style="font-size:12px;color:#888888;padding:2px 0;">✗ &nbsp;Betoneira o dia todo</td></tr>
+                    <tr><td style="font-size:12px;color:#888888;padding:2px 0;">✗ &nbsp;25% de desperdício</td></tr>
+                    <tr><td style="font-size:12px;color:#888888;padding:2px 0;">✗ &nbsp;Obra lenta e suja</td></tr>
+                  </table>
+                </td>
+                <td width="50%" style="background:#1a2b4d;padding:20px;vertical-align:top;text-align:center;">
+                  <p style="margin:0 0 6px;font-size:10px;font-weight:700;color:#f28c28;text-transform:uppercase;letter-spacing:1px;">MEP Massas</p>
+                  <img src="https://www.mep.ind.br/barrica-30kg.png" alt="Barrica MEP 30kg" width="80" style="display:block;margin:0 auto 8px;max-width:80px;">
+                  <p style="margin:0 0 12px;font-size:18px;font-weight:900;color:#ffffff;line-height:1.1;">30kg<br><span style="color:#f28c28;">= mesmo resultado</span></p>
+                  <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
+                    <tr><td style="font-size:12px;color:rgba(255,255,255,0.8);padding:2px 0;">✓ &nbsp;Pronto para uso</td></tr>
+                    <tr><td style="font-size:12px;color:rgba(255,255,255,0.8);padding:2px 0;">✓ &nbsp;Sem betoneira</td></tr>
+                    <tr><td style="font-size:12px;color:rgba(255,255,255,0.8);padding:2px 0;">✓ &nbsp;Zero desperdício</td></tr>
+                    <tr><td style="font-size:12px;color:rgba(255,255,255,0.8);padding:2px 0;">✓ &nbsp;4x mais rápido</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- PRODUTO BALDE -->
+        <tr>
+          <td style="background:#ffffff;padding:0 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f8fa;border-radius:8px;border:1px solid #eeeeee;">
+              <tr>
+                <td style="padding:24px;vertical-align:middle;" width="65%">
+                  <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#f28c28;text-transform:uppercase;letter-spacing:1px;">Produto mais vendido</p>
+                  <p style="margin:0 0 8px;font-size:18px;font-weight:900;color:#1a2b4d;">Balde 25kg</p>
+                  <p style="margin:0 0 12px;font-size:13px;color:#666666;line-height:1.5;">Rende até <strong>25m²</strong> de alvenaria. Ideal para construtoras com obras em andamento. Disponível para entrega em SC, PR e SP.</p>
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr><td style="font-size:12px;color:#555555;padding:2px 0;">· Tijolo, bloco cerâmico e bloco de concreto</td></tr>
+                    <tr><td style="font-size:12px;color:#555555;padding:2px 0;">· Muros, churrasqueiras e reparos</td></tr>
+                    <tr><td style="font-size:12px;color:#555555;padding:2px 0;">· 12 meses de garantia de fábrica</td></tr>
+                  </table>
+                </td>
+                <td style="padding:16px;text-align:center;vertical-align:middle;" width="35%">
+                  <img src="https://www.mep.ind.br/balde-25kg-v2.png.png" alt="Balde MEP 25kg" width="110" style="display:block;margin:0 auto;max-width:110px;">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CTA DUPLO -->
+        <tr>
+          <td style="background:#ffffff;padding:0 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right:8px;width:50%;">
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="background:#f28c28;border-radius:6px;padding:13px;text-align:center;">
+                      <td style="background:#f28c28;border-radius:6px;padding:14px;text-align:center;">
                         <a href="https://wa.me/5547996958399" style="color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;">Falar pelo WhatsApp</a>
                       </td>
                     </tr>
@@ -170,7 +208,7 @@
                 <td style="padding-left:8px;width:50%;">
                   <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <tr>
-                      <td style="background:#1a2b4d;border-radius:6px;padding:13px;text-align:center;">
+                      <td style="background:#1a2b4d;border-radius:6px;padding:14px;text-align:center;">
                         <a href="https://mep.ind.br/calculadora-de-custos" style="color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;">Calculadora Gratuita</a>
                       </td>
                     </tr>
@@ -178,11 +216,9 @@
                 </td>
               </tr>
             </table>
-
-            <p style="margin:20px 0 0;font-size:13px;color:#aaaaaa;text-align:center;">
-              Caso precise antes, ligue para <a href="tel:+5547996958399" style="color:#1a2b4d;font-weight:700;">(47) 99695-8399</a>
+            <p style="margin:16px 0 0;font-size:13px;color:#aaaaaa;text-align:center;">
+              Precisa de retorno urgente? Ligue para <a href="tel:+5547996958399" style="color:#1a2b4d;font-weight:700;">(47) 99695-8399</a>
             </p>
-
           </td>
         </tr>
 
