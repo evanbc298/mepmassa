@@ -2254,7 +2254,23 @@ document.getElementById('f-btn').addEventListener('click', function() {
   if (tel) texto += ' Meu WhatsApp: ' + tel + '.';
   if (msg) texto += ' Observação: ' + msg;
 
-  window.open('https://wa.me/5547996958399?text=' + encodeURIComponent(texto), '_blank');
+  var waUrl = 'https://wa.me/5547996958399?text=' + encodeURIComponent(texto);
+
+  // Mostra painel de obrigado
+  var formBox = document.getElementById('f-btn').closest('div').parentElement;
+  formBox.innerHTML = [
+    '<div style="text-align:center;padding:8px 0;">',
+    '<div style="width:56px;height:56px;background:#e8f5e9;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">',
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+    '</div>',
+    '<div style="font-size:20px;font-weight:800;color:#1a2b4d;margin-bottom:8px;">Solicitação recebida!</div>',
+    '<div style="font-size:14px;color:#666;line-height:1.6;margin-bottom:24px;">Obrigado, <strong>' + nome + '</strong>. Nossa equipe vai preparar um comparativo de custo personalizado e retornar em até <strong>24 horas úteis</strong>.</div>',
+    '<a href="' + waUrl + '" target="_blank" style="display:block;background:#25d366;color:#fff;text-decoration:none;padding:14px 20px;border-radius:8px;font-size:15px;font-weight:700;margin-bottom:12px;">',
+    'Continuar pelo WhatsApp agora',
+    '</a>',
+    '<div style="font-size:12px;color:#aaa;">Ou aguarde nosso retorno por email e WhatsApp.</div>',
+    '</div>'
+  ].join('');
 });
 
 // Shadow no header ao rolar
