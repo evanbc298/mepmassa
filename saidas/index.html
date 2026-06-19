@@ -297,6 +297,9 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .hero-visual { display:flex; align-items:center; justify-content:center; position:relative; }
 .hero-visual-glow { position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(242,140,40,0.18) 0%, transparent 70%); pointer-events:none; }
 .hero-visual img { width:380px; max-width:100%; filter:drop-shadow(0 40px 80px rgba(0,0,0,0.55)); position:relative; z-index:1; }
+.hero-video-bg { position:absolute; left:0; top:0; width:60%; height:100%; overflow:hidden; z-index:0; }
+.hero-video-bg video { width:100%; height:100%; object-fit:cover; object-position:center center; }
+.hero-video-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(7,16,30,0.15) 0%, rgba(7,16,30,0.20) 30%, rgba(13,27,53,0.75) 62%, #0d1b35 100%); }
 
 /* BARRA DIFERENCIAIS */
 .dif-bar { background: var(--laranja); padding: 0; }
@@ -665,6 +668,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .hero-btns { justify-content:center; }
   .hero-stats { justify-content:center; flex-wrap:wrap; gap:20px; }
   .hero-visual { display:none; }
+  .hero-video-bg { display:none; }
   .dif-bar-inner { grid-template-columns:repeat(2,1fr); }
   .sec-inner { padding:0 20px; }
   .sec-header .sh-title { font-size:26px; }
@@ -922,6 +926,12 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 
 <!-- HERO -->
 <div class="hero">
+  <div class="hero-video-bg">
+    <video autoplay loop muted playsinline>
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
   <svg class="hero-hex" style="top:-80px;right:-80px;" width="500" height="500" viewBox="0 0 500 500">
     <polygon points="250,25 462,142 462,358 250,475 38,358 38,142" fill="none" stroke="white" stroke-width="50"/>
   </svg>
