@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP Massas — Orçamento Recebido</title>
+</head>
+<body style="margin:0;padding:0;background:#f0f2f5;font-family:Arial,Helvetica,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f2f5;padding:32px 0;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+
+        <!-- HEADER -->
+        <tr>
+          <td style="background:#1a2b4d;border-radius:10px 10px 0 0;padding:28px 40px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td>
+                  <span style="font-size:22px;font-weight:900;color:#ffffff;letter-spacing:3px;">MEP</span>
+                  <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-left:10px;text-transform:uppercase;">Massa de Edificação Profissional</span>
+                </td>
+                <td align="right">
+                  <span style="font-size:11px;color:rgba(255,255,255,0.4);">mep.ind.br</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- FAIXA LARANJA -->
+        <tr>
+          <td style="background:#f28c28;padding:10px 40px;">
+            <span style="font-size:11px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:2px;">Orçamento Recebido com Sucesso</span>
+          </td>
+        </tr>
+
+        <!-- CORPO -->
+        <tr>
+          <td style="background:#ffffff;padding:40px 40px 32px;">
+
+            <!-- SAUDAÇÃO -->
+            <p style="margin:0 0 8px;font-size:18px;font-weight:700;color:#1a2b4d;">
+              Recebemos sua solicitação, <strong>{{contact.FIRSTNAME}}</strong>.
+            </p>
+            <p style="margin:0 0 28px;font-size:15px;color:#555555;line-height:1.7;">
+              Nossa equipe vai analisar os detalhes e retornar com um comparativo de custo personalizado para sua obra em até <strong>24 horas úteis</strong>.
+            </p>
+
+            <!-- DADOS RECEBIDOS -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f8fa;border-radius:8px;border:1px solid #e8e8e8;margin-bottom:28px;">
+              <tr>
+                <td style="padding:16px 20px;border-bottom:1px solid #e8e8e8;">
+                  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#999999;">Dados recebidos</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;border-bottom:1px solid #f0f0f0;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="font-size:13px;color:#888888;width:40%;">Empresa</td>
+                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.COMPANY}}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;border-bottom:1px solid #f0f0f0;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="font-size:13px;color:#888888;width:40%;">Contato</td>
+                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.FIRSTNAME}}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;border-bottom:1px solid #f0f0f0;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="font-size:13px;color:#888888;width:40%;">WhatsApp</td>
+                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.SMS}}</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 20px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="font-size:13px;color:#888888;width:40%;">Metragem informada</td>
+                      <td style="font-size:13px;font-weight:600;color:#333333;">{{contact.METRAGEM}} m²</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- DIVISOR -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
+              <tr>
+                <td style="border-top:1px solid #eeeeee;padding-top:24px;">
+                  <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#1a2b4d;text-transform:uppercase;letter-spacing:1px;">Enquanto isso, conheça o produto</p>
+                </td>
+              </tr>
+            </table>
+
+            <!-- PRODUTO -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width:32px;height:32px;background:#1a2b4d;border-radius:6px;text-align:center;vertical-align:middle;">
+                        <span style="font-size:14px;font-weight:900;color:#f28c28;">1</span>
+                      </td>
+                      <td style="padding-left:12px;">
+                        <div style="font-size:13px;font-weight:700;color:#1a2b4d;">Sem betoneira, sem mistura</div>
+                        <div style="font-size:12px;color:#777777;margin-top:2px;">Produto pronto para uso — abre e aplica direto na parede.</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f5f5f5;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width:32px;height:32px;background:#1a2b4d;border-radius:6px;text-align:center;vertical-align:middle;">
+                        <span style="font-size:14px;font-weight:900;color:#f28c28;">2</span>
+                      </td>
+                      <td style="padding-left:12px;">
+                        <div style="font-size:13px;font-weight:700;color:#1a2b4d;">1 balde = 25 m² de alvenaria</div>
+                        <div style="font-size:12px;color:#777777;margin-top:2px;">Alto rendimento com zero desperdício. Estocagem 20x menor.</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="width:32px;height:32px;background:#1a2b4d;border-radius:6px;text-align:center;vertical-align:middle;">
+                        <span style="font-size:14px;font-weight:900;color:#f28c28;">3</span>
+                      </td>
+                      <td style="padding-left:12px;">
+                        <div style="font-size:13px;font-weight:700;color:#1a2b4d;">Resistência 3x superior</div>
+                        <div style="font-size:12px;color:#777777;margin-top:2px;">Tecnologia polimérica com 12 meses de garantia de fábrica.</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- CTA DUPLO -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+              <tr>
+                <td style="padding-right:8px;width:50%;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background:#f28c28;border-radius:6px;padding:13px;text-align:center;">
+                        <a href="https://wa.me/5547996958399" style="color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;">Falar pelo WhatsApp</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td style="padding-left:8px;width:50%;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background:#1a2b4d;border-radius:6px;padding:13px;text-align:center;">
+                        <a href="https://mep.ind.br/calculadora-de-custos" style="color:#ffffff;font-size:13px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;">Calculadora Gratuita</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <p style="margin:20px 0 0;font-size:13px;color:#aaaaaa;text-align:center;">
+              Caso precise antes, ligue para <a href="tel:+5547996958399" style="color:#1a2b4d;font-weight:700;">(47) 99695-8399</a>
+            </p>
+
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td style="background:#f7f7f7;border-top:1px solid #e8e8e8;border-radius:0 0 10px 10px;padding:24px 40px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#1a2b4d;">MEP Indústria e Comércio Ltda</p>
+            <p style="margin:0 0 2px;font-size:12px;color:#888888;">Balneário Camboriú, SC — CNPJ 62.205.954/0001-98</p>
+            <p style="margin:0;font-size:12px;color:#888888;">
+              <a href="tel:+5547996958399" style="color:#888888;text-decoration:none;">(47) 99695-8399</a>
+              &nbsp;·&nbsp;
+              <a href="mailto:contato@mep.ind.br" style="color:#888888;text-decoration:none;">contato@mep.ind.br</a>
+              &nbsp;·&nbsp;
+              <a href="https://mep.ind.br" style="color:#888888;text-decoration:none;">mep.ind.br</a>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
