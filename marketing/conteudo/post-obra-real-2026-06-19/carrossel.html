@@ -1,186 +1,474 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — É assim na prática</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#000; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  font-family: 'Barlow', sans-serif;
+}
 
 .slide {
   width: 1080px;
   height: 1350px;
   position: relative;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Inter', sans-serif;
+  background: #0f1932;
 }
 
-/* Foto de fundo */
-.slide-bg {
+/* ─── LOGO BAR ─── */
+.logo-bar {
   position: absolute;
-  inset: 0;
-  background-image: url('file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/imagens e videos/WhatsApp Image 2026-06-18 at 21.15.55.jpeg');
+  top: 52px; left: 64px; right: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 10;
+}
+.logo-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 700;
+  letter-spacing: 0.18em; color: rgba(255,255,255,0.88);
+  text-transform: uppercase;
+}
+.logo-counter {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: 0.22em; color: rgba(255,255,255,0.30);
+}
+
+/* ─── ELEMENTOS BASE ─── */
+.eyebrow {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.34em; text-transform: uppercase;
+  color: #F28C28; display: block; margin-bottom: 18px;
+}
+.orange-rule {
+  width: 48px; height: 3px; background: #F28C28;
+  margin-bottom: 26px;
+}
+.slide-title {
+  font-family: 'Barlow', sans-serif;
+  font-size: 62px; font-weight: 700;
+  line-height: 1.04; letter-spacing: -0.02em;
+  color: #fff; margin-bottom: 26px;
+}
+.slide-body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 20px; font-weight: 400;
+  line-height: 1.72; color: rgba(255,255,255,0.62);
+  max-width: 620px;
+}
+
+.foto-bg {
+  position: absolute; inset: 0;
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ══════════════════════════════════════
+   SLIDE 1 — CAPA
+   Foto pedreiro com bisnaga
+══════════════════════════════════════ */
+#s1 .foto-bg {
+  background-image: url('file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/fotos reiais/usar essa.jpeg');
   background-position: center 30%;
-  z-index: 0;
 }
-
-/* Gradient overlay — transparente no centro, dark nas bordas */
-.slide-overlay {
-  position: absolute;
-  inset: 0;
+#s1 .overlay {
+  position: absolute; inset: 0;
   background:
-    linear-gradient(to bottom,
-      rgba(7,16,30,0.72) 0%,
-      rgba(7,16,30,0.15) 28%,
-      rgba(7,16,30,0.05) 45%,
-      rgba(7,16,30,0.35) 65%,
-      rgba(7,16,30,0.88) 85%,
-      rgba(7,16,30,0.97) 100%
-    );
-  z-index: 1;
+    linear-gradient(105deg,
+      rgba(15,25,50,0.97) 0%,
+      rgba(15,25,50,0.88) 35%,
+      rgba(15,25,50,0.52) 62%,
+      rgba(15,25,50,0.15) 100%),
+    linear-gradient(0deg,
+      rgba(15,25,50,0.72) 0%,
+      rgba(15,25,50,0.08) 38%,
+      transparent 55%);
+}
+#s1 .content {
+  position: absolute; left: 64px; right: 64px;
+  top: 50%; transform: translateY(-52%);
+  z-index: 5;
+}
+#s1 .slide-title { font-size: 72px; max-width: 680px; }
+#s1 .slide-bottom {
+  position: absolute; bottom: 72px; left: 64px; right: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 5; border-top: 1px solid rgba(255,255,255,0.10);
+  padding-top: 22px;
+}
+.bottom-site {
+  font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 400;
+  letter-spacing: 0.18em; color: rgba(255,255,255,0.32);
+}
+.bottom-swipe {
+  font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255,255,255,0.20);
 }
 
-/* Conteúdo */
-.slide-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 64px 72px;
+/* ══════════════════════════════════════
+   SLIDE 2 — ANTES E DEPOIS
+   Foto alvenaria real
+══════════════════════════════════════ */
+#s2 .foto-bg {
+  background-image: url('file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/fotos reiais/usaressa1.jpeg');
+  background-position: center;
+}
+#s2 .overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(15,25,50,0.08) 0%,
+      rgba(15,25,50,0.15) 25%,
+      rgba(15,25,50,0.55) 52%,
+      rgba(15,25,50,0.90) 72%,
+      rgba(15,25,50,0.98) 100%),
+    linear-gradient(105deg,
+      rgba(15,25,50,0.25) 0%,
+      transparent 52%);
+}
+#s2 .content {
+  position: absolute; left: 64px; right: 64px;
+  bottom: 100px; z-index: 5;
+}
+#s2 .slide-title { font-size: 66px; max-width: 720px; margin-bottom: 20px; }
+#s2 .slide-body { margin-bottom: 36px; max-width: 700px; }
+
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 8px;
+}
+.ba-item {
+  padding: 26px 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(15,25,50,0.55);
+  backdrop-filter: blur(6px);
+}
+.ba-item + .ba-item { border-left: none; }
+.ba-label {
+  font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); margin-bottom: 12px; display: block;
+}
+.ba-label.orange { color: #F28C28; }
+.ba-value {
+  font-family: 'Barlow', sans-serif; font-size: 42px; font-weight: 700;
+  letter-spacing: -0.02em; color: rgba(255,255,255,0.35);
+  line-height: 1; margin-bottom: 6px;
+}
+.ba-value.white { color: #ffffff; }
+.ba-unit {
+  font-family: 'Barlow', sans-serif; font-size: 15px; font-weight: 400;
+  color: rgba(255,255,255,0.30); margin-top: 4px;
 }
 
-/* Header */
-.slide-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* ══════════════════════════════════════
+   SLIDE 3 — O PEDREIRO FALA
+   Foto pedreiro + depoimento
+══════════════════════════════════════ */
+#s3 .foto-bg {
+  background-image: url('file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/pedreiro-bisnaga.png');
+  background-position: center right;
+  background-size: cover;
+}
+#s3 .overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(105deg,
+      rgba(15,25,50,0.97) 0%,
+      rgba(15,25,50,0.90) 40%,
+      rgba(15,25,50,0.55) 65%,
+      rgba(15,25,50,0.12) 100%),
+    linear-gradient(0deg,
+      rgba(15,25,50,0.55) 0%,
+      transparent 45%);
+}
+#s3 .content {
+  position: absolute; left: 64px; right: 64px;
+  top: 50%; transform: translateY(-50%);
+  z-index: 5; max-width: 640px;
+}
+#s3 .slide-title { font-size: 58px; max-width: 600px; }
+#s3 .quote-block {
+  border-left: 3px solid #F28C28;
+  padding: 20px 28px;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 32px;
+}
+#s3 .quote-text {
+  font-family: 'Barlow', sans-serif; font-size: 22px; font-weight: 400;
+  color: rgba(255,255,255,0.75); line-height: 1.65;
+  font-style: italic;
+}
+#s3 .quote-attr {
+  font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.30); margin-top: 14px;
 }
 
-.logo-wrap img {
-  height: 48px;
-  filter: brightness(0) invert(1);
-}
-
-.handle {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 0.04em;
-}
-
-/* Spacer */
-.spacer { flex: 1; }
-
-/* Bottom content */
-.slide-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  color: #F28C28;
-}
-
-.kicker::before {
-  content: '';
-  display: block;
-  width: 36px;
-  height: 3px;
+/* ══════════════════════════════════════
+   SLIDE 4 — NÚMEROS DA OBRA
+   Navy limpo + tabela
+══════════════════════════════════════ */
+#s4 { background: #0f1932; }
+#s4::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
   background: #F28C28;
-  border-radius: 2px;
 }
-
-.titulo {
-  font-size: 96px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 0.96;
-  letter-spacing: -0.04em;
+#s4 .content {
+  position: absolute; left: 64px; right: 64px;
+  top: 50%; transform: translateY(-50%);
+  z-index: 5;
 }
+#s4 .slide-title { font-size: 60px; max-width: 740px; }
+#s4 .slide-body { margin-bottom: 52px; max-width: 720px; }
 
-.subtitulo {
-  font-size: 22px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.72);
-  line-height: 1.55;
-  max-width: 640px;
+.data-list {
+  display: flex; flex-direction: column; gap: 0;
 }
-
-/* Linha divisória */
-.divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(255,255,255,0.12);
-  margin: 4px 0;
-}
-
-/* Footer */
-.slide-footer {
-  display: flex;
-  align-items: center;
+.data-row {
+  display: flex; align-items: center;
   justify-content: space-between;
-  padding-top: 8px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.data-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+.data-label {
+  font-family: 'Barlow', sans-serif; font-size: 19px; font-weight: 400;
+  color: rgba(255,255,255,0.55); flex: 1;
+}
+.data-old {
+  font-family: 'Barlow', sans-serif; font-size: 22px; font-weight: 600;
+  color: rgba(255,255,255,0.25);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.15);
+  min-width: 130px; text-align: right;
+}
+.data-new {
+  font-family: 'Barlow', sans-serif; font-size: 22px; font-weight: 700;
+  color: #F28C28; min-width: 130px; text-align: right;
+}
+.data-note {
+  margin-top: 24px;
+  font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.20); letter-spacing: 0.06em;
 }
 
-.footer-tag {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.35);
+/* ══════════════════════════════════════
+   SLIDE 5 — CTA
+   Navy limpo + CTA central
+══════════════════════════════════════ */
+#s5 { background: #0a1628; }
+#s5::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: #F28C28; z-index: 5;
 }
-
-.footer-pill {
-  background: #F28C28;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  padding: 6px 16px;
-  border-radius: 20px;
+#s5::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 65% 45% at 50% 60%, rgba(242,140,40,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+#s5 .content {
+  position: absolute; left: 64px; right: 64px;
+  top: 50%; transform: translateY(-50%);
+  z-index: 5; text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.cta-monogram {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px; font-weight: 700; letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.90); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cta-brand-sub {
+  font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); margin-bottom: 56px;
+}
+#s5 .slide-title {
+  font-size: 52px; text-align: center; max-width: 640px; margin-bottom: 24px;
+}
+#s5 .slide-body { text-align: center; max-width: 540px; margin-bottom: 52px; }
+.cta-btn {
+  display: inline-block; background: #F28C28; color: #fff;
+  font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 20px 56px; margin-bottom: 28px;
+}
+.cta-contact {
+  font-family: 'Barlow', sans-serif; font-size: 16px; font-weight: 400;
+  color: rgba(255,255,255,0.35); letter-spacing: 0.08em;
+}
+#s5 .slide-bottom {
+  position: absolute; bottom: 64px; left: 64px; right: 64px;
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 22px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 5;
+}
+#s5 .slide-bottom span {
+  font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 400;
+  letter-spacing: 0.16em; color: rgba(255,255,255,0.20);
 }
 </style>
 </head>
 <body>
 
-<div class="slide" id="slide-01">
-  <div class="slide-bg"></div>
-  <div class="slide-overlay"></div>
-  <div class="slide-content">
+<!-- SLIDE 1 — CAPA -->
+<div class="slide" id="s1">
+  <div class="foto-bg"></div>
+  <div class="overlay"></div>
+  <div class="logo-bar">
+    <span class="logo-brand">MEP Massas</span>
+    <span class="logo-counter">01 / 05</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Obra real · Sem encenação</span>
+    <div class="orange-rule"></div>
+    <h1 class="slide-title">É assim<br>na prática.</h1>
+    <p class="slide-body">
+      Pronto para uso direto da embalagem para a parede. Sem betoneira, sem mistura, sem servente de apoio. O MEP Massas elimina o processo de preparo e coloca o pedreiro no único lugar que importa — na produção, assentando bloco.
+    </p>
+  </div>
+  <div class="slide-bottom">
+    <span class="bottom-site">mep.ind.br</span>
+    <span class="bottom-swipe">Arraste para ver</span>
+  </div>
+</div>
 
-    <div class="slide-header">
-      <div class="logo-wrap">
-        <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/logo-mep.svg" alt="MEP">
+<!-- SLIDE 2 — ANTES E DEPOIS -->
+<div class="slide" id="s2">
+  <div class="foto-bg"></div>
+  <div class="overlay"></div>
+  <div class="logo-bar">
+    <span class="logo-brand">MEP Massas</span>
+    <span class="logo-counter">02 / 05</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">O peso que some</span>
+    <div class="orange-rule"></div>
+    <h2 class="slide-title">De 1.500 kg<br>para 180 kg.</h2>
+    <p class="slide-body">
+      Para cada 100 m² de alvenaria, a argamassa convencional exige 1.500 kg de material úmido transportado verticalmente. Com o MEP, são apenas 180 kg — menos viagem no elevador de carga, menos esforço, mais agilidade para todos os andares.
+    </p>
+    <div class="before-after">
+      <div class="ba-item">
+        <span class="ba-label">Convencional</span>
+        <div class="ba-value">1.500</div>
+        <div class="ba-unit">kg por 100 m²</div>
       </div>
-      <div class="handle">@mep.industria</div>
-    </div>
-
-    <div class="spacer"></div>
-
-    <div class="slide-bottom">
-      <div class="kicker">Obra real · Sem encenação</div>
-      <div class="titulo">É assim<br>na prática.</div>
-      <div class="subtitulo">Pronto para uso, direto da embalagem para a parede. Sem betoneira, sem mistura.</div>
-      <div class="divider"></div>
-      <div class="slide-footer">
-        <div class="footer-tag">Massa MEP · mep.ind.br</div>
-        <div class="footer-pill">4x Mais Rápida</div>
+      <div class="ba-item">
+        <span class="ba-label orange">MEP Massas</span>
+        <div class="ba-value white">180</div>
+        <div class="ba-unit">kg por 100 m²</div>
       </div>
     </div>
+  </div>
+</div>
 
+<!-- SLIDE 3 — NA PRÁTICA -->
+<div class="slide" id="s3">
+  <div class="foto-bg"></div>
+  <div class="overlay"></div>
+  <div class="logo-bar">
+    <span class="logo-brand">MEP Massas</span>
+    <span class="logo-counter">03 / 05</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Na prática</span>
+    <div class="orange-rule"></div>
+    <h2 class="slide-title">Sem aprender<br>do zero.</h2>
+    <div class="quote-block">
+      <p class="quote-text">"Eu pensei que ia precisar de um treinamento especial. Mas é igual à colher — só que a massa já está pronta. No primeiro dia eu já estava no ritmo normal."</p>
+      <p class="quote-attr">Pedreiro — obra em Balneário Camboriú SC</p>
+    </div>
+    <p class="slide-body">
+      A curva de aprendizado do MEP é zero. O pedreiro que já trabalha com argamassa convencional se adapta na primeira hora. A bisnaga funciona como uma extensão da colher — sem mistério, sem perda de tempo.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 4 — NÚMEROS -->
+<div class="slide" id="s4">
+  <div class="logo-bar">
+    <span class="logo-brand">MEP Massas</span>
+    <span class="logo-counter">04 / 05</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">Comparativo de obra real</span>
+    <div class="orange-rule"></div>
+    <h2 class="slide-title">Os números<br>que a planilha<br>precisa ver.</h2>
+    <p class="slide-body">
+      Mesma equipe, mesmo pedreiro, mesmo canteiro. Só o produto mudou — e os resultados abaixo mostram o impacto real em cada critério de produção.
+    </p>
+    <div class="data-list">
+      <div class="data-row">
+        <span class="data-label">Prazo de execução (100 m²)</span>
+        <span class="data-old">5 dias</span>
+        <span class="data-new">2 dias</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Material desperdiçado</span>
+        <span class="data-old">25%</span>
+        <span class="data-new">0%</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Peso transportado verticalmente</span>
+        <span class="data-old">1.800 kg</span>
+        <span class="data-new">180 kg</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Resistência de aderência</span>
+        <span class="data-old">0,20 MPa</span>
+        <span class="data-new">&gt;0,30 MPa</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Redução no custo total</span>
+        <span class="data-old">—</span>
+        <span class="data-new">−26,5%</span>
+      </div>
+    </div>
+    <p class="data-note">Fonte: relatório técnico MEP · Balneário Camboriú SC · 2026</p>
+  </div>
+</div>
+
+<!-- SLIDE 5 — CTA -->
+<div class="slide" id="s5">
+  <div class="logo-bar">
+    <span class="logo-brand">MEP Massas</span>
+    <span class="logo-counter">05 / 05</span>
+  </div>
+  <div class="content">
+    <div class="cta-monogram">MEP</div>
+    <div class="cta-brand-sub">Argamassa Polimérica · mep.ind.br</div>
+    <h2 class="slide-title">Leve o MEP<br>para a sua obra.</h2>
+    <p class="slide-body">
+      Calculamos o ganho real com base na metragem da sua alvenaria — prazo, peso, custo por metro quadrado. Entrega direta, produto certificado ABNT, atendimento para obras de qualquer porte.
+    </p>
+    <div class="cta-btn">mep.ind.br</div>
+    <p class="cta-contact">(47) 98851-5506 &nbsp;·&nbsp; WhatsApp</p>
+  </div>
+  <div class="slide-bottom">
+    <span>@mep.industria</span>
+    <span>Balneário Camboriú · SC</span>
   </div>
 </div>
 

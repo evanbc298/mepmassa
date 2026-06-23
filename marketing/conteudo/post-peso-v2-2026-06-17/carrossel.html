@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; }
@@ -11,7 +11,7 @@ body { background: #000; }
 .slide {
   width: 1080px;
   height: 1350px;
-  background: #F8F8F6;
+  background: #0a1628;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -19,244 +19,170 @@ body { background: #000; }
   font-family: 'Barlow', sans-serif;
 }
 
-/* ── TOPO NAVY ── */
-.top-bar {
-  background: #07101e;
-  padding: 44px 72px 38px;
-  position: relative;
-  flex-shrink: 0;
-}
-.top-bar:after {
+/* Linha laranja topo */
+.slide::before {
   content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 100%; height: 4px;
-  background: #F28C28;
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: #F28C28; z-index: 5;
 }
-.top-eyebrow {
-  font-size: 14px;
-  font-weight: 700;
+
+/* ─── LOGO BAR ─── */
+.logo-bar {
+  position: absolute; top: 52px; left: 64px; right: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 10;
+}
+.logo-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 700;
+  letter-spacing: 0.18em; color: rgba(255,255,255,0.88);
   text-transform: uppercase;
-  letter-spacing: 0.38em;
-  color: rgba(255,255,255,0.38);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
 }
-.top-eyebrow:before {
-  content: '';
-  width: 28px; height: 2px;
-  background: #F28C28;
+.logo-handle {
+  font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 400;
+  letter-spacing: 0.12em; color: rgba(255,255,255,0.25);
+}
+
+/* ─── TOPO HEADER ─── */
+.header {
+  padding: 140px 64px 0;
   flex-shrink: 0;
 }
-.top-headline {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 84px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+.eyebrow {
+  font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.36em; color: #F28C28;
+  margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
 }
-.top-headline em {
-  color: #F28C28;
-  font-style: normal;
+.eyebrow::before {
+  content: ''; width: 28px; height: 2px;
+  background: #F28C28; flex-shrink: 0;
 }
-
-/* ── COMPARATIVO ── */
-.comp {
-  display: grid;
-  grid-template-columns: 1fr 4px 1fr;
-  flex: 1;
-  min-height: 0;
+.main-headline {
+  font-family: 'Barlow', sans-serif; font-size: 60px; font-weight: 700;
+  color: #fff; line-height: 1.04; letter-spacing: -0.02em;
+  max-width: 740px; margin-bottom: 20px;
 }
-
-/* Divisor vertical */
-.comp-div {
-  background: #e5e5e2;
-  position: relative;
-}
-.comp-div:after {
-  content: '×';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
-  background: #F8F8F6;
-  border: 2px solid #e5e5e2;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 26px;
-  font-weight: 800;
-  color: #aaa;
-  line-height: 72px;
-  text-align: center;
+.main-headline em { font-style: normal; color: #F28C28; }
+.orange-rule { width: 48px; height: 3px; background: #F28C28; margin-bottom: 24px; }
+.intro {
+  font-family: 'Barlow', sans-serif; font-size: 19px; font-weight: 400;
+  color: rgba(255,255,255,0.58); line-height: 1.72;
+  max-width: 720px; margin-bottom: 0;
 }
 
-/* Lados */
-.side {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 48px;
+/* ─── COMPARATIVO VISUAL ─── */
+.comp-section {
+  flex: 1; display: flex; flex-direction: column;
+  padding: 0 64px; justify-content: center;
   gap: 0;
 }
 
-.side-label {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.32em;
-  margin-bottom: 20px;
+.comp-header {
+  display: grid; grid-template-columns: 1fr 80px 1fr;
+  margin-bottom: 0;
 }
-.side-conv .side-label { color: #9ca3af; }
-.side-mep  .side-label { color: #F28C28; }
+.comp-col-label {
+  font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.30em;
+  padding: 18px 0 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.comp-col-label.conv { color: rgba(255,255,255,0.25); }
+.comp-col-label.mep  { color: #F28C28; text-align: right; }
+.comp-col-mid { border-bottom: 1px solid rgba(255,255,255,0.08); }
 
-.side-number {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-}
-.side-conv .side-number { font-size: 190px; color: #c9cdd4; }
-.side-mep  .side-number { font-size: 190px; color: #07101e; }
-
-.side-unit {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 64px;
-  font-weight: 700;
-  margin-top: 6px;
-  letter-spacing: -0.02em;
-}
-.side-conv .side-unit { color: #d1d5db; }
-.side-mep  .side-unit { color: #F28C28; }
-
-.side-rule {
-  width: 60px;
-  height: 2px;
-  margin: 22px auto;
-}
-.side-conv .side-rule { background: #e5e7eb; }
-.side-mep  .side-rule { background: rgba(242,140,40,0.4); }
-
-.side-desc {
-  font-size: 17px;
-  font-weight: 600;
-  text-align: center;
-  line-height: 1.5;
-}
-.side-conv .side-desc { color: #b0b5be; }
-.side-mep  .side-desc { color: #374151; }
-
-/* Sacos convencionais */
-.bags-grid {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 22px;
-  align-items: flex-end;
-}
-
-/* Produto MEP */
-.mep-product {
-  margin-bottom: 20px;
-}
-.mep-product img {
-  height: 240px;
-  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.22));
-}
-
-/* ── RESULTADO ── */
-.result-bar {
-  background: #07101e;
-  padding: 30px 72px;
-  display: flex;
+.comp-row {
+  display: grid; grid-template-columns: 1fr 80px 1fr;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 0;
   align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  position: relative;
 }
-.result-bar:before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 3px;
-  background: linear-gradient(90deg, #F28C28, rgba(242,140,40,0.2));
+.comp-row:last-child { border-bottom: none; }
+
+.comp-conv-val {
+  font-family: 'Barlow', sans-serif; font-size: 26px; font-weight: 600;
+  color: rgba(255,255,255,0.28);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.14);
 }
-.result-main {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
+.comp-mid {
+  display: flex; align-items: center; justify-content: center;
 }
-.result-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 72px;
-  font-weight: 900;
-  color: #F28C28;
-  line-height: 1;
-  letter-spacing: -0.03em;
+.comp-mid-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.12);
 }
-.result-txt {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+.comp-mep-val {
+  font-family: 'Barlow', sans-serif; font-size: 26px; font-weight: 700;
+  color: #ffffff; text-align: right;
 }
-.result-sub {
-  font-size: 16px;
-  color: rgba(255,255,255,0.35);
-  line-height: 1.6;
-  text-align: right;
-  max-width: 280px;
-}
-.result-sub strong {
-  color: rgba(255,255,255,0.7);
-  font-weight: 600;
+.comp-mep-val.orange { color: #F28C28; }
+
+/* Descritor da linha */
+.comp-row-label {
+  font-family: 'Barlow', sans-serif; font-size: 16px; font-weight: 400;
+  color: rgba(255,255,255,0.42);
+  grid-column: 1 / -1;
+  padding-bottom: 6px;
+  padding-top: 20px;
 }
 
-/* ── RODAPÉ ── */
+/* Layout alternado: rótulo em cima, valores embaixo */
+.comp-row-wrap {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 18px 0;
+}
+.comp-row-wrap:last-child { border-bottom: none; }
+
+/* ─── RESULTADO FINAL ─── */
+.result-block {
+  margin: 0 64px 0;
+  padding: 28px 32px;
+  background: rgba(242,140,40,0.06);
+  border: 1px solid rgba(242,140,40,0.18);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.result-left {}
+.result-big {
+  font-family: 'Barlow', sans-serif; font-size: 52px; font-weight: 700;
+  color: #F28C28; letter-spacing: -0.02em; line-height: 1;
+}
+.result-text {
+  font-family: 'Barlow', sans-serif; font-size: 18px; font-weight: 600;
+  color: rgba(255,255,255,0.70); margin-top: 6px;
+}
+.result-right {
+  font-family: 'Barlow', sans-serif; font-size: 16px; font-weight: 400;
+  color: rgba(255,255,255,0.38); line-height: 1.65; text-align: right;
+  max-width: 300px;
+}
+
+/* ─── RODAPÉ ─── */
 .footer {
-  background: #fff;
-  padding: 20px 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #eee;
+  padding: 24px 64px 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.07);
   flex-shrink: 0;
 }
-.footer-logo img {
-  height: 36px;
-  opacity: 0.85;
+.footer-site {
+  font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 400;
+  letter-spacing: 0.14em; color: rgba(255,255,255,0.30);
 }
 .footer-dado {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: flex; align-items: center; gap: 10px;
 }
 .footer-dado-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 34px;
-  font-weight: 800;
-  color: #07101e;
-  letter-spacing: -0.02em;
+  font-family: 'Barlow', sans-serif; font-size: 32px; font-weight: 700;
+  color: #ffffff; letter-spacing: -0.02em;
 }
 .footer-dado-txt {
-  font-size: 14px;
-  color: #9ca3af;
-  line-height: 1.4;
+  font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,0.35); line-height: 1.45;
 }
 .footer-handle {
-  font-size: 15px;
-  font-weight: 600;
-  color: #c4c9d4;
-  letter-spacing: 0.04em;
+  font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.22); letter-spacing: 0.06em;
 }
 </style>
 </head>
@@ -264,127 +190,89 @@ body { background: #000; }
 
 <div class="slide">
 
-  <!-- TOPO -->
-  <div class="top-bar">
-    <div class="top-eyebrow">Dado real · 820 m² de alvenaria</div>
-    <div class="top-headline">A conta que<br>a maioria <em>não faz.</em></div>
+  <div class="logo-bar">
+    <span class="logo-brand">MEP Massas</span>
+    <span class="logo-handle">mep.ind.br</span>
   </div>
 
-  <!-- COMPARATIVO -->
-  <div class="comp">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">Dado real · 820 m² de alvenaria</div>
+    <h1 class="main-headline">Por que o MEP pesa <em>20×</em><br>menos que o concorrente?</h1>
+    <div class="orange-rule"></div>
+    <p class="intro">
+      A argamassa polimérica MEP foi formulada para eliminar o excesso de massa que não contribui para a resistência. O resultado é o mesmo serviço executado com uma fração do peso — e isso muda completamente a logística da obra.
+    </p>
+  </div>
 
-    <!-- CONVENCIONAL -->
-    <div class="side side-conv">
+  <!-- COMPARATIVO EM TABELA -->
+  <div class="comp-section">
 
-      <div class="bags-grid">
-        <!-- saco genérico de argamassa convencional (50kg) -->
-        <svg width="120" height="188" viewBox="0 0 120 188" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- costura do topo -->
-          <path d="M28 18 C28 10 38 6 60 6 C82 6 92 10 92 18" stroke="#b0b5be" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <line x1="60" y1="6" x2="60" y2="18" stroke="#b0b5be" stroke-width="1.5"/>
-          <!-- corpo do saco -->
-          <rect x="14" y="18" width="92" height="148" rx="6" fill="#d4d7dc"/>
-          <!-- sombra lateral esq -->
-          <rect x="14" y="18" width="14" height="148" rx="4" fill="#c2c6cc"/>
-          <!-- sombra lateral dir -->
-          <rect x="92" y="18" width="14" height="148" rx="4" fill="#c2c6cc"/>
-          <!-- dobra inferior -->
-          <path d="M14 158 L14 166 Q60 172 106 166 L106 158Z" fill="#b8bcc4"/>
-          <!-- etiqueta centralizada -->
-          <rect x="26" y="58" width="68" height="72" rx="3" fill="rgba(255,255,255,0.22)"/>
-          <line x1="34" y1="72" x2="86" y2="72" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
-          <line x1="34" y1="86" x2="86" y2="86" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <line x1="34" y1="96" x2="86" y2="96" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <line x1="34" y1="106" x2="70" y2="106" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <!-- texto genérico -->
-          <text x="60" y="68" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" font-family="Arial" font-weight="700" letter-spacing="1">ARGAMASSA</text>
-          <text x="60" y="120" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.38)" font-family="Arial" font-weight="600">50 kg</text>
-          <!-- linhas de textura saco -->
-          <line x1="14" y1="60" x2="14" y2="148" stroke="#c2c6cc" stroke-width="0.5"/>
-          <line x1="106" y1="60" x2="106" y2="148" stroke="#c2c6cc" stroke-width="0.5"/>
-        </svg>
-        <svg width="120" height="188" viewBox="0 0 120 188" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M28 18 C28 10 38 6 60 6 C82 6 92 10 92 18" stroke="#b0b5be" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <line x1="60" y1="6" x2="60" y2="18" stroke="#b0b5be" stroke-width="1.5"/>
-          <rect x="14" y="18" width="92" height="148" rx="6" fill="#d4d7dc"/>
-          <rect x="14" y="18" width="14" height="148" rx="4" fill="#c2c6cc"/>
-          <rect x="92" y="18" width="14" height="148" rx="4" fill="#c2c6cc"/>
-          <path d="M14 158 L14 166 Q60 172 106 166 L106 158Z" fill="#b8bcc4"/>
-          <rect x="26" y="58" width="68" height="72" rx="3" fill="rgba(255,255,255,0.22)"/>
-          <line x1="34" y1="72" x2="86" y2="72" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
-          <line x1="34" y1="86" x2="86" y2="86" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <line x1="34" y1="96" x2="86" y2="96" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <line x1="34" y1="106" x2="70" y2="106" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <text x="60" y="68" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" font-family="Arial" font-weight="700" letter-spacing="1">ARGAMASSA</text>
-          <text x="60" y="120" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.38)" font-family="Arial" font-weight="600">50 kg</text>
-        </svg>
-        <svg width="120" height="188" viewBox="0 0 120 188" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M28 18 C28 10 38 6 60 6 C82 6 92 10 92 18" stroke="#b0b5be" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <line x1="60" y1="6" x2="60" y2="18" stroke="#b0b5be" stroke-width="1.5"/>
-          <rect x="14" y="18" width="92" height="148" rx="6" fill="#d4d7dc"/>
-          <rect x="14" y="18" width="14" height="148" rx="4" fill="#c2c6cc"/>
-          <rect x="92" y="18" width="14" height="148" rx="4" fill="#c2c6cc"/>
-          <path d="M14 158 L14 166 Q60 172 106 166 L106 158Z" fill="#b8bcc4"/>
-          <rect x="26" y="58" width="68" height="72" rx="3" fill="rgba(255,255,255,0.22)"/>
-          <line x1="34" y1="72" x2="86" y2="72" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
-          <line x1="34" y1="86" x2="86" y2="86" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <line x1="34" y1="96" x2="86" y2="96" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <line x1="34" y1="106" x2="70" y2="106" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-          <text x="60" y="68" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" font-family="Arial" font-weight="700" letter-spacing="1">ARGAMASSA</text>
-          <text x="60" y="120" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.38)" font-family="Arial" font-weight="600">50 kg</text>
-        </svg>
-      </div>
-
-      <div class="side-label">Argamassa Convencional</div>
-      <div class="side-number">24.000</div>
-      <div class="side-unit">kg</div>
-      <div class="side-rule"></div>
-      <div class="side-desc">29,27 kg por m²<br>de alvenaria</div>
-
+    <div class="comp-header">
+      <span class="comp-col-label conv">Convencional</span>
+      <div class="comp-col-mid"></div>
+      <span class="comp-col-label mep">MEP Massas</span>
     </div>
 
-    <!-- DIVISOR -->
-    <div class="comp-div"></div>
+    <div class="comp-row">
+      <span class="comp-conv-val">24.000 kg</span>
+      <div class="comp-mid"><div class="comp-mid-dot"></div></div>
+      <span class="comp-mep-val orange">1.200 kg</span>
+    </div>
+    <div style="font-family:'Barlow',sans-serif;font-size:14px;color:rgba(255,255,255,0.30);padding:6px 0 18px;letter-spacing:0.04em;">
+      Material total para 820 m² de alvenaria
+    </div>
 
-    <!-- MEP -->
-    <div class="side side-mep">
+    <div class="comp-row">
+      <span class="comp-conv-val">29,27 kg/m²</span>
+      <div class="comp-mid"><div class="comp-mid-dot"></div></div>
+      <span class="comp-mep-val">1,5 kg/m²</span>
+    </div>
+    <div style="font-family:'Barlow',sans-serif;font-size:14px;color:rgba(255,255,255,0.30);padding:6px 0 18px;letter-spacing:0.04em;">
+      Consumo por metro quadrado de parede
+    </div>
 
-      <div class="mep-product">
-        <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/barrica transparente nova.png" alt="MEP Massas">
-      </div>
+    <div class="comp-row">
+      <span class="comp-conv-val">5 dias</span>
+      <div class="comp-mid"><div class="comp-mid-dot"></div></div>
+      <span class="comp-mep-val orange">2 dias</span>
+    </div>
+    <div style="font-family:'Barlow',sans-serif;font-size:14px;color:rgba(255,255,255,0.30);padding:6px 0 18px;letter-spacing:0.04em;">
+      Prazo para 100 m² de alvenaria (mesma equipe)
+    </div>
 
-      <div class="side-label">MEP Massas</div>
-      <div class="side-number">1.200</div>
-      <div class="side-unit">kg</div>
-      <div class="side-rule"></div>
-      <div class="side-desc">1,5 kg por m²<br>mesmo serviço</div>
-
+    <div class="comp-row">
+      <span class="comp-conv-val">−</span>
+      <div class="comp-mid"><div class="comp-mid-dot"></div></div>
+      <span class="comp-mep-val orange">−26,5%</span>
+    </div>
+    <div style="font-family:'Barlow',sans-serif;font-size:14px;color:rgba(255,255,255,0.30);padding:6px 0 0;letter-spacing:0.04em;">
+      Redução no custo total da etapa de alvenaria
     </div>
 
   </div>
 
   <!-- RESULTADO -->
-  <div class="result-bar">
-    <div class="result-main">
-      <div class="result-num">20×</div>
-      <div class="result-txt">menos<br>material.</div>
+  <div class="result-block">
+    <div class="result-left">
+      <div class="result-big">20× menos</div>
+      <div class="result-text">material movimentado na obra inteira</div>
     </div>
-    <div class="result-sub">
-      Menos frete · menos peso · menos resíduo<br>
-      <strong>4× mais rápido na execução</strong>
+    <div class="result-right">
+      Menos frete · menos carga vertical<br>
+      menos resíduo · mais velocidade<br>
+      Certificado ABNT NBR 16590
     </div>
   </div>
 
   <!-- RODAPÉ -->
   <div class="footer">
-    <div class="footer-logo">
-      <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/saidas/logo-mep.svg" alt="MEP">
-    </div>
+    <span class="footer-site">mep.ind.br</span>
     <div class="footer-dado">
-      <div class="footer-dado-num">−26,5%</div>
-      <div class="footer-dado-txt">no custo total<br>de alvenaria</div>
+      <span class="footer-dado-num">−26,5%</span>
+      <span class="footer-dado-txt">no custo total<br>de alvenaria</span>
     </div>
-    <div class="footer-handle">@mep.industria</div>
+    <span class="footer-handle">@mep.industria</span>
   </div>
 
 </div>

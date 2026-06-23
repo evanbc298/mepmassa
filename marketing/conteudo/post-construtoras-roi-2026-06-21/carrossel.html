@@ -1,0 +1,790 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEP — Para Construtoras · ROI Real</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ─── BASE SLIDE ───────────────────────────────────────────── */
+.slide {
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  overflow: hidden;
+  background: #0f1932;
+}
+
+/* ─── LOGO BAR ─────────────────────────────────────────────── */
+.logo-bar {
+  position: absolute;
+  top: 52px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo-bar-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.88);
+  text-transform: uppercase;
+}
+
+.logo-bar-counter {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.30);
+}
+
+/* ─── ELEMENTOS BASE ─────────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: #F28C28;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.orange-rule {
+  width: 48px;
+  height: 3px;
+  background: #F28C28;
+  margin-bottom: 26px;
+}
+
+.slide-title {
+  font-family: 'Barlow', sans-serif;
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 26px;
+}
+
+.slide-body {
+  font-family: 'Barlow', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.72;
+  color: rgba(255,255,255,0.62);
+  max-width: 620px;
+}
+
+/* ─── FOTO FULL-BLEED ─────────────────────────────────────── */
+.foto-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SLIDE 1 — CAPA
+   Navy com textura de estrutura + overlay duplo
+══════════════════════════════════════════════════════════════ */
+#s1 {
+  background: #0a1628;
+}
+
+#s1::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 50%, rgba(242,140,40,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(15,35,80,0.60) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+#s1::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #F28C28;
+  z-index: 5;
+}
+
+#s1 .content {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+#s1 .slide-title {
+  font-size: 72px;
+  max-width: 760px;
+  line-height: 1.02;
+}
+
+#s1 .slide-bottom {
+  position: absolute;
+  bottom: 72px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 5;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding-top: 24px;
+}
+
+.slide-bottom-site {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.32);
+}
+
+.slide-bottom-tag {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.20);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SLIDE 2 — O QUE A PLANILHA NÃO MOSTRA
+   Navy limpo + barra laranja + cards de custo oculto
+══════════════════════════════════════════════════════════════ */
+#s2 {
+  background: #0f1932;
+}
+
+#s2::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #F28C28;
+}
+
+#s2 .content {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+#s2 .slide-title {
+  font-size: 60px;
+  max-width: 800px;
+}
+
+#s2 .slide-body {
+  margin-bottom: 48px;
+  max-width: 700px;
+}
+
+.hidden-costs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cost-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.cost-item:first-child {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cost-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  flex: 1;
+}
+
+.cost-value {
+  font-family: 'Barlow', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.30);
+  text-align: right;
+  min-width: 160px;
+}
+
+.cost-value.strike {
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.15);
+}
+
+.cost-footnote {
+  margin-top: 28px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.30);
+  letter-spacing: 0.06em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SLIDE 3 — A EQUAÇÃO DE TEMPO
+   Navy com accent + stats de HH
+══════════════════════════════════════════════════════════════ */
+#s3 {
+  background: #0f1932;
+}
+
+#s3::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #F28C28;
+}
+
+#s3 .content {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+#s3 .slide-title {
+  font-size: 60px;
+  max-width: 780px;
+}
+
+#s3 .slide-body {
+  margin-bottom: 52px;
+  max-width: 720px;
+}
+
+.hh-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.hh-cell {
+  padding: 36px 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+}
+
+.hh-cell + .hh-cell {
+  border-left: none;
+}
+
+.hh-row-2 {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.hh-row-2 .hh-cell {
+  border-top: none;
+}
+
+.hh-row-2 .hh-cell + .hh-cell {
+  border-left: none;
+}
+
+.hh-label {
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.hh-value-old {
+  font-family: 'Barlow', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(255,255,255,0.30);
+  line-height: 1;
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.15);
+  margin-bottom: 6px;
+}
+
+.hh-value-new {
+  font-family: 'Barlow', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hh-value-new .orange {
+  color: #F28C28;
+}
+
+.hh-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.38);
+  margin-top: 4px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SLIDE 4 — ROI FINANCEIRO
+   Navy + barra + equação financeira visual
+══════════════════════════════════════════════════════════════ */
+#s4 {
+  background: #0f1932;
+}
+
+#s4::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #F28C28;
+}
+
+#s4 .content {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-48%);
+  z-index: 5;
+}
+
+#s4 .slide-title {
+  font-size: 64px;
+  max-width: 780px;
+}
+
+#s4 .slide-body {
+  margin-bottom: 56px;
+  max-width: 700px;
+}
+
+.roi-equation {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.roi-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 32px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  margin-top: -1px;
+}
+
+.roi-line.positive {
+  background: rgba(255,255,255,0.025);
+}
+
+.roi-line.negative {
+  background: rgba(0,0,0,0.10);
+}
+
+.roi-line.result {
+  background: rgba(242,140,40,0.06);
+  border-color: rgba(242,140,40,0.20);
+  margin-top: 16px;
+}
+
+.roi-sign {
+  font-family: 'Barlow', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  width: 36px;
+  color: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
+.roi-sign.pos { color: rgba(100,200,120,0.70); }
+.roi-sign.neg { color: rgba(200,80,80,0.60); }
+.roi-sign.eq  { color: #F28C28; font-size: 28px; }
+
+.roi-desc {
+  font-family: 'Barlow', sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  flex: 1;
+  padding: 0 24px;
+}
+
+.roi-line.result .roi-desc {
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+}
+
+.roi-amount {
+  font-family: 'Barlow', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.40);
+  text-align: right;
+  min-width: 180px;
+}
+
+.roi-line.positive .roi-amount { color: rgba(255,255,255,0.65); }
+.roi-line.negative .roi-amount { color: rgba(255,255,255,0.30); }
+.roi-line.result .roi-amount   { color: #F28C28; font-size: 36px; }
+
+.roi-footnote {
+  margin-top: 24px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.20);
+  letter-spacing: 0.06em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SLIDE 5 — CTA FINAL
+   Navy limpo + CTA
+══════════════════════════════════════════════════════════════ */
+#s5 {
+  background: #0a1628;
+}
+
+#s5::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #F28C28;
+  z-index: 5;
+}
+
+#s5::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(242,140,40,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+#s5 .content {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#s5 .cta-monogram {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.90);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+#s5 .cta-brand-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 56px;
+}
+
+#s5 .slide-title {
+  font-size: 52px;
+  text-align: center;
+  max-width: 660px;
+  margin-bottom: 24px;
+}
+
+#s5 .slide-body {
+  text-align: center;
+  max-width: 560px;
+  margin-bottom: 56px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #F28C28;
+  color: #ffffff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 20px 56px;
+  text-decoration: none;
+  margin-bottom: 28px;
+}
+
+.cta-contact {
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+}
+
+#s5 .slide-bottom {
+  position: absolute;
+  bottom: 64px;
+  left: 64px;
+  right: 64px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+#s5 .slide-bottom span {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.20);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 1 — CAPA
+     Navy puro + barra laranja + abertura impactante
+════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s1">
+
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP Massas</span>
+    <span class="logo-bar-counter">01 / 05</span>
+  </div>
+
+  <div class="content">
+    <span class="eyebrow">Para construtoras</span>
+    <div class="orange-rule"></div>
+    <h1 class="slide-title">O produto que custa<br>mais na planilha —<br>e economiza na obra</h1>
+    <p class="slide-body">
+      A argamassa polimérica MEP aparece com custo de material mais alto que a usinada. Mas quando a engenharia de produção entra na conta — tempo, logística, custo fixo de canteiro e risco operacional — a equação inverte, e o MEP gera retorno líquido real antes mesmo de a obra terminar.
+    </p>
+  </div>
+
+  <div class="slide-bottom">
+    <span class="slide-bottom-site">mep.ind.br</span>
+    <span class="slide-bottom-tag">Arraste para ver</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 2 — O QUE A PLANILHA NÃO MOSTRA
+     Custos ocultos do sistema usinado
+════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s2">
+
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP Massas</span>
+    <span class="logo-bar-counter">02 / 05</span>
+  </div>
+
+  <div class="content">
+    <span class="eyebrow">Custos invisíveis</span>
+    <div class="orange-rule"></div>
+    <h2 class="slide-title">O que a planilha<br>de material não mostra</h2>
+    <p class="slide-body">
+      A argamassa usinada tem custo de material aparentemente baixo. Mas o processo gera despesas que raramente aparecem na composição: desperdício sistêmico por resíduo em mangueiras, custo de servente dedicado ao transporte interno e risco de parada total por entupimento de tubulação.
+    </p>
+
+    <div class="hidden-costs">
+      <div class="cost-item">
+        <span class="cost-label">Material puro (volume de projeto)</span>
+        <span class="cost-value strike">R$ 30.107</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-label">Desperdício sistêmico (~12%)</span>
+        <span class="cost-value strike">+ R$ 3.570</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-label">Logística interna de distribuição</span>
+        <span class="cost-value strike">+ R$ 12.000</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-label">Paradas por entupimento</span>
+        <span class="cost-value">Não mensurável</span>
+      </div>
+    </div>
+
+    <p class="cost-footnote">Referência: prédio 18 pavimentos · 6.750 m² de alvenaria</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 3 — A EQUAÇÃO DE TEMPO
+     Comparativo de HH e prazo
+════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s3">
+
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP Massas</span>
+    <span class="logo-bar-counter">03 / 05</span>
+  </div>
+
+  <div class="content">
+    <span class="eyebrow">Engenharia de produção</span>
+    <div class="orange-rule"></div>
+    <h2 class="slide-title">75 dias a menos<br>na etapa de alvenaria</h2>
+    <p class="slide-body">
+      Com RUP de 0,4 HH/m² contra 1,2 HH/m² da argamassa usinada, o MEP entrega a mesma etapa em um terço das horas. Para uma torre de 6.750 m², isso representa 5.400 horas a menos de exposição trabalhista, metade da equipe alocada e 75 dias de antecipação para as frentes de revestimento e instalações.
+    </p>
+
+    <div class="hh-grid">
+      <div class="hh-cell">
+        <span class="hh-label">Horas-Homem</span>
+        <div class="hh-value-old">8.100 h</div>
+        <div class="hh-value-new"><span class="orange">2.700</span> h</div>
+        <div class="hh-sub">-66% de HH total</div>
+      </div>
+      <div class="hh-cell">
+        <span class="hh-label">Equipe alocada</span>
+        <div class="hh-value-old">6 operários</div>
+        <div class="hh-value-new"><span class="orange">3</span> operários</div>
+        <div class="hh-sub">-50% de efetivo</div>
+      </div>
+      <div class="hh-cell">
+        <span class="hh-label">Prazo da etapa</span>
+        <div class="hh-value-old">7,6 meses</div>
+        <div class="hh-value-new"><span class="orange">5,1</span> meses</div>
+        <div class="hh-sub">-75 dias reais</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 4 — ROI FINANCEIRO
+     Equação financeira visual
+════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s4">
+
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP Massas</span>
+    <span class="logo-bar-counter">04 / 05</span>
+  </div>
+
+  <div class="content">
+    <span class="eyebrow">Retorno sobre o investimento</span>
+    <div class="orange-rule"></div>
+    <h2 class="slide-title">R$ 48 mil de retorno<br>líquido por torre</h2>
+    <p class="slide-body">
+      Um canteiro vertical de médio porte em Santa Catarina custa aproximadamente R$ 40.000 por mês entre salários corporativos, encargos, locação de equipamentos e consumo fixo. A antecipação de 2,5 meses gerada pelo MEP converte o acréscimo de material em lucro imediato.
+    </p>
+
+    <div class="roi-equation">
+      <div class="roi-line positive">
+        <span class="roi-sign pos">(+)</span>
+        <span class="roi-desc">Economia de custo fixo de canteiro (2,5 meses)</span>
+        <span class="roi-amount">R$ 100.000</span>
+      </div>
+      <div class="roi-line negative">
+        <span class="roi-sign neg">(−)</span>
+        <span class="roi-desc">Investimento adicional em material MEP</span>
+        <span class="roi-amount">R$ 51.523</span>
+      </div>
+      <div class="roi-line result">
+        <span class="roi-sign eq">(=)</span>
+        <span class="roi-desc">Retorno líquido direto para a construtora</span>
+        <span class="roi-amount">R$ 48.477</span>
+      </div>
+    </div>
+
+    <p class="roi-footnote">Base: prédio 18 pav · 6.750 m² alvenaria · custo fixo R$ 40.000/mês · SC</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 5 — CTA FINAL
+     Navy + CTA para construtoras
+════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s5">
+
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP Massas</span>
+    <span class="logo-bar-counter">05 / 05</span>
+  </div>
+
+  <div class="content">
+    <div class="cta-monogram">MEP</div>
+    <div class="cta-brand-sub">Argamassa Polimérica · mep.ind.br</div>
+    <h2 class="slide-title">Solicite o estudo de<br>viabilidade para<br>sua obra</h2>
+    <p class="slide-body">
+      Montamos o comparativo completo baseado na metragem real da sua alvenaria: custo de material, HH, economia de canteiro e retorno líquido. Dados de engenharia, sem argumento comercial vazio.
+    </p>
+    <div class="cta-button">mep.ind.br</div>
+    <p class="cta-contact">(47) 98851-5506 &nbsp;·&nbsp; WhatsApp</p>
+  </div>
+
+  <div class="slide-bottom">
+    <span>@mep.industria</span>
+    <span>Balneário Camboriú · SC</span>
+  </div>
+</div>
+
+
+</body>
+</html>
