@@ -417,6 +417,49 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .comp-row .col-c { color:var(--azul); font-weight:700; }
 .comp-row .col-c.win { color:#16a34a; }
 
+/* ── CONSTRUTORAS ── */
+.sec-construtoras { background:var(--azul2); padding:90px 60px; }
+.ct-inner { max-width:1100px; margin:0 auto; }
+.ct-header { text-align:center; margin-bottom:60px; }
+.ct-tag { display:inline-block; font-size:11px; font-weight:700; color:var(--laranja); letter-spacing:3px; text-transform:uppercase; margin-bottom:16px; }
+.ct-headline { font-size:42px; font-weight:700; color:#fff; line-height:1.2; margin:0 0 16px; font-family:'Barlow',sans-serif; }
+.ct-headline span { color:var(--laranja); }
+.ct-sub { font-size:16px; color:rgba(255,255,255,0.45); margin:0; }
+.ct-counters { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:56px; }
+.ct-counter-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:40px 28px; text-align:center; transition:transform .3s, border-color .3s; position:relative; overflow:hidden; cursor:default; }
+.ct-counter-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:rgba(242,140,40,0.25); transition:background .3s; }
+.ct-counter-card:hover { transform:translateY(-5px); border-color:rgba(242,140,40,0.35); }
+.ct-counter-card:hover::before { background:var(--laranja); }
+.ct-counter-highlight { border-color:rgba(242,140,40,0.2); background:rgba(242,140,40,0.05); }
+.ct-counter-highlight::before { background:var(--laranja); }
+.ct-counter-val { font-size:52px; font-weight:700; color:#fff; line-height:1; margin-bottom:12px; font-family:'Barlow',sans-serif; letter-spacing:-1px; }
+.ct-counter-highlight .ct-counter-val { color:var(--laranja); }
+.ct-counter-label { font-size:13px; font-weight:700; color:rgba(255,255,255,0.65); margin-bottom:8px; text-transform:uppercase; letter-spacing:1.5px; }
+.ct-counter-sub { font-size:13px; color:rgba(255,255,255,0.3); }
+.ct-table-wrap { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07); border-radius:8px; overflow:hidden; margin-bottom:48px; }
+.ct-table-label { padding:22px 28px 0; font-size:11px; font-weight:700; color:var(--laranja); letter-spacing:2px; text-transform:uppercase; }
+.ct-table { width:100%; border-collapse:collapse; margin-top:16px; }
+.ct-table thead th { padding:14px 24px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(255,255,255,0.07); text-align:left; }
+.ct-table thead .ct-th-mep { color:var(--laranja); }
+.ct-table tbody tr { border-bottom:1px solid rgba(255,255,255,0.05); transition:background .2s; }
+.ct-table tbody tr:last-child { border-bottom:none; }
+.ct-table tbody tr:hover { background:rgba(255,255,255,0.04); }
+.ct-table td { padding:18px 24px; font-size:15px; color:rgba(255,255,255,0.65); }
+.ct-td-old span { text-decoration:line-through; color:rgba(255,255,255,0.28); }
+.ct-td-mep { font-weight:700; color:#fff; }
+.ct-table-ref { padding:14px 28px; font-size:12px; color:rgba(255,255,255,0.22); border-top:1px solid rgba(255,255,255,0.05); }
+.ct-ctas { display:flex; gap:16px; justify-content:center; }
+.ct-btn-primary { background:var(--laranja); color:#fff; padding:17px 40px; border-radius:6px; font-size:15px; font-weight:700; text-decoration:none; transition:opacity .2s; letter-spacing:.5px; }
+.ct-btn-primary:hover { opacity:.85; }
+.ct-btn-secondary { background:transparent; color:rgba(255,255,255,0.65); padding:17px 40px; border-radius:6px; font-size:15px; font-weight:600; text-decoration:none; border:1px solid rgba(255,255,255,0.18); transition:border-color .2s, color .2s; }
+.ct-btn-secondary:hover { border-color:rgba(255,255,255,0.45); color:#fff; }
+@media(max-width:900px){
+  .sec-construtoras { padding:60px 24px; }
+  .ct-counters { grid-template-columns:1fr; }
+  .ct-headline { font-size:28px; }
+  .ct-ctas { flex-direction:column; align-items:center; }
+}
+
 /* COMO USAR */
 .como-usar { background:var(--azul); padding:70px 0; }
 .como-inner { max-width:1200px; margin:0 auto; padding:0 40px; }
@@ -915,6 +958,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <a href="#produtos" class="nav-item active">MEP Massas</a>
     <a href="#mep-color" class="nav-item color">MEP COLOR</a>
     <a href="#aplicacoes" class="nav-item">Aplicações</a>
+    <a href="#construtoras" class="nav-item">Construtoras</a>
     <a href="#como-usar" class="nav-item">Como Usar</a>
     <a href="#especificacoes" class="nav-item">Especificações</a>
     <a href="#calculadora" class="nav-item">Calculadora</a>
@@ -1534,6 +1578,78 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <div style="text-align:center;margin-top:16px;">
       <a href="https://wa.me/5547988515506?text=Ol%C3%A1%21+Vi+o+v%C3%ADdeo+do+MEP+e+quero+saber+mais." target="_blank" style="display:inline-block;background:var(--laranja);color:#fff;padding:13px 28px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;">Quero usar na minha obra</a>
     </div>
+  </div>
+</div>
+
+<!-- PARA CONSTRUTORAS -->
+<div class="sec-construtoras" id="construtoras">
+  <div class="ct-inner">
+
+    <div class="ct-header">
+      <div class="ct-tag">Para Construtoras e Incorporadoras</div>
+      <h2 class="ct-headline">Reduza prazo. Reduza custo.<br><span>Com dados reais de obra.</span></h2>
+      <p class="ct-sub">Estudo comparativo realizado em prédio de 18 pavimentos — 820 m² de alvenaria.</p>
+    </div>
+
+    <div class="ct-counters">
+      <div class="ct-counter-card" data-target="75" data-prefix="−" data-suffix=" dias">
+        <div class="ct-counter-val"><span class="ct-num">−0 dias</span></div>
+        <div class="ct-counter-label">a menos de obra</div>
+        <div class="ct-counter-sub">7,6 meses → 5,1 meses</div>
+      </div>
+      <div class="ct-counter-card ct-counter-highlight" data-target="48477" data-prefix="R$ " data-suffix="" data-format="currency">
+        <div class="ct-counter-val"><span class="ct-num">R$ 0</span></div>
+        <div class="ct-counter-label">retorno líquido por obra</div>
+        <div class="ct-counter-sub">canteiro + mão de obra + prazo</div>
+      </div>
+      <div class="ct-counter-card" data-target="89" data-prefix="" data-suffix=" ton">
+        <div class="ct-counter-val"><span class="ct-num">0 ton</span></div>
+        <div class="ct-counter-label">toneladas a menos movimentadas</div>
+        <div class="ct-counter-sub">menos risco, menos elevador de carga</div>
+      </div>
+    </div>
+
+    <div class="ct-table-wrap">
+      <div class="ct-table-label">Comparativo técnico — usinada vs MEP</div>
+      <table class="ct-table">
+        <thead>
+          <tr>
+            <th>Indicador</th>
+            <th>Argamassa Usinada</th>
+            <th class="ct-th-mep">MEP Massas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RUP (homem-hora/m²)</td>
+            <td class="ct-td-old"><span>1,2 HH/m²</span></td>
+            <td class="ct-td-mep">0,4 HH/m²</td>
+          </tr>
+          <tr>
+            <td>Equipe necessária</td>
+            <td class="ct-td-old"><span>6 pedreiros</span></td>
+            <td class="ct-td-mep">3 pedreiros</td>
+          </tr>
+          <tr>
+            <td>Prazo da etapa de alvenaria</td>
+            <td class="ct-td-old"><span>7,6 meses</span></td>
+            <td class="ct-td-mep">5,1 meses</td>
+          </tr>
+          <tr>
+            <td>Custo adicional de canteiro</td>
+            <td class="ct-td-old"><span>+R$ 100.000</span></td>
+            <td class="ct-td-mep">Eliminado</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="ct-table-ref">Fonte: Estudo técnico MEP — prédio 18 pavimentos, 820 m² de alvenaria, equipe padrão SC. Custo de canteiro calculado a R$ 40.000/mês.</div>
+    </div>
+
+    <div class="ct-ctas">
+      <a href="https://wa.me/5547988515506?text=Ol%C3%A1%2C+quero+solicitar+um+estudo+de+viabilidade+para+minha+obra." class="ct-btn-primary" target="_blank">Solicitar estudo de viabilidade</a>
+      <a href="ficha-tecnica-mep.html" class="ct-btn-secondary" target="_blank">Baixar ficha técnica</a>
+    </div>
+
   </div>
 </div>
 
@@ -2281,6 +2397,44 @@ window.addEventListener('scroll', function() {
     if (n.getAttribute('href') === '#' + current) n.classList.add('active');
   });
 });
+
+/* ── CONSTRUTORAS — CONTADORES ── */
+(function(){
+  var cards = document.querySelectorAll('.ct-counter-card');
+  if(!cards.length) return;
+  function animateCounter(card){
+    var el = card.querySelector('.ct-num');
+    var target = parseInt(card.dataset.target);
+    var prefix = card.dataset.prefix || '';
+    var suffix = card.dataset.suffix || '';
+    var isCurrency = card.dataset.format === 'currency';
+    var duration = 1800;
+    var start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var cur = Math.floor(eased * target);
+      if(isCurrency) el.textContent = prefix + cur.toLocaleString('pt-BR') + suffix;
+      else el.textContent = prefix + cur + suffix;
+      if(p < 1) requestAnimationFrame(step);
+      else {
+        if(isCurrency) el.textContent = prefix + target.toLocaleString('pt-BR') + suffix;
+        else el.textContent = prefix + target + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !e.target.dataset.animated){
+        e.target.dataset.animated = '1';
+        animateCounter(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  cards.forEach(function(c){ obs.observe(c); });
+})();
 
 /* ── CALCULADORA ── */
 function calcular() {
