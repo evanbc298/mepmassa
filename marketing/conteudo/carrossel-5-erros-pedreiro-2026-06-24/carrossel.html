@@ -20,7 +20,6 @@ body {
   font-family: 'Barlow', sans-serif;
 }
 
-/* ─── BASE ───────────────────────────────────────────────── */
 .slide {
   width: 1080px;
   height: 1350px;
@@ -37,7 +36,20 @@ body {
   background-repeat: no-repeat;
 }
 
-/* counter — canto direito apenas */
+/* overlay reduzido — foto respira mais */
+.overlay-bottom {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg,
+      rgba(10,16,35,0.92) 0%,
+      rgba(10,16,35,0.80) 32%,
+      rgba(10,16,35,0.42) 58%,
+      rgba(10,16,35,0.08) 82%,
+      transparent 100%);
+}
+
+/* counter canto direito */
 .logo-bar {
   position: absolute;
   top: 52px;
@@ -45,67 +57,45 @@ body {
   z-index: 10;
 }
 .logo-bar-counter {
-  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.40);
+  color: rgba(255,255,255,0.42);
 }
 
-/* ─── OVERLAY PADRÃO: fundo escuro forte, topo suave ────── */
-.overlay-bottom {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(0deg,
-      rgba(10,16,35,0.97) 0%,
-      rgba(10,16,35,0.90) 28%,
-      rgba(10,16,35,0.65) 55%,
-      rgba(10,16,35,0.20) 78%,
-      rgba(10,16,35,0.05) 100%),
-    linear-gradient(105deg,
-      rgba(10,16,35,0.55) 0%,
-      transparent 60%);
-}
-
-/* ─── ÁREA DE CONTEÚDO (erros) ────────────────────────── */
+/* conteúdo fixo no rodapé */
 .content-bottom {
   position: absolute;
   left: 64px;
   right: 64px;
-  bottom: 0;
+  bottom: 72px;
   z-index: 5;
-  padding-bottom: 72px;
 }
 
 .erro-tag {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 22px;
 }
-
 .erro-x {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(220,50,50,0.85);
+  background: rgba(210,45,45,0.88);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Barlow', sans-serif;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 22px;
   color: #fff;
-  letter-spacing: 0;
   flex-shrink: 0;
 }
-
 .erro-label {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.55);
 }
@@ -114,93 +104,83 @@ body {
   width: 48px;
   height: 3px;
   background: #F28C28;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
+/* fontes aumentadas */
 .erro-title {
-  font-family: 'Barlow', sans-serif;
-  font-size: 62px;
+  font-size: 70px;
   font-weight: 700;
-  line-height: 1.04;
+  line-height: 1.03;
   letter-spacing: -0.02em;
-  color: #ffffff;
-  margin-bottom: 20px;
+  color: #fff;
+  margin-bottom: 22px;
+  max-width: 900px;
+}
+.erro-desc {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 32px;
   max-width: 860px;
 }
 
-.erro-desc {
-  font-family: 'Barlow', sans-serif;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.58;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 32px;
-  max-width: 800px;
-}
-
-/* caixa de dica no rodapé */
 .tip-box {
   border-left: 4px solid #F28C28;
   background: rgba(242,140,40,0.10);
-  padding: 20px 24px;
+  padding: 22px 26px;
   border-radius: 0 4px 4px 0;
 }
 .tip-label {
-  font-family: 'Barlow', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: #F28C28;
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .tip-text {
-  font-family: 'Barlow', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.48;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.88);
 }
 
-/* número fantasma no canto da foto */
+/* número fantasma */
 .bg-num {
   position: absolute;
-  right: 48px;
-  top: 100px;
+  right: 44px;
+  top: 90px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 380px;
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 1;
-  color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.05);
   z-index: 3;
   user-select: none;
 }
 
-/* ══════════════════════════════════════════════════════════
-   SLIDE 1 — CAPA
-══════════════════════════════════════════════════════════ */
+/* ═══════ SLIDE 1 — CAPA (foto: pedreiro-bisnaga) ═══════════ */
 #s1 .foto-bg {
   background-image: url('../../pedreiro-bisnaga.webp');
   background-position: center 20%;
 }
-
 #s1 .overlay-capa {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(0deg,
-      rgba(10,16,35,0.98) 0%,
-      rgba(10,16,35,0.85) 30%,
-      rgba(10,16,35,0.50) 60%,
-      rgba(10,16,35,0.10) 100%),
+      rgba(10,16,35,0.96) 0%,
+      rgba(10,16,35,0.80) 30%,
+      rgba(10,16,35,0.40) 60%,
+      rgba(10,16,35,0.08) 100%),
     linear-gradient(105deg,
-      rgba(10,16,35,0.75) 0%,
-      rgba(10,16,35,0.20) 55%,
-      transparent 80%);
+      rgba(10,16,35,0.60) 0%,
+      transparent 55%);
 }
-
 #s1 .content-capa {
   position: absolute;
   left: 64px;
@@ -208,9 +188,7 @@ body {
   bottom: 90px;
   z-index: 5;
 }
-
 #s1 .eyebrow {
-  font-family: 'Barlow', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.34em;
@@ -219,35 +197,24 @@ body {
   display: block;
   margin-bottom: 18px;
 }
-
-#s1 .capa-rule {
-  width: 48px;
-  height: 3px;
-  background: #F28C28;
-  margin-bottom: 28px;
-}
-
+#s1 .capa-rule { width: 48px; height: 3px; background: #F28C28; margin-bottom: 28px; }
 #s1 .capa-title {
-  font-family: 'Barlow', sans-serif;
-  font-size: 78px;
+  font-size: 80px;
   font-weight: 700;
   line-height: 1.00;
   letter-spacing: -0.02em;
   color: #fff;
-  max-width: 720px;
-  margin-bottom: 20px;
+  max-width: 740px;
+  margin-bottom: 22px;
 }
-
 #s1 .capa-sub {
-  font-family: 'Barlow', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 400;
   letter-spacing: 0.10em;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 40px;
+  color: rgba(255,255,255,0.32);
+  margin-bottom: 44px;
 }
-
-#s1 .capa-swipe {
+#s1 .capa-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -261,111 +228,144 @@ body {
   text-transform: uppercase;
   color: rgba(255,255,255,0.28);
 }
-#s1 .swipe-site {
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.25);
+#s1 .swipe-site { font-size: 14px; letter-spacing: 0.14em; color: rgba(255,255,255,0.24); }
+
+/* ═══════ SLIDE 2 — ERRO 01 (foto: foto-capa / canteiro) ════ */
+#s2 .foto-bg {
+  background-image: url('../carrossel-obra-real-2026-06-21/fotos/foto-capa.jpeg');
+  background-position: center 40%;
 }
 
-/* ══════════════════════════════════════════════════════════
-   SLIDE 7 — CTA
-══════════════════════════════════════════════════════════ */
-#s7 .foto-bg {
-  background-image: url('../../img-obra-alvenaria.webp');
-  background-position: center center;
+/* ═══════ SLIDE 3 — ERRO 02 (foto: foto-slide2 / balde MEP) ═ */
+#s3 .foto-bg {
+  background-image: url('../carrossel-obra-real-2026-06-21/fotos/foto-slide2.jpeg');
+  background-position: center 30%;
 }
 
-#s7 .overlay-cta {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(0deg,
-      rgba(10,16,35,0.98) 0%,
-      rgba(10,16,35,0.90) 35%,
-      rgba(10,16,35,0.70) 60%,
-      rgba(10,16,35,0.40) 100%);
+/* ═══════ SLIDE 4 — ERRO 03 (navy limpo — sem foto) ══════════ */
+#s4 {
+  background: #0f1932;
 }
-
-#s7 .top-line {
+#s4 .navy-accent {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 4px;
-  background: #F28C28;
-  z-index: 10;
+  height: 3px;
+  background: linear-gradient(90deg, #F28C28 0%, transparent 40%);
+}
+#s4 .content-navy {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-52%);
+  z-index: 5;
+}
+
+/* ═══════ SLIDE 5 — ERRO 04 (foto: foto-slide3 / sol forte) ═ */
+#s5 .foto-bg {
+  background-image: url('../carrossel-obra-real-2026-06-21/fotos/foto-slide3.jpeg');
+  background-position: center 30%;
+}
+
+/* ═══════ SLIDE 6 — ERRO 05 (navy limpo — sem foto) ══════════ */
+#s6 {
+  background: #0f1932;
+}
+#s6 .navy-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F28C28 0%, transparent 40%);
+}
+#s6 .content-navy {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 50%;
+  transform: translateY(-52%);
+  z-index: 5;
+}
+
+/* ═══════ SLIDE 7 — CTA (navy + barrica 25kg) ═══════════════ */
+#s7 {
+  background: #0f1932;
+}
+#s7 .top-line {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: #F28C28; z-index: 10;
+}
+
+/* glow radial por trás da barrica */
+#s7 .product-glow {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 860px;
+  height: 860px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242,140,40,0.13) 0%, rgba(15,25,50,0) 68%);
+  z-index: 1;
+}
+
+/* barrica grande à direita — fundo transparente */
+#s7 .barrica-wrap {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-52%);
+  z-index: 4;
+  filter: drop-shadow(0px 24px 48px rgba(0,0,0,0.55));
+}
+#s7 .barrica-wrap img {
+  width: 620px;
+  display: block;
+}
+
+/* linha vertical separadora */
+#s7 .sep-line {
+  position: absolute;
+  left: 560px;
+  top: 120px;
+  bottom: 120px;
+  width: 1px;
+  background: rgba(255,255,255,0.07);
+  z-index: 3;
 }
 
 #s7 .content-cta {
   position: absolute;
   left: 64px;
-  right: 64px;
-  bottom: 80px;
+  right: 580px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 5;
 }
-
 #s7 .cta-eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: #F28C28;
-  display: block;
-  margin-bottom: 18px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.34em;
+  text-transform: uppercase; color: #F28C28;
+  display: block; margin-bottom: 18px;
 }
-
-#s7 .cta-rule {
-  width: 48px;
-  height: 3px;
-  background: #F28C28;
-  margin-bottom: 28px;
-}
-
+#s7 .cta-rule { width: 48px; height: 3px; background: #F28C28; margin-bottom: 28px; }
 #s7 .cta-title {
-  font-family: 'Barlow', sans-serif;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  color: #fff;
-  max-width: 760px;
-  margin-bottom: 24px;
+  font-size: 60px; font-weight: 700; line-height: 1.04;
+  letter-spacing: -0.02em; color: #fff; margin-bottom: 24px;
 }
-
 #s7 .cta-body {
-  font-family: 'Barlow', sans-serif;
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 1.62;
-  color: rgba(255,255,255,0.60);
-  max-width: 720px;
-  margin-bottom: 44px;
+  font-size: 21px; font-weight: 400; line-height: 1.62;
+  color: rgba(255,255,255,0.58); margin-bottom: 44px;
 }
-
 #s7 .cta-row {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  padding-top: 32px;
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 20px; padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.10);
 }
-
 .cta-btn {
-  display: inline-block;
-  padding: 20px 40px;
-  background: #F28C28;
-  color: #fff;
-  font-family: 'Barlow', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 3px;
+  display: inline-block; padding: 20px 36px; background: #F28C28;
+  color: #fff; font-weight: 700; font-size: 15px;
+  letter-spacing: 0.12em; text-transform: uppercase; border-radius: 3px;
 }
-
-.cta-site {
-  font-size: 15px;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.28);
-}
+.cta-site { font-size: 15px; letter-spacing: 0.12em; color: rgba(255,255,255,0.28); }
 </style>
 </head>
 <body>
@@ -380,16 +380,16 @@ body {
     <div class="capa-rule"></div>
     <div class="capa-title">5 erros que todo pedreiro comete com MEP MASSA</div>
     <div class="capa-sub">— massa polimérica para alvenaria</div>
-    <div class="capa-swipe">
+    <div class="capa-footer">
       <span class="swipe-hint">Deslize para ver →</span>
       <span class="swipe-site">mep.ind.br</span>
     </div>
   </div>
 </div>
 
-<!-- ══ SLIDE 2 — ERRO 01: BLOCO SUJO ══════════════════════ -->
+<!-- ══ SLIDE 2 — ERRO 01 (foto: canteiro de obra) ═══════════ -->
 <div class="slide" id="s2">
-  <div class="foto-bg" style="background-image: url('../carrossel-obra-real-2026-06-21/fotos/foto-capa.jpeg'); background-position: center 40%;"></div>
+  <div class="foto-bg"></div>
   <div class="overlay-bottom"></div>
   <div class="logo-bar"><span class="logo-bar-counter">02 / 07</span></div>
   <div class="bg-num">01</div>
@@ -401,19 +401,19 @@ body {
     <div class="orange-rule"></div>
     <div class="erro-title">Bloco sujo ou úmido antes de aplicar</div>
     <div class="erro-desc">
-      Poeira, terra e umidade quebram a aderência.<br>
+      Poeira e terra quebram a aderência da massa.<br>
       A junta parece firme — mas não está colada de verdade.
     </div>
     <div class="tip-box">
       <span class="tip-label">Como evitar</span>
-      <span class="tip-text">Limpe o bloco com vassoura seca antes de aplicar. Superfície úmida = junta fraca.</span>
+      <span class="tip-text">Passe vassoura seca antes de aplicar. Superfície úmida = junta fraca.</span>
     </div>
   </div>
 </div>
 
-<!-- ══ SLIDE 3 — ERRO 02: MASSA VENCIDA ════════════════════ -->
+<!-- ══ SLIDE 3 — ERRO 02 (foto: obra com balde MEP) ═════════ -->
 <div class="slide" id="s3">
-  <div class="foto-bg" style="background-image: url('../carrossel-obra-real-2026-06-21/fotos/foto-slide2.jpeg'); background-position: center 30%;"></div>
+  <div class="foto-bg"></div>
   <div class="overlay-bottom"></div>
   <div class="logo-bar"><span class="logo-bar-counter">03 / 07</span></div>
   <div class="bg-num">02</div>
@@ -430,18 +430,17 @@ body {
     </div>
     <div class="tip-box">
       <span class="tip-label">Como evitar</span>
-      <span class="tip-text">Confira o prazo antes de abrir. Guarde em local seco, sombreado e fresco.</span>
+      <span class="tip-text">Confira o prazo antes de abrir. Guarde em local seco e sombreado.</span>
     </div>
   </div>
 </div>
 
-<!-- ══ SLIDE 4 — ERRO 03: TEMPO DE PEGA ════════════════════ -->
+<!-- ══ SLIDE 4 — ERRO 03 (navy limpo) ══════════════════════ -->
 <div class="slide" id="s4">
-  <div class="foto-bg" style="background-image: url('../../img-como-usar.png'); background-position: center 20%;"></div>
-  <div class="overlay-bottom"></div>
+  <div class="navy-accent"></div>
   <div class="logo-bar"><span class="logo-bar-counter">04 / 07</span></div>
   <div class="bg-num">03</div>
-  <div class="content-bottom">
+  <div class="content-navy">
     <div class="erro-tag">
       <div class="erro-x">✕</div>
       <span class="erro-label">Erro 03</span>
@@ -449,19 +448,19 @@ body {
     <div class="orange-rule"></div>
     <div class="erro-title">Mexer no bloco antes do tempo de pega</div>
     <div class="erro-desc">
-      A massa pega em 30 min — mas cura em 72h.<br>
-      Mover o bloco antes da hora quebra a aderência sem você ver.
+      A massa pega em 30 min — mas cura em 72 horas.<br>
+      Mover o bloco antes da hora quebra tudo sem você ver.
     </div>
     <div class="tip-box">
       <span class="tip-label">Como evitar</span>
-      <span class="tip-text">Aguarde 2h antes de continuar as fiadas. Resistência total: 72 horas.</span>
+      <span class="tip-text">Aguarde 2h antes de continuar as fiadas. Resistência total vem com 72 horas.</span>
     </div>
   </div>
 </div>
 
-<!-- ══ SLIDE 5 — ERRO 04: SOL / CHUVA ══════════════════════ -->
+<!-- ══ SLIDE 5 — ERRO 04 (foto: sol forte na obra) ═════════ -->
 <div class="slide" id="s5">
-  <div class="foto-bg" style="background-image: url('../carrossel-obra-real-2026-06-21/fotos/foto-slide3.jpeg'); background-position: center 30%;"></div>
+  <div class="foto-bg"></div>
   <div class="overlay-bottom"></div>
   <div class="logo-bar"><span class="logo-bar-counter">05 / 07</span></div>
   <div class="bg-num">04</div>
@@ -483,13 +482,12 @@ body {
   </div>
 </div>
 
-<!-- ══ SLIDE 6 — ERRO 05: RENDIMENTO ═══════════════════════ -->
+<!-- ══ SLIDE 6 — ERRO 05 (navy limpo) ══════════════════════ -->
 <div class="slide" id="s6">
-  <div class="foto-bg" style="background-image: url('../../pedreiro-bisnaga.webp'); background-position: center 30%;"></div>
-  <div class="overlay-bottom"></div>
+  <div class="navy-accent"></div>
   <div class="logo-bar"><span class="logo-bar-counter">06 / 07</span></div>
   <div class="bg-num">05</div>
-  <div class="content-bottom">
+  <div class="content-navy">
     <div class="erro-tag">
       <div class="erro-x">✕</div>
       <span class="erro-label">Erro 05</span>
@@ -507,19 +505,20 @@ body {
   </div>
 </div>
 
-<!-- ══ SLIDE 7 — CTA ════════════════════════════════════════ -->
+<!-- ══ SLIDE 7 — CTA (navy + barrica 25kg) ══════════════════ -->
 <div class="slide" id="s7">
-  <div class="foto-bg"></div>
-  <div class="overlay-cta"></div>
   <div class="top-line"></div>
   <div class="logo-bar"><span class="logo-bar-counter">07 / 07</span></div>
+  <div class="product-glow"></div>
+  <div class="sep-line"></div>
+  <div class="barrica-wrap">
+    <img src="../../../docs/barrica transparente nova.png" alt="MEP MASSA 25kg">
+  </div>
   <div class="content-cta">
-    <span class="cta-eyebrow">MEP Massas — Balneário Camboriú SC</span>
+    <span class="cta-eyebrow">MEP Massas · Balneário Camboriú SC</span>
     <div class="cta-rule"></div>
     <div class="cta-title">Aplicou certo, a massa faz o resto</div>
-    <div class="cta-body">
-      A MEP MASSA (massa polimérica) entrega resultado — mas só quando aplicada do jeito certo. Tire suas dúvidas sobre consumo, aplicação e rendimento direto no WhatsApp. Sem compromisso.
-    </div>
+    <div class="cta-body">A MEP MASSA entrega resultado — mas só quando aplicada do jeito certo. Tire suas dúvidas no WhatsApp. Sem compromisso.</div>
     <div class="cta-row">
       <span class="cta-btn">Falar no WhatsApp →</span>
       <span class="cta-site">mep.ind.br</span>
