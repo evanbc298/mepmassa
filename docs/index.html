@@ -2399,12 +2399,13 @@ window.addEventListener('scroll', function() {
 });
 
 // Nav scroll ativo
-var sections = document.querySelectorAll('div[id], section[id]');
+var sections = document.querySelectorAll('#produtos, #mep-color, #aplicacoes, #construtoras, #como-usar, #especificacoes, #calculadora, #quem-somos, #contato');
 var navItems = document.querySelectorAll('.nav-item');
 window.addEventListener('scroll', function() {
   var current = '';
+  var offset = document.getElementById('site-header').offsetHeight + 20;
   sections.forEach(function(s) {
-    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    if (window.scrollY >= s.getBoundingClientRect().top + window.scrollY - offset) current = s.id;
   });
   navItems.forEach(function(n) {
     n.classList.remove('active');
