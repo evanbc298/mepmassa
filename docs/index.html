@@ -2024,6 +2024,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div style="display:flex;flex-direction:column;gap:12px;">
           <input id="f-nome" type="text" placeholder="Nome completo" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;">
           <input id="f-empresa" type="text" placeholder="Empresa / Construtora" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;">
+          <input id="f-email" type="email" placeholder="E-mail" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;">
           <input id="f-tel" type="tel" placeholder="WhatsApp" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <select id="f-tipo" style="padding:12px 16px;border:1.5px solid var(--borda);border-radius:6px;font-size:14px;font-family:inherit;outline:none;color:var(--texto);background:#fff;appearance:none;-webkit-appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23999' d='M6 8L0 0h12z'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 14px center;">
@@ -2353,6 +2354,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 document.getElementById('f-btn').addEventListener('click', function() {
   var nome    = document.getElementById('f-nome').value.trim();
   var empresa = document.getElementById('f-empresa').value.trim();
+  var email   = document.getElementById('f-email').value.trim();
   var tel     = document.getElementById('f-tel').value.trim();
   var tipo    = document.getElementById('f-tipo').value.trim();
   var cidade  = document.getElementById('f-cidade').value.trim();
@@ -2360,6 +2362,25 @@ document.getElementById('f-btn').addEventListener('click', function() {
   var msg     = document.getElementById('f-msg').value.trim();
 
   if (!nome) { alert('Por favor, informe seu nome.'); return; }
+
+  // Envia para Brevo em background
+  if (email) {
+    var attrs = { NOME: nome };
+    if (empresa) attrs.EMPRESA = empresa;
+    if (tel)     attrs.WHATSAPP = tel;
+    if (cidade)  attrs.CIDADE = cidade;
+    if (tipo)    attrs.TIPO_OBRA = tipo;
+    if (metro)   attrs.METRAGEM = metro;
+    fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'api-key': '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'
+      },
+      body: JSON.stringify({ email: email, attributes: attrs, updateEnabled: true })
+    }).catch(function(){});
+  }
 
   var texto = 'Olá! Me chamo ' + nome;
   if (empresa) texto += ', da ' + empresa;
