@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>MEP — Como Aplicar Massa Polimérica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0d0d0d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  font-family: 'Barlow', sans-serif;
+}
+
+.slide {
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════
+   SLIDE 1 — CAPA
+   Foto real de obra como fundo,
+   overlay azul marinho suave
+════════════════════════════════ */
+#s1 {
+  background: #0f1932;
+}
+#s1 .bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('foto-obra.jpeg');
+  background-size: cover;
+  background-position: center 40%;
+  filter: brightness(0.60) saturate(0.9);
+}
+#s1 .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15,25,50,0.15) 0%,
+    rgba(15,25,50,0.20) 35%,
+    rgba(15,25,50,0.72) 60%,
+    rgba(15,25,50,0.94) 80%,
+    #0f1932 100%
+  );
+}
+
+/* top bar */
+#s1 .top {
+  position: absolute;
+  top: 56px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+#s1 .mep {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+#s1 .mep .name {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+}
+#s1 .mep .sub {
+  font-size: 10px;
+  font-weight: 700;
+  color: #F28C28;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+#s1 .counter {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.35);
+}
+
+/* conteúdo rodapé */
+#s1 .body {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  padding: 0 72px 80px;
+  z-index: 10;
+}
+#s1 .kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+#s1 .kicker::before {
+  content: '';
+  width: 48px; height: 3px;
+  background: #F28C28;
+  border-radius: 2px;
+}
+#s1 .kicker span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #F28C28;
+  text-transform: uppercase;
+}
+#s1 h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 0.90;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+#s1 h1 .hi { color: #F28C28; }
+#s1 .sub-title {
+  font-size: 26px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.50);
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+}
+#s1 .footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#s1 .swipe {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.30);
+  text-transform: uppercase;
+}
+#s1 .arrow {
+  width: 52px; height: 52px;
+  border: 2px solid #F28C28;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #F28C28;
+  font-size: 22px;
+}
+
+/* ════════════════════════════════
+   SLIDE 2 — PASSO 01
+   Fundo CLARO — produto em destaque
+   Layout: texto esq + produto dir
+════════════════════════════════ */
+#s2 {
+  display: grid;
+  grid-template-columns: 540px 1fr;
+  background: #F5F5F5;
+}
+
+/* painel esq — texto claro */
+#s2 .left {
+  position: relative;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 56px 80px 72px;
+  overflow: hidden;
+}
+#s2 .left::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(to bottom, transparent, #F28C28 20%, #F28C28 80%, transparent);
+}
+#s2 .wm {
+  position: absolute;
+  bottom: -60px; left: -20px;
+  font-size: 500px; font-weight: 900;
+  color: #1A2B4D; opacity: 0.04;
+  line-height: 1;
+  pointer-events: none; user-select: none;
+}
+#s2 .top2 {
+  display: flex; flex-direction: column;
+  margin-bottom: 52px;
+}
+#s2 .top2 .brand { font-size: 15px; font-weight: 900; color: #1A2B4D; letter-spacing: 3px; }
+#s2 .top2 .brand-s { font-size: 9px; font-weight: 700; color: #F28C28; letter-spacing: 4px; text-transform: uppercase; margin-top: 3px; }
+
+#s2 .step-tag { font-size: 11px; font-weight: 700; letter-spacing: 5px; color: #F28C28; text-transform: uppercase; margin-bottom: 6px; }
+#s2 .step-num { font-size: 100px; font-weight: 900; color: #1A2B4D; line-height: 1; letter-spacing: -5px; margin-bottom: 28px; }
+#s2 h2 { font-size: 58px; font-weight: 900; line-height: 0.95; text-transform: uppercase; color: #1A2B4D; letter-spacing: -1px; margin-bottom: 28px; }
+#s2 p { font-size: 20px; font-weight: 400; color: #666; line-height: 1.70; margin-bottom: 36px; }
+#s2 .tip {
+  display: flex; gap: 14px;
+  background: #fff;
+  border-left: 3px solid #F28C28;
+  padding: 18px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+#s2 .tip-t { font-size: 16px; font-weight: 600; color: #444; line-height: 1.5; }
+#s2 .dots { display: flex; gap: 8px; margin-top: 44px; align-items: center; }
+#s2 .d { width: 8px; height: 8px; border-radius: 50%; background: #DDD; }
+#s2 .d.on { background: #F28C28; width: 28px; border-radius: 4px; }
+
+/* painel dir — produto no azul */
+#s2 .right {
+  position: relative;
+  background: #1A2B4D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#s2 .right::before {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(242,140,40,0.20) 0%, transparent 70%);
+}
+#s2 .right img {
+  position: relative; z-index: 2;
+  max-width: 80%; max-height: 80%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 60px rgba(0,0,0,0.45));
+}
+
+/* ════════════════════════════════
+   SLIDE 3 — PASSO 02
+   Fundo ESCURO (azul) — produto + texto
+════════════════════════════════ */
+#s3 {
+  background: #1A2B4D;
+}
+#s3 .bg-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url('pedreiro-bisnaga.webp');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.28) saturate(0.75);
+}
+#s3 .overlay3 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26,43,77,0.90) 0%,
+    rgba(26,43,77,0.70) 50%,
+    rgba(26,43,77,0.55) 100%
+  );
+}
+
+/* logo + counter */
+#s3 .top3 {
+  position: absolute;
+  top: 56px; left: 64px; right: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 10;
+}
+#s3 .top3 .mep3 { font-size: 17px; font-weight: 900; color: #fff; letter-spacing: 3px; }
+#s3 .top3 .cnt { font-size: 13px; font-weight: 400; letter-spacing: 0.22em; color: rgba(255,255,255,0.35); }
+
+/* produto flutuando — oculto neste slide */
+#s3 .prod3 { display: none; }
+
+/* conteúdo rodapé */
+#s3 .body3 {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0 72px 80px;
+  z-index: 10;
+  max-width: 600px;
+}
+#s3 .step-tag3 { font-size: 11px; font-weight: 700; letter-spacing: 5px; color: #F28C28; text-transform: uppercase; margin-bottom: 6px; }
+#s3 .step-num3 { font-size: 100px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -5px; margin-bottom: 22px; }
+#s3 h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 72px; font-weight: 900; line-height: 0.92; text-transform: uppercase; color: #fff; letter-spacing: -1px; margin-bottom: 24px; }
+#s3 h2 .hi { color: #F28C28; }
+#s3 p { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.65); line-height: 1.65; margin-bottom: 36px; }
+#s3 .tip3 {
+  display: flex; gap: 12px;
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid #F28C28;
+  padding: 16px 20px;
+}
+#s3 .tip3-t { font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.80); line-height: 1.5; }
+
+#s3 .dots3 { display: flex; gap: 8px; margin-top: 44px; align-items: center; }
+#s3 .d3 { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.20); }
+#s3 .d3.on { background: #F28C28; width: 28px; border-radius: 4px; }
+
+/* ════════════════════════════════
+   SLIDE 4 — PASSO 03
+   Fundo CLARO — foto prédio à esq + texto dir
+════════════════════════════════ */
+#s4 {
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  background: #F5F5F5;
+}
+
+/* painel foto */
+#s4 .photo4 {
+  position: relative;
+  overflow: hidden;
+}
+#s4 .photo4 img {
+  position: absolute;
+  inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.80) saturate(0.85);
+}
+#s4 .photo4::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(to bottom, transparent, #F28C28 20%, #F28C28 80%, transparent);
+}
+
+/* painel texto claro */
+#s4 .right4 {
+  position: relative;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 72px 80px 56px;
+  overflow: hidden;
+}
+#s4 .wm4 {
+  position: absolute;
+  bottom: -60px; right: -20px;
+  font-size: 500px; font-weight: 900;
+  color: #1A2B4D; opacity: 0.04;
+  line-height: 1;
+  pointer-events: none; user-select: none;
+}
+#s4 .top4 { display: flex; flex-direction: column; margin-bottom: 52px; }
+#s4 .top4 .brand4 { font-size: 15px; font-weight: 900; color: #1A2B4D; letter-spacing: 3px; }
+#s4 .top4 .sub4 { font-size: 9px; font-weight: 700; color: #F28C28; letter-spacing: 4px; text-transform: uppercase; margin-top: 3px; }
+
+#s4 .step-tag4 { font-size: 11px; font-weight: 700; letter-spacing: 5px; color: #F28C28; text-transform: uppercase; margin-bottom: 6px; }
+#s4 .step-num4 { font-size: 100px; font-weight: 900; color: #1A2B4D; line-height: 1; letter-spacing: -5px; margin-bottom: 28px; }
+#s4 h2 { font-size: 52px; font-weight: 900; line-height: 0.95; text-transform: uppercase; color: #1A2B4D; letter-spacing: -1px; margin-bottom: 28px; }
+#s4 h2 .hi { color: #F28C28; }
+#s4 p4 { font-size: 20px; font-weight: 400; color: #666; line-height: 1.70; margin-bottom: 36px; display: block; }
+#s4 .tip4 {
+  display: flex; gap: 14px;
+  background: #fff;
+  border-left: 3px solid #F28C28;
+  padding: 18px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+#s4 .tip4-t { font-size: 16px; font-weight: 600; color: #444; line-height: 1.5; }
+#s4 .dots4 { display: flex; gap: 8px; margin-top: 44px; align-items: center; }
+#s4 .d4 { width: 8px; height: 8px; border-radius: 50%; background: #DDD; }
+#s4 .d4.on { background: #F28C28; width: 28px; border-radius: 4px; }
+
+/* ════════════════════════════════
+   SLIDE 5 — PASSO 04 + CTA FINAL
+   Fundo laranja — escuro premium
+════════════════════════════════ */
+#s5 {
+  background: #0f1932;
+}
+#s5 .noise {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 80% 55%, rgba(242,140,40,0.12) 0%, transparent 65%);
+}
+#s5 .stripe-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: #F28C28;
+}
+
+/* produto barrica flutuando à direita — menor para não sobrepor texto */
+#s5 .barrica {
+  position: absolute;
+  right: -10px; bottom: 0;
+  height: 60%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 80px rgba(0,0,0,0.25));
+  z-index: 2;
+}
+
+/* conteúdo à esquerda */
+#s5 .content5 {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 58%;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 80px 0 80px 72px;
+  z-index: 5;
+}
+#s5 .mep5 { display: flex; flex-direction: column; line-height: 1; margin-bottom: 64px; }
+#s5 .mep5 .n5 { font-size: 18px; font-weight: 900; color: #fff; letter-spacing: 3px; }
+#s5 .mep5 .s5 { font-size: 9px; font-weight: 700; color: #F28C28; letter-spacing: 4px; text-transform: uppercase; margin-top: 3px; }
+
+#s5 .k5 { font-size: 11px; font-weight: 700; letter-spacing: 5px; color: #F28C28; text-transform: uppercase; margin-bottom: 10px; }
+#s5 h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 88px; font-weight: 900; line-height: 0.90; text-transform: uppercase; color: #fff; letter-spacing: -2px; margin-bottom: 44px; }
+
+#s5 .list5 { list-style: none; margin-bottom: 52px; }
+#s5 .list5 li {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 19px; font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#s5 .list5 li .chk {
+  width: 28px; height: 28px;
+  background: rgba(242,140,40,0.18);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: #F28C28; font-weight: 900;
+  flex-shrink: 0;
+}
+
+#s5 .cta5 {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #F28C28;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 16px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 32px;
+  margin-bottom: 28px;
+  width: fit-content;
+}
+#s5 .handle5 { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+
+#s5 .dots5 {
+  position: absolute;
+  bottom: 200px; left: 72px;
+  display: flex; gap: 8px; align-items: center;
+  z-index: 10;
+}
+#s5 .d5 { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.20); }
+#s5 .d5.on { background: #F28C28; width: 28px; border-radius: 4px; }
+
+/* faixa de cores MEP COLOR */
+#s5 .color-strip {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 175px;
+  background: rgba(0,0,0,0.25);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 10;
+  padding: 0 64px;
+}
+#s5 .color-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.40);
+  text-transform: uppercase;
+}
+#s5 .color-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+#s5 .cor {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+#s5 .cor-custom {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.40);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  padding: 0 8px;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+</style>
+</head>
+<body>
+
+<!-- ════ SLIDE 1 — CAPA ════ -->
+<div class="slide" id="s1">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="top">
+    <div class="mep">
+      <span class="name">MEP</span>
+      <span class="sub">Massas</span>
+    </div>
+    <span class="counter">01 / 05</span>
+  </div>
+  <div class="body">
+    <div class="kicker"><span>Guia técnico</span></div>
+    <h1>COMO<br>APLICAR<br>MASSA<br><span class="hi">POLIMÉRICA</span></h1>
+    <p class="sub-title">em 4 passos simples</p>
+    <div class="footer-row">
+      <span class="swipe">deslize para ver</span>
+      <div class="arrow">→</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 2 — PASSO 01 ════ -->
+<div class="slide" id="s2">
+  <div class="left">
+    <span class="wm">1</span>
+    <div class="top2">
+      <span class="brand">MEP</span>
+      <span class="brand-s">Massas</span>
+    </div>
+    <div class="step-tag">Passo</div>
+    <div class="step-num">01</div>
+    <h2>PREPARAR<br>O BLOCO</h2>
+    <p>Superfície limpa, seca e sem resíduos. Poeira, gordura ou umidade comprometem a aderência antes mesmo de começar.</p>
+    <div class="tip">
+      <span class="tip-t">Nao aplique em bloco molhado. Aguarde secar completamente.</span>
+    </div>
+    <div class="dots">
+      <div class="d on"></div>
+      <div class="d"></div>
+      <div class="d"></div>
+      <div class="d"></div>
+      <div class="d"></div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="saco-3kg.png" alt="MEP Saco 3kg">
+  </div>
+</div>
+
+<!-- ════ SLIDE 3 — PASSO 02 ════ -->
+<div class="slide" id="s3">
+  <div class="bg-photo"></div>
+  <div class="overlay3"></div>
+  <div class="top3">
+    <span class="mep3">MEP</span>
+    <span class="cnt">03 / 05</span>
+  </div>
+  <div class="prod3">
+    <img src="bisnaga-5kg.webp" alt="MEP Bisnaga 5kg">
+  </div>
+  <div class="body3">
+    <div class="step-tag3">Passo</div>
+    <div class="step-num3">02</div>
+    <h2>APLICAR <span class="hi">2 FILETES</span></h2>
+    <p>Use a bisnaga para aplicar 2 cordoes de aproximadamente 1 cm de diametro ao longo do bloco. Pressao constante, espessura uniforme.</p>
+    <div class="tip3">
+      <span class="tip3-t">1 bisnaga de 3 kg rende ate 25 m2 de parede assentada.</span>
+    </div>
+    <div class="dots3">
+      <div class="d3"></div>
+      <div class="d3 on"></div>
+      <div class="d3"></div>
+      <div class="d3"></div>
+      <div class="d3"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 4 — PASSO 03 ════ -->
+<div class="slide" id="s4">
+  <div class="photo4">
+    <img src="img-como-usar.webp" alt="Assentando bloco MEP">
+  </div>
+  <div class="right4">
+    <span class="wm4">3</span>
+    <div class="top4">
+      <span class="brand4">MEP</span>
+      <span class="sub4">Massas</span>
+    </div>
+    <div class="step-tag4">Passo</div>
+    <div class="step-num4">03</div>
+    <h2>ASSENTAR<br>EM ATE<br><span class="hi">10 MIN</span></h2>
+    <p4>Pressione o bloco, levante e recoloque. Ajuste com martelo de borracha e nivel. A janela de trabalho e de 10 minutos.</p4>
+    <div class="tip4">
+      <span class="tip4-t">Apos 10 minutos nao mova mais o bloco — a pega ja iniciou.</span>
+    </div>
+    <div class="dots4">
+      <div class="d4"></div>
+      <div class="d4"></div>
+      <div class="d4 on"></div>
+      <div class="d4"></div>
+      <div class="d4"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 5 — PASSO 04 + CTA ════ -->
+<div class="slide" id="s5">
+  <div class="noise"></div>
+  <div class="stripe-top"></div>
+  <img class="barrica" src="barrica.png" alt="MEP Barrica">
+  <div class="content5">
+    <div class="mep5">
+      <span class="n5">MEP</span>
+      <span class="s5">Massas</span>
+    </div>
+    <div class="k5">Passo 04</div>
+    <h2>AGUARDAR<br>A CURA</h2>
+    <ul class="list5">
+      <li><span class="chk">v</span>Pega inicial em 30 minutos</li>
+      <li><span class="chk">v</span>Cura total em 72 horas</li>
+      <li><span class="chk">v</span>Nao molhe nas primeiras 4h</li>
+      <li><span class="chk">v</span>Pode rebocar ou pintar apos 72h</li>
+    </ul>
+    <div class="cta5">Baixe o laudo tecnico gratis</div>
+    <span class="handle5">@mep.industria</span>
+  </div>
+  <div class="dots5">
+    <div class="d5"></div>
+    <div class="d5"></div>
+    <div class="d5"></div>
+    <div class="d5"></div>
+    <div class="d5 on"></div>
+  </div>
+
+  <!-- faixa MEP COLOR -->
+  <div class="color-strip">
+    <span class="color-label">MEP COLOR — cores disponíveis</span>
+    <div class="color-row">
+      <div class="cor" style="background:#F4F4F0;"></div>
+      <div class="cor" style="background:#D4C49A;"></div>
+      <div class="cor" style="background:#C4A08A;"></div>
+      <div class="cor" style="background:#9E8870;"></div>
+      <div class="cor" style="background:#6B8F3C;"></div>
+      <div class="cor" style="background:#F28C28;"></div>
+      <div class="cor" style="background:#B01C28;"></div>
+      <div class="cor" style="background:#1A2B4D;"></div>
+      <div class="cor" style="background:#9A9A9A;"></div>
+      <div class="cor" style="background:#3D3D3D;"></div>
+      <div class="cor" style="background:#141414;"></div>
+      <span class="cor-custom">+ cor personalizada</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

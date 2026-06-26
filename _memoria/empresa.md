@@ -3,7 +3,7 @@
 > Memória central do negócio. O Claude lê esse arquivo antes de cada resposta.
 
 **Nome:** MEP (indústria — marca guarda-chuva)
-**Site:** www.mepmassa.com.br
+**Site:** www.mep.ind.br
 **Negócio:** Indústria de produtos para construção civil — fabricação e venda de argamassa polimérica e linha de tintas (outros produtos a definir)
 **Estrutura:** A MEP é a indústria. Dentro dela existem linhas de produto distintas:
   - **MEP Massas** — argamassa polimérica (produto principal, já ativo)
@@ -15,7 +15,7 @@
 **Equipe:** A definir conforme crescimento
 **Ferramentas:** Instagram (orgânico), Meta Ads (Facebook + Instagram), Google Ads
 **Principais entregas:** Geração de leads qualificados no setor de construção civil
-**Localização:** Presidente Prudente, SP
+**Localização:** Balneário Camboriú, SC
 
 ---
 
@@ -34,8 +34,8 @@ Produto que substitui a argamassa tradicional. Diferenciais comprovados:
 ### Especificações técnicas
 - **Resistência:** 4 MPa (certificada NBR 13279)
 - **Pega:** 30 minutos
-- **Secagem total:** 48 horas
-- **Rendimento:** 1 balde 25kg rende até 25m² de alvenaria (~1m²/kg)
+- **Secagem total:** 72 horas
+- **Rendimento:** 1 barrica 25kg rende até 25m² de alvenaria (~1m²/kg)
 - **Certificações:** ABNT NBR 13279 · Fabricado no Brasil · Menos Resíduo
 
 ### Aplicações
@@ -45,10 +45,10 @@ Bloco de concreto, cerâmico, tijolo baiano, muros à vista e estruturais, churr
 
 | Produto | Embalagem | Rendimento | Observação |
 |---|---|---|---|
-| Massa MEP (padrão) | Balde 25kg | até 25m² | Produto principal — obra grande |
-| Massa MEP | Balde 20kg | até 20m² | Formato intermediário |
-| Massa MEP | Bisnaga 1kg | até 1m² | Amostra / uso direto pelo pedreiro |
-| Mini Cunha | 250 unidades | — | Acessório de aplicação |
+| Massa MEP | Barrica 25kg | até 25m² | Produto principal — obra grande |
+| Massa MEP | Saco aplicador 5kg | até 5m² | Formato intermediário |
+| Massa MEP | Saco aplicador 3kg | até 3m² | Produto de giro — pedreiro direto |
+| Massa MEP | Saco aplicador 1kg | até 1m² | Amostra / uso pontual |
 
 ---
 
@@ -88,8 +88,29 @@ Branco, Gelo, Palha, Areia, Pérola, Marfim, Algodão Egípcio, Camurça, Pêsse
 
 - Email: ind.mepmassas@gmail.com
 - Telefone / WhatsApp: (47) 99695-8399
-- Localizacao: Balneario Camboriu, SC
 - Site: www.mep.ind.br
+
+### Endereços
+
+**Balneário Camboriú — SC (sede)**
+Rua 3500, 97, Centro — Balneário Camboriú, SC
+Tel: (47) 99695-8399
+
+**Jaraguá do Sul — SC**
+Rua Willy Manhke, 219, Apto 301, Centro — Jaraguá do Sul, SC
+Tel: (47) 99695-8399
+
+## Concorrentes mapeados
+
+### Construcril (construcril.com.br)
+- 20 anos de mercado, plantas em Itapevi (SP) e Curitiba (PR), distribuição via home centers nacional
+- **Produto concorrente direto:** Construcril Cola Bloco — Bisnaga 3kg (mesmo formato e aplicação do MEP Massa)
+- Portfólio amplo (argamassas, impermeabilizantes, drywall, pisos) — posicionamento generalista
+- Ponto fraco: não apresentam dados técnicos quantificados para o Cola Bloco (sem estudo de produtividade, sem % de economia)
+- Vantagem deles: marca consolidada, presença em home centers, "Central de Downloads" com fichas técnicas
+- **Argumento MEP contra eles:** especialista vs generalista — MEP tem estudo real de 820m² com -26,5% custo e -109 dias que Construcril não consegue rebater
+
+---
 
 ## Ferramentas de apoio ao cliente
 
@@ -117,5 +138,7 @@ Dados completos em: `dados/estudo_comparativo_820m2.md`
 ## Contexto adicional
 
 Empresa em fase de estruturação — marketing sendo construído do zero a partir de junho de 2026.
-Site atual: www.mepmassa.com.br/home — estrutura básica com home, produtos, calculadora, instruções de uso e especificações técnicas.
-Novos produtos (tintas e outros) serão incorporados ao site e redes sociais conforme definição de marca e catálogo completo.
+Site publicado em www.mep.ind.br — home, produtos (MEP Massas + MEP COLOR), calculadora de custos, blog (11 artigos SEO), formulário de contato.
+Email marketing: Brevo configurado com domínio autenticado, 5 templates criados, automação ativa (sequência de 3 emails em 14 dias para novos leads).
+Prospecção: base de 100 construtoras e incorporadoras mapeadas na região de SC/PR para abordagem direta.
+Instagram: carrosseis produzidos em HTML + Playwright (1080×1350px) com fotos reais da obra.

@@ -54,6 +54,19 @@ Visual técnico, industrial e profissional. Cubo isométrico como símbolo — r
 
 ---
 
+## Carrosseis Instagram
+
+- **Formato:** 1080×1350px (4:5 portrait)
+- **Layout padrão:** split-panel com CSS Grid `grid-template-columns: 540px 1fr`
+- **Separador:** linha laranja vertical fina entre painéis
+- **Fonte:** Barlow (Google Fonts) — títulos em 900 weight, subtítulos em 700
+- **Fundo padrão (slides de conteúdo):** Navy `#1A2B4D` ou neutro claro (#f5f5f5)
+- **Slide CTA final:** fundo navy escuro `#0f1932`, destaque laranja só em tira superior, botão e ícones
+- **Produção:** HTML estático → render via Playwright (`render.js`) → PNG em `instagram/slide-0N.png`
+- **Pasta:** `marketing/conteudo/<nome>-YYYY-MM-DD/`
+
+---
+
 ## Logo
 
 - **Arquivo vetorial:** `LOGO/LOGO MEP.svg`

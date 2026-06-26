@@ -27,30 +27,26 @@ Branding aprofundado e identidade visual completa — trabalhar com o que tiver 
 
 ### Concluído
 - Identidade visual: paleta Navy #1A2B4D + Laranja #F28C28, tipografia Barlow
-- Rótulo balde 25kg (foto real: `balde-25kg-v2.png.png`)
-- Rótulo barrica 25kg (gerada via IA: `barrica-25kg.png.png`)
-- Rótulo bisnaga saco aplicador 3kg v1 (gerada via IA: `bisnaga-3kg.png.png`) — revisão em andamento para v2 mais informativa
-- Apresentação de rótulos: `apresentacao-rotulos-mep.html`
-- Site institucional completo com MEP Massas + MEP COLOR: `site-mep-v3.html`
-- Mapa do projeto para apresentação ao cliente: `roadmap-mep.html`
+- Rótulos: barrica 25kg, saco aplicador 3kg v1, apresentação de rótulos
+- Site publicado em www.mep.ind.br (MEP Massas + MEP COLOR + blog + calculadora + formulário)
+- Blog: 11 artigos SEO publicados
+- Google Meu Negócio configurado
+- Pixel Meta instalado no site
+- Email marketing Brevo: domínio autenticado, 5 templates, automação ativa (3 emails / 14 dias)
+- Prospecção: 100 construtoras e incorporadoras mapeadas (SC/PR)
+- Primeiro carrossel Instagram produzido e publicado: "Como Aplicar Massa Polimérica em 4 Passos" (HTML + Playwright, fotos reais)
 
 ### Em andamento
-- Bisnaga saco aplicador 3kg v2 — rotulo mais completo com diferenciais e rendimento
-- Bisnaga saco aplicador 1kg — mesma linha visual da 3kg
-- Carrossel Instagram MEP COLOR (6 slides) — prompts gerados, imagens em produção no GPT
-- Carrossel Instagram MEP Massas (5 slides) — prompts gerados, imagens em produção no GPT
+- Produção de carrosseis Instagram — próximo: comparativo MEP vs argamassa convencional (dados do estudo 820m²)
+- Abordagem direta das 100 construtoras mapeadas (WhatsApp + Brevo)
+- Formulário do site conectado ao Brevo via API (código pronto, teste end-to-end pendente)
 
 ### Próximos passos (ordem de execução)
-1. Finalizar bisnagas v2 (1kg e 3kg)
-2. Montar carrosseis com imagens + copy em HTML ou Canva
-3. Publicar site-mep-v3 no domínio mepmassa.com.br
-4. Configurar Google Meu Negócio
-5. Instalar Pixel Meta + Google Tag no site
-6. Lançar campanhas Meta Ads (MEP Massas primeiro, depois MEP COLOR)
-7. Google Ads — busca por palavras-chave do setor
-8. Calendário editorial 30 dias Instagram
-9. Landing page de captação
-10. Sequência de follow-up WhatsApp
+1. Testar integração formulário → Brevo (precisa da API key do Brevo)
+2. Lançar campanhas Meta Ads (MEP Massas primeiro, depois MEP COLOR)
+3. Google Ads — busca por palavras-chave do setor
+4. Calendário editorial Instagram — próximos 30 dias
+5. Abordar lista de 100 construtoras (WhatsApp direto + sequência Brevo)
 
 ---
 
