@@ -87,18 +87,18 @@ Branco, Gelo, Palha, Areia, Pérola, Marfim, Algodão Egípcio, Camurça, Pêsse
 ## Contato comercial
 
 - Email: ind.mepmassas@gmail.com
-- Telefone / WhatsApp: (47) 99695-8399
+- Telefone / WhatsApp: (47) 98851-5506
 - Site: www.mep.ind.br
 
 ### Endereços
 
 **Balneário Camboriú — SC (sede)**
 Rua 3500, 97, Centro — Balneário Camboriú, SC
-Tel: (47) 99695-8399
+Tel: (47) 98851-5506
 
 **Jaraguá do Sul — SC**
 Rua Willy Manhke, 219, Apto 301, Centro — Jaraguá do Sul, SC
-Tel: (47) 99695-8399
+Tel: (47) 98851-5506
 
 ## Concorrentes mapeados
 
