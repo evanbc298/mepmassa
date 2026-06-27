@@ -25,3 +25,5 @@ node_modules/
 dados/*
 !dados/README.md
 !dados/*.md
+imagens e videos/*.MOV
+imagens e videos/*.mp4
