@@ -81,7 +81,7 @@
       "name": "Em quais aplicações a argamassa polimérica MEP pode ser usada?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A argamassa polimérica MEP é indicada para: alvenaria de vedação (tijolos e blocos em geral), muros estruturais e muros à vista, churrasqueiras (alta resistência ao calor), e reparos e reformas em geral."
+        "text": "A argamassa polimérica MEP é indicada para: alvenaria de vedação (tijolos e blocos em geral), muros estruturais e muros à vista, áreas de lazer e churrasqueiras (alta resistência ao calor), e reparos e reformas em geral."
       }
     },
     {
@@ -1453,21 +1453,29 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <div class="aplicacao-tabs">
       <div class="aplicacao-tab active" data-tab="0">Alvenaria</div>
       <div class="aplicacao-tab" data-tab="1">Muros</div>
-      <div class="aplicacao-tab" data-tab="2">Churrasqueiras</div>
+      <div class="aplicacao-tab" data-tab="2">Áreas de Lazer</div>
       <div class="aplicacao-tab" data-tab="3">Reparos</div>
     </div>
     <div class="aplicacao-showcase">
-      <div class="aplicacao-visual">
-        <img src="foto-usar-essa.jpg" alt="Pedreiro aplicando argamassa polimérica MEP em alvenaria de blocos de concreto em obra" style="filter:contrast(1.25) brightness(1.06) saturate(1.2);">
-        <div class="aplicacao-callout" style="top:22%;left:8%;">
-          <div class="ac-dot"></div>
-          <div class="ac-line"></div>
-          <div class="ac-box"><strong>Alvenaria</strong><span>Junta uniforme e precisa</span></div>
+      <div class="aplicacao-visual" id="aplicacao-visual-wrap">
+        <img id="aplicacao-img" src="foto-usar-essa.jpg" alt="Aplicação MEP em obra" style="filter:contrast(1.25) brightness(1.06) saturate(1.2);">
+        <div id="aplicacao-callouts">
+          <div class="aplicacao-callout" style="top:22%;left:8%;">
+            <div class="ac-dot"></div><div class="ac-line"></div>
+            <div class="ac-box"><strong>Alvenaria</strong><span>Junta uniforme e precisa</span></div>
+          </div>
+          <div class="aplicacao-callout" style="bottom:22%;left:25%;">
+            <div class="ac-dot"></div><div class="ac-line"></div>
+            <div class="ac-box"><strong>Zero desperdício</strong><span>Canteiro limpo e organizado</span></div>
+          </div>
         </div>
-        <div class="aplicacao-callout" style="bottom:22%;left:25%;">
-          <div class="ac-dot"></div>
-          <div class="ac-line"></div>
-          <div class="ac-box"><strong>Zero desperdício</strong><span>Canteiro limpo e organizado</span></div>
+        <!-- Antes/Depois overlay — visível só na aba 2 -->
+        <div id="antes-depois-overlay" style="display:none;position:absolute;inset:0;pointer-events:none;">
+          <div style="position:absolute;top:12px;left:12px;background:rgba(26,43,77,0.85);color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:5px 10px;border-radius:4px;text-transform:uppercase;">Depois</div>
+          <div style="position:absolute;bottom:12px;right:12px;width:120px;height:80px;border-radius:6px;overflow:hidden;border:2px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,0.4);">
+            <img src="gourmet-antes.jpg" alt="Antes da reforma" style="width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;bottom:4px;left:6px;background:rgba(0,0,0,0.7);color:#fff;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:3px;text-transform:uppercase;">Antes</div>
+          </div>
         </div>
       </div>
       <div class="aplicacao-lista">
@@ -1487,7 +1495,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
           <div class="ai-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>
           </div>
-          <div><h4>Churrasqueiras</h4><p>Alta resistência ao calor. Ideal para areas de lazer.</p></div>
+          <div><h4>Áreas de Lazer</h4><p>Churrasqueiras, espaços gourmet e ambientes externos com acabamento duradouro.</p></div>
         </div>
         <div class="aplicacao-item" data-tab="3">
           <div class="ai-icon">
@@ -2771,14 +2779,54 @@ document.addEventListener('keydown', function(e) {
 (function() {
   var tabs  = document.querySelectorAll('.aplicacao-tab');
   var items = document.querySelectorAll('.aplicacao-item');
+  var img   = document.getElementById('aplicacao-img');
+  var callouts = document.getElementById('aplicacao-callouts');
+  var antesDepois = document.getElementById('antes-depois-overlay');
+
+  var tabData = [
+    {
+      src: 'foto-usar-essa.jpg',
+      alt: 'Pedreiro aplicando argamassa polimérica MEP em alvenaria',
+      filter: 'contrast(1.25) brightness(1.06) saturate(1.2)',
+      showCallouts: true, showAntesDepois: false
+    },
+    {
+      src: 'obra-predio.jpg',
+      alt: 'Prédio em construção com MEP Massa — alvenaria estrutural',
+      filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
+      showCallouts: false, showAntesDepois: false
+    },
+    {
+      src: 'gourmet-depois.jpg',
+      alt: 'Área gourmet reformada com MEP COLOR — resultado final',
+      filter: 'brightness(1.05) saturate(1.1)',
+      showCallouts: false, showAntesDepois: true
+    },
+    {
+      src: 'galpao-reparo.jpg',
+      alt: 'Galpão comercial em construção e reparo com MEP Massa',
+      filter: 'contrast(1.1) brightness(1.08)',
+      showCallouts: false, showAntesDepois: false
+    }
+  ];
+
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
-      var idx = this.getAttribute('data-tab');
+      var idx = parseInt(this.getAttribute('data-tab'));
       tabs.forEach(function(t)  { t.classList.remove('active'); });
       items.forEach(function(i) { i.classList.remove('ativo'); });
       this.classList.add('active');
       var target = document.querySelector('.aplicacao-item[data-tab="' + idx + '"]');
       if (target) target.classList.add('ativo');
+
+      var d = tabData[idx];
+      if (img && d) {
+        img.src = d.src;
+        img.alt = d.alt;
+        img.style.filter = d.filter || '';
+      }
+      if (callouts) callouts.style.display = d.showCallouts ? '' : 'none';
+      if (antesDepois) antesDepois.style.display = d.showAntesDepois ? '' : 'none';
     });
   });
 })();

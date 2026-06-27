@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Rótulo MEP COLOR — Tinta Acrílica 18L</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page { size: 346mm 266mm; margin: 0; }
+
+body {
+  width: 346mm;
+  height: 266mm;
+  background: #b0b0b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow', sans-serif;
+}
+
+.bleed {
+  width: 346mm;
+  height: 266mm;
+  position: relative;
+}
+
+/* Guias de corte */
+.cut { position: absolute; background: rgba(200,0,0,0.4); }
+.ch  { width: 100%; height: 0.3mm; left: 0; }
+.cv  { height: 100%; width: 0.3mm; top: 0; }
+
+.label {
+  position: absolute;
+  top: 3mm; left: 3mm;
+  width: 340mm; height: 260mm;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── TOPO NAVY ── */
+.top {
+  background: #162240;
+  height: 76mm;
+  padding: 0 13mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* friso vermelho embaixo do topo */
+.top::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4mm;
+  background: #C0282A;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+}
+
+.logo-words {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.lw-mep {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 13pt;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 6px;
+}
+
+.lw-color {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 46pt;
+  color: #F28C28;
+  line-height: 0.92;
+  letter-spacing: -1px;
+}
+
+.lw-tintas {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-top: 2.5mm;
+}
+
+/* Volume no topo */
+.vol {
+  text-align: right;
+}
+.vol-big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 52pt;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.vol-unit {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 16pt;
+  color: #F28C28;
+  letter-spacing: 3px;
+}
+
+/* ── CENTRO BRANCO ── */
+.center {
+  background: #ffffff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14mm;
+  position: relative;
+}
+
+/* Nome do produto — domina o espaço */
+.pname {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 84pt;
+  color: #162240;
+  text-align: center;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+/* Badge vermelho */
+.badge {
+  background: #C0282A;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14pt;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding: 2.5mm 11mm;
+  border-radius: 4px;
+  margin-top: 5mm;
+}
+
+/* Aplicações */
+.apl {
+  font-size: 12pt;
+  font-weight: 700;
+  color: #555;
+  text-align: center;
+  margin-top: 4mm;
+  letter-spacing: 0.5px;
+}
+
+/* 3 benefícios */
+.brow {
+  display: flex;
+  gap: 10mm;
+  margin-top: 6mm;
+  align-items: center;
+}
+
+.bitem {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+}
+
+.bitem-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 9.5pt;
+  color: #162240;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.bsep {
+  width: 0.3mm;
+  height: 10mm;
+  background: #ddd;
+}
+
+/* ── FRISO LARANJA ── */
+.stripe {
+  height: 4mm;
+  background: #F28C28;
+  flex-shrink: 0;
+}
+
+/* ── BASE NAVY ── */
+.bottom {
+  background: #162240;
+  height: 48mm;
+  padding: 0 13mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+/* Logo menor */
+.blogo {
+  display: flex;
+  align-items: center;
+  gap: 3.5mm;
+}
+
+.blogo-words {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.blw-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 18pt;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.blw-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 8pt;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-top: 1mm;
+}
+
+/* Info central do rodapé */
+.binfo {
+  text-align: center;
+}
+
+.burl {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 1px;
+  margin-bottom: 2mm;
+}
+
+.bdetails {
+  font-size: 7pt;
+  color: rgba(255,255,255,0.28);
+  line-height: 1.7;
+}
+
+/* Direita do rodapé */
+.bright {
+  display: flex;
+  align-items: center;
+  gap: 6mm;
+}
+
+.bvol {
+  text-align: right;
+}
+
+.bvol-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 20pt;
+  color: #fff;
+  line-height: 1;
+}
+
+.bvol-lbl {
+  font-size: 6.5pt;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 1mm;
+}
+
+/* Barcode */
+.bc {
+  background: #fff;
+  border-radius: 3px;
+  padding: 2mm 2mm 1.5mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-num {
+  font-size: 5.5pt;
+  color: #000;
+  letter-spacing: 1.5px;
+  margin-top: 1mm;
+}
+</style>
+</head>
+<body>
+
+<div class="bleed">
+  <div class="cut ch" style="top:3mm"></div>
+  <div class="cut ch" style="bottom:3mm"></div>
+  <div class="cut cv" style="left:3mm"></div>
+  <div class="cut cv" style="right:3mm"></div>
+
+  <div class="label">
+
+    <!-- TOPO -->
+    <div class="top">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 30 186 138" width="64" height="48">
+          <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+            <path d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z" fill="#FFFFFF"/>
+            <path d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z" fill="#F28C28"/>
+            <path d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z" fill="#FFFFFF" fill-opacity="0.5"/>
+          </g>
+        </svg>
+        <div class="logo-words">
+          <span class="lw-mep">MEP</span>
+          <span class="lw-color">COLOR</span>
+          <span class="lw-tintas">Tintas</span>
+        </div>
+      </div>
+
+      <div class="vol">
+        <div class="vol-big">18</div>
+        <div class="vol-unit">LITROS</div>
+      </div>
+    </div>
+
+    <!-- CENTRO -->
+    <div class="center">
+      <div class="pname">TINTA<br>ACRÍLICA</div>
+      <!-- ↑ ALTERAR CONFORME O PRODUTO: PISOS E QUADRAS / ESMALTE BASE ÁGUA / etc. -->
+
+      <div class="badge">USO INTERNO E EXTERNO</div>
+
+      <div class="apl">Alvenaria · Reboco · Gesso · Fibrocimento</div>
+
+      <div class="brow">
+        <div class="bitem">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#162240" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="bitem-text">Alta<br>Durabilidade</div>
+        </div>
+        <div class="bsep"></div>
+        <div class="bitem">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#162240" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div class="bitem-text">Secagem<br>Rápida</div>
+        </div>
+        <div class="bsep"></div>
+        <div class="bitem">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#162240" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <div class="bitem-text">Alto<br>Rendimento</div>
+        </div>
+        <div class="bsep"></div>
+        <div class="bitem">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#162240" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <div class="bitem-text">Fácil<br>Aplicação</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRISO LARANJA -->
+    <div class="stripe"></div>
+
+    <!-- BASE -->
+    <div class="bottom">
+      <div class="blogo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 30 186 138" width="34" height="26">
+          <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+            <path d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z" fill="#fff"/>
+            <path d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z" fill="#F28C28"/>
+            <path d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z" fill="#fff" fill-opacity="0.45"/>
+          </g>
+        </svg>
+        <div class="blogo-words">
+          <span class="blw-name">MEP TINTAS</span>
+          <span class="blw-sub">mep color</span>
+        </div>
+      </div>
+
+      <div class="binfo">
+        <div class="burl">mep.ind.br</div>
+        <div class="bdetails">
+          MEP Indústria e Comércio Ltda · CNPJ 62.205.954/0001-98<br>
+          Rua 3500, 97 · Balneário Camboriú, SC · SAC (47) 98851-5506
+        </div>
+      </div>
+
+      <div class="bright">
+        <div class="bvol">
+          <div class="bvol-val">18L / 3,6L</div>
+          <div class="bvol-lbl">Volumes disponíveis</div>
+        </div>
+        <div class="bc">
+          <svg viewBox="0 0 100 44" width="26mm" height="11mm" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0"  y="0" width="2"  height="44" fill="#000"/>
+            <rect x="4"  y="0" width="1"  height="44" fill="#000"/>
+            <rect x="7"  y="0" width="3"  height="44" fill="#000"/>
+            <rect x="12" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="15" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="19" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="22" y="0" width="3"  height="44" fill="#000"/>
+            <rect x="27" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="30" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="34" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="37" y="0" width="3"  height="44" fill="#000"/>
+            <rect x="42" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="46" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="49" y="0" width="3"  height="44" fill="#000"/>
+            <rect x="54" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="57" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="61" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="64" y="0" width="3"  height="44" fill="#000"/>
+            <rect x="69" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="72" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="76" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="79" y="0" width="3"  height="44" fill="#000"/>
+            <rect x="84" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="88" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="91" y="0" width="2"  height="44" fill="#000"/>
+            <rect x="95" y="0" width="1"  height="44" fill="#000"/>
+            <rect x="98" y="0" width="2"  height="44" fill="#000"/>
+          </svg>
+          <div class="bc-num">0 00000 00000 0</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

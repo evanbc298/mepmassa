@@ -4,17 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MEP — Como Aplicar Massa Polimérica em 4 Passos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Barlow', sans-serif;
-      background: #0A0A0A;
+      background: #E8E8E8;
       padding: 60px 40px;
       display: flex;
       flex-direction: column;
@@ -22,180 +18,140 @@
       gap: 80px;
     }
 
-    /* ─────────────────────────────────────────────
-       SLIDE BASE — 1080 × 1350 (Instagram 4:5)
-    ───────────────────────────────────────────── */
+    /* ── rótulo de referência ── */
+    .slide-num {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    /* ── SLIDE BASE 1080 × 1350 ── */
     .slide {
       width: 1080px;
       height: 1350px;
       position: relative;
       overflow: hidden;
-      background: #080808;
       flex-shrink: 0;
     }
 
-    /* número do slide para referência ao imprimir */
-    .slide-num {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: #444;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    /* ─────────────────────────────────────────────
-       ELEMENTOS COMPARTILHADOS
-    ───────────────────────────────────────────── */
-
-    /* logo MEP no canto */
-    .brand {
-      position: absolute;
-      top: 52px;
-      left: 64px;
-      z-index: 20;
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      gap: 4px;
-    }
-    .brand-name {
-      font-size: 22px;
-      font-weight: 900;
-      color: #FFFFFF;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    .brand-sub {
-      font-size: 10px;
-      font-weight: 700;
-      color: #E05F00;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    /* pontinhos de progresso */
-    .dots {
-      position: absolute;
-      bottom: 52px;
-      right: 64px;
-      z-index: 20;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #2a2a2a;
-    }
-    .dot.on {
-      background: #E05F00;
-      width: 28px;
-      border-radius: 4px;
-    }
-
-    /* ─────────────────────────────────────────────
+    /* ══════════════════════════════════════════
        SLIDE 1 — CAPA
-    ───────────────────────────────────────────── */
+       Fundo: foto real do pedreiro com overlay
+       suave — mantém identidade visual forte
+    ══════════════════════════════════════════ */
+    #s1 {
+      background: #111;
+    }
+
     #s1 .bg {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 30%;
-      filter: brightness(0.38) contrast(1.1);
+      object-position: center 25%;
+      filter: brightness(0.55);
     }
 
-    /* gradiente que escurece mais embaixo */
+    /* gradiente mais suave — foto respira mais */
     #s1 .overlay {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(8,8,8,0.10) 0%,
-          rgba(8,8,8,0.15) 30%,
-          rgba(8,8,8,0.75) 58%,
-          rgba(8,8,8,0.97) 80%,
-          #080808 100%
-        );
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.05) 0%,
+        rgba(0,0,0,0.10) 40%,
+        rgba(0,0,0,0.70) 68%,
+        rgba(0,0,0,0.92) 85%,
+        #000 100%
+      );
     }
 
-    /* bloco de texto na parte inferior */
+    /* tag + logo no topo */
+    #s1 .top-bar {
+      position: absolute;
+      top: 56px;
+      left: 64px;
+      right: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+    #s1 .mep-logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 3px;
+    }
+    #s1 .mep-logo span {
+      color: #E05F00;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      display: block;
+      margin-top: 3px;
+    }
+    #s1 .guide-tag {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+    }
+
+    /* conteúdo principal */
     #s1 .body {
       position: absolute;
       bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0 72px 72px;
+      left: 0; right: 0;
+      padding: 0 72px 80px;
+      z-index: 10;
     }
 
-    #s1 .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-    #s1 .tag::before {
-      content: '';
-      width: 40px;
-      height: 3px;
+    #s1 .accent-line {
+      width: 56px; height: 4px;
       background: #E05F00;
+      margin-bottom: 28px;
       border-radius: 2px;
-    }
-    #s1 .tag span {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      color: #E05F00;
-      text-transform: uppercase;
     }
 
     #s1 h1 {
-      font-size: 114px;
+      font-size: 108px;
       font-weight: 900;
       line-height: 0.90;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: #fff;
       letter-spacing: -2px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
-    #s1 h1 .accent {
-      color: #E05F00;
-    }
+    #s1 h1 .hi { color: #E05F00; }
 
     #s1 .sub {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
-      color: #888;
+      color: rgba(255,255,255,0.55);
       margin-bottom: 56px;
       letter-spacing: 1px;
     }
 
-    #s1 .footer-row {
+    #s1 .footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
-    #s1 .swipe {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    #s1 .swipe-text {
       font-size: 13px;
       font-weight: 700;
-      color: #555;
       letter-spacing: 3px;
+      color: rgba(255,255,255,0.35);
       text-transform: uppercase;
     }
-
-    #s1 .swipe-arrow {
-      width: 52px;
-      height: 52px;
+    #s1 .swipe-btn {
+      width: 54px; height: 54px;
       border: 2px solid #E05F00;
       border-radius: 50%;
       display: flex;
@@ -206,158 +162,62 @@
       font-weight: 700;
     }
 
-    /* ─────────────────────────────────────────────
-       SLIDES 2, 3, 4 — SPLIT PANEL (passo a passo)
-    ───────────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       SLIDES 2, 3, 4 — SPLIT PANEL
+       Esquerdo: fundo CLARO com texto escuro
+       Direito:  produto em destaque no escuro
+    ══════════════════════════════════════════ */
     .slide-step {
       display: grid;
-      grid-template-columns: 575px 1fr;
+      grid-template-columns: 520px 1fr;
+      background: #FAFAFA;
     }
 
-    /* painel esquerdo — texto */
+    /* painel texto — CLARO */
     .step-left {
       position: relative;
-      z-index: 2;
-      background: #080808;
+      background: #FAFAFA;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px 68px 80px 72px;
+      padding: 80px 60px 80px 72px;
       overflow: hidden;
     }
 
-    /* número gigante transparente de fundo */
-    .step-watermark {
+    /* número d'água levíssimo */
+    .step-wm {
       position: absolute;
-      bottom: -60px;
-      left: -20px;
-      font-size: 480px;
+      bottom: -40px;
+      left: -10px;
+      font-size: 520px;
       font-weight: 900;
       color: #E05F00;
-      opacity: 0.04;
+      opacity: 0.035;
       line-height: 1;
       pointer-events: none;
       user-select: none;
     }
 
-    /* badge "PASSO / 0X" */
-    .step-badge {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 40px;
-    }
-    .step-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 5px;
-      color: #E05F00;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-    .step-number {
-      font-size: 80px;
-      font-weight: 900;
-      color: #FFFFFF;
-      line-height: 1;
-      letter-spacing: -3px;
-    }
-
-    /* linha separadora laranja — vertical, na borda direita do painel esq */
-    .step-separator {
+    /* linha laranja lateral — separa painéis */
+    .step-sep {
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 3px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent 0%, #E05F00 20%, #E05F00 80%, transparent 100%);
+      top: 0; right: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, #E05F00 15%, #E05F00 85%, transparent 100%);
+      z-index: 5;
     }
 
-    .step-title {
-      font-size: 62px;
-      font-weight: 900;
-      line-height: 0.95;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      letter-spacing: -1px;
-      margin-bottom: 36px;
-    }
-    .step-title .accent {
-      color: #E05F00;
-    }
-
-    .step-desc {
-      font-size: 22px;
-      font-weight: 400;
-      color: #777;
-      line-height: 1.65;
-      margin-bottom: 44px;
-    }
-
-    /* caixinha de destaque */
-    .step-tip {
-      display: flex;
-      gap: 16px;
-      background: #111;
-      border-left: 3px solid #E05F00;
-      padding: 20px 24px;
-    }
-    .step-tip-icon {
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .step-tip-text {
-      font-size: 17px;
-      font-weight: 600;
-      color: #BBBBBB;
-      line-height: 1.5;
-    }
-
-    /* dots no lado esquerdo (parte inferior) */
-    .step-dots {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      margin-top: 48px;
-    }
-
-    /* painel direito — foto */
-    .step-right {
-      position: relative;
-      overflow: hidden;
-    }
-    .step-right img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: brightness(0.65) contrast(1.08) saturate(0.85);
-    }
-    /* overlay laranja suave sobre a foto */
-    .step-right::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(224,95,0,0.06) 0%, transparent 60%);
-    }
-
-    /* brand no topo dos step slides */
+    /* logo no topo-esquerdo */
     .step-brand {
-      position: absolute;
-      top: 48px;
-      left: 72px;
-      z-index: 20;
+      margin-bottom: 48px;
       display: flex;
       flex-direction: column;
       line-height: 1;
-      gap: 4px;
     }
     .step-brand .n {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
-      color: #FFFFFF;
+      color: #111;
       letter-spacing: 3px;
     }
     .step-brand .s {
@@ -366,40 +226,150 @@
       color: #E05F00;
       letter-spacing: 4px;
       text-transform: uppercase;
+      margin-top: 3px;
     }
 
-    /* ─────────────────────────────────────────────
-       SLIDE 5 — PASSO 04 + CTA
-    ───────────────────────────────────────────── */
-    #s5 .bg-glow {
+    .step-num-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: #E05F00;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .step-num {
+      font-size: 96px;
+      font-weight: 900;
+      color: #111;
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: 32px;
+    }
+
+    .step-title {
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: #111;
+      letter-spacing: -1px;
+      margin-bottom: 32px;
+    }
+    .step-title .hi { color: #E05F00; }
+
+    .step-desc {
+      font-size: 20px;
+      font-weight: 400;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .step-tip {
+      display: flex;
+      gap: 14px;
+      background: #fff;
+      border-left: 3px solid #E05F00;
+      padding: 18px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .step-tip-ico { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+    .step-tip-txt {
+      font-size: 16px;
+      font-weight: 600;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* dots no rodapé do painel esquerdo */
+    .step-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 44px;
+    }
+    .d { width: 8px; height: 8px; border-radius: 50%; background: #DDD; }
+    .d.on { background: #E05F00; width: 28px; border-radius: 4px; }
+
+    /* painel produto — ESCURO */
+    .step-right {
+      position: relative;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* brilho laranja suave atrás do produto */
+    .step-right::before {
+      content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 80% 55%, rgba(224,95,0,0.14) 0%, transparent 65%),
-        #080808;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(224,95,0,0.18) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .step-right img {
+      position: relative;
+      z-index: 2;
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+    }
+
+    /* ══════════════════════════════════════════
+       SLIDE 5 — PASSO 04 + CTA
+       Fundo claro, produto flutuando à direita
+    ══════════════════════════════════════════ */
+    #s5 {
+      background: #F5F5F5;
+    }
+
+    #s5 .top-stripe {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 8px;
+      background: #E05F00;
     }
 
     #s5 .product-img {
       position: absolute;
-      right: -30px;
+      right: -20px;
       bottom: 0;
-      height: 82%;
+      height: 84%;
       object-fit: contain;
-      filter: drop-shadow(0 24px 80px rgba(224,95,0,0.22));
+      filter: drop-shadow(0 24px 70px rgba(0,0,0,0.18));
       z-index: 2;
     }
 
     #s5 .content {
       position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 62%;
+      top: 0; left: 0; bottom: 0;
+      width: 60%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 80px 0 80px 72px;
       z-index: 5;
+    }
+
+    #s5 .brand5 {
+      font-size: 16px;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+    }
+    #s5 .brand5 span {
+      display: block;
+      font-size: 9px;
+      font-weight: 700;
+      color: #E05F00;
+      letter-spacing: 4px;
+      margin-top: 2px;
     }
 
     #s5 .kicker {
@@ -408,21 +378,20 @@
       letter-spacing: 5px;
       color: #E05F00;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-top: 52px;
+      margin-bottom: 12px;
     }
 
     #s5 h2 {
-      font-size: 80px;
+      font-size: 76px;
       font-weight: 900;
       line-height: 0.92;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: #111;
       letter-spacing: -2px;
       margin-bottom: 48px;
     }
-    #s5 h2 .accent {
-      color: #E05F00;
-    }
+    #s5 h2 .hi { color: #E05F00; }
 
     #s5 .checklist {
       list-style: none;
@@ -431,56 +400,65 @@
     #s5 .checklist li {
       display: flex;
       align-items: center;
-      gap: 16px;
-      font-size: 20px;
+      gap: 14px;
+      font-size: 19px;
       font-weight: 600;
-      color: #CCCCCC;
-      padding: 14px 0;
-      border-bottom: 1px solid #161616;
+      color: #333;
+      padding: 13px 0;
+      border-bottom: 1px solid #E8E8E8;
     }
-    #s5 .checklist li .check {
-      width: 30px;
-      height: 30px;
+    #s5 .checklist .chk {
+      width: 28px; height: 28px;
       background: rgba(224,95,0,0.12);
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       color: #E05F00;
       font-weight: 900;
       flex-shrink: 0;
     }
 
-    #s5 .cta-btn {
+    #s5 .cta {
       display: inline-flex;
       align-items: center;
       gap: 12px;
       background: #E05F00;
-      color: #FFFFFF;
+      color: #fff;
       font-family: 'Barlow', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 22px 36px;
+      padding: 20px 32px;
       margin-bottom: 28px;
       width: fit-content;
     }
 
     #s5 .handle {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
-      color: #444;
+      color: #AAA;
       letter-spacing: 1px;
+    }
+
+    #s5 .dots5 {
+      position: absolute;
+      bottom: 56px;
+      left: 72px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        SLIDE 1 — CAPA
-  ════════════════════════════════════════════ -->
+  ══════════════════════════════════════════ -->
   <p class="slide-num">01 / 05 — CAPA</p>
   <div class="slide" id="s1">
 
@@ -489,205 +467,197 @@
       alt="">
     <div class="overlay"></div>
 
-    <!-- MEP brand -->
-    <div class="brand">
-      <span class="brand-name">MEP</span>
-      <span class="brand-sub">Massas</span>
+    <div class="top-bar">
+      <div class="mep-logo">MEP <span>Massas</span></div>
+      <span class="guide-tag">Guia técnico</span>
     </div>
 
-    <!-- conteúdo principal -->
     <div class="body">
-      <div class="tag"><span>Guia técnico</span></div>
-      <h1>COMO<br>APLICAR<br>MASSA<br><span class="accent">POLIMÉRICA</span></h1>
+      <div class="accent-line"></div>
+      <h1>COMO<br>APLICAR<br>MASSA<br><span class="hi">POLIMÉRICA</span></h1>
       <p class="sub">em 4 passos simples</p>
-      <div class="footer-row">
-        <div class="swipe">deslize para ver</div>
-        <div class="swipe-arrow">→</div>
+      <div class="footer">
+        <span class="swipe-text">deslize para ver</span>
+        <div class="swipe-btn">→</div>
       </div>
     </div>
 
   </div>
 
-  <!-- ════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        SLIDE 2 — PASSO 01: PREPARAR O BLOCO
-  ════════════════════════════════════════════ -->
+  ══════════════════════════════════════════ -->
   <p class="slide-num">02 / 05 — PASSO 01</p>
   <div class="slide slide-step" id="s2">
 
-    <!-- painel esquerdo -->
     <div class="step-left">
-      <div class="step-separator"></div>
-      <span class="step-watermark">1</span>
+      <div class="step-sep"></div>
+      <span class="step-wm">1</span>
 
       <div class="step-brand">
         <span class="n">MEP</span>
         <span class="s">Massas</span>
       </div>
 
-      <div class="step-badge" style="margin-top:120px;">
-        <span class="step-label">Passo</span>
-        <span class="step-number">01</span>
-      </div>
+      <div class="step-num-label">Passo</div>
+      <div class="step-num">01</div>
 
       <h2 class="step-title">PREPARAR<br>O BLOCO</h2>
 
       <p class="step-desc">
-        Antes de qualquer coisa, a superfície precisa estar limpa, seca e sem resíduos. Poeira, gordura ou umidade comprometem a aderência.
+        Superfície limpa, seca e sem resíduos. Poeira, gordura ou umidade comprometem a aderência — tire tudo antes de começar.
       </p>
 
       <div class="step-tip">
-        <span class="step-tip-icon">⚠</span>
-        <span class="step-tip-text">Não aplique em bloco molhado — aguarde secar completamente.</span>
+        <span class="step-tip-ico">⚠</span>
+        <span class="step-tip-txt">Não aplique em bloco molhado. Aguarde secar completamente.</span>
       </div>
 
       <div class="step-dots">
-        <div class="dot on"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="d on"></div>
+        <div class="d"></div>
+        <div class="d"></div>
+        <div class="d"></div>
+        <div class="d"></div>
       </div>
     </div>
 
-    <!-- painel direito — foto -->
+    <!-- produto em destaque: bisnaga 1kg -->
     <div class="step-right">
-      <img src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/obra-alvenaria.webp" alt="Alvenaria">
+      <img src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/bisnaga-1kg.webp"
+           alt="MEP Bisnaga 1 kg">
     </div>
 
   </div>
 
-  <!-- ════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        SLIDE 3 — PASSO 02: APLICAR 2 FILETES
-  ════════════════════════════════════════════ -->
+  ══════════════════════════════════════════ -->
   <p class="slide-num">03 / 05 — PASSO 02</p>
   <div class="slide slide-step" id="s3">
 
     <div class="step-left">
-      <div class="step-separator"></div>
-      <span class="step-watermark">2</span>
+      <div class="step-sep"></div>
+      <span class="step-wm">2</span>
 
       <div class="step-brand">
         <span class="n">MEP</span>
         <span class="s">Massas</span>
       </div>
 
-      <div class="step-badge" style="margin-top:120px;">
-        <span class="step-label">Passo</span>
-        <span class="step-number">02</span>
-      </div>
+      <div class="step-num-label">Passo</div>
+      <div class="step-num">02</div>
 
-      <h2 class="step-title">APLICAR<br><span class="accent">2 FILETES</span></h2>
+      <h2 class="step-title">APLICAR<br><span class="hi">2 FILETES</span></h2>
 
       <p class="step-desc">
-        Com a bisnaga, aplique 2 cordões de ~1 cm de diâmetro ao longo do comprimento do bloco. Mantenha pressão constante para espessura uniforme.
+        Use a bisnaga para aplicar 2 cordões de ~1 cm de diâmetro ao longo do bloco. Pressão constante garante espessura uniforme.
       </p>
 
       <div class="step-tip">
-        <span class="step-tip-icon">✓</span>
-        <span class="step-tip-text">1 bisnaga de 3 kg rende até 25 m² de parede assentada.</span>
+        <span class="step-tip-ico">✓</span>
+        <span class="step-tip-txt">1 bisnaga de 3 kg rende até 25 m² de parede assentada.</span>
       </div>
 
       <div class="step-dots">
-        <div class="dot"></div>
-        <div class="dot on"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="d"></div>
+        <div class="d on"></div>
+        <div class="d"></div>
+        <div class="d"></div>
+        <div class="d"></div>
       </div>
     </div>
 
+    <!-- produto em destaque: bisnaga 3kg -->
     <div class="step-right">
-      <img src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/pedreiro-bisnaga.webp" alt="Aplicando bisnaga">
+      <img src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/bisnaga-3kg.webp"
+           alt="MEP Bisnaga 3 kg">
     </div>
 
   </div>
 
-  <!-- ════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        SLIDE 4 — PASSO 03: ASSENTAR EM ATÉ 10 MIN
-  ════════════════════════════════════════════ -->
+  ══════════════════════════════════════════ -->
   <p class="slide-num">04 / 05 — PASSO 03</p>
   <div class="slide slide-step" id="s4">
 
     <div class="step-left">
-      <div class="step-separator"></div>
-      <span class="step-watermark">3</span>
+      <div class="step-sep"></div>
+      <span class="step-wm">3</span>
 
       <div class="step-brand">
         <span class="n">MEP</span>
         <span class="s">Massas</span>
       </div>
 
-      <div class="step-badge" style="margin-top:120px;">
-        <span class="step-label">Passo</span>
-        <span class="step-number">03</span>
-      </div>
+      <div class="step-num-label">Passo</div>
+      <div class="step-num">03</div>
 
-      <h2 class="step-title">ASSENTAR<br>EM ATÉ<br><span class="accent">10 MIN</span></h2>
+      <h2 class="step-title">ASSENTAR<br>EM ATÉ<br><span class="hi">10 MIN</span></h2>
 
       <p class="step-desc">
-        Pressione o bloco, levante e recoloque para conferir a aderência. Ajuste o alinhamento com martelo de borracha e nível.
+        Pressione o bloco, levante e recoloque para conferir a aderência. Ajuste com martelo de borracha e nível de pedreiro.
       </p>
 
       <div class="step-tip">
-        <span class="step-tip-icon">⚠</span>
-        <span class="step-tip-text">Após 10 minutos, não mova mais o bloco — a pega já iniciou.</span>
+        <span class="step-tip-ico">⚠</span>
+        <span class="step-tip-txt">Após 10 minutos, não mova mais o bloco — a pega já começou.</span>
       </div>
 
       <div class="step-dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot on"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+        <div class="d"></div>
+        <div class="d"></div>
+        <div class="d on"></div>
+        <div class="d"></div>
+        <div class="d"></div>
       </div>
     </div>
 
+    <!-- produto em destaque: bisnaga 5kg -->
     <div class="step-right">
-      <img src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/img-como-usar.webp" alt="Assentando bloco">
+      <img src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/bisnaga-5kg.webp"
+           alt="MEP Bisnaga 5 kg">
     </div>
 
   </div>
 
-  <!-- ════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        SLIDE 5 — PASSO 04 + CTA
-  ════════════════════════════════════════════ -->
+  ══════════════════════════════════════════ -->
   <p class="slide-num">05 / 05 — PASSO 04 + CTA</p>
   <div class="slide" id="s5">
 
-    <div class="bg-glow"></div>
+    <div class="top-stripe"></div>
 
-    <!-- produto flutuando à direita -->
+    <!-- barrica transparente flutuando -->
     <img class="product-img"
-      src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/barrica-25kg.webp"
-      alt="MEP Barrica 25 kg">
+      src="https://raw.githubusercontent.com/evanbc298/mepmassa/main/docs/barrica%20transparente%20nova.png"
+      alt="MEP Barrica">
 
-    <!-- conteúdo à esquerda -->
     <div class="content">
-      <span class="kicker">Passo 04</span>
-      <h2>AGUARDAR<br>A <span class="accent">CURA</span></h2>
+      <div class="brand5">MEP <span>Massas</span></div>
+
+      <div class="kicker">Passo 04</div>
+      <h2>AGUARDAR<br>A <span class="hi">CURA</span></h2>
+
       <ul class="checklist">
-        <li><span class="check">✓</span> Pega inicial em 30 minutos</li>
-        <li><span class="check">✓</span> Cura total em 72 horas</li>
-        <li><span class="check">✓</span> Não molhe nas primeiras 4 h</li>
-        <li><span class="check">✓</span> Pode rebocar ou pintar após 72 h</li>
+        <li><span class="chk">✓</span>Pega inicial em 30 minutos</li>
+        <li><span class="chk">✓</span>Cura total em 72 horas</li>
+        <li><span class="chk">✓</span>Não molhe nas primeiras 4 h</li>
+        <li><span class="chk">✓</span>Pode rebocar ou pintar após 72 h</li>
       </ul>
 
-      <div class="cta-btn">Baixe o laudo técnico →</div>
+      <div class="cta">Baixe o laudo técnico →</div>
       <span class="handle">@mep.industria</span>
     </div>
 
-    <!-- brand e dots -->
-    <div class="brand">
-      <span class="brand-name">MEP</span>
-      <span class="brand-sub">Massas</span>
-    </div>
-
-    <div class="dots" style="bottom:52px; right:64px;">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot on"></div>
+    <div class="dots5">
+      <div class="d"></div>
+      <div class="d"></div>
+      <div class="d"></div>
+      <div class="d"></div>
+      <div class="d on"></div>
     </div>
 
   </div>

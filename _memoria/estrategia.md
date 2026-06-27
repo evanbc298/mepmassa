@@ -35,9 +35,13 @@ Branding aprofundado e identidade visual completa — trabalhar com o que tiver 
 - Email marketing Brevo: domínio autenticado, 5 templates, automação ativa (3 emails / 14 dias)
 - Prospecção: 100 construtoras e incorporadoras mapeadas (SC/PR)
 - Primeiro carrossel Instagram produzido e publicado: "Como Aplicar Massa Polimérica em 4 Passos" (HTML + Playwright, fotos reais)
+- Vídeo depoimento produzido e postado como Reels: "Pedreiro Responde: MEP" (49s, vertical, já editado com legendas)
+- Banco de imagens atualizado: fotos antes/depois de área gourmet com MEP COLOR, fotos de obras em andamento (prédio 3 andares, galpão)
 
 ### Em andamento
-- Produção de carrosseis Instagram — próximo: comparativo MEP vs argamassa convencional (dados do estudo 820m²)
+- Produção de carrosseis Instagram — próximo: antes/depois área gourmet (MEP COLOR) e comparativo MEP vs argamassa convencional
+- Rótulo MEP COLOR para gráfica (impressão física) — em produção
+- Seção "Obras Atendidas" no site com fotos reais de canteiro
 - Abordagem direta das 100 construtoras mapeadas (WhatsApp + Brevo)
 - Formulário do site conectado ao Brevo via API (código pronto, teste end-to-end pendente)
 
