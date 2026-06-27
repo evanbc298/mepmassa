@@ -40,7 +40,7 @@ Branding aprofundado e identidade visual completa — trabalhar com o que tiver 
 
 ### Em andamento
 - Produção de carrosseis Instagram — próximo: antes/depois área gourmet (MEP COLOR) e comparativo MEP vs argamassa convencional
-- Rótulo MEP COLOR para gráfica (impressão física) — em produção
+- Rótulos MEP COLOR para gráfica — frente + verso Econômica concluídos; Premium, Pisos e Quadras e Esmalte em produção (prompts prontos)
 - Seção "Obras Atendidas" no site com fotos reais de canteiro
 - Abordagem direta das 100 construtoras mapeadas (WhatsApp + Brevo)
 - Formulário do site conectado ao Brevo via API (código pronto, teste end-to-end pendente)
