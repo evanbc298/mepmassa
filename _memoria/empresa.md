@@ -86,7 +86,7 @@ Branco, Gelo, Palha, Areia, Pérola, Marfim, Algodão Egípcio, Camurça, Pêsse
 
 ## Contato comercial
 
-- Email: ind.mepmassas@gmail.com
+- Email: contato@mep.ind.br
 - Telefone / WhatsApp: (47) 98851-5506
 - Site: www.mep.ind.br
 
