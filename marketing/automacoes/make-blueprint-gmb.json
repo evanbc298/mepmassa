@@ -1,0 +1,145 @@
+{
+  "name": "MEP — Post Automático Google Meu Negócio",
+  "flow": [
+    {
+      "id": 1,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": false,
+        "useNewZLibDeCompress": true
+      },
+      "mapper": {
+        "url": "https://api.anthropic.com/v1/messages",
+        "serializeUrl": false,
+        "method": "post",
+        "headers": [
+          {
+            "name": "x-api-key",
+            "value": "COLE_SUA_CLAUDE_API_KEY_AQUI"
+          },
+          {
+            "name": "anthropic-version",
+            "value": "2023-06-01"
+          },
+          {
+            "name": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "qs": [],
+        "bodyType": "raw",
+        "parseResponse": true,
+        "contentType": "application/json",
+        "data": "{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":600,\"messages\":[{\"role\":\"user\",\"content\":\"Você é o assistente de marketing da MEP, indústria de argamassa polimérica e tintas para construção civil localizada em Balneário Camboriú, SC. Crie um post para o Google Meu Negócio (máximo 900 caracteres). Regras: sem emojis, tom profissional e direto, linguagem para construtoras e incorporadoras. Alterne entre estes temas conforme a semana do mês: Semana 1 — dado técnico real (820m² executados em 68 dias, -26,5% de custo, -109 dias de prazo). Semana 2 — aplicação prática da argamassa polimérica MEP (sem betoneira, produto pronto para uso, zero desperdício). Semana 3 — MEP COLOR: tinta acrílica para obras, linha completa, produzida em parceria com PrudenCOLLOR. Semana 4 — convite direto para orçamento via WhatsApp. Finalize sempre com: (47) 98851-5506 | contato@mep.ind.br | www.mep.ind.br. Retorne apenas o texto do post, sem explicações.\"}]}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "method": {
+              "mode": "chose",
+              "label": "POST"
+            },
+            "bodyType": {
+              "label": "Raw"
+            },
+            "contentType": {
+              "label": "JSON (application/json)"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "json:ParseJSON",
+      "version": 1,
+      "parameters": {
+        "type": ""
+      },
+      "mapper": {
+        "json": "{{1.data}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {
+        "handleErrors": false,
+        "useNewZLibDeCompress": true
+      },
+      "mapper": {
+        "url": "https://mybusiness.googleapis.com/v4/accounts/COLE_SEU_ACCOUNT_ID/locations/COLE_SEU_LOCATION_ID/localPosts",
+        "serializeUrl": false,
+        "method": "post",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "qs": [],
+        "bodyType": "raw",
+        "parseResponse": true,
+        "contentType": "application/json",
+        "data": "{\"summary\":\"{{replace(2.content[0].text, '\"', \"'\")}}\",\"languageCode\":\"pt-BR\",\"topicType\":\"STANDARD\",\"callToAction\":{\"actionType\":\"CALL\",\"url\":\"tel:+554788515506\"}}",
+        "authType": "oauth2",
+        "oauth": {
+          "token_type": "Bearer",
+          "access_token": "CONFIGURAR_GOOGLE_CONNECTION_NO_MAKE"
+        }
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "method": {
+              "mode": "chose",
+              "label": "POST"
+            },
+            "bodyType": {
+              "label": "Raw"
+            },
+            "contentType": {
+              "label": "JSON (application/json)"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu2.make.com"
+  }
+}
