@@ -30,7 +30,7 @@ Branding aprofundado e identidade visual completa — trabalhar com o que tiver 
 - Rótulos: barrica 25kg, saco aplicador 3kg v1, apresentação de rótulos
 - Site publicado em www.mep.ind.br (MEP Massas + MEP COLOR + blog + calculadora + formulário)
 - Blog: 11 artigos SEO publicados
-- Google Meu Negócio configurado
+- Google Meu Negócio configurado + automação de posts ativa (Make.com + Gemini AI → publica post toda segunda às 9h com 1 clique)
 - Pixel Meta instalado no site
 - Email marketing Brevo: domínio autenticado, 5 templates, automação ativa (3 emails / 14 dias)
 - Prospecção: 100 construtoras e incorporadoras mapeadas (SC/PR)
