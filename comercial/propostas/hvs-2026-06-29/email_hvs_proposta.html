@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial MEP — HVS Construtora</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #f0f2f5;
+    font-family: 'Barlow', Arial, sans-serif;
+    color: #1A2B4D;
+  }
+
+  .email-wrapper {
+    max-width: 640px;
+    margin: 32px auto;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  }
+
+  /* HEADER */
+  .header {
+    background-color: #1A2B4D;
+    padding: 36px 40px 28px;
+    text-align: center;
+  }
+
+  .header svg {
+    width: 54px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .header-label {
+    font-family: 'Barlow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #F28C28;
+    margin-bottom: 6px;
+  }
+
+  .header-title {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+
+  /* BODY */
+  .body {
+    padding: 40px 40px 0;
+  }
+
+  .greeting {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #2c3e50;
+    margin-bottom: 28px;
+  }
+
+  .greeting strong {
+    color: #1A2B4D;
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #F28C28;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #F28C28;
+    display: inline-block;
+  }
+
+  /* PROPOSTA TABLE */
+  .proposal-block {
+    margin-bottom: 36px;
+  }
+
+  .proposal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .proposal-table thead tr {
+    background-color: #1A2B4D;
+    color: #ffffff;
+  }
+
+  .proposal-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Barlow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .proposal-table thead th:last-child {
+    text-align: right;
+  }
+
+  .proposal-table tbody tr {
+    border-bottom: 1px solid #e8ecf0;
+  }
+
+  .proposal-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .proposal-table tbody td {
+    padding: 12px 14px;
+    color: #2c3e50;
+    vertical-align: top;
+  }
+
+  .proposal-table tbody td:last-child {
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .tag-incluso {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .proposal-table tfoot tr {
+    background-color: #f0f2f5;
+  }
+
+  .proposal-table tfoot td {
+    padding: 14px;
+    font-weight: 700;
+    color: #1A2B4D;
+    font-size: 15px;
+  }
+
+  .proposal-table tfoot td:last-child {
+    text-align: right;
+    color: #1A2B4D;
+    font-size: 16px;
+  }
+
+  /* BENEFITS */
+  .benefits-block {
+    margin-bottom: 36px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .benefit-item {
+    background: #f7f9fc;
+    border-left: 3px solid #F28C28;
+    padding: 14px 16px;
+  }
+
+  .benefit-value {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: #1A2B4D;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .benefit-desc {
+    font-size: 12px;
+    color: #5a6a7e;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* MEP COLOR BLOCK */
+  .color-block {
+    background: #1A2B4D;
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+  }
+
+  .color-block .section-title {
+    color: #F28C28;
+    border-color: #F28C28;
+    margin-bottom: 10px;
+  }
+
+  .color-block p {
+    font-size: 14px;
+    color: #c8d3e0;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .color-products {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .color-tag {
+    padding: 6px 14px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+  }
+
+  /* CONDITIONS */
+  .conditions-block {
+    margin-bottom: 36px;
+  }
+
+  .conditions-list {
+    list-style: none;
+    margin-top: 4px;
+  }
+
+  .conditions-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e8ecf0;
+    font-size: 14px;
+    color: #2c3e50;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+
+  .conditions-list li:last-child {
+    border-bottom: none;
+  }
+
+  .cond-label {
+    font-weight: 700;
+    color: #1A2B4D;
+    min-width: 140px;
+    font-size: 13px;
+  }
+
+  /* CLOSING */
+  .closing {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #2c3e50;
+    margin-bottom: 36px;
+    padding-top: 4px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background-color: #1A2B4D;
+    padding: 28px 40px;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .footer-contacts {
+    font-size: 13px;
+    color: #8fa3c0;
+    line-height: 1.8;
+  }
+
+  .footer-contacts a {
+    color: #F28C28;
+    text-decoration: none;
+  }
+
+  .footer-divider {
+    width: 32px;
+    height: 2px;
+    background: #F28C28;
+    margin: 12px auto;
+  }
+
+  .date-badge {
+    display: inline-block;
+    background: rgba(242,140,40,0.12);
+    color: #F28C28;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="email-wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 12 186 255" role="img" aria-label="MEP">
+      <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+        <path d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z" fill="#ffffff"/>
+        <path d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z" fill="#F28C28"/>
+        <path d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z" fill="#ffffff"/>
+        <path d="m 4575,5047 c -4,-18 -5,-150 -3,-293 3,-232 5,-262 22,-290 38,-63 215,-156 306,-161 50,-3 66,3 169,55 164,82 155,57 159,420 2,160 1,292 -3,292 -9,0 -244,-129 -278,-152 l -27,-20 -156,91 c -85,50 -161,91 -169,91 -8,0 -17,-14 -20,-33 z" fill="#ffffff"/>
+        <path d="m 2357,3934 c -4,-4 -7,-459 -7,-1011 V 1920 h 225 225 l -2,610 c -2,336 -1,610 2,610 3,-1 70,-112 149,-248 328,-564 423,-722 431,-717 4,2 43,67 86,142 43,76 155,271 249,433 95,162 183,316 196,342 13,26 26,48 29,48 3,0 5,-273 5,-608 v -607 l 223,-3 222,-2 v 1010 1010 h -239 -240 l -44,-82 c -178,-332 -443,-835 -467,-885 -15,-33 -30,-43 -31,-20 0,6 -114,230 -253,497 l -252,485 -250,3 c -138,1 -253,-1 -257,-4 z" fill="#ffffff"/>
+        <path d="M 4750,2930 V 1920 l 630,2 631,3 v 200 200 l -408,2 c -224,1 -407,5 -405,8 1,3 2,91 2,196 v 191 l 365,-3 366,-4 v 200 200 l -371,3 -370,2 v 200 200 l 408,2 407,3 v 205 205 l -627,3 -628,2 z" fill="#ffffff"/>
+        <path d="M 6360,2931 V 1920 h 225 225 l 2,325 3,324 225,4 c 306,5 408,29 541,128 138,102 207,212 236,376 18,103 13,286 -11,373 -45,161 -148,300 -285,379 -165,97 -204,103 -723,108 l -438,5 z m 875,570 c 65,-29 89,-52 116,-114 52,-122 31,-266 -49,-344 -69,-65 -109,-76 -314,-81 l -178,-4 v 279 c 0,154 3,283 8,287 4,5 88,6 187,4 158,-4 186,-7 230,-27 z" fill="#ffffff"/>
+      </g>
+    </svg>
+    <div class="header-label">Proposta Comercial</div>
+    <div class="header-title">PARCERIA ESTRATÉGICA<br>MEP INDÚSTRIA</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <div class="date-badge">29 de junho de 2026</div>
+
+    <!-- GREETING -->
+    <p class="greeting">
+      Prezada <strong>Gabriela</strong>,<br><br>
+      Agradecemos o contato e a confiança em buscar a MEP como parceira para os projetos da HVS Construtora. Encaminhamos abaixo nossa proposta comercial para fornecimento de Argamassa Polimérica, com detalhamento técnico e condições para o inicio da nossa parceria.
+    </p>
+
+    <!-- PROPOSTA -->
+    <div class="proposal-block">
+      <span class="section-title">Proposta — 100 m² de Alvenaria</span>
+      <table class="proposal-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qtd.</th>
+            <th>Unit.</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Argamassa Polimérica MEP</strong><br>
+              <span style="font-size:12px;color:#5a6a7e;">Barrica 25 kg — saco aplicador incluso</span>
+            </td>
+            <td>7 un.</td>
+            <td>R$ 180,00</td>
+            <td>R$ 1.260,00</td>
+          </tr>
+          <tr>
+            <td>
+              Frete — entrega em Joinville/SC
+            </td>
+            <td>—</td>
+            <td><span class="tag-incluso">INCLUSO</span></td>
+            <td style="color:#2e7d32;">—</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Valor Total da Proposta</td>
+            <td>R$ 1.260,00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- PRODUTO DESTAQUE -->
+    <div style="text-align:center; margin-bottom:36px;">
+      <img src="file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/docs/barrica%20transparente%20nova.png"
+           alt="Barrica MEP 25kg"
+           style="max-height:220px; width:auto; display:inline-block;" />
+      <p style="font-size:12px;color:#5a6a7e;margin-top:8px;">Argamassa Polimérica MEP — Barrica 25 kg</p>
+    </div>
+
+    <!-- BENEFÍCIOS -->
+    <div class="benefits-block">
+      <span class="section-title">Por que MEP Massas</span>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-value">3x</div>
+          <div class="benefit-desc">mais rápida que argamassa convencional</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-value">40%</div>
+          <div class="benefit-desc">mais econômica no custo total da alvenaria</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-value">95%</div>
+          <div class="benefit-desc">menos consumo de água no processo</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-value">Zero</div>
+          <div class="benefit-desc">desperdício — produto pronto para uso, sem betoneira</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#5a6a7e;margin-top:12px;line-height:1.6;">
+        Certificado ABNT NBR 16590-1:2017 e 16590-2:2017 — Laboratório SENAI, acreditação Inmetro.
+      </p>
+    </div>
+
+    <!-- MEP COLOR -->
+    <div class="color-block">
+      <span class="section-title">Conheça também: MEP COLOR</span>
+      <p>
+        Linha de tintas profissionais para uso em obras, com foco em durabilidade e rendimento. Produção própria em white-label, disponível nas embalagens de 3,6 L e 14 L.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+        <div style="text-align:center;">
+          <img src="file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/docs/bucket-premium.png.png"
+               alt="Acrílica Premium" style="height:100px;width:auto;" />
+          <div style="font-size:11px;color:#c8d3e0;margin-top:6px;font-weight:600;">Acrílica Premium</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/docs/bucket-economica.png.png"
+               alt="Acrílica Econômica" style="height:100px;width:auto;" />
+          <div style="font-size:11px;color:#c8d3e0;margin-top:6px;font-weight:600;">Acrílica Econômica</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/docs/bucket-pisos.png.png"
+               alt="Pisos e Quadras" style="height:100px;width:auto;" />
+          <div style="font-size:11px;color:#c8d3e0;margin-top:6px;font-weight:600;">Pisos e Quadras</div>
+        </div>
+        <div style="text-align:center;">
+          <img src="file:///C:/Users/evanb/Desktop/MEPMASSA/MazyOS/docs/bucket-esmalte.png.png"
+               alt="Esmalte Acrílico" style="height:100px;width:auto;" />
+          <div style="font-size:11px;color:#c8d3e0;margin-top:6px;font-weight:600;">Esmalte Acrílico</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONDIÇÕES -->
+    <div class="conditions-block">
+      <span class="section-title">Condições Comerciais</span>
+      <ul class="conditions-list">
+        <li>
+          <span class="cond-label">Prazo de entrega</span>
+          <span>Até 5 dias úteis após confirmação do pedido</span>
+        </li>
+        <li>
+          <span class="cond-label">Frete</span>
+          <span>Incluso para Joinville/SC</span>
+        </li>
+        <li>
+          <span class="cond-label">Pagamento</span>
+          <span>50% na aprovação + 50% na entrega</span>
+        </li>
+        <li>
+          <span class="cond-label">Validade da proposta</span>
+          <span>30 dias a partir desta data</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CLOSING -->
+    <p class="closing">
+      Ficamos à disposição para esclarecer qualquer dúvida técnica ou comercial. Será um prazer iniciar essa parceria com a HVS Construtora.
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">MEP INDÚSTRIA E COMÉRCIO</div>
+    <div class="footer-divider"></div>
+    <div class="footer-contacts">
+      (47) 98851-5506<br>
+      <a href="http://www.mep.ind.br">www.mep.ind.br</a><br>
+      Balneário Camboriú, SC
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
