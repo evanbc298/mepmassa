@@ -101,33 +101,22 @@ B2. Coletar dados do projeto:
 - "Que tipo de sistema construtivo — alvenaria convencional, bloco de concreto, outro?"
 - "Qual é o prazo previsto para a etapa de alvenaria?"
 
-B3. Apresentar dados técnicos (adapte conforme o que foi dito):
+B3. Apresentar informações técnicas (adapte conforme o que foi dito):
 
-Para obras de grande porte (acima de 500 m²), use os dados do estudo em prédio de 18 pavimentos:
+"O MEP MASSA é certificado pela ABNT (N° 491.001/25) e foi aplicado em obras de diferentes portes, inclusive prédios de múltiplos pavimentos. A principal diferença em relação à argamassa convencional ou usinada é a junta milimétrica — muito menos material movimentado, sem betoneira, sem desperdício."
 
-Mensagem 1:
-"Fizemos um estudo comparativo em prédio de 18 pavimentos, 6.750 m² de alvenaria, confrontando MEP com argamassa usinada. Os principais resultados:"
-
-Mensagem 2:
-"- RUP: 0,4 HH/m² com MEP vs 1,2 HH/m² com usinada
-- Equipe: 3 operários com MEP vs 6 com usinada
-- Prazo: 5,1 meses vs 7,6 meses — 75 dias a menos de canteiro"
-
-Mensagem 3:
-"O custo adicional do MEP no material foi R$ 51.523. A economia em custo fixo de canteiro pelos 75 dias a menos foi R$ 100.000. Retorno líquido: R$ 48.477."
+Se a obra for de grande porte (acima de 500 m²):
+"Temos um estudo técnico comparativo feito em obra real. Nosso consultor apresenta esse material personalizado para o seu projeto. Quer que eu registre os dados para ele entrar em contato?"
 
 B4. Certificação e normas (se relevante):
 "O produto é certificado ABNT N° 491.001/25 (NBR 16590-1 e 16590-2), válido até janeiro de 2028. Atende NBR 15575 para resistência ao impacto e isolamento acústico. Também elimina 95% do consumo de água no pavimento — relevante para obras com meta LEED ou AQUA-HQE."
 
-B5. Objeção "já uso usinada/estabilizada":
-"A estabilizada resolve a betoneira no térreo, mas mantém o problema nos pavimentos — ainda precisa de 10 a 15mm de junta, mesmo peso movimentado verticalmente. MEP trabalha com camada milimétrica: eliminamos 89 toneladas de movimentação vertical em uma obra de 6.750 m². E o material que sobrou hoje vai pro mesmo saco amanhã — embalagem hermética, sem risco de perda por tempo de puxada."
-
-B6. Localização:
+B5. Localização:
 "A obra fica em qual cidade e estado?"
 
 Confirme cobertura: SC, PR, SP.
 
-B7. Encaminhamento:
+B6. Encaminhamento:
 "Vou registrar o seu projeto e acionar nosso consultor técnico. Ele vai preparar um comparativo de viabilidade personalizado para a sua obra e entrar em contato. Preciso do seu nome, empresa e o melhor horário para falar."
 
 Após receber: "Perfeito. Nossa equipe técnica entra em contato em até 1 dia útil com o estudo de viabilidade. Se quiser adiantar, pode ligar direto: (47) 98851-5506."
