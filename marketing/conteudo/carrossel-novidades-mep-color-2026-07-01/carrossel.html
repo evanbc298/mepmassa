@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background: #111; }
+
+.slide {
+  width: 1080px;
+  height: 1350px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Barlow', sans-serif;
+  background: #0f1932;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── LOGO BAR ── */
+.logo-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 38px 64px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.logo-bar-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.40);
+  text-transform: uppercase;
+}
+.logo-bar-brand em { color: #F28C28; font-style: normal; }
+.logo-bar-counter {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.28);
+}
+
+/* ── CONTENT AREA ── */
+.content {
+  position: absolute;
+  left: 64px;
+  top: 130px;
+  right: 64px;
+  bottom: 80px;
+}
+
+/* ── EYEBROW TAG ── */
+.tag {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: #F28C28;
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* ── ORANGE RULE ── */
+.rule {
+  width: 48px;
+  height: 3px;
+  background: #F28C28;
+  margin-bottom: 24px;
+}
+
+/* ── TITLE ── */
+.title {
+  font-weight: 700;
+  font-size: 62px;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 28px;
+}
+.title.large { font-size: 72px; }
+.title.small { font-size: 52px; }
+
+/* ── BODY TEXT ── */
+.body {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.58);
+  max-width: 500px;
+}
+
+/* ── LABEL CARD (produto) ── */
+.label-card {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+}
+.label-accent {
+  height: 6px;
+  width: 100%;
+}
+.label-header {
+  background: #1A2B4D;
+  padding: 16px 18px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.label-mep {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.label-color {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: #F28C28;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.label-tintas {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 3px;
+}
+.label-body {
+  padding: 22px 18px 18px;
+  text-align: center;
+}
+.label-sub {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+.label-name {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: #1A2B4D;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+.label-feats {
+  text-align: left;
+  margin-bottom: 18px;
+}
+.label-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.feat-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.label-apps {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.app-pill {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  color: #fff;
+}
+.label-vol {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1A2B4D;
+  letter-spacing: 1px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
+
+/* ── SLIDE 1 — CAPA ── */
+.capa-inner {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 64px;
+  text-align: left;
+}
+.capa-new-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(242,140,40,0.12);
+  border: 1px solid rgba(242,140,40,0.30);
+  border-radius: 2px;
+  padding: 8px 18px;
+  margin-bottom: 40px;
+}
+.capa-new-badge span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #F28C28;
+}
+.capa-title {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 32px;
+  max-width: 820px;
+}
+.capa-sub {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.50);
+  max-width: 560px;
+  margin-bottom: 60px;
+}
+.capa-products {
+  display: flex;
+  gap: 16px;
+}
+.capa-pill {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.55);
+  border-radius: 2px;
+}
+.capa-pill.active {
+  border-color: #F28C28;
+  color: #F28C28;
+  background: rgba(242,140,40,0.08);
+}
+
+/* ── SPLIT LAYOUT (slides 2-4) ── */
+.split-left {
+  position: absolute;
+  left: 64px;
+  top: 130px;
+  width: 560px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ── SLIDE 5 — SISTEMA ── */
+.sistema-cards {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.sistema-mini {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.sm-accent { height: 4px; width: 100%; }
+.sm-body { padding: 18px 16px; }
+.sm-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.sm-desc {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── SLIDE 6 — CTA ── */
+.cta-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  text-align: center;
+}
+.cta-line {
+  width: 64px; height: 3px;
+  background: #F28C28;
+  margin: 28px auto;
+}
+.cta-title {
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+.cta-sub {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.6;
+  margin-bottom: 48px;
+  max-width: 500px;
+}
+.cta-contact {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.cta-site {
+  font-size: 16px;
+  font-weight: 500;
+  color: #F28C28;
+  letter-spacing: 0.10em;
+}
+
+/* ── TOP ORANGE STRIPE (CTA) ── */
+.top-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #F28C28;
+}
+
+/* ── LOGO SVG COLOR ── */
+.mep-color-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.logo-texts-cta { line-height: 1; }
+.logo-mep { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; color: #fff; letter-spacing: -1px; }
+.logo-col { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 44px; color: #F28C28; letter-spacing: 2px; }
+.logo-sub { font-size: 10px; font-weight: 600; letter-spacing: 6px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-top: 4px; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     SLIDE 1 — CAPA
+══════════════════════════════════ -->
+<div class="slide">
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP <em>COLOR</em></span>
+    <span class="logo-bar-counter">01 — 06</span>
+  </div>
+
+  <div class="capa-inner">
+    <div class="capa-new-badge">
+      <span>Novidades 2026</span>
+    </div>
+    <div class="capa-title">A linha MEP COLOR cresce.</div>
+    <div class="capa-sub">Três novos produtos chegaram para completar o sistema de acabamento da sua obra.</div>
+    <div class="capa-products">
+      <div class="capa-pill active">Textura Projetada</div>
+      <div class="capa-pill">Fundo Preparador</div>
+      <div class="capa-pill">Tinta Emborrachada</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 2 — TEXTURA PROJETADA
+══════════════════════════════════ -->
+<div class="slide">
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP <em>COLOR</em></span>
+    <span class="logo-bar-counter">02 — 06</span>
+  </div>
+
+  <!-- Texto -->
+  <div class="split-left">
+    <span class="tag">Produto 01</span>
+    <div class="rule"></div>
+    <div class="title small">Textura<br>Projetada</div>
+    <p class="body">Revestimento texturizado para fachadas e ambientes internos, aplicado com máquina de projeção. Oferece acabamento uniforme, resistência às intempéries e variedade de granulometria — fina, média ou grossa — conforme o padrão desejado. Consumo médio de 1,5 a 5,0 kg/m². Disponível em ampla cartela de cores ou sistema tintométrico.</p>
+  </div>
+
+  <!-- Label card -->
+  <div class="label-card" style="top: 130px; transform: none; bottom: 80px; height: auto; top: 200px; bottom: 120px;">
+    <div class="label-accent" style="background: #8B4513;"></div>
+    <div class="label-header">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:4px;">
+          <span class="label-mep">MEP</span>
+          <span class="label-color">COLOR</span>
+        </div>
+        <div class="label-tintas">Tintas</div>
+      </div>
+    </div>
+    <div class="label-body">
+      <div class="label-sub">Linha de revestimento</div>
+      <div class="label-name">Textura<br>Projetada</div>
+      <div class="label-apps">
+        <span class="app-pill" style="background:#8B4513;">Exterior</span>
+        <span class="app-pill" style="background:#6D3410;">Interior</span>
+        <span class="app-pill" style="background:#1A2B4D;">Fachadas</span>
+      </div>
+      <div class="label-feats">
+        <div class="label-feat"><div class="feat-dot" style="background:#8B4513;"></div>Alta resistência a intempéries</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#8B4513;"></div>Granulometria fina, média e grossa</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#8B4513;"></div>Aplicação mecanizada</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#8B4513;"></div>Ampla cartela de cores</div>
+      </div>
+      <div class="label-vol">Emb. 25 kg</div>
+    </div>
+    <div style="background:#1A2B4D;padding:10px 14px;text-align:center;">
+      <div style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.5px;text-transform:uppercase;">MEP Indústria e Comércio Ltda · mep.ind.br</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 3 — FUNDO PREPARADOR
+══════════════════════════════════ -->
+<div class="slide">
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP <em>COLOR</em></span>
+    <span class="logo-bar-counter">03 — 06</span>
+  </div>
+
+  <div class="split-left">
+    <span class="tag">Produto 02</span>
+    <div class="rule"></div>
+    <div class="title small">Fundo<br>Preparador</div>
+    <p class="body">Primer de alto rendimento indicado para preparar a superfície antes da pintura. Consolida substratos porosos, melhora a aderência da tinta e uniformiza a absorção — reduzindo o consumo no acabamento final. Indicado para alvenaria, reboco, concreto e fibrocimento. Rendimento: 8 a 15 m²/L. Embalagens de 900 mL, 3,6 L e 18 L.</p>
+  </div>
+
+  <div class="label-card" style="top: 200px; bottom: 120px; height: auto; transform: none;">
+    <div class="label-accent" style="background: #2E6DA4;"></div>
+    <div class="label-header">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:4px;">
+          <span class="label-mep">MEP</span>
+          <span class="label-color">COLOR</span>
+        </div>
+        <div class="label-tintas">Tintas</div>
+      </div>
+    </div>
+    <div class="label-body">
+      <div class="label-sub">Linha de preparação</div>
+      <div class="label-name">Fundo<br>Preparador</div>
+      <div class="label-apps">
+        <span class="app-pill" style="background:#2E6DA4;">Alvenaria</span>
+        <span class="app-pill" style="background:#1A4F7A;">Concreto</span>
+        <span class="app-pill" style="background:#1A2B4D;">Reboco</span>
+      </div>
+      <div class="label-feats">
+        <div class="label-feat"><div class="feat-dot" style="background:#2E6DA4;"></div>Melhora aderência da tinta</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#2E6DA4;"></div>Uniformiza absorção da superfície</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#2E6DA4;"></div>Reduz consumo do acabamento</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#2E6DA4;"></div>Rendimento: 8–15 m²/L</div>
+      </div>
+      <div class="label-vol">900 mL · 3,6 L · 18 L</div>
+    </div>
+    <div style="background:#1A2B4D;padding:10px 14px;text-align:center;">
+      <div style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.5px;text-transform:uppercase;">MEP Indústria e Comércio Ltda · mep.ind.br</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 4 — TINTA EMBORRACHADA
+══════════════════════════════════ -->
+<div class="slide">
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP <em>COLOR</em></span>
+    <span class="logo-bar-counter">04 — 06</span>
+  </div>
+
+  <div class="split-left">
+    <span class="tag">Produto 03</span>
+    <div class="rule"></div>
+    <div class="title small">Tinta<br>Emborrachada</div>
+    <p class="body">Tinta elástica formulada para proteger fachadas e muros expostos ao sol e à chuva. A película flexível acompanha pequenas movimentações da estrutura e veda microfissuras, evitando a penetração de umidade. Rendimento médio de 6 m²/L por demão. Disponível nas embalagens de 3,6 L e 18 L, em ampla cartela de cores.</p>
+  </div>
+
+  <div class="label-card" style="top: 200px; bottom: 120px; height: auto; transform: none;">
+    <div class="label-accent" style="background: #1565C0;"></div>
+    <div class="label-header">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:4px;">
+          <span class="label-mep">MEP</span>
+          <span class="label-color">COLOR</span>
+        </div>
+        <div class="label-tintas">Tintas</div>
+      </div>
+    </div>
+    <div class="label-body">
+      <div class="label-sub">Linha de proteção</div>
+      <div class="label-name">Tinta<br>Emborrachada</div>
+      <div class="label-apps">
+        <span class="app-pill" style="background:#1565C0;">Fachadas</span>
+        <span class="app-pill" style="background:#0D47A1;">Muros</span>
+        <span class="app-pill" style="background:#1A2B4D;">Exterior</span>
+      </div>
+      <div class="label-feats">
+        <div class="label-feat"><div class="feat-dot" style="background:#1565C0;"></div>Alta resistência a intempéries</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#1565C0;"></div>Película elástica e flexível</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#1565C0;"></div>Veda microfissuras</div>
+        <div class="label-feat"><div class="feat-dot" style="background:#1565C0;"></div>Rendimento: ~6 m²/L por demão</div>
+      </div>
+      <div class="label-vol">3,6 L · 18 L</div>
+    </div>
+    <div style="background:#1A2B4D;padding:10px 14px;text-align:center;">
+      <div style="font-size:6px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.5px;text-transform:uppercase;">MEP Indústria e Comércio Ltda · mep.ind.br</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 5 — SISTEMA COMPLETO
+══════════════════════════════════ -->
+<div class="slide">
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP <em>COLOR</em></span>
+    <span class="logo-bar-counter">05 — 06</span>
+  </div>
+
+  <div class="content">
+    <span class="tag">Sistema MEP COLOR</span>
+    <div class="rule"></div>
+    <div class="title small" style="margin-bottom:36px;">Do substrato ao acabamento, um sistema completo.</div>
+
+    <div class="sistema-cards">
+      <div class="sistema-mini">
+        <div class="sm-accent" style="background:#2E6DA4;"></div>
+        <div class="sm-body">
+          <div class="sm-name">01<br>Fundo Preparador</div>
+          <div class="sm-desc">Prepara e consolida a superfície. Melhora a aderência e reduz o consumo da tinta de acabamento.</div>
+        </div>
+      </div>
+      <div class="sistema-mini">
+        <div class="sm-accent" style="background:#1565C0;"></div>
+        <div class="sm-body">
+          <div class="sm-name">02<br>Tinta Emborrachada</div>
+          <div class="sm-desc">Proteção elástica para fachadas e muros. Resiste a sol, chuva e movimentações estruturais.</div>
+        </div>
+      </div>
+      <div class="sistema-mini">
+        <div class="sm-accent" style="background:#8B4513;"></div>
+        <div class="sm-body">
+          <div class="sm-name">03<br>Textura Projetada</div>
+          <div class="sm-desc">Acabamento texturizado para fachadas. Estética e proteção em granulometria fina, média ou grossa.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="body" style="max-width: 100%;">Esses três produtos, combinados com a linha de tintas acrílicas MEP COLOR já disponível, formam um sistema completo de pintura e revestimento — do preparo ao acabamento final. Produto certo para cada etapa, com a qualidade e rastreabilidade da linha MEP COLOR.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 6 — CTA
+══════════════════════════════════ -->
+<div class="slide">
+  <div class="top-stripe"></div>
+  <div class="logo-bar">
+    <span class="logo-bar-brand">MEP <em>COLOR</em></span>
+    <span class="logo-bar-counter">06 — 06</span>
+  </div>
+
+  <div class="cta-inner">
+    <div class="mep-color-logo">
+      <svg width="64" height="60" viewBox="0 0 120 112">
+        <defs>
+          <linearGradient id="gTop2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#E63946"/>
+            <stop offset="34%" stop-color="#F28C28"/>
+            <stop offset="67%" stop-color="#FFD60A"/>
+            <stop offset="100%" stop-color="#4CC9F0"/>
+          </linearGradient>
+        </defs>
+        <polygon points="60,10 100,33 60,56 20,33" fill="url(#gTop2)"/>
+        <polygon points="20,33 60,56 60,102 20,79" fill="#0D1F3C"/>
+        <polygon points="100,33 100,79 60,102 60,56" fill="#F28C28"/>
+        <polygon points="60,10 100,33 60,56 20,33" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="60" y1="56" x2="60" y2="102" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="20" y1="33" x2="20" y2="79" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="100" y1="33" x2="100" y2="79" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="20" y1="79" x2="60" y2="102" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+        <line x1="100" y1="79" x2="60" y2="102" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      </svg>
+      <div class="logo-texts-cta">
+        <div style="display:flex;align-items:baseline;gap:6px;">
+          <span class="logo-mep">MEP</span>
+          <span class="logo-col">COLOR</span>
+        </div>
+        <div class="logo-sub">Tintas</div>
+      </div>
+    </div>
+
+    <div class="cta-title">Fale com o representante MEP.</div>
+    <div class="cta-sub">Receba o catálogo completo da linha MEP COLOR e descubra a solução certa para cada etapa da sua obra.</div>
+    <div class="cta-line"></div>
+    <div class="cta-contact">(47) 98851-5506</div>
+    <div class="cta-site">mep.ind.br</div>
+  </div>
+</div>
+
+</body>
+</html>
