@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial MEP — Wagner Batista</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Barlow', sans-serif; background: #f0f2f5; color: #1c1e21; }
+
+.page {
+  max-width: 860px;
+  margin: 40px auto;
+  background: #fff;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+}
+
+/* HEADER */
+.doc-header {
+  background: linear-gradient(135deg, #07101e 0%, #1A2B4D 100%);
+  padding: 44px 56px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.doc-logo-area {}
+.doc-logo-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.doc-type-area { text-align: right; }
+.doc-type-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.doc-number {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+}
+.doc-date {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+
+/* ORANGE BAR */
+.orange-bar {
+  height: 5px;
+  background: #F28C28;
+}
+
+/* PARTIES */
+.parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.party {
+  padding: 32px 56px;
+}
+.party:first-child {
+  border-right: 1px solid #e5e7eb;
+}
+.party-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #F28C28;
+  margin-bottom: 10px;
+}
+.party-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A2B4D;
+  margin-bottom: 6px;
+}
+.party-detail {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.7;
+}
+.party-detail strong { color: #1c1e21; font-weight: 600; }
+
+/* PROJECT INFO */
+.project-bar {
+  background: #f5f6f8;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 56px;
+  display: flex;
+  gap: 48px;
+}
+.pinfo-item {}
+.pinfo-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #9ca3af;
+  margin-bottom: 3px;
+}
+.pinfo-val {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A2B4D;
+}
+
+/* SCOPE */
+.section { padding: 36px 56px; border-bottom: 1px solid #e5e7eb; }
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #F28C28;
+  margin-bottom: 20px;
+}
+
+/* PRODUCTS TABLE */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+thead tr {
+  background: #1A2B4D;
+}
+thead th {
+  color: #fff;
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+thead th:last-child { text-align: right; }
+thead th:nth-child(3),
+thead th:nth-child(4),
+thead th:nth-child(5) { text-align: right; }
+tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background .15s;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody td {
+  padding: 16px 16px;
+  vertical-align: top;
+  color: #2d3748;
+}
+tbody td:nth-child(3),
+tbody td:nth-child(4),
+tbody td:nth-child(5) { text-align: right; font-variant-numeric: tabular-nums; }
+.td-produto-nome { font-weight: 700; color: #1A2B4D; font-size: 14px; }
+.td-produto-spec { font-size: 12px; color: #6b7280; margin-top: 3px; line-height: 1.5; }
+.td-tag {
+  display: inline-block;
+  background: rgba(242,140,40,0.12);
+  color: #c06a00;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+tfoot tr td {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 14px;
+}
+tfoot .tf-label { color: #6b7280; font-size: 13px; font-weight: 500; }
+tfoot .tf-total-row td {
+  background: #1A2B4D;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+tfoot .tf-total-row td:last-child {
+  color: #F28C28;
+  text-align: right;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+}
+tfoot td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* TECH NOTES */
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 320px;
+}
+.tech-card {
+  background: #f5f6f8;
+  border-radius: 8px;
+  padding: 20px;
+  border-top: 3px solid #F28C28;
+}
+.tech-card-code {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1A2B4D;
+  margin-bottom: 4px;
+}
+.tech-card-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #F28C28;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.tech-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid #e5e7eb;
+  color: #4a5568;
+}
+.tech-row:last-child { border-bottom: none; }
+.tech-row strong { color: #1A2B4D; font-weight: 600; }
+
+/* CONDITIONS */
+.conditions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.cond-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.cond-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #071220, #1A2B4D);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cond-icon svg { opacity: 0.85; }
+.cond-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #9ca3af; margin-bottom: 3px; }
+.cond-val { font-size: 14px; font-weight: 600; color: #1A2B4D; }
+.cond-sub { font-size: 12px; color: #6b7280; margin-top: 1px; }
+
+/* FOOTER */
+.doc-footer {
+  background: linear-gradient(135deg, #07101e, #1A2B4D);
+  padding: 32px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-contact { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.8; }
+.footer-contact strong { color: #fff; display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.footer-contact a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.footer-sign { text-align: right; }
+.sign-line { width: 180px; border-top: 1px solid rgba(255,255,255,0.25); margin-bottom: 8px; margin-left: auto; }
+.sign-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; }
+.sign-name { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+
+/* STAMP */
+.valid-stamp {
+  text-align: center;
+  padding: 20px 56px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fffbf2;
+}
+.valid-stamp p { font-size: 12px; color: #7a4e00; }
+.valid-stamp strong { color: #c06a00; }
+
+@media print {
+  body { background: #fff; }
+  .page { box-shadow: none; margin: 0; max-width: 100%; }
+  .watermark {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 62%;
+    opacity: 0.07;
+    z-index: 999;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+}
+.watermark { display: none; }
+</style>
+</head>
+<body>
+<div class="watermark">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 12 186 255" width="100%" aria-hidden="true">
+    <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+      <path d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z" fill="#1A2B4D"/>
+      <path d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z" fill="#F28C28"/>
+      <path d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z" fill="#1A2B4D"/>
+      <path d="m 4575,5047 c -4,-18 -5,-150 -3,-293 3,-232 5,-262 22,-290 38,-63 215,-156 306,-161 50,-3 66,3 169,55 164,82 155,57 159,420 2,160 1,292 -3,292 -9,0 -244,-129 -278,-152 l -27,-20 -156,91 c -85,50 -161,91 -169,91 -8,0 -17,-14 -20,-33 z" fill="#1A2B4D"/>
+      <path d="m 2357,3934 c -4,-4 -7,-459 -7,-1011 V 1920 h 225 225 l -2,610 c -2,336 -1,610 2,610 3,-1 70,-112 149,-248 328,-564 423,-722 431,-717 4,2 43,67 86,142 43,76 155,271 249,433 95,162 183,316 196,342 13,26 26,48 29,48 3,0 5,-273 5,-608 v -607 l 223,-3 222,-2 v 1010 1010 h -239 -240 l -44,-82 c -178,-332 -443,-835 -467,-885 -15,-33 -30,-43 -31,-20 0,6 -114,230 -253,497 l -252,485 -250,3 c -138,1 -253,-1 -257,-4 z" fill="#1A2B4D"/>
+      <path d="M 4750,2930 V 1920 l 630,2 631,3 v 200 200 l -408,2 c -224,1 -407,5 -405,8 1,3 2,91 2,196 v 191 l 365,-3 366,-4 v 200 200 l -371,3 -370,2 v 200 200 l 408,2 407,3 v 205 205 l -627,3 -628,2 z" fill="#1A2B4D"/>
+      <path d="M 6360,2931 V 1920 h 225 225 l 2,325 3,324 225,4 c 306,5 408,29 541,128 138,102 207,212 236,376 18,103 13,286 -11,373 -45,161 -148,300 -285,379 -165,97 -204,103 -723,108 l -438,5 z m 875,570 c 65,-29 89,-52 116,-114 52,-122 31,-266 -49,-344 -69,-65 -109,-76 -314,-81 l -178,-4 v 279 c 0,154 3,283 8,287 4,5 88,6 187,4 158,-4 186,-7 230,-27 z" fill="#1A2B4D"/>
+    </g>
+  </svg>
+</div>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-logo-area">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 12 186 255" style="height:56px;width:auto;display:block;" aria-label="MEP">
+        <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+          <path d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z" fill="#fff"/>
+          <path d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z" fill="#F28C28"/>
+          <path d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z" fill="#fff"/>
+          <path d="m 4575,5047 c -4,-18 -5,-150 -3,-293 3,-232 5,-262 22,-290 38,-63 215,-156 306,-161 50,-3 66,3 169,55 164,82 155,57 159,420 2,160 1,292 -3,292 -9,0 -244,-129 -278,-152 l -27,-20 -156,91 c -85,50 -161,91 -169,91 -8,0 -17,-14 -20,-33 z" fill="#fff"/>
+          <path d="m 2357,3934 c -4,-4 -7,-459 -7,-1011 V 1920 h 225 225 l -2,610 c -2,336 -1,610 2,610 3,-1 70,-112 149,-248 328,-564 423,-722 431,-717 4,2 43,67 86,142 43,76 155,271 249,433 95,162 183,316 196,342 13,26 26,48 29,48 3,0 5,-273 5,-608 v -607 l 223,-3 222,-2 v 1010 1010 h -239 -240 l -44,-82 c -178,-332 -443,-835 -467,-885 -15,-33 -30,-43 -31,-20 0,6 -114,230 -253,497 l -252,485 -250,3 c -138,1 -253,-1 -257,-4 z" fill="#fff"/>
+          <path d="M 4750,2930 V 1920 l 630,2 631,3 v 200 200 l -408,2 c -224,1 -407,5 -405,8 1,3 2,91 2,196 v 191 l 365,-3 366,-4 v 200 200 l -371,3 -370,2 v 200 200 l 408,2 407,3 v 205 205 l -627,3 -628,2 z" fill="#fff"/>
+          <path d="M 6360,2931 V 1920 h 225 225 l 2,325 3,324 225,4 c 306,5 408,29 541,128 138,102 207,212 236,376 18,103 13,286 -11,373 -45,161 -148,300 -285,379 -165,97 -204,103 -723,108 l -438,5 z m 875,570 c 65,-29 89,-52 116,-114 52,-122 31,-266 -49,-344 -69,-65 -109,-76 -314,-81 l -178,-4 v 279 c 0,154 3,283 8,287 4,5 88,6 187,4 158,-4 186,-7 230,-27 z" fill="#fff"/>
+        </g>
+      </svg>
+      <div class="doc-logo-sub">Indústria e Comércio Ltda</div>
+    </div>
+    <div class="doc-type-area">
+      <div class="doc-type-label">Proposta Comercial</div>
+      <div class="doc-number">N° MEP-2026-008</div>
+      <div class="doc-date">16 de julho de 2026</div>
+    </div>
+  </div>
+  <div class="orange-bar"></div>
+
+  <!-- PARTIES -->
+  <div class="parties">
+    <div class="party">
+      <div class="party-label">Fornecedor</div>
+      <div class="party-name">MEP Indústria</div>
+      <div class="party-detail">
+        <strong>MEP Indústria e Comércio Ltda</strong><br>
+        Balneário Camboriú, SC<br>
+        (47) 98851-5506<br>
+        contato@mep.ind.br
+      </div>
+    </div>
+    <div class="party">
+      <div class="party-label">Cliente</div>
+      <div class="party-name">Wagner Batista</div>
+      <div class="party-detail">
+        <strong>Obra — a confirmar localização</strong><br>
+        &nbsp;
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT BAR -->
+  <div class="project-bar">
+    <div class="pinfo-item">
+      <div class="pinfo-label">Escopo</div>
+      <div class="pinfo-val">MEP 20 — Assentamento de alvenaria</div>
+    </div>
+    <div class="pinfo-item">
+      <div class="pinfo-label">Metragem</div>
+      <div class="pinfo-val">3.500 m² de parede</div>
+    </div>
+    <div class="pinfo-item">
+      <div class="pinfo-label">Pé-direito</div>
+      <div class="pinfo-val">A confirmar</div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="section">
+    <div class="section-title">Produtos e Quantidades</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:36%">Produto</th>
+            <th>Embalagem</th>
+            <th>Qtd</th>
+            <th>Preço Unit.</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="td-tag">MEP 20 — Assentamento</div>
+              <div class="td-produto-nome">Massa MEP Assentamento</div>
+              <div class="td-produto-spec">Alvenaria de vedação — blocos e tijolos<br>3.500 m² × 1,6 kg/m² = 5.600 kg</div>
+            </td>
+            <td>
+              <div style="font-weight:600;color:#1A2B4D;">Balde 24 kg</div>
+              <div style="font-size:12px;color:#6b7280;">8 bisnagas de 3 kg</div>
+            </td>
+            <td style="font-weight:700;color:#1A2B4D;font-size:16px;">234</td>
+            <td>R$ 180,00</td>
+            <td style="font-weight:700;color:#1A2B4D;">R$ 42.120,00</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="tf-label">Subtotal materiais</td>
+            <td style="text-align:right;font-weight:700;">R$ 42.120,00</td>
+          </tr>
+          <tr class="tf-total-row">
+            <td colspan="4" style="padding-left:16px;letter-spacing:0.05em;">TOTAL GERAL</td>
+            <td>R$ 42.120,00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:11.5px;color:#9ca3af;line-height:1.6;">
+      Quantidade arredondada para cima (233 baldes cobririam 5.592 kg — insuficiente para os 5.600 kg necessários). Total efetivamente entregue: 5.616 kg.
+    </div>
+  </div>
+
+  <!-- TECHNICAL SPECS -->
+  <div class="section">
+    <div class="section-title">Especificações Técnicas</div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-card-code">MEP 20</div>
+        <div class="tech-card-name">Assentamento</div>
+        <div class="tech-row"><span>Consumo</span><strong>1,6 kg/m²</strong></div>
+        <div class="tech-row"><span>Embalagem</span><strong>Balde 24 kg (8 bisnagas 3 kg)</strong></div>
+        <div class="tech-row"><span>Aplicação</span><strong>Bisnaga pronta para uso</strong></div>
+        <div class="tech-row"><span>Junta</span><strong>3 a 5 mm</strong></div>
+        <div class="tech-row"><span>Rendimento</span><strong>15 m²/balde</strong></div>
+        <div class="tech-row"><span>Norma</span><strong>ABNT 16590</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONDITIONS -->
+  <div class="section">
+    <div class="section-title">Condições Comerciais</div>
+    <div class="conditions-grid">
+      <div class="cond-item">
+        <div class="cond-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="cond-label">Validade da Proposta</div>
+          <div class="cond-val">15 dias corridos</div>
+          <div class="cond-sub">Válida até 31 de julho de 2026</div>
+        </div>
+      </div>
+      <div class="cond-item">
+        <div class="cond-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div>
+          <div class="cond-label">Pagamento</div>
+          <div class="cond-val">A combinar</div>
+          <div class="cond-sub">PIX · Boleto · Transferência</div>
+        </div>
+      </div>
+      <div class="cond-item">
+        <div class="cond-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="16" r="1"/></svg>
+        </div>
+        <div>
+          <div class="cond-label">Entrega</div>
+          <div class="cond-val">A combinar</div>
+          <div class="cond-sub">SC · PR · SP — frete a consultar</div>
+        </div>
+      </div>
+      <div class="cond-item">
+        <div class="cond-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="cond-label">Garantia técnica</div>
+          <div class="cond-val">Garantia de desempenho</div>
+          <div class="cond-sub">Atende às normas da ABNT 16590<br>Argamassas poliméricas para alvenaria</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALIDITY NOTICE -->
+  <div class="valid-stamp">
+    <p>Esta proposta é válida por <strong>15 dias corridos</strong> a partir da data de emissão. Preços sujeitos a alteração após o vencimento. Para dúvidas técnicas ou ajustes no escopo, entre em contato pelo WhatsApp <strong>(47) 98851-5506</strong>.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="footer-contact">
+      <strong>MEP Indústria e Comércio Ltda</strong>
+      Balneário Camboriú, SC<br>
+      <a href="tel:+5547988515506">(47) 98851-5506</a> · <a href="mailto:contato@mep.ind.br">contato@mep.ind.br</a><br>
+      <a href="https://www.mep.ind.br">www.mep.ind.br</a>
+    </div>
+    <div class="footer-sign">
+      <div class="sign-line"></div>
+      <div class="sign-label">Assinatura / Aprovação do cliente</div>
+      <div class="sign-name">Wagner Batista</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
