@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>MEP 20 — Conceito Reel</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #02040A;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  font-family: Arial, sans-serif;
+}
+
+.meta-label {
+  color: rgba(255,255,255,0.28);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-family: Arial, sans-serif;
+}
+
+/* 9:16 Reel frame */
+.frame {
+  position: relative;
+  width: min(360px, 92vw);
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 0 80px rgba(242,140,40,0.10),
+    0 30px 80px rgba(0,0,0,0.7);
+}
+
+/* ── Layer 0: base background ── */
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 110% 55% at 50% -5%, #1C2A45 0%, #06090E 58%),
+    linear-gradient(to top, #0A0600 0%, transparent 50%);
+}
+
+/* Scaffolding grid lines */
+.scaffold {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: 0 0;
+}
+
+/* ── Layer 1: particle canvas ── */
+#particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Layer 2: spotlight cone ── */
+.spotlight {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260%;
+  height: 130%;
+  background: radial-gradient(ellipse 28% 75% at 50% 2%,
+    rgba(242,140,40,0.14) 0%,
+    rgba(242,140,40,0.07) 35%,
+    transparent 68%
+  );
+  pointer-events: none;
+}
+
+/* ── Layer 3: worker silhouettes ── */
+.workers {
+  position: absolute;
+  bottom: 27%;
+  left: 0;
+  right: 0;
+  height: 80px;
+  pointer-events: none;
+}
+
+/* ── Layer 4: product barrica ── */
+.product {
+  position: absolute;
+  bottom: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52%;
+  filter:
+    drop-shadow(0 0 40px rgba(242,140,40,0.20))
+    drop-shadow(0 0 12px rgba(242,140,40,0.10))
+    drop-shadow(0 24px 24px rgba(0,0,0,0.75));
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* ── 4× badge ── */
+.badge {
+  position: absolute;
+  top: 42%;
+  right: 5%;
+  background: #F28C28;
+  color: white;
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  padding: 8px 10px 6px;
+  line-height: 1;
+  transform: rotate(3deg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+.badge .big { font-size: 32px; display: block; }
+.badge .small { font-size: 9px; letter-spacing: 1.5px; display: block; margin-top: 2px; }
+
+/* ── MEP logo top-left ── */
+.logo-top {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  width: 48px;
+  opacity: 0.88;
+}
+
+/* ── Product label top-right ── */
+.label-top {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  text-align: right;
+  line-height: 1;
+}
+.label-top .eyebrow {
+  display: block;
+  font-size: 7.5px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.38);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  font-family: Arial, sans-serif;
+}
+.label-top .num {
+  font-size: 38px;
+  font-weight: 900;
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  letter-spacing: 0;
+  line-height: 1;
+}
+.label-top .sub {
+  display: block;
+  font-size: 7.5px;
+  letter-spacing: 3px;
+  color: #F28C28;
+  text-transform: uppercase;
+  margin-top: 3px;
+  font-family: Arial, sans-serif;
+}
+
+/* ── Ground mist ── */
+.ground-mist {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(6,9,14,1) 0%, rgba(6,9,14,0.6) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ── Bottom content block ── */
+.bottom-block {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 20px 20px;
+}
+
+.bullets {
+  list-style: none;
+  margin-bottom: 14px;
+}
+.bullets li {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.82);
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bullets li::before {
+  content: '✔';
+  color: #F28C28;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.tagline {
+  font-size: 18px;
+  font-weight: 900;
+  font-family: Impact, 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.tagline em {
+  color: #F28C28;
+  font-style: normal;
+}
+
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.website {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.32);
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+}
+.insta {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #F28C28;
+  font-family: Arial, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<p class="meta-label">Conceito Visual · Reel MEP 20 · Instagram</p>
+
+<div class="frame">
+  <!-- Background layers -->
+  <div class="bg"></div>
+  <div class="scaffold"></div>
+
+  <!-- Particle canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Spotlight -->
+  <div class="spotlight"></div>
+
+  <!-- Worker silhouettes -->
+  <svg class="workers" viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+    <!-- Left worker -->
+    <g opacity="0.18" transform="translate(42,0)">
+      <ellipse cx="20" cy="8" rx="8" ry="8" fill="#3A5070"/>
+      <rect x="12" y="16" width="16" height="36" rx="3" fill="#2A3E58"/>
+      <rect x="5" y="18" width="8" height="24" rx="3" fill="#2A3E58"/>
+      <rect x="24" y="18" width="8" height="24" rx="3" fill="#2A3E58"/>
+      <rect x="11" y="52" width="8" height="22" rx="3" fill="#2A3E58"/>
+      <rect x="21" y="52" width="8" height="22" rx="3" fill="#2A3E58"/>
+      <!-- hard hat -->
+      <ellipse cx="20" cy="5" rx="11" ry="5" fill="#F28C28" opacity="0.7"/>
+    </g>
+    <!-- Right worker (further, smaller) -->
+    <g opacity="0.12" transform="translate(286,8)">
+      <ellipse cx="16" cy="7" rx="7" ry="7" fill="#3A5070"/>
+      <rect x="9" y="14" width="14" height="30" rx="3" fill="#2A3E58"/>
+      <rect x="3" y="16" width="7" height="20" rx="3" fill="#2A3E58"/>
+      <rect x="20" y="16" width="7" height="20" rx="3" fill="#2A3E58"/>
+      <rect x="9" y="44" width="7" height="18" rx="3" fill="#2A3E58"/>
+      <rect x="18" y="44" width="7" height="18" rx="3" fill="#2A3E58"/>
+      <ellipse cx="16" cy="4" rx="9" ry="4" fill="#F28C28" opacity="0.6"/>
+    </g>
+  </svg>
+
+  <!-- Ground mist -->
+  <div class="ground-mist"></div>
+
+  <!-- MEP 20 Barrica SVG -->
+  <div class="product">
+    <svg viewBox="0 0 200 295" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#0C1826"/>
+          <stop offset="25%"  stop-color="#162338"/>
+          <stop offset="55%"  stop-color="#1E3060"/>
+          <stop offset="80%"  stop-color="#1A2B4D"/>
+          <stop offset="100%" stop-color="#0C1826"/>
+        </linearGradient>
+        <linearGradient id="topOrange" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#C86010"/>
+          <stop offset="40%"  stop-color="#F28C28"/>
+          <stop offset="70%"  stop-color="#F08020"/>
+          <stop offset="100%" stop-color="#B85808"/>
+        </linearGradient>
+        <radialGradient id="topFace" cx="42%" cy="38%" r="60%">
+          <stop offset="0%"   stop-color="#F8A840"/>
+          <stop offset="100%" stop-color="#C86010"/>
+        </radialGradient>
+        <linearGradient id="handleG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#8A9DBB"/>
+          <stop offset="100%" stop-color="#4A5E7A"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Ground shadow -->
+      <ellipse cx="100" cy="289" rx="76" ry="8" fill="rgba(0,0,0,0.55)"/>
+
+      <!-- Main barrel body (slightly tapered cylinder) -->
+      <path d="M 24,80 L 22,256 Q 24,274 100,276 Q 176,274 178,256 L 176,80 Z" fill="url(#bodyG)"/>
+
+      <!-- Orange top band -->
+      <path d="M 24,80 L 176,80 L 170,124 Q 166,136 100,138 Q 34,136 30,124 Z" fill="url(#topOrange)"/>
+
+      <!-- Top ellipse (cap) -->
+      <ellipse cx="100" cy="80" rx="76" ry="21" fill="url(#topFace)"/>
+
+      <!-- Highlight on top cap -->
+      <ellipse cx="78" cy="74" rx="30" ry="9" fill="rgba(255,255,255,0.22)"/>
+      <ellipse cx="68" cy="71" rx="14" ry="5" fill="rgba(255,255,255,0.14)"/>
+
+      <!-- Bottom ellipse -->
+      <ellipse cx="100" cy="256" rx="78" ry="18" fill="#080F1A"/>
+      <ellipse cx="100" cy="254" rx="72" ry="14" fill="#0C1526"/>
+
+      <!-- White divider line (curved) -->
+      <path d="M 30,133 Q 100,140 170,133" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Handle arc -->
+      <path d="M 46,76 Q 100,28 154,76" fill="none" stroke="url(#handleG)" stroke-width="9" stroke-linecap="round"/>
+      <!-- Handle socket left -->
+      <ellipse cx="46" cy="76" rx="10" ry="7" fill="#5A7090"/>
+      <ellipse cx="46" cy="76" rx="6"  ry="4" fill="#3A5070"/>
+      <!-- Handle socket right -->
+      <ellipse cx="154" cy="76" rx="10" ry="7" fill="#5A7090"/>
+      <ellipse cx="154" cy="76" rx="6"  ry="4" fill="#3A5070"/>
+
+      <!-- Cap text: MEP -->
+      <text x="100" y="97" text-anchor="middle" fill="white"
+        font-size="17" font-weight="900"
+        font-family="Impact, 'Arial Narrow', Arial, sans-serif"
+        letter-spacing="6">MEP</text>
+
+      <!-- Cap subtext -->
+      <text x="100" y="113" text-anchor="middle" fill="rgba(255,255,255,0.72)"
+        font-size="6.5" font-family="Arial, sans-serif" letter-spacing="2.5">PRONTO PARA USO</text>
+
+      <!-- Horizontal rib lines on body (texture) -->
+      <path d="M 26,158 Q 100,163 174,158" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+      <path d="M 24,198 Q 100,204 176,198" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+      <path d="M 22,238 Q 100,245 178,238" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="2"/>
+
+      <!-- Body: small MEP label -->
+      <text x="100" y="163" text-anchor="middle" fill="rgba(255,255,255,0.55)"
+        font-size="18" font-weight="900"
+        font-family="Impact, 'Arial Narrow', Arial, sans-serif"
+        letter-spacing="8">MEP</text>
+
+      <!-- Body: big 20 -->
+      <text x="100" y="218" text-anchor="middle" fill="white"
+        font-size="66" font-weight="900"
+        font-family="Impact, 'Arial Narrow', Arial, sans-serif"
+        letter-spacing="0">20</text>
+
+      <!-- Orange accent line under 20 -->
+      <rect x="52" y="222" width="96" height="3" rx="1" fill="#F28C28"/>
+
+      <!-- Product type -->
+      <text x="100" y="238" text-anchor="middle" fill="rgba(255,255,255,0.55)"
+        font-size="7.5" font-family="Arial, sans-serif" letter-spacing="2.5">ARGAMASSA POLIMÉRICA</text>
+
+      <!-- 25kg orange pill -->
+      <rect x="58" y="248" width="84" height="17" rx="2" fill="#F28C28"/>
+      <text x="100" y="260" text-anchor="middle" fill="white"
+        font-size="9" font-weight="700"
+        font-family="'Arial Narrow', Arial, sans-serif"
+        letter-spacing="3">25 KG</text>
+
+      <!-- Side highlight stripe (right edge) -->
+      <path d="M 174,100 L 176,240" stroke="rgba(255,255,255,0.07)" stroke-width="5"/>
+    </svg>
+  </div>
+
+  <!-- 4× badge -->
+  <div class="badge">
+    <span class="big">4×</span>
+    <span class="small">MAIS<br>RÁPIDA</span>
+  </div>
+
+  <!-- MEP logo top-left (white) -->
+  <div class="logo-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 12 186 255" role="img" aria-label="MEP">
+      <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+        <path d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z" fill="#ffffff"/>
+        <path d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z" fill="#F28C28"/>
+        <path d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z" fill="#ffffff"/>
+        <path d="m 4575,5047 c -4,-18 -5,-150 -3,-293 3,-232 5,-262 22,-290 38,-63 215,-156 306,-161 50,-3 66,3 169,55 164,82 155,57 159,420 2,160 1,292 -3,292 -9,0 -244,-129 -278,-152 l -27,-20 -156,91 c -85,50 -161,91 -169,91 -8,0 -17,-14 -20,-33 z" fill="#ffffff"/>
+        <path d="m 2357,3934 c -4,-4 -7,-459 -7,-1011 V 1920 h 225 225 l -2,610 c -2,336 -1,610 2,610 3,-1 70,-112 149,-248 328,-564 423,-722 431,-717 4,2 43,67 86,142 43,76 155,271 249,433 95,162 183,316 196,342 13,26 26,48 29,48 3,0 5,-273 5,-608 v -607 l 223,-3 222,-2 v 1010 1010 h -239 -240 l -44,-82 c -178,-332 -443,-835 -467,-885 -15,-33 -30,-43 -31,-20 0,6 -114,230 -253,497 l -252,485 -250,3 c -138,1 -253,-1 -257,-4 z" fill="#ffffff"/>
+        <path d="M 4750,2930 V 1920 l 630,2 631,3 v 200 200 l -408,2 c -224,1 -407,5 -405,8 1,3 2,91 2,196 v 191 l 365,-3 366,-4 v 200 200 l -371,3 -370,2 v 200 200 l 408,2 407,3 v 205 205 l -627,3 -628,2 z" fill="#ffffff"/>
+        <path d="M 6360,2931 V 1920 h 225 225 l 2,325 3,324 225,4 c 306,5 408,29 541,128 138,102 207,212 236,376 18,103 13,286 -11,373 -45,161 -148,300 -285,379 -165,97 -204,103 -723,108 l -438,5 z m 875,570 c 65,-29 89,-52 116,-114 52,-122 31,-266 -49,-344 -69,-65 -109,-76 -314,-81 l -178,-4 v 279 c 0,154 3,283 8,287 4,5 88,6 187,4 158,-4 186,-7 230,-27 z" fill="#ffffff"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Product label top right -->
+  <div class="label-top">
+    <span class="eyebrow">Argamassa</span>
+    <div class="num">20</div>
+    <span class="sub">Assentamento</span>
+  </div>
+
+  <!-- Bottom content -->
+  <div class="bottom-block">
+    <ul class="bullets">
+      <li>Sem mistura — pronto para usar</li>
+      <li>Aderência certificada ABNT 491.001/25</li>
+      <li>Reduz 40% do desperdício no canteiro</li>
+    </ul>
+    <div class="tagline">Mais <em>obra</em>, menos esforço.</div>
+    <div class="bottom-row">
+      <span class="website">mep.ind.br</span>
+      <span class="insta">@mep.industria</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  const frame = canvas.parentElement;
+
+  function resize() {
+    canvas.width  = frame.offsetWidth;
+    canvas.height = frame.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COUNT = 180;
+  const particles = [];
+
+  function randomColor() {
+    const r = 185 + Math.random() * 35;
+    const g = 140 + Math.random() * 35;
+    const b = 55  + Math.random() * 40;
+    return [r, g, b];
+  }
+
+  class Particle {
+    constructor(spreadY) {
+      this.reset(spreadY);
+    }
+    reset(spreadY) {
+      this.x   = Math.random() * canvas.width;
+      this.y   = spreadY !== undefined ? Math.random() * canvas.height : canvas.height + 10;
+      this.r   = Math.random() * 3.5 + 0.5;
+      this.vx  = (Math.random() - 0.5) * 0.6;
+      this.vy  = -(Math.random() * 1.4 + 0.3);
+      this.a   = Math.random() * 0.65 + 0.1;
+      this.da  = 0.0015 + Math.random() * 0.003;
+      const [r,g,b] = randomColor();
+      this.r_ = r; this.g_ = g; this.b_ = b;
+      // small chance of being a rectangular "chip"
+      this.rect = Math.random() < 0.12;
+      this.w = this.rect ? this.r * 3 : 0;
+      this.h = this.rect ? this.r * 1.5 : 0;
+      this.rot = Math.random() * Math.PI;
+    }
+    update() {
+      this.x  += this.vx;
+      this.y  += this.vy;
+      this.a  -= this.da;
+      this.rot += 0.01;
+      if (this.a <= 0 || this.y < -20) this.reset();
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, this.a);
+      ctx.fillStyle = `rgb(${this.r_},${this.g_},${this.b_})`;
+      if (this.rect) {
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rot);
+        ctx.fillRect(-this.w/2, -this.h/2, this.w, this.h);
+      } else {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  for (let i = 0; i < COUNT; i++) particles.push(new Particle(true));
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const p of particles) { p.update(); p.draw(); }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+</body>
+</html>

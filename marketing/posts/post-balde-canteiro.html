@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post MEP — Balde no Canteiro</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #0f1932;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .post {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+  }
+
+  /* Foto full-bleed */
+  .photo {
+    position: absolute;
+    inset: 0;
+    background-image: url('../fotos/visita-parceiro-balde-hero.jpg');
+    background-size: cover;
+    background-position: 62% 68%;
+  }
+
+  /* Gradiente só no lado esquerdo — direito 100% limpo para o balde */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(15,25,50,0.97) 0%, rgba(15,25,50,0.95) 28%, rgba(15,25,50,0.55) 50%, rgba(15,25,50,0.0) 68%),
+      linear-gradient(180deg, rgba(15,25,50,0.50) 0%, rgba(15,25,50,0.0) 12%);
+  }
+
+  /* Conteúdo — posicionamento absoluto por zona */
+  .content {
+    position: absolute;
+    inset: 0;
+    padding: 64px;
+  }
+
+  /* Logo bar topo */
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-bar .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.90);
+    text-transform: uppercase;
+  }
+
+  .logo-bar .url {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.32);
+    text-transform: lowercase;
+  }
+
+  /* Texto principal — coluna esquerda, não ultrapassa 50% da largura */
+  .text-block {
+    position: absolute;
+    top: 160px;
+    left: 64px;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tag {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: #F28C28;
+    margin-bottom: 20px;
+  }
+
+  .orange-rule {
+    width: 48px;
+    height: 3px;
+    background: #F28C28;
+    margin-bottom: 30px;
+  }
+
+  .title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 36px;
+  }
+
+  .body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.68;
+    color: rgba(255,255,255,0.62);
+    max-width: 500px;
+  }
+
+  /* Rodapé — fixo no fundo esquerdo */
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: 64px;
+    max-width: 460px;
+  }
+
+  .footer-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.30);
+    text-transform: uppercase;
+  }
+
+  .footer-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #F28C28;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="photo"></div>
+  <div class="overlay"></div>
+  <div class="content">
+
+    <!-- Logo bar -->
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="url">mep.ind.br</span>
+    </div>
+
+    <!-- Texto principal -->
+    <div class="text-block">
+      <div class="tag">MEP no canteiro</div>
+      <div class="orange-rule"></div>
+      <div class="title">Sem betoneira.<br>Na junta,<br>em 3 mm.</div>
+      <div class="body">
+        A bisnaga vai direto para a junta — sem mistura, sem variação de traço, sem desperdício. Junta de 3 mm, consumo de 1,6 kg/m², velocidade 4× maior que o método convencional.
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

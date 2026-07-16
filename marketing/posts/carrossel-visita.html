@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carrossel MEP — Visita ao Canteiro</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    font-family: 'Barlow', sans-serif;
+    background: #0a0f1e;
+  }
+
+  /* ── SLIDE BASE ── */
+  .slide {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #0f1932;
+  }
+
+  /* Foto full-bleed */
+  .slide-photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+  }
+
+  /* Gradiente esquerdo — direito livre */
+  .overlay-left {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(15,25,50,0.97) 0%, rgba(15,25,50,0.95) 30%, rgba(15,25,50,0.55) 52%, rgba(15,25,50,0.0) 70%),
+      linear-gradient(180deg, rgba(15,25,50,0.55) 0%, rgba(15,25,50,0.0) 14%);
+  }
+
+  /* Conteúdo posicionado */
+  .slide-content {
+    position: absolute;
+    inset: 0;
+    padding: 64px;
+  }
+
+  /* ── LOGO BAR ── */
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.90);
+    text-transform: uppercase;
+  }
+
+  .counter {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.32);
+  }
+
+  /* ── TEXTO PRINCIPAL ── */
+  .text-block {
+    position: absolute;
+    left: 64px;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: #F28C28;
+    margin-bottom: 18px;
+  }
+
+  .orange-rule {
+    width: 48px;
+    height: 3px;
+    background: #F28C28;
+    margin-bottom: 28px;
+    flex-shrink: 0;
+  }
+
+  .title {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 32px;
+  }
+
+  .body {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.68;
+    color: rgba(255,255,255,0.62);
+  }
+
+  /* ── RODAPÉ ── */
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.28);
+    text-transform: uppercase;
+  }
+
+  .footer-cta {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    color: #F28C28;
+    text-transform: uppercase;
+  }
+
+  /* ── SLIDE 1 — CAPA NAVY ── */
+  .slide-01 .text-block {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slide-01 .title {
+    font-size: 80px;
+    line-height: 1.02;
+  }
+
+  .slide-01 .body {
+    font-size: 22px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* Linha laranja decorativa no topo — slide 1 */
+  .top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #F28C28;
+  }
+
+  /* ── SLIDES 2, 3, 4 — texto na faixa superior-esquerda ── */
+  .slide-photo-slide .text-block {
+    top: 155px;
+  }
+
+  /* ── SLIDE 5 — CTA NAVY ── */
+  .slide-05 .text-block {
+    top: 50%;
+    transform: translateY(-58%);
+  }
+
+  .slide-05 .title {
+    font-size: 68px;
+  }
+
+  .cta-box {
+    position: absolute;
+    bottom: 130px;
+    left: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-line {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.40);
+    text-transform: uppercase;
+  }
+
+  .cta-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+  }
+
+  /* Separador entre slides */
+  .slide + .slide { border-top: 2px solid #0a0f1e; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 01 — CAPA
+══════════════════════════════════════════ -->
+<div class="slide slide-01">
+  <div class="top-line"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">01 / 05</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">Visita técnica</div>
+      <div class="orange-rule"></div>
+      <div class="title">Fomos até<br>o canteiro.</div>
+      <div class="body">O que vimos dispensou qualquer explicação. O produto estava em campo, sendo aplicado na prática, com engenheiros e mestre de obra acompanhando cada etapa.</div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+      <span style="font-size:13px;letter-spacing:0.18em;color:rgba(255,255,255,0.28);text-transform:lowercase;">mep.ind.br</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 02 — O PROCESSO
+══════════════════════════════════════════ -->
+<div class="slide slide-photo-slide">
+  <div class="slide-photo" style="background-image: url('../fotos/visita-explicacao-tijolo.jpg'); background-position: 65% center;"></div>
+  <div class="overlay-left"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">02 / 05</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">O processo</div>
+      <div class="orange-rule"></div>
+      <div class="title">A bisnaga<br>vai direto.<br>Sem mistura.</div>
+      <div class="body">O pedreiro não misturou nada. Pegou a bisnaga, posicionou a argamassa na junta e assentou o bloco. Zero variação de traço. Zero desperdício. O processo que elimina a betoneira da equação.</div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 03 — A ESCALA
+══════════════════════════════════════════ -->
+<div class="slide slide-photo-slide">
+  <div class="slide-photo" style="background-image: url('../fotos/visita-panoramica-obra.jpg'); background-position: 70% 40%;"></div>
+  <div class="overlay-left"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">03 / 05</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">A escala</div>
+      <div class="orange-rule"></div>
+      <div class="title">Prédio em<br>andamento.<br>MEP em campo.</div>
+      <div class="body">Obra com múltiplos andares, pilares de concreto e alvenaria de vedação em execução. A equipe acompanhou com a planta na mão. O MEP já estava no canteiro, sendo aplicado em cada junta da alvenaria.</div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 04 — A PROVA
+══════════════════════════════════════════ -->
+<div class="slide slide-photo-slide">
+  <div class="slide-photo" style="background-image: url('../fotos/visita-roda-conversa.jpg'); background-position: 72% center;"></div>
+  <div class="overlay-left"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">04 / 05</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">A prova</div>
+      <div class="orange-rule"></div>
+      <div class="title">Quando o<br>produto fala<br>por si.</div>
+      <div class="body">Engenheiros, mestre de obra e o cliente no mesmo canteiro. A demonstração ao vivo respondeu as perguntas antes mesmo de elas serem feitas. Junta de 3 mm. Velocidade 4× maior. Sem betoneira.</div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 05 — CTA
+══════════════════════════════════════════ -->
+<div class="slide slide-05">
+  <div class="top-line"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">05 / 05</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">Próximo passo</div>
+      <div class="orange-rule"></div>
+      <div class="title">Quer ver o MEP<br>no seu<br>canteiro?</div>
+      <div class="body">Fazemos visitas técnicas com a equipe para apresentar o sistema na prática. Sem apresentação. Sem PowerPoint. Direto na obra.</div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-line">Entre em contato</span>
+      <span class="cta-url">mep.ind.br</span>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
