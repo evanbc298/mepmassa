@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>MEP Massas — Verso do Balde/Barrica 25kg (346x266mm)</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+@page { size: 346mm 266mm; margin: 0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content:center; font-family:'Barlow',sans-serif; }
+
+.rotulo {
+  width:346mm; height:266mm;
+  display:flex; flex-direction:column;
+  background:#fff;
+  box-shadow:0 10px 50px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+
+/* TOPO */
+.top-band {
+  background:#1A2B4D;
+  padding:5mm 10mm;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0;
+}
+.logo-area { display:flex; align-items:center; gap:8px; }
+.logo-mep { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:900; color:#fff; }
+.logo-sub { font-size:9px; font-weight:700; color:rgba(255,255,255,.5); letter-spacing:4px; margin-top:2px; }
+.top-produto { font-size:14px; font-weight:800; color:#fff; letter-spacing:1px; text-transform:uppercase; text-align:center; }
+.top-vol { font-size:20px; font-weight:900; color:#fff; text-align:right; font-family:'Barlow Condensed',sans-serif; }
+.top-vol span { font-size:11px; font-weight:700; color:#F28C28; letter-spacing:2px; display:block; font-family:'Barlow',sans-serif; }
+
+.stripe-orange { height:3mm; background:#F28C28; flex-shrink:0; }
+
+/* DIRETRIZ CRÍTICA */
+.diretriz {
+  background:#FFF3E0;
+  border-top:0.5mm solid #F28C28;
+  border-bottom:0.5mm solid #F28C28;
+  padding:3mm 10mm;
+  display:flex; align-items:center; gap:4mm;
+  flex-shrink:0;
+}
+.diretriz-icon { width:24px; height:24px; flex-shrink:0; }
+.diretriz-txt { font-size:8pt; font-weight:600; color:#7a4e00; line-height:1.4; }
+.diretriz-txt strong { font-weight:800; color:#c06a00; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* CORPO 3 COLUNAS */
+.corpo {
+  flex:1;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  overflow:hidden;
+}
+.col {
+  padding:5mm 5mm 4mm;
+  border-right:1px solid #e8e8e8;
+  display:flex; flex-direction:column; gap:2.6mm;
+}
+.col:last-child { border-right:none; }
+
+.col-tag {
+  display:inline-block;
+  background:#F28C28; color:#1A2B4D;
+  font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:800;
+  letter-spacing:1px; text-transform:uppercase;
+  padding:1mm 2.5mm; border-radius:2px; width:fit-content;
+}
+.col-title {
+  font-family:'Barlow Condensed',sans-serif; font-size:19pt; font-weight:900; color:#1A2B4D;
+  letter-spacing:-0.5px; line-height:1;
+}
+.col-etapa { font-size:7.5pt; font-weight:700; color:#8a8f99; text-transform:uppercase; letter-spacing:1px; margin-top:-1mm; }
+
+.sub-title {
+  font-size:7.5pt; font-weight:800; color:#1A2B4D;
+  text-transform:uppercase; letter-spacing:1px;
+  border-bottom:1.5px solid #F28C28; padding-bottom:1mm; margin-top:1mm;
+}
+
+.passo { display:flex; gap:2.5mm; align-items:flex-start; }
+.passo-num {
+  background:#1A2B4D; color:#fff; font-size:7.5pt; font-weight:800;
+  width:13px; height:13px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;
+}
+.passo-txt { font-size:7.5pt; font-weight:500; color:#333; line-height:1.35; }
+.passo-txt strong { font-weight:700; color:#1A2B4D; }
+
+.mini-table { width:100%; border-collapse:collapse; margin-top:0.5mm; }
+.mini-table tr { border-bottom:1px solid #f0f0f0; }
+.mini-table tr:last-child { border-bottom:none; }
+.mini-table td { font-size:7.5pt; padding:1.4mm 0; vertical-align:top; line-height:1.3; }
+.mini-table td:first-child { font-weight:700; color:#1A2B4D; width:34%; padding-right:1.5mm; }
+.mini-table td:last-child { font-weight:500; color:#444; }
+
+.aviso-box {
+  background:#f5f6f8; border-left:2.5px solid #F28C28;
+  padding:1.8mm 2.5mm; border-radius:0 2px 2px 0; margin-top:auto;
+}
+.aviso-txt { font-size:7pt; color:#555; line-height:1.4; font-weight:500; }
+.aviso-txt strong { color:#1A2B4D; }
+
+.stripe-thin { height:3mm; background:#1A2B4D; flex-shrink:0; }
+
+/* RODAPÉ */
+.rodape {
+  background:#1A2B4D;
+  padding:3mm 10mm;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0;
+}
+.rod-info { font-size:7.5pt; color:rgba(255,255,255,.65); line-height:1.6; }
+.rod-info strong { color:#fff; font-weight:700; }
+.rod-sac { text-align:center; }
+.rod-sac-label { font-size:7pt; color:rgba(255,255,255,.5); letter-spacing:1px; text-transform:uppercase; }
+.rod-sac-tel { font-size:13pt; font-weight:900; color:#F28C28; font-family:'Barlow Condensed',sans-serif; }
+.rod-right { display:flex; align-items:center; gap:5mm; }
+.rod-badge {
+  border:1.5px solid rgba(255,255,255,.3); border-radius:50%;
+  width:20mm; height:20mm;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:1.5mm;
+}
+.rod-badge-txt { font-size:5.8pt; font-weight:700; color:rgba(255,255,255,.8); line-height:1.25; text-transform:uppercase; letter-spacing:.4px; }
+.rod-peso { text-align:center; }
+.rod-peso-val { font-family:'Barlow Condensed',sans-serif; font-size:16pt; font-weight:900; color:#fff; line-height:1; }
+.rod-peso-lbl { font-size:6.5pt; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:1px; margin-top:0.5mm; }
+</style>
+</head>
+<body>
+<div class="rotulo">
+
+  <!-- TOPO -->
+  <div class="top-band">
+    <div class="logo-area">
+      <svg viewBox="7 12 186 255" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+        <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+          <path fill="#fff" d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z"/>
+          <path fill="#F28C28" d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z"/>
+        </g>
+      </svg>
+      <div>
+        <div class="logo-mep">MEP</div>
+        <div class="logo-sub">MASSAS</div>
+      </div>
+    </div>
+    <div class="top-produto">
+      Sistema MEP 10 · 20 · 30<br>
+      <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:0;text-transform:none">Argamassa Polimérica — Ficha Técnica Completa</span>
+    </div>
+    <div class="top-vol">25 KG <span>PESO LÍQUIDO</span></div>
+  </div>
+
+  <div class="stripe-orange"></div>
+
+  <!-- DIRETRIZ CRÍTICA -->
+  <div class="diretriz">
+    <svg class="diretriz-icon" viewBox="0 0 100 100">
+      <polygon points="50,10 92,85 8,85" fill="none" stroke="#c06a00" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="45" y="38" width="10" height="26" rx="2" fill="#c06a00"/>
+      <circle cx="50" cy="72" r="6" fill="#c06a00"/>
+    </svg>
+    <div class="diretriz-txt"><strong>Diretriz crítica de engenharia —</strong> produto monocomponente, pronto para uso. É estritamente proibida a adição de água, cimento, cal ou qualquer aditivo químico. A quebra desta regra compromete o desempenho e invalida a garantia técnica.</div>
+  </div>
+
+  <!-- CORPO 3 COLUNAS -->
+  <div class="corpo">
+
+    <!-- COL 1: MEP 10 -->
+    <div class="col">
+      <div class="col-tag">Etapa 01</div>
+      <div class="col-title">MEP 10</div>
+      <div class="col-etapa">Nivelamento · Primeira Fiada</div>
+
+      <div class="sub-title">Indicação</div>
+      <div class="passo-txt">Nivelamento da primeira fiada sobre baldrame, viga de concreto ou laje — base para elevação da alvenaria.</div>
+
+      <div class="sub-title">Aplicação</div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Superfície limpa, seca e sem pó, óleo ou concreto solto.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Aplicar com bisnaga em cordão único sobre o baldrame. Máx. 2m de cordão antes de posicionar os blocos.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Nivelar com nível de bolha ou laser; conferir prumo nas extremidades.</div></div>
+
+      <table class="mini-table">
+        <tr><td>Cuidados</td><td>Corrige até 1,5cm de variação. Ajuste imediato — após 5 min, remover e reaplicar.</td></tr>
+        <tr><td>Rendimento</td><td>Variável, conforme irregularidade da base.</td></tr>
+      </table>
+
+      <div class="aviso-box"><div class="aviso-txt"><strong>Etapa complementar:</strong> MEP 20 é aplicado logo em seguida, na elevação das fiadas.</div></div>
+    </div>
+
+    <!-- COL 2: MEP 20 -->
+    <div class="col">
+      <div class="col-tag">Etapa 02</div>
+      <div class="col-title">MEP 20</div>
+      <div class="col-etapa">Assentamento · Todas as Fiadas</div>
+
+      <div class="sub-title">Indicação</div>
+      <div class="passo-txt">Assentamento de blocos cerâmicos, de concreto ou tijolo baiano — todas as fiadas da alvenaria de vedação.</div>
+
+      <div class="sub-title">Aplicação</div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">2 cordões horizontais de ±1cm nas faces de assentamento. Não aplicar nas juntas verticais.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Pressionar firmemente o bloco; garantir contato mínimo de 40% da junta.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Corrigir posição somente nos primeiros 5 minutos após o assentamento.</div></div>
+
+      <table class="mini-table">
+        <tr><td>Cuidados</td><td>Após 5 min: remover o bloco, reaplicar MEP 20 e reassentar — nunca forçar.</td></tr>
+        <tr><td>Rendimento</td><td>1,5 a 2,0 kg/m² · aprox. 15 m² por balde.</td></tr>
+      </table>
+
+      <div class="aviso-box"><div class="aviso-txt"><strong>Junta final:</strong> 3 a 5mm entre blocos, uniforme em toda a fiada.</div></div>
+    </div>
+
+    <!-- COL 3: MEP 30 -->
+    <div class="col">
+      <div class="col-tag">Etapa 03</div>
+      <div class="col-title">MEP 30</div>
+      <div class="col-etapa">Reboco Fino · Acabamento</div>
+
+      <div class="sub-title">Indicação</div>
+      <div class="passo-txt">Acabamento final em paredes internas e externas — reboco de alto desempenho, pronto para pintura.</div>
+
+      <div class="sub-title">Aplicação</div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">1ª demão (2mm) — regularização, com desempenadeira em movimentos cruzados.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2ª demão (2mm) — nivelamento, após secagem da 1ª, em sentido oposto.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">3ª demão (1mm) — acabamento final, superfície branca pronta para pintura.</div></div>
+
+      <table class="mini-table">
+        <tr><td>Cuidados</td><td>3 demãos, 5mm de espessura total. Elimina chapisco, emboço e massa corrida.</td></tr>
+        <tr><td>Rendimento</td><td>Aprox. 4,5 kg/m² a 3mm de espessura.</td></tr>
+      </table>
+
+      <div class="aviso-box"><div class="aviso-txt"><strong>Vantagem:</strong> substitui 3 etapas do método convencional em um único produto.</div></div>
+    </div>
+
+  </div><!-- /corpo -->
+
+  <div class="stripe-thin"></div>
+
+  <!-- RODAPÉ -->
+  <div class="rodape">
+    <div class="rod-info">
+      <strong>MEP Indústria e Comércio Ltda</strong><br>
+      Balneário Camboriú, SC<br>
+      <strong>mep.ind.br</strong> · Norma ABNT 491.001/25<br>
+      Segurança: use luvas e óculos de proteção. Produto alcalino — evitar contato prolongado com a pele.
+    </div>
+    <div class="rod-sac">
+      <div class="rod-sac-label">SAC / WhatsApp</div>
+      <div class="rod-sac-tel">(47) 98851-5506</div>
+      <div style="font-size:7pt;color:rgba(255,255,255,.5);margin-top:1mm">ind.mepmassas@gmail.com</div>
+    </div>
+    <div class="rod-right">
+      <div class="rod-peso">
+        <div class="rod-peso-val">25KG</div>
+        <div class="rod-peso-lbl">Peso Líquido</div>
+      </div>
+      <div class="rod-badge"><div class="rod-badge-txt">Validade<br>12 meses</div></div>
+      <div class="rod-badge"><div class="rod-badge-txt">Local Seco<br>Coberto</div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
