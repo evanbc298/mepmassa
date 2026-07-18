@@ -30,3 +30,6 @@ imagens e videos/*.mp4
 
 # Material bruto de visita/obra ainda não triado (heic/mp4 originais de celular)
 MATERIAL NOVO 13-07/
+
+# Credenciais — nunca versionar
+.env
