@@ -1,67 +1,67 @@
-# Pendências abertas — 2026-07-17
+# Pendências abertas — atualizado 2026-07-20
 
-Lista de itens que ficaram em aberto nesta rodada de trabalho (rótulos + cadastro de SKUs). Marcar como resolvido e apagar a linha conforme for corrigindo.
+Lista de itens em aberto. Marcar como resolvido e apagar a linha conforme for corrigindo.
+
+---
+
+## 🔴 Renumeração MEP 30 ↔ MEP 40 — corrigir nos arquivos antigos
+
+Confirmado em 20/07 via `manual_tecnico_mep_v4.pdf`: **MEP 30 = Encunhamento Inteligente** (24kg, bisnaga, topo da parede) e **MEP 40 = Reboco Fino Tecnológico** (30kg, desempenadeira, acabamento). Isso inverte o que a gente vinha usando (MEP 30 = Reboco Fino) até 20/07/2026.
+
+**Já corrigido:**
+- ✅ Memória do projeto (`project-mep-numeracao`)
+- ✅ `marketing/rotulos-bisnaga/rotulo-verso-balde.html` — agora com 4 colunas (10/20/30/40)
+
+**Ainda por corrigir:**
+- `marketing/rotulos-bisnaga/rotulo-frente-bisnaga.html` — sticker de exemplo mostra "MEP 30 Reboco Fino" (precisa virar Encunhamento) e falta criar o sticker do MEP 40
+- `marketing/apresentacao-manual-mep.html` — slide "MEP 30" = Reboco Fino, deck só tem 3 produtos, falta o 4º
+- `marketing/mockup-barricas/comparativo-etiquetas.png` — mockup MEP 10/20/30 com MEP 30 = Reboco Fino
+- `nuvemshop-import.csv` — linha "mep-30-emboco" com descrição errada; MEP 40 não está cadastrado como SKU ainda (precisa dimensões — já temos do cliente: balde 30kg redondo 30x30)
+- Prompts de etiqueta MEP 30 já enviados pro GPT numa sessão anterior — se a imagem já foi gerada com "Reboco Fino" no lugar do MEP 30, está com o produto errado
+
+**Não mexer:** orçamentos já enviados a clientes (Zonta, Wagner Batista) — ficam como estavam, documentos já entregues.
 
 ---
 
 ## 🔴 Conflito de peso — MEP 10 / MEP 20: 24kg ou 25kg?
 
-Existem dois pesos diferentes circulando pro balde de MEP 10 e MEP 20, e ninguém decidiu qual é o certo:
+- **24kg** → `nuvemshop-import.csv`, orçamento Zonta, orçamento Wagner Batista, manual técnico v4.
+- **25kg** → site (`docs/index.html`), etiqueta aprovada antiga (`comparativo-etiquetas.png`), badges que existiam nos rótulos de frente (removidos depois — hoje a frente do balde não tem mais peso fixo impresso, então esse conflito ficou menos crítico, mas o site ainda precisa de decisão).
 
-- **24kg** → usado em: `nuvemshop-import.csv`, orçamento Zonta, orçamento Wagner Batista, memória técnica original do projeto.
-- **25kg** → usado em: site (`docs/index.html`), etiqueta aprovada (`comparativo-etiquetas.png`), rótulos de frente/verso do balde e bisnaga já finalizados em PDF (`marketing/rotulos-bisnaga/`).
-
-**Ação necessária:** confirmar o peso real com quem fabrica/embala e corrigir todos os arquivos pro valor certo. Os PDFs de rótulo (frente bisnaga, frente barrica, verso balde) precisam ser regenerados se o peso mudar.
+**Ação necessária:** confirmar com quem fabrica/embala e corrigir o site.
 
 ---
 
 ## 🔴 Textura Projetada — 20kg ou 25kg?
 
 - Cliente confirmou **25kg** em 17/07 → já atualizado no `nuvemshop-import.csv`.
-- **Ainda não atualizado:** site (`docs/index.html`, produto "Textura Projetada MEP") e a imagem do produto (`docs/textura-projetada-20kg.png` — nome do arquivo e o rótulo impresso nela ainda dizem 20kg). Essa imagem também tem erros de texto no rótulo ("REVESTIMENTD", "Parodes") que precisam ser corrigidos de qualquer forma.
-
-**Ação necessária:** atualizar site + regenerar imagem do produto com peso e texto corretos.
-
----
-
-## 🟡 MEP 40 — em standby
-
-Confirmado pelo usuário (17/07): é um produto real, mas ainda não lançado oficialmente (em fase de testes). **Não usar em nenhum material comercial, orçamento, rótulo ou cadastro fiscal até liberação.** Quando for lançado, voltar aqui e coletar a especificação técnica real (etapa, aplicação, peso, embalagem) — nenhum dos rascunhos anteriores deve ser reaproveitado sem confirmação.
+- **Ainda não atualizado:** site (`docs/index.html`) e imagem do produto (`docs/textura-projetada-20kg.png`, que também tem erros de texto "REVESTIMENTD"/"Parodes").
 
 ---
 
 ## 🟡 NCM — sugestão pronta, falta validar
 
-NCM sugerido já está no projeto (memória `project-nuvemshop`):
-- MEP 10/20/30 → 3214.10.00
-- Tintas acrílicas → 3209.10.00
-- Primer / Tinta Emborrachada → 3210.00.10
-- Textura → 3209.10.00
-
-**Ação necessária:** o próprio cliente pediu validação com a contadora antes de assumir como definitivo.
+- MEP 10/20/30/40 → 3214.10.00 | Tintas acrílicas → 3209.10.00 | Primer/Emborrachada → 3210.00.10 | Textura → 3209.10.00
+- Cliente pediu validação com a contadora antes de assumir como definitivo.
 
 ---
 
 ## 🟡 Código de barras EAN-13 — bloqueado até registro GS1
 
-MEP ainda não tem cadastro/prefixo GS1 Brasil. Sem isso não existe como gerar um código EAN-13 válido — por isso a coluna "Código de barras" no `nuvemshop-import.csv` está em branco de propósito.
-
-**Ação necessária:** contratar registro GS1 Brasil, depois voltar aqui pra gerar os 17 códigos (um por SKU).
+MEP não tem cadastro/prefixo GS1 Brasil ainda. Coluna "Código de barras" do CSV está em branco de propósito — sem GS1 não dá pra gerar código válido.
 
 ---
 
-## 🟢 Etiqueta trocável (frente do balde/bisnaga) — gerando no GPT
+## 🟢 Frente do balde/barrica — layout novo fechado
 
-- **MEP 20**: gerada, revisada e corrigida (ABNT ajustado pra "Norma ABNT 16590", texto de segurança reintroduzido, "IND. QUÍMICA" removido).
-- **MEP 10**: prompt já enviado, imagem ainda não gerada/revisada.
-- **MEP 30**: prompt já enviado, imagem ainda não gerada/revisada.
+Embalagem única navy, logo + tagline + origem + site, QR code real (não decorativo) com CTA "Conheça a MEP" apontando pro mep.ind.br. Sem peso/rendimento fixo impresso (isso resolve o conflito 24kg/25kg nesse arquivo específico). Arquivo: `marketing/rotulos-bisnaga/rotulo-frente-barrica.html` / `ROTULO-FRENTE-BARRICA-UNICO-830x280mm.pdf`.
 
-**Ação necessária:** gerar e revisar MEP 10 e MEP 30 no GPT, mesmo processo de conferência palavra por palavra que foi feito no MEP 20.
+A versão da **bisnaga** (`rotulo-frente-bisnaga.html`) ainda está no modelo antigo (com área reservada pra etiqueta colada) — decidir se ela também migra pro modelo "QR code" ou mantém o conceito de etiqueta trocável.
 
 ---
 
 ## Arquivos de referência
 
 - Rótulos prontos: `marketing/rotulos-bisnaga/`
+- Manual técnico fonte (v4): enviado pelo usuário em 20/07/2026, conteúdo completo já extraído pra memória do projeto
 - Planilha de SKUs: `nuvemshop-import.csv`
-- Prompts de etiqueta usados: ver histórico da conversa (MEP 10, 20, 30 — formato paisagem 403×184mm)

@@ -46,61 +46,61 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
 .diretriz-txt { font-size:8pt; font-weight:600; color:#7a4e00; line-height:1.4; }
 .diretriz-txt strong { font-weight:800; color:#c06a00; text-transform:uppercase; letter-spacing:0.5px; }
 
-/* CORPO 3 COLUNAS */
+/* CORPO 4 COLUNAS */
 .corpo {
   flex:1;
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr 1fr;
   gap:0;
   overflow:hidden;
 }
 .col {
-  padding:5mm 5mm 4mm;
+  padding:4mm 3.6mm 3mm;
   border-right:1px solid #e8e8e8;
-  display:flex; flex-direction:column; gap:2.6mm;
+  display:flex; flex-direction:column; gap:2mm;
 }
 .col:last-child { border-right:none; }
 
 .col-tag {
   display:inline-block;
   background:#F28C28; color:#1A2B4D;
-  font-family:'Barlow Condensed',sans-serif; font-size:9pt; font-weight:800;
-  letter-spacing:1px; text-transform:uppercase;
-  padding:1mm 2.5mm; border-radius:2px; width:fit-content;
+  font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:800;
+  letter-spacing:.8px; text-transform:uppercase;
+  padding:0.8mm 2mm; border-radius:2px; width:fit-content;
 }
 .col-title {
-  font-family:'Barlow Condensed',sans-serif; font-size:19pt; font-weight:900; color:#1A2B4D;
+  font-family:'Barlow Condensed',sans-serif; font-size:16pt; font-weight:900; color:#1A2B4D;
   letter-spacing:-0.5px; line-height:1;
 }
-.col-etapa { font-size:7.5pt; font-weight:700; color:#8a8f99; text-transform:uppercase; letter-spacing:1px; margin-top:-1mm; }
+.col-etapa { font-size:6.6pt; font-weight:700; color:#8a8f99; text-transform:uppercase; letter-spacing:.6px; margin-top:-1mm; }
 
 .sub-title {
-  font-size:7.5pt; font-weight:800; color:#1A2B4D;
-  text-transform:uppercase; letter-spacing:1px;
-  border-bottom:1.5px solid #F28C28; padding-bottom:1mm; margin-top:1mm;
+  font-size:6.6pt; font-weight:800; color:#1A2B4D;
+  text-transform:uppercase; letter-spacing:.8px;
+  border-bottom:1.5px solid #F28C28; padding-bottom:.8mm; margin-top:.5mm;
 }
 
-.passo { display:flex; gap:2.5mm; align-items:flex-start; }
+.passo { display:flex; gap:2mm; align-items:flex-start; }
 .passo-num {
-  background:#1A2B4D; color:#fff; font-size:7.5pt; font-weight:800;
-  width:13px; height:13px; border-radius:50%;
+  background:#1A2B4D; color:#fff; font-size:6.6pt; font-weight:800;
+  width:11px; height:11px; border-radius:50%;
   display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;
 }
-.passo-txt { font-size:7.5pt; font-weight:500; color:#333; line-height:1.35; }
+.passo-txt { font-size:6.6pt; font-weight:500; color:#333; line-height:1.3; }
 .passo-txt strong { font-weight:700; color:#1A2B4D; }
 
 .mini-table { width:100%; border-collapse:collapse; margin-top:0.5mm; }
 .mini-table tr { border-bottom:1px solid #f0f0f0; }
 .mini-table tr:last-child { border-bottom:none; }
-.mini-table td { font-size:7.5pt; padding:1.4mm 0; vertical-align:top; line-height:1.3; }
-.mini-table td:first-child { font-weight:700; color:#1A2B4D; width:34%; padding-right:1.5mm; }
+.mini-table td { font-size:6.6pt; padding:1.1mm 0; vertical-align:top; line-height:1.25; }
+.mini-table td:first-child { font-weight:700; color:#1A2B4D; width:38%; padding-right:1mm; }
 .mini-table td:last-child { font-weight:500; color:#444; }
 
 .aviso-box {
   background:#f5f6f8; border-left:2.5px solid #F28C28;
-  padding:1.8mm 2.5mm; border-radius:0 2px 2px 0; margin-top:auto;
+  padding:1.4mm 2mm; border-radius:0 2px 2px 0; margin-top:auto;
 }
-.aviso-txt { font-size:7pt; color:#555; line-height:1.4; font-weight:500; }
+.aviso-txt { font-size:6.2pt; color:#555; line-height:1.35; font-weight:500; }
 .aviso-txt strong { color:#1A2B4D; }
 
 .stripe-thin { height:3mm; background:#1A2B4D; flex-shrink:0; }
@@ -148,7 +148,7 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       </div>
     </div>
     <div class="top-produto">
-      Sistema MEP 10 · 20 · 30<br>
+      Sistema MEP 10 · 20 · 30 · 40<br>
       <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:0;text-transform:none">Argamassa Polimérica — Ficha Técnica Completa</span>
     </div>
     <div class="top-vol" style="visibility:hidden">25 KG <span>PESO LÍQUIDO</span></div>
@@ -163,10 +163,10 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       <rect x="45" y="38" width="10" height="26" rx="2" fill="#c06a00"/>
       <circle cx="50" cy="72" r="6" fill="#c06a00"/>
     </svg>
-    <div class="diretriz-txt"><strong>Diretriz crítica de engenharia —</strong> produto monocomponente, pronto para uso. É estritamente proibida a adição de água, cimento, cal ou qualquer aditivo químico. A quebra desta regra compromete o desempenho e invalida a garantia técnica.</div>
+    <div class="diretriz-txt"><strong>Diretriz crítica de engenharia · Conformidade NBR 15575 —</strong> todos os produtos da linha MEP são argamassas poliméricas monocomponentes prontas para uso. É estritamente proibida a adição de água, cimento, cal ou aditivos químicos, sob risco de quebra da cadeia polimérica e perda total da garantia de aderência estrutural.</div>
   </div>
 
-  <!-- CORPO 3 COLUNAS -->
+  <!-- CORPO 4 COLUNAS -->
   <div class="corpo">
 
     <!-- COL 1: MEP 10 -->
@@ -176,63 +176,85 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       <div class="col-etapa">Nivelamento · Primeira Fiada</div>
 
       <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Nivelamento da primeira fiada sobre baldrame, viga de concreto ou laje — base para elevação da alvenaria.</div>
+      <div class="passo-txt">Nivelamento da primeira fiada sobre baldrame, viga de concreto ou laje.</div>
 
       <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Superfície limpa, seca e sem pó, óleo ou concreto solto.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Aplicar com bisnaga em cordão único sobre o baldrame. Máx. 2m de cordão antes de posicionar os blocos.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Nivelar com nível de bolha ou laser; conferir prumo nas extremidades.</div></div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Base seca, limpa e escovada — sem pó, desmoldante ou óleo. Não umedecer.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Bisnaga: cordão robusto, alinhamento imediato dos blocos das extremidades.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Nivelar, esticar linha guia e completar a fileira.</div></div>
 
       <table class="mini-table">
-        <tr><td>Cuidados</td><td>Corrige até 1,5cm de variação. Ajuste imediato — após 5 min, remover e reaplicar.</td></tr>
-        <tr><td>Rendimento</td><td>Variável, conforme irregularidade da base.</td></tr>
+        <tr><td>Cuidados</td><td>Desnível &gt;1,5cm: regularizar antes com massa cimentícia. Ajuste em até 5 segundos.</td></tr>
+        <tr><td>Rendimento</td><td>Variável, conforme base.</td></tr>
       </table>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Etapa complementar:</strong> MEP 20 é aplicado logo em seguida, na elevação das fiadas.</div></div>
+      <div class="aviso-box"><div class="aviso-txt"><strong>Próxima etapa:</strong> MEP 20, na elevação das fiadas.</div></div>
     </div>
 
     <!-- COL 2: MEP 20 -->
     <div class="col">
       <div class="col-tag">Etapa 02</div>
       <div class="col-title">MEP 20</div>
-      <div class="col-etapa">Assentamento · Todas as Fiadas</div>
+      <div class="col-etapa">Elevação · Todas as Fiadas</div>
 
       <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Assentamento de blocos cerâmicos, de concreto ou tijolo baiano — todas as fiadas da alvenaria de vedação.</div>
+      <div class="passo-txt">Empilhamento dos blocos — mais velocidade e alívio de peso estrutural.</div>
 
       <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">2 cordões horizontais de ±1cm nas faces de assentamento. Não aplicar nas juntas verticais.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Pressionar firmemente o bloco; garantir contato mínimo de 40% da junta.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Corrigir posição somente nos primeiros 5 minutos após o assentamento.</div></div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Blocos limpos, sem pó, antes de aplicar.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2 cordões horizontais contínuos, ~1cm, na face do bloco. Sem juntas verticais.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Pressionar: cordões devem achatar e cobrir no mínimo 40% da junta.</div></div>
 
       <table class="mini-table">
-        <tr><td>Cuidados</td><td>Após 5 min: remover o bloco, reaplicar MEP 20 e reassentar — nunca forçar.</td></tr>
-        <tr><td>Rendimento</td><td>1,5 a 2,0 kg/m² · aprox. 15 m² por balde.</td></tr>
+        <tr><td>Cuidados</td><td>A cada 2 fiadas: tela metálica no pilar (NBR 8545) + selamento de interface.</td></tr>
+        <tr><td>Rendimento</td><td>1,5 a 2,0 kg/m².</td></tr>
       </table>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Junta final:</strong> 3 a 5mm entre blocos, uniforme em toda a fiada.</div></div>
+      <div class="aviso-box"><div class="aviso-txt"><strong>Próxima etapa:</strong> MEP 30, no topo da parede.</div></div>
     </div>
 
     <!-- COL 3: MEP 30 -->
     <div class="col">
       <div class="col-tag">Etapa 03</div>
       <div class="col-title">MEP 30</div>
-      <div class="col-etapa">Reboco Fino · Acabamento</div>
+      <div class="col-etapa">Encunhamento Inteligente</div>
 
       <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Acabamento final em paredes internas e externas — reboco de alto desempenho, pronto para pintura.</div>
+      <div class="passo-txt">Amortecedor polimérico no topo da parede — absorve deflexões da estrutura superior.</div>
 
       <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">1ª demão (2mm) — regularização, com desempenadeira em movimentos cruzados.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2ª demão (2mm) — nivelamento, após secagem da 1ª, em sentido oposto.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">3ª demão (1mm) — acabamento final, superfície branca pronta para pintura.</div></div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Folga planejada: 1,5cm a 3cm entre a última fiada e a viga/laje.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Preenchimento homogêneo e contínuo do espaço vazio.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Fechamento de bordas com espátula nas duas faces — sem vazios.</div></div>
 
       <table class="mini-table">
-        <tr><td>Cuidados</td><td>3 demãos, 5mm de espessura total. Elimina chapisco, emboço e massa corrida.</td></tr>
-        <tr><td>Rendimento</td><td>Aprox. 4,5 kg/m² a 3mm de espessura.</td></tr>
+        <tr><td>Cuidados</td><td>Aguardar no mínimo 72h após a elevação da parede.</td></tr>
+        <tr><td>Rendimento</td><td>0,5 a 1,0 kg/m linear.</td></tr>
       </table>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Vantagem:</strong> substitui 3 etapas do método convencional em um único produto.</div></div>
+      <div class="aviso-box"><div class="aviso-txt"><strong>Próxima etapa:</strong> MEP 40, acabamento final.</div></div>
+    </div>
+
+    <!-- COL 4: MEP 40 -->
+    <div class="col">
+      <div class="col-tag">Etapa 04</div>
+      <div class="col-title">MEP 40</div>
+      <div class="col-etapa">Reboco Fino Tecnológico</div>
+
+      <div class="sub-title">Indicação</div>
+      <div class="passo-txt">Acabamento final, 3 demãos (5mm) — substitui chapisco, emboço e massa corrida.</div>
+
+      <div class="sub-title">Aplicação</div>
+      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">1ª demão (Cata-Foco) — pontual, regulariza depressões.</div></div>
+      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2ª demão (Corpo, 2mm) — uniforme, desempenadeira de aço lisa.</div></div>
+      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">3ª demão (Acabamento, 1-2mm) — desempenadeira de esponja/feltro após perda do brilho úmido.</div></div>
+
+      <table class="mini-table">
+        <tr><td>Cuidados</td><td>Demão espessa ou vento forte causam microfissuras — respeitar as 3 demãos.</td></tr>
+        <tr><td>Rendimento</td><td>Conforme demãos, por m².</td></tr>
+      </table>
+
+      <div class="aviso-box"><div class="aviso-txt"><strong>Resultado:</strong> acabamento branco, pronto para pintura.</div></div>
     </div>
 
   </div><!-- /corpo -->
