@@ -1,4 +1,4 @@
-# Pendências abertas — atualizado 2026-07-20
+# Pendências abertas — atualizado 2026-07-21
 
 Lista de itens em aberto. Marcar como resolvido e apagar a linha conforme for corrigindo.
 
@@ -16,19 +16,18 @@ Confirmado em 20/07 via `manual_tecnico_mep_v4.pdf`: **MEP 30 = Encunhamento Int
 - `marketing/rotulos-bisnaga/rotulo-frente-bisnaga.html` — sticker de exemplo mostra "MEP 30 Reboco Fino" (precisa virar Encunhamento) e falta criar o sticker do MEP 40
 - `marketing/apresentacao-manual-mep.html` — slide "MEP 30" = Reboco Fino, deck só tem 3 produtos, falta o 4º
 - `marketing/mockup-barricas/comparativo-etiquetas.png` — mockup MEP 10/20/30 com MEP 30 = Reboco Fino
-- `nuvemshop-import.csv` — linha "mep-30-emboco" com descrição errada; MEP 40 não está cadastrado como SKU ainda (precisa dimensões — já temos do cliente: balde 30kg redondo 30x30)
+- `nuvemshop-import.csv` — linha "mep-30-emboco" (peso 30kg) é na verdade o MEP 40 (Reboco Fino, 30kg) — renomear SKU/nome/descrição pra MEP 40. Falta criar linha nova pro MEP 30 real (Encunhamento, 24kg, 8 sacos de 3kg, dimensões balde 24kg redondo 30x30 — mesma embalagem do MEP 20)
 - Prompts de etiqueta MEP 30 já enviados pro GPT numa sessão anterior — se a imagem já foi gerada com "Reboco Fino" no lugar do MEP 30, está com o produto errado
 
 **Não mexer:** orçamentos já enviados a clientes (Zonta, Wagner Batista) — ficam como estavam, documentos já entregues.
 
 ---
 
-## 🔴 Conflito de peso — MEP 10 / MEP 20: 24kg ou 25kg?
+## ✅ RESOLVIDO — Peso MEP 10/20/30/40, confirmado 21/07
 
-- **24kg** → `nuvemshop-import.csv`, orçamento Zonta, orçamento Wagner Batista, manual técnico v4.
-- **25kg** → site (`docs/index.html`), etiqueta aprovada antiga (`comparativo-etiquetas.png`), badges que existiam nos rótulos de frente (removidos depois — hoje a frente do balde não tem mais peso fixo impresso, então esse conflito ficou menos crítico, mas o site ainda precisa de decisão).
+Cliente confirmou por escrito: MEP 10 = 24kg (4 sacos de 6kg), MEP 20 = 24kg (8 sacos de 3kg), MEP 30 = 24kg (8 sacos de 3kg), MEP 40 = 30kg (balde, desempenadeira). Bate 100% com manual técnico v4, orçamentos Zonta/Wagner Batista e planilha da loja. Não é mais 25kg em lugar nenhum.
 
-**Ação necessária:** confirmar com quem fabrica/embala e corrigir o site.
+**Ainda falta corrigir o site** (`docs/index.html`) que mostra 25kg — é o único lugar que ficou pra trás.
 
 ---
 
