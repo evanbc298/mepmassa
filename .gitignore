@@ -13,6 +13,8 @@ Thumbs.db
 .claude/telemetry/
 .claude/file-history/
 .claude/backups/
+.claude/settings.local.json
+.claude/.pendencias-last-shown
 
 # Dependências
 node_modules/
