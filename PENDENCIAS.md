@@ -4,30 +4,24 @@ Lista de itens em aberto. Marcar como resolvido e apagar a linha conforme for co
 
 ---
 
-## 🔴 Renumeração MEP 30 ↔ MEP 40 — corrigir nos arquivos antigos
+## ✅ RESOLVIDO — Renumeração MEP 30 ↔ MEP 40, corrigido em 21/07
 
-Confirmado em 20/07 via `manual_tecnico_mep_v4.pdf`: **MEP 30 = Encunhamento Inteligente** (24kg, bisnaga, topo da parede) e **MEP 40 = Reboco Fino Tecnológico** (30kg, desempenadeira, acabamento). Isso inverte o que a gente vinha usando (MEP 30 = Reboco Fino) até 20/07/2026.
+Confirmado em 20/07 via `manual_tecnico_mep_v4.pdf`: **MEP 30 = Encunhamento Inteligente** (24kg, bisnaga, topo da parede) e **MEP 40 = Reboco Fino Tecnológico** (30kg, desempenadeira, acabamento).
 
-**Já corrigido:**
+**Corrigido:**
 - ✅ Memória do projeto (`project-mep-numeracao`)
-- ✅ `marketing/rotulos-bisnaga/rotulo-verso-balde.html` — agora com 4 colunas (10/20/30/40)
+- ✅ `marketing/rotulos-bisnaga/rotulo-verso-balde.html` — 4 colunas (10/20/30/40)
+- ✅ `docs/index.html` — todo texto visível 25kg→24kg + bug de cálculo no JS do chatbot (dividia por 25 em vez de 15)
+- ✅ `nuvemshop-import.csv` — linha antiga "mep-30-emboco" virou `mep-40-reboco-fino` (30kg, R$130), nova linha `mep-30-encunhamento` criada (24kg, sem preço — nunca foi precificado)
+- ✅ `marketing/apresentacao-manual-mep.html` — deck agora com 8 slides (era 7): novo slide 05 = MEP 30 Encunhamento, slide 06 = MEP 40 Reboco Fino, card e tabela de consumo com os 4 produtos. PDF e PPTX regenerados.
+- ✅ `marketing/rotulos-bisnaga/rotulo-frente-bisnaga.html` — checado, já estava genérico (sem texto "MEP 30"/"Reboco Fino"), não precisou de correção
 
-**Ainda por corrigir:**
-- `marketing/rotulos-bisnaga/rotulo-frente-bisnaga.html` — sticker de exemplo mostra "MEP 30 Reboco Fino" (precisa virar Encunhamento) e falta criar o sticker do MEP 40
-- `marketing/apresentacao-manual-mep.html` — slide "MEP 30" = Reboco Fino, deck só tem 3 produtos, falta o 4º
-- `marketing/mockup-barricas/comparativo-etiquetas.png` — mockup MEP 10/20/30 com MEP 30 = Reboco Fino
-- `nuvemshop-import.csv` — linha "mep-30-emboco" (peso 30kg) é na verdade o MEP 40 (Reboco Fino, 30kg) — renomear SKU/nome/descrição pra MEP 40. Falta criar linha nova pro MEP 30 real (Encunhamento, 24kg, 8 sacos de 3kg, dimensões balde 24kg redondo 30x30 — mesma embalagem do MEP 20)
-- Prompts de etiqueta MEP 30 já enviados pro GPT numa sessão anterior — se a imagem já foi gerada com "Reboco Fino" no lugar do MEP 30, está com o produto errado
+**Marcado como obsoleto (não dá pra corrigir):**
+- `marketing/mockup-barricas/comparativo-etiquetas.png` — mockup antigo sem HTML fonte, não pode ser regenerado. Considerar substituído pelos rótulos novos em `marketing/rotulos-bisnaga/`.
 
-**Não mexer:** orçamentos já enviados a clientes (Zonta, Wagner Batista) — ficam como estavam, documentos já entregues.
+**Não mexido (correto deixar como estava):** orçamentos já enviados a clientes (Zonta, Wagner Batista) — documentos já entregues, ficam como estavam.
 
----
-
-## ✅ RESOLVIDO — Peso MEP 10/20/30/40, confirmado 21/07
-
-Cliente confirmou por escrito: MEP 10 = 24kg (4 sacos de 6kg), MEP 20 = 24kg (8 sacos de 3kg), MEP 30 = 24kg (8 sacos de 3kg), MEP 40 = 30kg (balde, desempenadeira). Bate 100% com manual técnico v4, orçamentos Zonta/Wagner Batista e planilha da loja. Não é mais 25kg em lugar nenhum.
-
-**Ainda falta corrigir o site** (`docs/index.html`) que mostra 25kg — é o único lugar que ficou pra trás.
+**Peso confirmado por escrito pelo cliente em 21/07:** MEP 10 = 24kg (4 sacos de 6kg), MEP 20 = 24kg (8 sacos de 3kg), MEP 30 = 24kg (8 sacos de 3kg), MEP 40 = 30kg (balde, desempenadeira). Bate 100% com manual técnico v4, orçamentos Zonta/Wagner Batista e planilha da loja.
 
 ---
 

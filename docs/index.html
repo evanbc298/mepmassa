@@ -70,10 +70,10 @@
     },
     {
       "@type": "Question",
-      "name": "Quanto rende um balde de 25kg de argamassa polimérica MEP?",
+      "name": "Quanto rende um balde de 24kg de argamassa polimérica MEP?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Um balde de 25kg de argamassa polimérica MEP rende em média 25 m² em assentamento de blocos. Use nossa calculadora gratuita no site para uma estimativa exata da sua obra."
+        "text": "Um balde de 24kg de argamassa polimérica MEP rende em média 15 a 16 m² em assentamento de blocos, dependendo do tipo de bloco. Use nossa calculadora gratuita no site para uma estimativa exata da sua obra."
       }
     },
     {
@@ -215,8 +215,8 @@
     {
       "@type": "Product",
       "@id": "https://www.mep.ind.br/#produto-massas",
-      "name": "Massa MEP — Argamassa Polimérica 25kg",
-      "description": "Argamassa polimérica pronta para uso, sem betoneira. 4x mais rápida, 40% mais econômica e 3x mais resistente que a argamassa convencional. Rende 25m² por balde de 25kg.",
+      "name": "Massa MEP — Argamassa Polimérica 24kg",
+      "description": "Argamassa polimérica pronta para uso, sem betoneira. 4x mais rápida, 40% mais econômica e 3x mais resistente que a argamassa convencional. Rende até 16m² por balde de 24kg.",
       "brand": {
         "@type": "Brand",
         "name": "MEP Massas"
@@ -1051,7 +1051,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     </div>
     <div class="hero-visual">
       <div class="hero-visual-glow"></div>
-      <img src="barrica-25kg.webp" alt="Massa MEP — Barrica 25kg">
+      <img src="barrica-25kg.webp" alt="Massa MEP — Barrica 24kg">
     </div>
   </div>
 </div>
@@ -1093,7 +1093,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         </div>
         <div class="slb1-img">
           <div class="slb1-glow"></div>
-          <img src="barrica-25kg.webp" alt="MEP Massas — Barrica 25kg">
+          <img src="barrica-25kg.webp" alt="MEP Massas — Barrica 24kg">
           <div class="slb1-badge">Rende<strong>25 m²</strong>por barrica</div>
         </div>
       </div>
@@ -1239,10 +1239,10 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 
       <div class="produto-card">
         <div class="produto-img-foto">
-          <img src="barrica-25kg.webp" alt="Barrica MEP 25kg">
+          <img src="barrica-25kg.webp" alt="Barrica MEP 24kg">
         </div>
         <div class="produto-info">
-          <div class="produto-nome">Massa MEP — Barrica 25 kg</div>
+          <div class="produto-nome">Massa MEP — Barrica 24 kg</div>
           <div class="produto-desc">Embalagem industrial. Para distribuidores e compras em volume com redução de custo.</div>
           <a href="#contato" class="produto-cta">Solicitar Orçamento</a>
         </div>
@@ -1807,9 +1807,9 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="calc-input-row" style="margin-top:16px;">
         <div class="calc-input-label">Tipo de Bloco ou Tijolo</div>
         <select id="calc-bloco" aria-label="Tipo de bloco ou tijolo" style="width:100%;padding:14px 16px;border:2px solid var(--borda);border-radius:8px;font-size:15px;font-weight:600;color:var(--azul);background:#fff;cursor:pointer;appearance:auto;">
-          <option value="14.3">Bloco 19 cm — padrão (rende ~14 m² por embalagem 25kg)</option>
-          <option value="11.6">Bloco 14 cm — menor (rende ~11 m² por embalagem 25kg)</option>
-          <option value="21.7">Bloco 30 cm — maior (rende ~21 m² por embalagem 25kg)</option>
+          <option value="13.7">Bloco 19 cm — padrão (rende ~14 m² por embalagem 24kg)</option>
+          <option value="11.2">Bloco 14 cm — menor (rende ~11 m² por embalagem 24kg)</option>
+          <option value="20.9">Bloco 30 cm — maior (rende ~21 m² por embalagem 24kg)</option>
           </optgroup>
         </select>
       </div>
@@ -1823,7 +1823,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div class="calc-card destaque">
           <div class="cc-label">Embalagens MEP necessarias</div>
           <div class="cc-val" id="cr-baldes">—</div>
-          <div class="cc-unit">embalagens de 25 kg</div>
+          <div class="cc-unit">embalagens de 24 kg</div>
         </div>
         <div class="calc-card destaque">
           <div class="cc-label">Economia estimada</div>
@@ -2127,8 +2127,8 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="footer-col">
         <h3>MEP Massas</h3>
         <ul>
-          <li><a href="#produtos">Balde 25 kg</a></li>
-          <li><a href="#produtos">Barrica 30 kg</a></li>
+          <li><a href="#produtos">Balde 24 kg</a></li>
+          <li><a href="#produtos">Barrica 24 kg</a></li>
           <li><a href="#produtos">Saco 3 kg</a></li>
           <li><a href="#produtos">Saco 5 kg</a></li>
         </ul>
@@ -2323,11 +2323,11 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         var m2 = parseFloat(val.replace(/[^\d.,]/g,'').replace(',','.'));
         if (!m2 || m2 <= 0) { chatIAFala('Pode me informar a metragem em m²? Por exemplo: 500', []); return; }
         dados.metragem = m2;
-        var baldes = Math.ceil(m2 / 25);
+        var baldes = Math.ceil(m2 / 15);
         var pesoConv = Math.round(m2 * 29.27);
         var calc = 'Para <strong>' + m2.toLocaleString('pt-BR') + ' m²</strong> de alvenaria:<br><br>'
           + '— Argamassa convencional: <strong>' + pesoConv.toLocaleString('pt-BR') + ' kg</strong><br>'
-          + '— <strong>Massa MEP: ' + baldes + ' baldes de 25 kg</strong><br><br>'
+          + '— <strong>Massa MEP: ' + baldes + ' baldes de 24 kg</strong><br><br>'
           + 'Redução de peso superior a 40% e 4x mais rápida na aplicação. Quer receber uma proposta comercial?';
         etapa = 3;
         chatIAFala(calc, ['Sim, quero proposta','Ver dados técnicos','Tenho mais dúvidas']);
@@ -2335,7 +2335,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       }
       if (etapa === 3) {
         if (v.indexOf('técnico') >= 0 || v.indexOf('dados') >= 0) {
-          chatIAFala('A Massa MEP tem certificação ABNT 491.001/25, rende 1 balde (25 kg) por 25 m², cura em 72h e elimina a betoneira completamente. Posso enviar a ficha técnica junto com a proposta.',
+          chatIAFala('A Massa MEP tem certificação ABNT 491.001/25, rende 1 balde (24 kg) por 15 a 16 m², cura em 72h e elimina a betoneira completamente. Posso enviar a ficha técnica junto com a proposta.',
             ['Sim, manda tudo','Só a proposta mesmo']);
           return;
         }
