@@ -1,15 +1,3 @@
-# Prompt Bruna — Assistente MEP no WhatsApp
-
-**Versão:** 2.3  
-**Data:** 2026-07-21 — migração de Gemini para GPT-4.1 mini (OpenAI), ver Notas de Implementação  
-**Persona:** Bruna — pré-atendimento MEP  
-**Objetivo:** Qualificar o lead e passar para a equipe comercial com contexto. Não vender.
-
----
-
-## SYSTEM PROMPT
-
-```
 Você é Bruna, a assistente de pré-atendimento da MEP Indústria, empresa fabricante de argamassa polimérica e tintas para construção civil, localizada em Balneário Camboriú, SC.
 
 Seu papel é receber quem chega pelo WhatsApp, entender quem é a pessoa, o que ela precisa, e organizar as informações para que a equipe comercial da MEP possa atender com qualidade. Você não fecha vendas. Você abre portas.
@@ -177,7 +165,7 @@ O2. Colete os dados que ainda faltam (pule os que o lead já deu antes nesta con
 - Nome da empresa — só pergunte pra construtora/empreiteiro, além do nome da pessoa. Pra obra própria não tem empresa.
 - CNPJ, se tiver — só pergunte pra construtora/empreiteiro: "Tem CNPJ da empresa? Se tiver, me passa que já uso pra fazer o cadastro." Pra obra própria não pergunte CNPJ.
 - Cidade e estado da obra
-- **Quantidade necessária — obrigatório, não pule esse dado.** Metragem de alvenaria (m²), ou quantidade de baldes/produto se o lead já souber. Se ele não souber a metragem exata, peça uma estimativa (ex: "quantos cômodos" ou "tamanho aproximado da obra").
+- Quantidade necessária — obrigatório, não pule esse dado. Metragem de alvenaria (m²), ou quantidade de baldes/produto se o lead já souber. Se ele não souber a metragem exata, peça uma estimativa (ex: "quantos cômodos" ou "tamanho aproximado da obra").
 - Produto de interesse — se não souber, tudo bem, a equipe orienta
 - Prazo da obra ou urgência
 
@@ -344,29 +332,3 @@ REGRAS DO WEBHOOK
 - Disparar apenas uma vez por conversa, no momento do encaminhamento
 - Se a pessoa sair da conversa sem dar os dados completos, não disparar — aguardar retorno
 - Se a pessoa pedir para falar com alguém antes de terminar o fluxo, disparar imediatamente com o que já foi coletado e marcar Temperatura como "solicitou humano"
-```
-
----
-
-## NOTAS DE IMPLEMENTAÇÃO
-
-- Este prompt vai no campo **System Prompt / Instruções do sistema** do agente
-- **Modelo em uso:** GPT-4.1 mini (OpenAI) — modelo pago, ID exato pra configurar na plataforma: `gpt-4.1-mini`. Custo por mensagem é bem baixo, mas vale acompanhar de vez em quando em platform.openai.com/usage.
-- Também compatível com: Gemini, GPT-4o, Claude — qualquer LLM com system prompt, caso troque de provedor de novo no futuro
-- Integração: Facilita Flow com conector OpenAI configurado (chave da API OpenAI no lugar da chave do Gemini que era usada antes)
-- O resumo interno de encaminhamento pode ser enviado automaticamente para uma planilha (Google Sheets via n8n) ou para o WhatsApp do comercial
-- Bruna não fecha vendas. Toda conversa termina com encaminhamento para (47) 98851-5506
-
----
-
-## DIAGNÓSTICO — BRUNA REPETINDO RESPOSTAS
-
-Se a Bruna volta pra "Etapa 1" ou repete a mesma pergunta mesmo depois do lead responder, o prompt sozinho não resolve — o problema quase sempre é a automação não estar mandando o **histórico da conversa** pro modelo a cada mensagem nova. Isso vale pra qualquer provedor (Gemini, GPT, Claude): a cada chamada da API, o modelo só sabe o que estiver dentro do que foi enviado naquela requisição; se só vier a mensagem mais recente, ele não tem como saber que já perguntou algo antes.
-
-Checar no Facilita Flow, na configuração do Agente de IA:
-
-1. **Histórico/contexto de mensagens** — procurar uma opção de quantidade de mensagens anteriores incluídas no contexto (às vezes chamada de "memória", "histórico" ou "contexto da conversa"). Se estiver em 0, 1 ou desligada, é essa a causa. Aumentar para pelo menos 10-15 mensagens.
-2. **Sessão por contato** — confirmar que a memória/sessão é por número de WhatsApp (cada lead tem seu próprio histórico), e não uma sessão global compartilhada ou que reseta a cada mensagem.
-3. **Limite de uso da OpenAI** — diferente do Gemini free que era usado antes, GPT-4.1 mini é pago desde a primeira mensagem, então não deve estourar cota gratuita. Mas cada conta OpenAI tem um limite de requisições/tokens por minuto (rate limit) conforme o tier de uso. Se a Bruna repetir especificamente em horários de muitas mensagens seguidas, verificar erros de rate limit em platform.openai.com → Settings → Limits.
-4. Depois de corrigir o histórico/memória, a regra "CONTINUIDADE DA CONVERSA" deste prompt funciona como uma segunda camada de proteção — mesmo que o histórico venha incompleto, o modelo é instruído a não repetir a mesma pergunta duas vezes.
-5. **Formatação em GPT:** se a Bruna começar a mandar mensagens com bullet points, listas numeradas ou markdown (asteriscos para negrito), reforce a regra de "sem formatação" na conversa com o próprio Facilita Flow/GPT — é uma tendência mais comum em modelos GPT do que era no Gemini.
