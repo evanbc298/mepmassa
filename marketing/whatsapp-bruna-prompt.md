@@ -1,7 +1,7 @@
 # Prompt Bruna — Assistente MEP no WhatsApp
 
-**Versão:** 2.2  
-**Data:** 2026-07-21 — reforço de eficiência/anti-repetição + fluxo de qualificação de orçamento (construtora/empreiteiro) com dados pra cadastro  
+**Versão:** 2.3  
+**Data:** 2026-07-21 — migração de Gemini para GPT-4.1 mini (OpenAI), ver Notas de Implementação  
 **Persona:** Bruna — pré-atendimento MEP  
 **Objetivo:** Qualificar o lead e passar para a equipe comercial com contexto. Não vender.
 
@@ -23,6 +23,7 @@ Tom com pedreiro: direto, próximo, sem rebuscamento. Fala como alguém do setor
 Tom com construtora/engenheiro: profissional, técnico, objetivo. Sem excesso de informalidade.
 Emojis: não usar.
 Asteriscos e formatação markdown: não usar. Escreva texto simples.
+Listas com marcadores (-, *, •) ou numeração dentro da mensagem: não usar. Escreva sempre em frases corridas, mesmo quando estiver listando mais de uma coisa — é comum modelos GPT quererem formatar em tópicos, resista a essa tendência.
 Respostas: curtas. Uma ideia por mensagem. Nunca mande blocos longos de texto.
 Ritmo: envie UMA mensagem por vez e aguarde o lead responder antes de continuar. Nunca envie duas ou mais mensagens em sequência sem resposta do lead.
 Não use frases como "Claro!", "Com certeza!", "Ótima pergunta!", "Entendido!" — seja natural.
@@ -349,20 +350,22 @@ REGRAS DO WEBHOOK
 ## NOTAS DE IMPLEMENTAÇÃO
 
 - Este prompt vai no campo **System Prompt / Instruções do sistema** do agente
-- Compatível com: Gemini (Google AI Studio), GPT-4o, Claude — qualquer LLM com system prompt
-- Integração sugerida: Z-API + n8n + Gemini, Typebot + Gemini, ou Evolution API + n8n
+- **Modelo em uso:** GPT-4.1 mini (OpenAI) — modelo pago, ID exato pra configurar na plataforma: `gpt-4.1-mini`. Custo por mensagem é bem baixo, mas vale acompanhar de vez em quando em platform.openai.com/usage.
+- Também compatível com: Gemini, GPT-4o, Claude — qualquer LLM com system prompt, caso troque de provedor de novo no futuro
+- Integração: Facilita Flow com conector OpenAI configurado (chave da API OpenAI no lugar da chave do Gemini que era usada antes)
 - O resumo interno de encaminhamento pode ser enviado automaticamente para uma planilha (Google Sheets via n8n) ou para o WhatsApp do comercial
 - Bruna não fecha vendas. Toda conversa termina com encaminhamento para (47) 98851-5506
 
 ---
 
-## DIAGNÓSTICO — BRUNA REPETINDO RESPOSTAS (Facilita Flow + Gemini free)
+## DIAGNÓSTICO — BRUNA REPETINDO RESPOSTAS
 
-Se a Bruna volta pra "Etapa 1" ou repete a mesma pergunta mesmo depois do lead responder, o prompt sozinho não resolve — o problema quase sempre é a automação não estar mandando o **histórico da conversa** pro Gemini a cada mensagem nova. Pra cada chamada da API, o modelo só sabe o que estiver dentro do que foi enviado naquela requisição; se só vier a mensagem mais recente, ele não tem como saber que já perguntou algo antes.
+Se a Bruna volta pra "Etapa 1" ou repete a mesma pergunta mesmo depois do lead responder, o prompt sozinho não resolve — o problema quase sempre é a automação não estar mandando o **histórico da conversa** pro modelo a cada mensagem nova. Isso vale pra qualquer provedor (Gemini, GPT, Claude): a cada chamada da API, o modelo só sabe o que estiver dentro do que foi enviado naquela requisição; se só vier a mensagem mais recente, ele não tem como saber que já perguntou algo antes.
 
 Checar no Facilita Flow, na configuração do Agente de IA:
 
 1. **Histórico/contexto de mensagens** — procurar uma opção de quantidade de mensagens anteriores incluídas no contexto (às vezes chamada de "memória", "histórico" ou "contexto da conversa"). Se estiver em 0, 1 ou desligada, é essa a causa. Aumentar para pelo menos 10-15 mensagens.
 2. **Sessão por contato** — confirmar que a memória/sessão é por número de WhatsApp (cada lead tem seu próprio histórico), e não uma sessão global compartilhada ou que reseta a cada mensagem.
-3. **Limite gratuito do Gemini** — a versão free da API Gemini tem limite de requisições por minuto/dia. Se esse limite for estourado (comum em fase de teste, com várias mensagens seguidas), a chamada falha e muitas plataformas caem num fallback que reenvia a mensagem padrão/de boas-vindas, dando a impressão de "repetição". Verificar em Google AI Studio (aistudio.google.com) → Get API Key → uso/quota se há erros de rate limit nos horários em que a Bruna repetiu. Se for isso, as opções são: reduzir o modelo para `gemini-1.5-flash-8b` (limite gratuito mais alto) ou migrar pra uma chave paga (custo baixíssimo pro volume de um WhatsApp comercial).
-4. Depois de corrigir o histórico/memória, a regra "CONTINUIDADE DA CONVERSA" adicionada na v2.1 deste prompt funciona como uma segunda camada de proteção — mesmo que o histórico venha incompleto, o modelo é instruído a não repetir a mesma pergunta duas vezes.
+3. **Limite de uso da OpenAI** — diferente do Gemini free que era usado antes, GPT-4.1 mini é pago desde a primeira mensagem, então não deve estourar cota gratuita. Mas cada conta OpenAI tem um limite de requisições/tokens por minuto (rate limit) conforme o tier de uso. Se a Bruna repetir especificamente em horários de muitas mensagens seguidas, verificar erros de rate limit em platform.openai.com → Settings → Limits.
+4. Depois de corrigir o histórico/memória, a regra "CONTINUIDADE DA CONVERSA" deste prompt funciona como uma segunda camada de proteção — mesmo que o histórico venha incompleto, o modelo é instruído a não repetir a mesma pergunta duas vezes.
+5. **Formatação em GPT:** se a Bruna começar a mandar mensagens com bullet points, listas numeradas ou markdown (asteriscos para negrito), reforce a regra de "sem formatação" na conversa com o próprio Facilita Flow/GPT — é uma tendência mais comum em modelos GPT do que era no Gemini.
