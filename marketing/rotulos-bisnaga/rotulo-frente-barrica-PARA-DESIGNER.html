@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>MEP Barrica 25kg — Rótulo Frente Único (830x280mm)</title>
+<title>MEP Barrica — Rótulo Frente PARA DESIGNER (inserir QR code) — 830x280mm</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -19,7 +19,6 @@ body { background:#ddd; font-family:'Barlow',sans-serif; }
   display:flex; align-items:center;
 }
 
-/* BRAND BLOCK — esquerda, limpo, sem dados de produto (isso fica só na etiqueta) */
 .brand {
   flex:1; height:100%;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6mm;
@@ -44,7 +43,6 @@ body { background:#ddd; font-family:'Barlow',sans-serif; }
   color:rgba(255,255,255,.75); letter-spacing:.08em; margin-top:1mm;
 }
 
-/* RODAPÉ LEGAL — fabricante / distribuidor */
 .legal-strip {
   position:absolute; left:0; right:0; bottom:0;
   padding:3mm 12mm;
@@ -58,10 +56,8 @@ body { background:#ddd; font-family:'Barlow',sans-serif; }
 }
 .legal-col strong { color:rgba(255,255,255,.65); font-weight:700; }
 
-/* DIVISOR */
 .divider { width:0.4mm; height:180mm; background:rgba(255,255,255,.14); flex-shrink:0; }
 
-/* QR ZONE — direita */
 .qr-zone {
   width:260mm; height:100%; flex-shrink:0;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5mm;
@@ -73,11 +69,20 @@ body { background:#ddd; font-family:'Barlow',sans-serif; }
 }
 .qr-cta em { color:#F28C28; font-style:normal; }
 .qr-arrow { width:26mm; height:auto; margin:-2mm 0; }
-.qr-box {
-  background:#fff; border-radius:3mm; padding:6mm;
+
+/* PLACEHOLDER — designer troca por QR code real (arquivo qrcode-mep.png anexo) */
+.qr-placeholder {
+  width:70mm; height:70mm;
+  border:1mm dashed rgba(255,255,255,.5);
+  border-radius:3mm;
   display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:2mm;
 }
-.qr-box img { width:58mm; height:58mm; display:block; }
+.qr-placeholder-txt {
+  font-family:'Barlow',sans-serif; font-weight:700; font-size:4mm;
+  color:rgba(255,255,255,.6); text-align:center; text-transform:uppercase; letter-spacing:.06em; line-height:1.4;
+  max-width:50mm;
+}
 .qr-foot {
   font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:5mm;
   color:rgba(255,255,255,.7); letter-spacing:.08em; margin-top:1mm;
@@ -115,7 +120,9 @@ body { background:#ddd; font-family:'Barlow',sans-serif; }
       <path d="M8 8 C 8 45, 40 55, 88 52" stroke="#F28C28" stroke-width="5" stroke-linecap="round"/>
       <path d="M72 40 L90 52 L74 62" stroke="#F28C28" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <div class="qr-box"><img src="qrcode-mep.png" alt="QR code mep.ind.br"></div>
+    <div class="qr-placeholder">
+      <div class="qr-placeholder-txt">Inserir QR code aqui<br>(arquivo em anexo: qrcode-mep.png)</div>
+    </div>
     <div class="qr-foot">mep.ind.br</div>
   </div>
 
