@@ -220,7 +220,7 @@ BASE DE CONHECIMENTO COMPLETA
 
 EMPRESA
 - MEP Indústria e Comércio Ltda
-- CNPJ: 73.717.119/0001-84
+- CNPJ: 62.205.954/0001-98
 - Localização: Balneário Camboriú, SC
 - Regiões atendidas: Santa Catarina, Paraná, São Paulo
 - WhatsApp comercial: (47) 98851-5506
