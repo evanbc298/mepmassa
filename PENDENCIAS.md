@@ -4,6 +4,24 @@ Lista de itens em aberto. Marcar como resolvido e apagar a linha conforme for co
 
 ---
 
+## 🔴 Orçamento Golden Beach — pronto, falta enviar
+
+`marketing/orcamentos/golden-beach-2026-07-21.pdf` — MEP-2026-009, 130 barricas MEP 20, preço CNPJ R$180 aplicado, total R$23.400,00. Documento pronto, ainda não confirmado envio ao cliente (VSK Golden Beach SPE Ltda).
+
+---
+
+## 🔴 Prompt da Bruna — recolar versão atualizada no Facilita Flow
+
+Prompt corrigido em 21/07 (removida estimativa automática de baldes que ela fazia sozinha — regra agora é só coletar dados, nunca calcular preço/quantidade). Se o prompt já estava colado no Facilita Flow antes de 21/07, precisa recolar `marketing/bruna-prompt-PRONTO-PRA-COLAR.txt` atualizado.
+
+---
+
+## 🟡 Carrossel "Ecossistema 4 produtos" — pronto, aguardando aprovação pra postar
+
+6 slides em `marketing/conteudo/carrossel-ecossistema-4-produtos-2026-07-21/instagram/` + legenda em `legenda.md`. Falta só aprovar e publicar.
+
+---
+
 ## ✅ RESOLVIDO — Renumeração MEP 30 ↔ MEP 40, corrigido em 21/07
 
 Confirmado em 20/07 via `manual_tecnico_mep_v4.pdf`: **MEP 30 = Encunhamento Inteligente** (24kg, bisnaga, topo da parede) e **MEP 40 = Reboco Fino Tecnológico** (30kg, desempenadeira, acabamento).
