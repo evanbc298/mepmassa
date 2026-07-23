@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Banners Nuvemshop — MEP</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#ccc; padding:30px; display:flex; flex-direction:column; gap:30px; align-items:center; font-family:'Barlow',sans-serif; }
+
+.eyebrow {
+  font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.32em; color:#F28C28;
+  margin-bottom:14px;
+}
+.orange-rule { width:48px; height:3px; background:#F28C28; margin-bottom:16px; }
+
+/* ══ BANNER 1 — HOME HERO 1920x600 ══ */
+.b-home {
+  width:1920px; height:600px; position:relative; overflow:hidden; background:#0f1932;
+}
+.b-home-bg {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(100deg, rgba(15,25,50,0.95) 0%, rgba(15,25,50,0.85) 42%, rgba(15,25,50,0.25) 100%),
+    url('fotos/foto-home.jpg');
+  background-size:cover; background-position:center;
+}
+.b-home-content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:0 100px; max-width:900px;
+}
+.b-home-title {
+  font-family:'Barlow',sans-serif; font-weight:700; font-size:64px; line-height:1.06;
+  letter-spacing:-0.02em; color:#fff; margin-bottom:22px;
+}
+.b-home-sub {
+  font-family:'Barlow',sans-serif; font-weight:400; font-size:22px; line-height:1.55;
+  color:rgba(255,255,255,0.65); max-width:620px; margin-bottom:32px;
+}
+.b-home-cta {
+  display:inline-flex; align-items:center; gap:10px; width:fit-content;
+  background:#F28C28; color:#1A2B4D; font-family:'Barlow Condensed',sans-serif;
+  font-weight:800; font-size:18px; letter-spacing:0.04em; text-transform:uppercase;
+  padding:16px 32px; border-radius:4px;
+}
+
+/* ══ BANNER 2/3 — CATEGORIA 1600x400 ══ */
+.b-cat {
+  width:1600px; height:400px; position:relative; overflow:hidden; background:#0f1932;
+}
+.b-cat-bg {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+}
+.b-cat-content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:0 80px; max-width:760px;
+}
+.b-cat-title {
+  font-family:'Barlow',sans-serif; font-weight:700; font-size:52px; line-height:1;
+  letter-spacing:-0.02em; color:#fff; margin-bottom:16px;
+}
+.b-cat-sub {
+  font-family:'Barlow',sans-serif; font-weight:400; font-size:19px; line-height:1.5;
+  color:rgba(255,255,255,0.65); max-width:520px;
+}
+
+.b-massas-bg {
+  background-image:
+    linear-gradient(100deg, rgba(15,25,50,0.93) 0%, rgba(15,25,50,0.80) 45%, rgba(15,25,50,0.30) 100%),
+    url('fotos/foto-massas.webp');
+}
+
+.b-color-bg { background: linear-gradient(135deg, #1A2B4D 0%, #0f1932 100%); }
+.b-color-product {
+  position:absolute; right:60px; top:50%; transform:translateY(-50%);
+  height:340px; z-index:2;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+}
+
+/* ══ BANNER 4 — PROMOCIONAL 1600x500 ══ */
+.b-promo {
+  width:1600px; height:500px; position:relative; overflow:hidden; background:#0f1932;
+}
+.b-promo::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:6px; background:#F28C28;
+}
+.b-promo-content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:0 60px;
+}
+.b-promo-tag {
+  display:inline-block; background:rgba(242,140,40,0.15); color:#F28C28;
+  font-family:'Barlow',sans-serif; font-weight:700; font-size:13px; text-transform:uppercase;
+  letter-spacing:0.28em; padding:8px 20px; border-radius:20px; margin-bottom:26px;
+  border:1px solid rgba(242,140,40,0.35);
+}
+.b-promo-title {
+  font-family:'Barlow',sans-serif; font-weight:700; font-size:56px; line-height:1.05;
+  letter-spacing:-0.02em; color:#fff; margin-bottom:20px; max-width:900px;
+}
+.b-promo-title span { color:#F28C28; }
+.b-promo-sub {
+  font-family:'Barlow',sans-serif; font-weight:400; font-size:20px; line-height:1.5;
+  color:rgba(255,255,255,0.6); max-width:640px;
+}
+.b-promo-deco {
+  position:absolute; right:-60px; bottom:-60px; opacity:0.05; pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<!-- BANNER 1 — HOME -->
+<div class="b-home">
+  <div class="b-home-bg"></div>
+  <div class="b-home-content">
+    <div class="eyebrow">Argamassa Polimérica &amp; Tintas</div>
+    <div class="b-home-title">Direto do fabricante<br>pra sua obra</div>
+    <div class="b-home-sub">Sistema MEP Massas — pronto pra uso, sem betoneira — e a linha completa MEP COLOR de tintas acrílicas. Sem intermediário.</div>
+    <div class="b-home-cta">Conheça os produtos</div>
+  </div>
+</div>
+
+<!-- BANNER 2 — CATEGORIA MEP MASSAS -->
+<div class="b-cat">
+  <div class="b-cat-bg b-massas-bg"></div>
+  <div class="b-cat-content">
+    <div class="eyebrow">Categoria</div>
+    <div class="b-cat-title">MEP Massas</div>
+    <div class="b-cat-sub">Argamassa polimérica pronta pra uso — nivelamento, assentamento, encunhamento e reboco fino em um único sistema.</div>
+  </div>
+</div>
+
+<!-- BANNER 3 — CATEGORIA MEP COLOR -->
+<div class="b-cat">
+  <div class="b-cat-bg b-color-bg"></div>
+  <img class="b-color-product" src="fotos/produto-color.webp" alt="MEP COLOR">
+  <div class="b-cat-content">
+    <div class="eyebrow">Categoria</div>
+    <div class="b-cat-title">MEP COLOR</div>
+    <div class="b-cat-sub">Tintas acrílicas para interior e exterior — linha Premium, Econômica, Pisos e Quadras, Esmaltes e mais.</div>
+  </div>
+</div>
+
+<!-- BANNER 4 — PROMOCIONAL CNPJ -->
+<div class="b-promo">
+  <svg class="b-promo-deco" viewBox="0 0 300 300" width="340" height="340" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="150" cy="150" r="140" stroke="white" stroke-width="1"/>
+    <circle cx="150" cy="150" r="100" stroke="white" stroke-width="1"/>
+    <circle cx="150" cy="150" r="60" stroke="white" stroke-width="1"/>
+  </svg>
+  <div class="b-promo-content">
+    <div class="b-promo-tag">Para empresas</div>
+    <div class="b-promo-title">Condição especial para <span>CNPJ</span></div>
+    <div class="b-promo-sub">Construtoras, empreiteiros e revendas compram com preço diferenciado. Fale com nosso time comercial e peça sua condição.</div>
+  </div>
+</div>
+
+</body>
+</html>
