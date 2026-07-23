@@ -1,12 +1,30 @@
-# Pendências abertas — atualizado 2026-07-21
+# Pendências abertas — atualizado 2026-07-22
 
 Lista de itens em aberto. Marcar como resolvido e apagar a linha conforme for corrigindo.
 
 ---
 
-## 🔴 Orçamento Golden Beach — pronto, falta enviar
+## 🔴 Loja online — migrando de Nuvemshop pra WooCommerce (EM ANDAMENTO)
 
-`marketing/orcamentos/golden-beach-2026-07-21.pdf` — MEP-2026-009, 130 barricas MEP 20, preço CNPJ R$180 aplicado, total R$23.400,00. Documento pronto, ainda não confirmado envio ao cliente (VSK Golden Beach SPE Ltda).
+Decisão tomada em 22/07: sair da Nuvemshop (temas todos voltados pra moda, não combina com o perfil industrial da MEP; edição de CSS avançado bloqueada no plano atual) e migrar pra **WooCommerce** (WordPress), onde dá pra construir um tema 100% customizado.
+
+**Como vai funcionar:** eu construo o tema completo (produto, categoria, carrinho); o usuário só cadastra produto/preço/foto pelo painel depois de pronto.
+
+**Próximos passos, nessa ordem:**
+1. Usuário assina hospedagem — plano **Rapid Direct Basic (R$14,90/mês)** já escolhido, confirmar que o instalador de scripts inclui WordPress antes de assinar
+2. Instalar WordPress + plugin WooCommerce (gratuito) na hospedagem
+3. Apontar domínio `loja.mep.ind.br` pra hospedagem
+4. Aí sim: eu construo o tema customizado da MEP
+5. Migrar os 12 produtos/18 SKUs já prontos em `nuvemshop-import.csv` pro WooCommerce
+6. Frete: configurar plugin Melhor Envio ou Frenet (integra Correios + transportadoras — importante pros baldes de 24-30kg, que passam do limite confortável dos Correios)
+
+**Observação:** os banners feitos em `marketing/nuvemshop-banners/` foram pensados pra Nuvemshop — podem não servir depois da migração (tamanhos diferentes de tema pra tema). Não descartar ainda, mas não são a prioridade agora.
+
+---
+
+## 🔴 Orçamento Golden Beach — enviado
+
+`marketing/orcamentos/golden-beach-2026-07-21.pdf` — MEP-2026-009, 130 barricas MEP 20, preço CNPJ R$180 aplicado, total R$23.400,00, contato Liliane. Enviado ao cliente em 22/07. Aguardando resposta dela.
 
 ---
 
@@ -19,6 +37,19 @@ Prompt corrigido em 21/07 (removida estimativa automática de baldes que ela faz
 ## 🟡 Carrossel "Ecossistema 4 produtos" — pronto, aguardando aprovação pra postar
 
 6 slides em `marketing/conteudo/carrossel-ecossistema-4-produtos-2026-07-21/instagram/` + legenda em `legenda.md`. Falta só aprovar e publicar.
+
+---
+
+## 🟡 Rótulos — correções finais pendentes de retorno do GPT
+
+Em 22/07: CNPJ da MEP corrigido em todo o projeto (era 73.717.119/0001-84, correto é **62.205.954/0001-98**), fabricante confirmado como **PrudenCollor Ltda** (CNPJ 52.702.204/0001-78), tagline corrigida de "Massa de Edificação Profissional" pra **"Método de Edificação Profissional"** em 9 arquivos.
+
+O cliente aprovou versões do rótulo verso e frente geradas no GPT (com ícones que meus arquivos HTML não tinham) — não são os mesmos arquivos que tenho aqui. Prompts de correção já enviados ao usuário pra ele rodar no GPT e me devolver:
+- Rótulo verso: 3 correções de texto (remover "ajuste em 5 segundos" do MEP10, adicionar "obras acima de 2 pavimentos" no MEP20, opção bisnaga/espátula no MEP30) — já apliquei também no meu HTML (`rotulo-verso-balde.html`), mas o "oficial" é a versão do GPT
+- Rótulo frente: correção da tagline — prompt enviado, aguardando resultado
+- QR code personalizado com logo no centro pronto (`marketing/rotulos-bisnaga/qrcode-mep-personalizado.png`) — **ainda não testado fisicamente com celular**, fazer esse teste antes de imprimir
+
+**Arquivo temporário travado:** `marketing/rotulos-bisnaga/ROTULO-FRENTE-BARRICA-UNICO-830x280mm-tmp.pdf` — está esperando o usuário fechar o PDF antigo no Acrobat pra eu finalizar a substituição (arquivo final vs nome definitivo).
 
 ---
 
