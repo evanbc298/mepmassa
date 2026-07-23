@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>MEP Massas — Verso do Balde/Barrica 25kg (346x266mm)</title>
+<title>MEP Massas — Verso do Balde/Barrica (346x266mm)</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 @page { size: 346mm 266mm; margin: 0; }
@@ -20,16 +20,15 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
 /* TOPO */
 .top-band {
   background:#1A2B4D;
-  padding:5mm 10mm;
+  padding:6mm 10mm;
   display:flex; align-items:center; justify-content:space-between;
   flex-shrink:0;
 }
-.logo-area { display:flex; align-items:center; gap:8px; }
-.logo-mep { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:900; color:#fff; }
-.logo-sub { font-size:9px; font-weight:700; color:rgba(255,255,255,.5); letter-spacing:4px; margin-top:2px; }
-.top-produto { font-size:14px; font-weight:800; color:#fff; letter-spacing:1px; text-transform:uppercase; text-align:center; }
-.top-vol { font-size:20px; font-weight:900; color:#fff; text-align:right; font-family:'Barlow Condensed',sans-serif; }
-.top-vol span { font-size:11px; font-weight:700; color:#F28C28; letter-spacing:2px; display:block; font-family:'Barlow',sans-serif; }
+.logo-area { display:flex; align-items:center; gap:10px; }
+.logo-mep { font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:900; color:#fff; line-height:1; }
+.logo-sub { font-size:10px; font-weight:700; color:rgba(255,255,255,.5); letter-spacing:4px; margin-top:2px; }
+.top-produto { font-size:19px; font-weight:900; color:#fff; letter-spacing:1px; text-transform:uppercase; text-align:center; font-family:'Barlow Condensed',sans-serif; }
+.top-vol { visibility:hidden; }
 
 .stripe-orange { height:3mm; background:#F28C28; flex-shrink:0; }
 
@@ -55,79 +54,86 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
   overflow:hidden;
 }
 .col {
-  padding:4mm 3.6mm 3mm;
+  padding:5mm 4.5mm;
   border-right:1px solid #e8e8e8;
-  display:flex; flex-direction:column; gap:2mm;
+  display:flex; flex-direction:column; gap:3.5mm;
 }
 .col:last-child { border-right:none; }
 
 .col-tag {
   display:inline-block;
   background:#F28C28; color:#1A2B4D;
-  font-family:'Barlow Condensed',sans-serif; font-size:7.5pt; font-weight:800;
+  font-family:'Barlow Condensed',sans-serif; font-size:10pt; font-weight:800;
   letter-spacing:.8px; text-transform:uppercase;
-  padding:0.8mm 2mm; border-radius:2px; width:fit-content;
+  padding:1.2mm 3mm; border-radius:2px; width:fit-content;
 }
 .col-title {
-  font-family:'Barlow Condensed',sans-serif; font-size:16pt; font-weight:900; color:#1A2B4D;
-  letter-spacing:-0.5px; line-height:1;
+  font-family:'Barlow Condensed',sans-serif; font-size:34pt; font-weight:900; color:#1A2B4D;
+  letter-spacing:-0.5px; line-height:0.95; margin-top:1mm;
 }
-.col-etapa { font-size:6.6pt; font-weight:700; color:#8a8f99; text-transform:uppercase; letter-spacing:.6px; margin-top:-1mm; }
-
-.sub-title {
-  font-size:6.6pt; font-weight:800; color:#1A2B4D;
-  text-transform:uppercase; letter-spacing:.8px;
-  border-bottom:1.5px solid #F28C28; padding-bottom:.8mm; margin-top:.5mm;
+.col-etapa {
+  font-size:10.5pt; font-weight:700; color:#F28C28; text-transform:uppercase; letter-spacing:.4px;
+  padding-bottom:2.5mm; border-bottom:1px solid #e0e0e0;
 }
 
-.passo { display:flex; gap:2mm; align-items:flex-start; }
+.sec { display:flex; flex-direction:column; gap:1.8mm; }
+.sec-head { display:flex; align-items:center; gap:2mm; }
+.sec-icon { width:20px; height:20px; flex-shrink:0; color:#F28C28; }
+.sec-title {
+  font-size:11pt; font-weight:800; color:#1A2B4D;
+}
+.sec-body { font-size:9.3pt; font-weight:500; color:#333; line-height:1.4; padding-left:28px; }
+
+.passo { display:flex; gap:2.2mm; align-items:flex-start; padding-left:28px; }
 .passo-num {
-  background:#1A2B4D; color:#fff; font-size:6.6pt; font-weight:800;
-  width:11px; height:11px; border-radius:50%;
+  background:#1A2B4D; color:#fff; font-size:9pt; font-weight:800;
+  width:19px; height:19px; border-radius:50%;
   display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;
 }
-.passo-txt { font-size:6.6pt; font-weight:500; color:#333; line-height:1.3; }
+.passo-txt { font-size:9.3pt; font-weight:500; color:#333; line-height:1.35; }
 .passo-txt strong { font-weight:700; color:#1A2B4D; }
 
-.mini-table { width:100%; border-collapse:collapse; margin-top:0.5mm; }
-.mini-table tr { border-bottom:1px solid #f0f0f0; }
-.mini-table tr:last-child { border-bottom:none; }
-.mini-table td { font-size:6.6pt; padding:1.1mm 0; vertical-align:top; line-height:1.25; }
-.mini-table td:first-child { font-weight:700; color:#1A2B4D; width:38%; padding-right:1mm; }
-.mini-table td:last-child { font-weight:500; color:#444; }
-
-.aviso-box {
-  background:#f5f6f8; border-left:2.5px solid #F28C28;
-  padding:1.4mm 2mm; border-radius:0 2px 2px 0; margin-top:auto;
-}
-.aviso-txt { font-size:6.2pt; color:#555; line-height:1.35; font-weight:500; }
-.aviso-txt strong { color:#1A2B4D; }
+.mini-table { width:100%; border-collapse:collapse; padding-left:28px; }
+.mini-table td { font-size:9.3pt; padding:0; vertical-align:top; line-height:1.35; }
+.mini-table td:first-child { width:28px; }
+.mini-table td:last-child { font-weight:500; color:#333; }
 
 .stripe-thin { height:3mm; background:#1A2B4D; flex-shrink:0; }
 
 /* RODAPÉ */
 .rodape {
   background:#1A2B4D;
-  padding:3mm 10mm;
+  padding:5mm 10mm;
   display:flex; align-items:center; justify-content:space-between;
   flex-shrink:0;
+  gap:6mm;
 }
-.rod-info { font-size:7.5pt; color:rgba(255,255,255,.65); line-height:1.6; }
+.rod-left { display:flex; flex-direction:column; gap:2.5mm; }
+.rod-brand { display:flex; align-items:center; gap:3mm; }
+.rod-info { font-size:8.5pt; color:rgba(255,255,255,.65); line-height:1.55; }
 .rod-info strong { color:#fff; font-weight:700; }
-.rod-sac { text-align:center; }
+.rod-safety { display:flex; align-items:flex-start; gap:2.5mm; max-width:150mm; }
+.rod-safety-icon { width:16px; height:16px; flex-shrink:0; color:#F28C28; margin-top:1px; }
+.rod-safety-txt { font-size:6.8pt; color:rgba(255,255,255,.5); line-height:1.4; text-transform:uppercase; letter-spacing:.3px; }
+
+.rod-sac { text-align:center; flex-shrink:0; }
+.rod-sac-icon {
+  width:11mm; height:11mm; border-radius:50%; border:1.5px solid rgba(255,255,255,.3);
+  display:flex; align-items:center; justify-content:center; margin:0 auto 1.5mm;
+  color:#fff;
+}
 .rod-sac-label { font-size:7pt; color:rgba(255,255,255,.5); letter-spacing:1px; text-transform:uppercase; }
-.rod-sac-tel { font-size:13pt; font-weight:900; color:#F28C28; font-family:'Barlow Condensed',sans-serif; }
-.rod-right { display:flex; align-items:center; gap:5mm; }
+.rod-sac-tel { font-size:14pt; font-weight:900; color:#F28C28; font-family:'Barlow Condensed',sans-serif; }
+
+.rod-right { display:flex; align-items:center; gap:5mm; flex-shrink:0; }
 .rod-badge {
   border:1.5px solid rgba(255,255,255,.3); border-radius:50%;
-  width:20mm; height:20mm;
+  width:22mm; height:22mm;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; padding:1.5mm;
+  text-align:center; padding:1.5mm; gap:0.8mm;
 }
-.rod-badge-txt { font-size:5.8pt; font-weight:700; color:rgba(255,255,255,.8); line-height:1.25; text-transform:uppercase; letter-spacing:.4px; }
-.rod-peso { text-align:center; }
-.rod-peso-val { font-family:'Barlow Condensed',sans-serif; font-size:16pt; font-weight:900; color:#fff; line-height:1; }
-.rod-peso-lbl { font-size:6.5pt; color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:1px; margin-top:0.5mm; }
+.rod-badge-icon { width:16px; height:16px; color:#F28C28; }
+.rod-badge-txt { font-size:6.2pt; font-weight:700; color:rgba(255,255,255,.85); line-height:1.25; text-transform:uppercase; letter-spacing:.4px; }
 </style>
 </head>
 <body>
@@ -136,7 +142,7 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
   <!-- TOPO -->
   <div class="top-band">
     <div class="logo-area">
-      <svg viewBox="7 12 186 255" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="7 12 186 255" width="38" height="38" xmlns="http://www.w3.org/2000/svg">
         <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
           <path fill="#fff" d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z"/>
           <path fill="#F28C28" d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z"/>
@@ -149,9 +155,9 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
     </div>
     <div class="top-produto">
       Sistema MEP 10 · 20 · 30 · 40<br>
-      <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:0;text-transform:none">Argamassa Polimérica — Ficha Técnica Completa</span>
+      <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:0;text-transform:none;font-family:'Barlow',sans-serif;">Argamassa Polimérica — Ficha Técnica Completa</span>
     </div>
-    <div class="top-vol" style="visibility:hidden">25 KG <span>PESO LÍQUIDO</span></div>
+    <div class="top-vol">.</div>
   </div>
 
   <div class="stripe-orange"></div>
@@ -175,20 +181,39 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       <div class="col-title">MEP 10</div>
       <div class="col-etapa">Nivelamento · Primeira Fiada</div>
 
-      <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Nivelamento da primeira fiada sobre baldrame, viga de concreto ou laje.</div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Nivelamento da primeira fiada sobre baldrame, viga de concreto ou laje.</div>
+      </div>
 
-      <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Base seca, limpa e escovada — sem pó, desmoldante ou óleo. Não umedecer.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Bisnaga: cordão robusto, alinhamento imediato dos blocos das extremidades.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Nivelar, esticar linha guia e completar a fileira.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Base seca, limpa e escovada — sem pó, desmoldante ou óleo. Não umedecer.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Bisnaga: cordão robusto, alinhamento imediato dos blocos das extremidades.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Nivelar, esticar linha guia e completar a fileira.</div></div>
+      </div>
 
-      <table class="mini-table">
-        <tr><td>Cuidados</td><td>Desnível &gt;1,5cm: regularizar antes com massa cimentícia. Ajuste em até 5 segundos.</td></tr>
-        <tr><td>Rendimento</td><td>Variável, conforme base.</td></tr>
-      </table>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Desnível &gt;1,5cm: regularizar antes com massa cimentícia.</div>
+      </div>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Próxima etapa:</strong> MEP 20, na elevação das fiadas.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="14" width="3.6" height="7"/><rect x="10.2" y="9" width="3.6" height="12"/><rect x="16.4" y="3" width="3.6" height="18"/></svg>
+          <div class="sec-title">Rendimento</div>
+        </div>
+        <div class="sec-body">Variável, conforme base.</div>
+      </div>
     </div>
 
     <!-- COL 2: MEP 20 -->
@@ -197,20 +222,39 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       <div class="col-title">MEP 20</div>
       <div class="col-etapa">Elevação · Todas as Fiadas</div>
 
-      <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Empilhamento dos blocos — mais velocidade e alívio de peso estrutural.</div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Empilhamento dos blocos — mais velocidade e alívio de peso estrutural.</div>
+      </div>
 
-      <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Blocos limpos, sem pó, antes de aplicar.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2 cordões horizontais contínuos, ~1cm, na face do bloco. Sem juntas verticais.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Pressionar: cordões devem achatar e cobrir no mínimo 40% da junta.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Blocos limpos, sem pó, antes de aplicar.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2 cordões horizontais contínuos, ~1cm, na face do bloco. Sem juntas verticais.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Pressionar: cordões devem achatar e cobrir no mínimo 40% da junta.</div></div>
+      </div>
 
-      <table class="mini-table">
-        <tr><td>Cuidados</td><td>A cada 2 fiadas: tela metálica no pilar (NBR 8545) + selamento de interface.</td></tr>
-        <tr><td>Rendimento</td><td>1,5 a 2,0 kg/m².</td></tr>
-      </table>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">A cada 2 fiadas: tela metálica no pilar (NBR 8545) + selamento de interface — indicado para obras acima de 2 pavimentos.</div>
+      </div>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Próxima etapa:</strong> MEP 30, no topo da parede.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="14" width="3.6" height="7"/><rect x="10.2" y="9" width="3.6" height="12"/><rect x="16.4" y="3" width="3.6" height="18"/></svg>
+          <div class="sec-title">Rendimento</div>
+        </div>
+        <div class="sec-body">1,5 a 2,0 kg/m².</div>
+      </div>
     </div>
 
     <!-- COL 3: MEP 30 -->
@@ -219,20 +263,39 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       <div class="col-title">MEP 30</div>
       <div class="col-etapa">Encunhamento Inteligente</div>
 
-      <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Amortecedor polimérico no topo da parede — absorve deflexões da estrutura superior.</div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Amortecedor polimérico no topo da parede — absorve deflexões da estrutura superior.</div>
+      </div>
 
-      <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Folga planejada: 1,5cm a 3cm entre a última fiada e a viga/laje.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Preenchimento homogêneo e contínuo do espaço vazio.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Fechamento de bordas com espátula nas duas faces — sem vazios.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Folga planejada: 1,5cm a 3cm entre a última fiada e a viga/laje.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Preenchimento homogêneo e contínuo do espaço vazio.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Fechamento de bordas direto na bisnaga ou com espátula, conforme preferência — sem vazios.</div></div>
+      </div>
 
-      <table class="mini-table">
-        <tr><td>Cuidados</td><td>Aguardar no mínimo 72h após a elevação da parede.</td></tr>
-        <tr><td>Rendimento</td><td>0,5 a 1,0 kg/m linear.</td></tr>
-      </table>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Aguardar no mínimo 72h após a elevação da parede.</div>
+      </div>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Próxima etapa:</strong> MEP 40, acabamento final.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="14" width="3.6" height="7"/><rect x="10.2" y="9" width="3.6" height="12"/><rect x="16.4" y="3" width="3.6" height="18"/></svg>
+          <div class="sec-title">Rendimento</div>
+        </div>
+        <div class="sec-body">0,5 a 1,0 kg/m linear.</div>
+      </div>
     </div>
 
     <!-- COL 4: MEP 40 -->
@@ -241,20 +304,39 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
       <div class="col-title">MEP 40</div>
       <div class="col-etapa">Reboco Fino Tecnológico</div>
 
-      <div class="sub-title">Indicação</div>
-      <div class="passo-txt">Acabamento final, 3 demãos (5mm) — substitui chapisco, emboço e massa corrida.</div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Acabamento final, 3 demãos (5mm) — substitui chapisco, emboço e massa corrida.</div>
+      </div>
 
-      <div class="sub-title">Aplicação</div>
-      <div class="passo"><div class="passo-num">1</div><div class="passo-txt">1ª demão (Cata-Foco) — pontual, regulariza depressões.</div></div>
-      <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2ª demão (Corpo, 2mm) — uniforme, desempenadeira de aço lisa.</div></div>
-      <div class="passo"><div class="passo-num">3</div><div class="passo-txt">3ª demão (Acabamento, 1-2mm) — desempenadeira de esponja/feltro após perda do brilho úmido.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">1ª demão (Cata-Foco) — pontual, regulariza depressões.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">2ª demão (Corpo, 2mm) — uniforme, desempenadeira de aço lisa.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">3ª demão (Acabamento, 1-2mm) — desempenadeira de esponja/feltro após perda do brilho úmido.</div></div>
+      </div>
 
-      <table class="mini-table">
-        <tr><td>Cuidados</td><td>Demão espessa ou vento forte causam microfissuras — respeitar as 3 demãos.</td></tr>
-        <tr><td>Rendimento</td><td>Conforme demãos, por m².</td></tr>
-      </table>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Demão espessa ou vento forte causam microfissuras — respeitar as 3 demãos.</div>
+      </div>
 
-      <div class="aviso-box"><div class="aviso-txt"><strong>Resultado:</strong> acabamento branco, pronto para pintura.</div></div>
+      <div class="sec">
+        <div class="sec-head">
+          <svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="14" width="3.6" height="7"/><rect x="10.2" y="9" width="3.6" height="12"/><rect x="16.4" y="3" width="3.6" height="18"/></svg>
+          <div class="sec-title">Rendimento</div>
+        </div>
+        <div class="sec-body">Conforme demãos, por m². Resultado: acabamento branco, pronto para pintura.</div>
+      </div>
     </div>
 
   </div><!-- /corpo -->
@@ -263,20 +345,42 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
 
   <!-- RODAPÉ -->
   <div class="rodape">
-    <div class="rod-info">
-      <strong>MEP Indústria e Comércio Ltda</strong><br>
-      Balneário Camboriú, SC<br>
-      <strong>mep.ind.br</strong> · Norma ABNT 16590<br>
-      Segurança: use luvas e óculos de proteção. Produto alcalino — evitar contato prolongado com a pele.
+    <div class="rod-left">
+      <div class="rod-brand">
+        <svg viewBox="7 12 186 255" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+          <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+            <path fill="#fff" d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z"/>
+            <path fill="#F28C28" d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z"/>
+          </g>
+        </svg>
+        <div class="rod-info">
+          <strong>MEP Indústria e Comércio Ltda</strong><br>
+          Balneário Camboriú, SC · <strong>mep.ind.br</strong> · Norma ABNT 16590
+        </div>
+      </div>
+      <div class="rod-safety">
+        <svg class="rod-safety-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg>
+        <div class="rod-safety-txt">Use luvas e óculos de proteção, produto alcalino — evitar contato prolongado com a pele.</div>
+      </div>
     </div>
+
     <div class="rod-sac">
+      <div class="rod-sac-icon">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 1 H13 A2 2 0 0 1 15 3 V15 A2 2 0 0 1 13 17 H5 A2 2 0 0 1 3 15 V3 A2 2 0 0 1 5 1Z"/><circle cx="9" cy="14" r="0.8" fill="currentColor"/></svg>
+      </div>
       <div class="rod-sac-label">SAC / WhatsApp</div>
       <div class="rod-sac-tel">(47) 98851-5506</div>
-      <div style="font-size:7pt;color:rgba(255,255,255,.5);margin-top:1mm">ind.mepmassas@gmail.com</div>
     </div>
+
     <div class="rod-right">
-      <div class="rod-badge"><div class="rod-badge-txt">Validade<br>12 meses</div></div>
-      <div class="rod-badge"><div class="rod-badge-txt">Local Seco<br>Coberto</div></div>
+      <div class="rod-badge">
+        <svg class="rod-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="rod-badge-txt">Validade<br>12 meses</div>
+      </div>
+      <div class="rod-badge">
+        <svg class="rod-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        <div class="rod-badge-txt">Local Seco<br>Coberto</div>
+      </div>
     </div>
   </div>
 
