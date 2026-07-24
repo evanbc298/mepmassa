@@ -1248,7 +1248,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div class="produto-info">
           <div class="produto-nome">Massa MEP — Barrica 24 kg</div>
           <div class="produto-desc">Embalagem industrial. Para distribuidores e compras em volume com redução de custo.</div>
-          <a href="#contato" class="produto-cta">Solicitar Orçamento</a>
+          <a href="https://loja.mep.ind.br/checkout/?add-to-cart=20" class="produto-cta">Comprar</a>
         </div>
       </div>
 
@@ -1259,7 +1259,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div class="produto-info">
           <div class="produto-nome">Massa MEP — Barrica 30 kg</div>
           <div class="produto-desc">Maior volume por embalagem. Para grandes canteiros com alto consumo e logística otimizada.</div>
-          <a href="#contato" class="produto-cta">Solicitar Orçamento</a>
+          <a href="https://loja.mep.ind.br/checkout/?add-to-cart=23" class="produto-cta">Comprar</a>
         </div>
       </div>
 
@@ -1270,7 +1270,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div class="produto-info">
           <div class="produto-nome">Saco MEP — 3 kg</div>
           <div class="produto-desc">Ideal para reparos e obras pontuais. Aplique direto. Rende até 2 m².</div>
-          <a href="#contato" class="produto-cta">Solicitar Orçamento</a>
+          <a href="https://loja.mep.ind.br/checkout/?add-to-cart=24" class="produto-cta">Comprar</a>
         </div>
       </div>
 
@@ -1292,7 +1292,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div class="produto-info">
           <div class="produto-nome">Textura Projetada — 20 kg</div>
           <div class="produto-desc">Revestimento decorativo para fachadas, muros e paredes. Granulometria fina, média ou grossa. Interno e externo.</div>
-          <a href="#contato" class="produto-cta">Solicitar Orçamento</a>
+          <a href="https://loja.mep.ind.br/checkout/?add-to-cart=25" class="produto-cta">Comprar</a>
         </div>
       </div>
 
@@ -2592,6 +2592,7 @@ var TINTAS = {
     tag: 'Acrílica Premium',
     nome: 'Tinta Acrílica Premium',
     img: 'bucket-premium.webp',
+    wcSlug: 'tinta-acrilica-premium-mep-color',
     pills: ['Interior','Exterior','Alvenaria'],
     rendimento: 8.3,
     sizes: ['3,6L','18L'],
@@ -2608,6 +2609,7 @@ var TINTAS = {
     tag: 'Látex Econômico',
     nome: 'Tinta Acrílica Econômica',
     img: 'bucket-economica.webp',
+    wcSlug: 'tinta-acrilica-economica-mep-color',
     pills: ['Superfícies Internas','Alvenaria'],
     rendimento: 4.7,
     sizes: ['3,6L','18L'],
@@ -2624,6 +2626,7 @@ var TINTAS = {
     tag: 'Pisos e Quadras',
     nome: 'Tinta para Pisos e Quadras',
     img: 'bucket-pisos.webp',
+    wcSlug: 'tinta-pisos-e-quadras-mep-color',
     pills: ['Calçadas','Quadras Esportivas','Pisos','Cimentados'],
     rendimento: 5.6,
     sizes: ['3,6L','18L'],
@@ -2639,10 +2642,11 @@ var TINTAS = {
     tag: 'Esmalte Base Água',
     nome: 'Esmalte Acrílico',
     img: 'bucket-esmalte.webp',
+    wcSlug: 'esmalte-acrilico-base-agua-mep-color',
     pills: ['Madeiras','Metais','Interior','Exterior'],
     rendimento: 8.3,
-    sizes: ['3,6L','18L'],
-    sizesLitros: [3.6, 18],
+    sizes: ['0,9L','3,6L'],
+    sizesLitros: [0.9, 3.6],
     cores: [
       {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Preto',hex:'#111111'}
     ]
@@ -2683,6 +2687,7 @@ function abrirTinta(id) {
   document.getElementById('tm-area').value = '';
   document.getElementById('tm-result').classList.remove('vis');
   document.getElementById('tm-cor-nome').textContent = 'Selecione uma cor';
+  document.getElementById('tm-buy').href = 'https://loja.mep.ind.br/product/' + t.wcSlug + '/';
   atualizarCTA();
 
   el.classList.add('ativo');
@@ -2901,6 +2906,7 @@ document.addEventListener('keydown', function(e) {
         </div>
 
         <div>
+          <a class="tm-cta" id="tm-buy" href="#" style="background:var(--laranja);margin-bottom:10px;">Comprar Agora</a>
           <a class="tm-cta" id="tm-wa" href="#" target="_blank">Solicitar pelo WhatsApp</a>
           <div class="tm-cta-aviso">Rendimento conforme rótulo do fabricante para 2 demãos em superfície lisa. Pode variar conforme o substrato.</div>
         </div>
