@@ -312,6 +312,8 @@ header { background: var(--branco); border-bottom: 1px solid var(--borda); posit
 .header-actions { display:flex; gap:20px; align-items:center; margin-left:auto; flex-shrink:0; }
 .header-cta { background: var(--laranja); color: var(--branco); padding: 10px 22px; border-radius: 6px; font-size:14px; font-weight:700; transition: opacity .2s; }
 .header-cta:hover { opacity:.88; color:#fff; }
+.header-cta-shop { background: var(--azul); color: var(--branco); padding: 10px 22px; border-radius: 6px; font-size:14px; font-weight:700; transition: opacity .2s; }
+.header-cta-shop:hover { opacity:.88; color:#fff; }
 
 /* STICKY HEADER WRAPPER */
 #site-header { position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0); transition: box-shadow .3s; }
@@ -995,6 +997,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   <div class="header-inner">
     <div class="header-logo"><img src="logo-mep.svg" alt="MEP Indústria"></div>
     <div class="header-actions">
+      <a href="https://loja.mep.ind.br" class="header-cta-shop">Loja Online</a>
       <a href="#calculadora" class="header-cta">Calcular Economia</a>
     </div>
   </div>
@@ -1013,6 +1016,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <a href="#quem-somos" class="nav-item">Quem Somos</a>
     <a href="#contato" class="nav-item">Contato</a>
     <a href="/blog/" class="nav-item">Blog</a>
+    <a href="https://loja.mep.ind.br" class="nav-item color">Loja Online</a>
   </div>
 </nav>
 
