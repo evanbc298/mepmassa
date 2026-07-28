@@ -351,14 +351,6 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .hero-video-bg video { width:100%; height:100%; object-fit:cover; object-position:center center; }
 .hero-video-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(7,16,30,0.15) 0%, rgba(7,16,30,0.20) 30%, rgba(13,27,53,0.75) 62%, #0d1b35 100%); }
 
-/* BARRA DIFERENCIAIS */
-.dif-bar { background: var(--laranja); padding: 0; position: sticky; top: 116px; z-index: 150; }
-.dif-bar-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); }
-.dif-bar-item { padding: 18px 24px; text-align:center; border-right:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; gap:10px; }
-.dif-bar-item:last-child { border-right:none; }
-.dif-bar-item .db-val { font-size:22px; font-weight:900; color:#fff; }
-.dif-bar-item .db-label { font-size:12px; color:rgba(255,255,255,0.8); font-weight:600; }
-
 /* SEÇÃO GENÉRICA */
 .sec { padding: 70px 0; }
 .sec-bg { background:var(--cinza); }
@@ -762,7 +754,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .hero-stats { justify-content:center; flex-wrap:wrap; gap:20px; }
   .hero-visual { display:none; }
   .hero-video-bg { display:none; }
-  .dif-bar-inner { grid-template-columns:repeat(2,1fr); }
   .sec-inner { padding:0 20px; }
   .sec-header .sh-title { font-size:26px; }
   .produtos-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
@@ -810,7 +801,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .hero h1 { font-size:28px; }
   .produtos-grid { grid-template-columns:1fr; }
   .color-products-grid { grid-template-columns:1fr; }
-  .dif-bar-inner { grid-template-columns:1fr 1fr; }
   .footer-top { grid-template-columns:1fr; }
   .color-sec-title { font-size:28px; }
   .rm-header, .hd { padding:28px 16px; }
@@ -1051,23 +1041,13 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div class="hero-stat"><div class="hs-val">40%</div><div class="hs-label">mais econômica</div></div>
         <div class="hero-stat"><div class="hs-val">3x</div><div class="hs-label">mais resistente</div></div>
         <div class="hero-stat"><div class="hs-val">95%</div><div class="hs-label">menos agua</div></div>
+        <div class="hero-stat"><div class="hs-val" style="font-size:18px;letter-spacing:.02em;">SC · PR · SP</div><div class="hs-label">entrega direta</div></div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-visual-glow"></div>
       <img src="barrica-25kg.webp?v=8" alt="Massa MEP — Barrica 24kg">
     </div>
-  </div>
-</div>
-
-<!-- BARRA DIFERENCIAIS -->
-<div class="dif-bar">
-  <div class="dif-bar-inner">
-    <div class="dif-bar-item"><div class="db-val">4x</div><div class="db-label">mais rápida</div></div>
-    <div class="dif-bar-item"><div class="db-val">40%</div><div class="db-label">mais econômica</div></div>
-    <div class="dif-bar-item"><div class="db-val">3x</div><div class="db-label">mais resistente</div></div>
-    <div class="dif-bar-item"><div class="db-val">95%</div><div class="db-label">menos água na obra</div></div>
-    <div class="dif-bar-item"><div class="db-val" style="font-size:14px;letter-spacing:.02em;">SC · PR · SP</div><div class="db-label">entrega direta</div></div>
   </div>
 </div>
 
