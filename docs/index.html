@@ -1820,6 +1820,13 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         </select>
       </div>
       <div class="calc-input-row" style="margin-top:16px;">
+        <div class="calc-input-label">Hoje você usa</div>
+        <select id="calc-base" aria-label="Tipo de argamassa usada hoje" style="width:100%;padding:14px 16px;border:2px solid var(--borda);border-radius:8px;font-size:15px;font-weight:600;color:var(--azul);background:#fff;cursor:pointer;appearance:auto;">
+          <option value="convencional">Argamassa convencional (cimento + areia + cal)</option>
+          <option value="usinada">Argamassa usinada / bombeada</option>
+        </select>
+      </div>
+      <div class="calc-input-row" style="margin-top:16px;">
         <button class="calc-btn" onclick="calcular()" style="width:100%;">Calcular</button>
       </div>
     </div>
@@ -1833,8 +1840,8 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         </div>
         <div class="calc-card destaque">
           <div class="cc-label">Economia estimada</div>
-          <div class="cc-val" id="cr-economia">—</div>
-          <div class="cc-unit">menos no custo total</div>
+          <div class="cc-val" id="cr-economia" style="font-size:30px;">—</div>
+          <div class="cc-unit" id="cr-economia-unit">no custo total da obra</div>
         </div>
         <div class="calc-card">
           <div class="cc-label">Peso com MEP</div>
@@ -1849,6 +1856,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
           <div class="cc-compare" id="cr-dias-conv">— dias convencional</div>
         </div>
       </div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:12px;text-align:center;" id="cr-metodologia"></div>
 
       <div class="calc-cta-row">
         <div class="calc-cta-txt">Prefere falar diretamente? <strong>Solicite uma proposta comercial agora.</strong></div>
@@ -2556,11 +2564,28 @@ window.addEventListener('scroll', function() {
 })();
 
 /* ── CALCULADORA ── */
+// Fontes dos parametros de custo (ver project_estudos_tecnicos):
+// - Estudo 1 (Viabilidade Economica, predio 18 pav, 6.750 m² de alvenaria):
+//   Usinada R$518.177 total (material+desperdicio+MO) => R$76,77/m²
+//   MEP     R$569.700 total (material+MO)              => R$84,40/m²
+// - Estudo 2 (Produtividade/HH): economia de canteiro por prazo menor = R$100.000 => R$14,81/m²
+// - Convencional: preco de mercado cimento+areia+cal ~R$0,75/kg; consumo 29,27 kg/m²
+//   (mesma proporcao ja publicada no site: 24.000kg / 820 m²)
+var CUSTO = {
+  mepPrecoKg: 9.00,           // R$216 / 24kg (MEP 20, preco varejo)
+  convPrecoKg: 0.75,          // preco medio de mercado, argamassa convencional
+  convKgM2: 29.27,            // consumo convencional por m² (ja usado no calculo de peso)
+  usinadaCustoM2: 76.77,      // Estudo 1 (material+desperdicio+MO)
+  mepCustoM2Projeto: 84.40,   // Estudo 1 (material+MO), mesmo contexto de obra
+  canteiroEconomiaM2: 14.81   // Estudo 2 (economia de prazo/canteiro)
+};
+
 function calcular() {
   var m2 = parseFloat(document.getElementById('calc-m2').value);
   if (!m2 || m2 <= 0) { alert('Informe a metragem da obra.'); return; }
 
   var rendimento  = parseFloat(document.getElementById('calc-bloco').value); // m² por balde
+  var base        = document.getElementById('calc-base').value; // 'convencional' | 'usinada'
   var baldes      = Math.ceil(m2 / rendimento);
   var pesoMEP     = baldes * 25;
   var pesoConv    = Math.round(m2 * 29.27);
@@ -2568,14 +2593,32 @@ function calcular() {
   var diasMEP     = Math.ceil(m2 / (rendimento * 1.08));
   var diasEcon    = Math.max(0, diasConv - diasMEP);
 
+  var economiaReais, metodologia;
+  if (base === 'usinada') {
+    var custoUsinada = m2 * CUSTO.usinadaCustoM2;
+    var custoMEPProj = m2 * CUSTO.mepCustoM2Projeto;
+    var economiaCanteiro = m2 * CUSTO.canteiroEconomiaM2;
+    economiaReais = (custoUsinada - custoMEPProj) + economiaCanteiro;
+    metodologia = 'Estimativa com base em estudo de viabilidade MEP (obra de 6.750 m²): material + mão de obra + redução de prazo de canteiro. Resultado varia por porte de obra.';
+  } else {
+    var custoConvMaterial = pesoConv * CUSTO.convPrecoKg;
+    var custoMEPMaterial  = pesoMEP * CUSTO.mepPrecoKg;
+    economiaReais = custoConvMaterial - custoMEPMaterial;
+    metodologia = 'Estimativa de economia em material, com base em preço médio de mercado da argamassa convencional. Não inclui mão de obra nem desperdício de aplicação.';
+  }
+
+  var economiaFmt = economiaReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+
   document.getElementById('cr-baldes').textContent   = baldes;
-  document.getElementById('cr-economia').textContent = '40%';
+  document.getElementById('cr-economia').textContent = economiaFmt;
+  document.getElementById('cr-economia-unit').textContent = economiaReais >= 0 ? 'economia estimada' : 'diferença estimada';
   document.getElementById('cr-peso-mep').textContent = pesoMEP.toLocaleString('pt-BR');
   document.getElementById('cr-peso-conv').textContent = pesoConv.toLocaleString('pt-BR') + ' kg convencional';
   document.getElementById('cr-dias').textContent     = diasEcon;
   document.getElementById('cr-dias-conv').textContent = diasConv + ' dias convencional';
+  document.getElementById('cr-metodologia').textContent = metodologia;
 
-  var txt = 'Olá! Acabei de usar a calculadora MEP. Minha obra tem ' + m2 + ' m². São ' + baldes + ' baldes MEP no lugar de ' + pesoConv + ' kg de argamassa convencional. Gostaria de receber um orçamento.';
+  var txt = 'Olá! Acabei de usar a calculadora MEP. Minha obra tem ' + m2 + ' m². São ' + baldes + ' baldes MEP no lugar de ' + pesoConv + ' kg de argamassa convencional, com economia estimada de ' + economiaFmt + '. Gostaria de receber um orçamento.';
   document.getElementById('btn-calc-wa').href = 'https://wa.me/5547988515506?text=' + encodeURIComponent(txt);
 
   var res = document.getElementById('calc-results');
