@@ -16,10 +16,10 @@
   "logo": "https://www.mep.ind.br/logo-mep.svg",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "ATUALIZAR COM RUA E NÚMERO",
+    "streetAddress": "Rua 3500, 97, Centro",
     "addressLocality": "Balneário Camboriú",
     "addressRegion": "SC",
-    "postalCode": "ATUALIZAR COM CEP",
+    "postalCode": "88330-254",
     "addressCountry": "BR"
   },
   "geo": {
