@@ -13,9 +13,9 @@ CIDADE: Balneário Camboriú
 ESTADO: SC
 CEP: [ATUALIZAR]
 PAÍS: Brasil
-TELEFONE PRINCIPAL: (47) 99695-8399
-WHATSAPP: (47) 99695-8399
-E-MAIL PRINCIPAL: ind.mepmassas@gmail.com
+TELEFONE PRINCIPAL: (47) 98851-5506
+WHATSAPP: (47) 98851-5506
+E-MAIL PRINCIPAL: contato@mep.ind.br
 SITE: https://www.mep.ind.br
 INSTAGRAM: https://www.instagram.com/mep20.25
 HORÁRIO: Seg-Sex 08:00-18:00 · Sáb 08:00-12:00

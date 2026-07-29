@@ -16,7 +16,7 @@ Quer saber quanto a sua obra economizaria com o MEP?
 
 Calculamos com base na metragem da sua alvenaria, sem compromisso.
 
-mep.ind.br · (47) 99695-8399
+mep.ind.br · (47) 98851-5506
 
 ---
 
@@ -31,6 +31,6 @@ Desenvolvemos uma argamassa polimérica pronta para uso que substitui o método 
 
 Os números do carrossel vêm de um estudo técnico comparativo com 100m² de alvenaria real — não de estimativa comercial.
 
-Para construtoras e incorporadoras interessadas em um comparativo específico para sua obra, estamos disponíveis pelo site mep.ind.br ou pelo WhatsApp (47) 99695-8399.
+Para construtoras e incorporadoras interessadas em um comparativo específico para sua obra, estamos disponíveis pelo site mep.ind.br ou pelo WhatsApp (47) 98851-5506.
 
 #MEP #ArgamassaPolimérica #ConstruçãoCivil #Engenharia #Alvenaria #GestãoDeObras #InovaçãoNaConstrução

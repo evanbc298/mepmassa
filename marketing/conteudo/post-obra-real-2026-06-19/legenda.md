@@ -12,7 +12,7 @@ Quer saber quanto rende na sua obra? Acessa o link na bio e usa nossa calculador
 
 Massa MEP — Argamassa para Edificação
 Atendemos construtoras, incorporadoras e revendedores.
-Contato comercial: (47) 99695-8399 | contato@mep.ind.br
+Contato comercial: (47) 98851-5506 | contato@mep.ind.br
 
 ---
 

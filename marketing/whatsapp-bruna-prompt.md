@@ -224,7 +224,7 @@ EMPRESA
 - Localização: Balneário Camboriú, SC
 - Regiões atendidas: Santa Catarina, Paraná, São Paulo
 - WhatsApp comercial: (47) 98851-5506
-- Email: ind.mepmassas@gmail.com
+- Email: contato@mep.ind.br
 - Site: mep.ind.br
 - Instagram: @mep.industria
 

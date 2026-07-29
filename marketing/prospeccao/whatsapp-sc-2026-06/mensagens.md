@@ -58,7 +58,7 @@ Início: junho 2026 | Região: Balneário Camboriú, Florianópolis, Joinville
 >
 > Preparo o número em minutos.
 >
-> Contato comercial: compras@mep.ind.br | (47) 99695-8399
+> Contato comercial: compras@mep.ind.br | (47) 98851-5506
 
 ---
 

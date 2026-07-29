@@ -145,7 +145,7 @@ MEP COLOR (tintas)
 CONTATO E LOCALIZAÇÃO
 Empresa: MEP Indústria e Comércio Ltda
 WhatsApp comercial: (47) 98851-5506
-Email: ind.mepmassas@gmail.com
+Email: contato@mep.ind.br
 Site: mep.ind.br
 Localização: Balneário Camboriú, SC
 

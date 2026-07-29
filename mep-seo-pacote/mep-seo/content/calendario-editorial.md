@@ -151,7 +151,7 @@ Resposta curta e direta.
 ---
 
 **Pronto para [usar/comprar/saber mais]?** 
-[Solicite orçamento pelo WhatsApp →](https://wa.me/5547996958399)
+[Solicite orçamento pelo WhatsApp →](https://wa.me/5547988515506)
 ou [use nossa calculadora gratuita →](/calculadora-de-custos)
 ```
 

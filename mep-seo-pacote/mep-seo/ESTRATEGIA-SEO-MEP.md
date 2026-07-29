@@ -209,7 +209,7 @@ mep.ind.br/
 - Categoria principal: **Fornecedor de materiais de construção**
 - Categorias adicionais: Fábrica de tintas · Loja de materiais de construção · Loja de tintas
 - Endereço completo (Rua, número, bairro, cidade, estado, CEP)
-- Telefone principal (47) 99695-8399
+- Telefone principal (47) 98851-5506
 - WhatsApp: mesmo número
 - Site: https://www.mep.ind.br
 - Horário: preencher
@@ -268,7 +268,7 @@ mep.ind.br/
 
 > **Regras NAP:**
 > - Nome, Endereço, Telefone **idênticos** em todos
-> - Use o telefone com DDD: `(47) 99695-8399`
+> - Use o telefone com DDD: `(47) 98851-5506`
 > - Endereço completo e idêntico (atenção a abreviações: "R." vs "Rua", "Av." vs "Avenida")
 > - Crie uma planilha rastreando cada cadastro
 

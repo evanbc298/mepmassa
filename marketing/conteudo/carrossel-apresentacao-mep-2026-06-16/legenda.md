@@ -10,7 +10,7 @@ Arraste e veja os números reais.
 
 Atendemos construtoras e incorporadoras em Santa Catarina, Paraná e São Paulo. Entrega direta.
 
-Solicite um orçamento: mep.ind.br ou (47) 99695-8399.
+Solicite um orçamento: mep.ind.br ou (47) 98851-5506.
 
 ---
 

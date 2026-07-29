@@ -128,7 +128,7 @@ Criar e subir:
 
 Onde o link do WhatsApp aparece, adicionar:
 ```html
-<a href="https://wa.me/5547996958399?text=..."
+<a href="https://wa.me/5547988515506?text=..."
    onclick="gtag('event', 'click_whatsapp', {
      'event_category': 'contato',
      'event_label': 'header'
@@ -230,4 +230,4 @@ Para cada nova página, repetir:
 ## 📞 Contato de implementação
 
 Se travar em algum passo, me avise qual e eu te ajudo a resolver.
-MEP Indústria — ind.mepmassas@gmail.com · (47) 99695-8399
+MEP Indústria — contato@mep.ind.br · (47) 98851-5506
