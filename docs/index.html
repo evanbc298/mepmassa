@@ -105,7 +105,7 @@
       "name": "A argamassa polimérica MEP tem certificação ABNT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim. A argamassa polimérica MEP possui Certificado ABNT N° 491.001/25, conforme as normas NBR 16590-1 e NBR 16590-2, válido até janeiro de 2028. Os ensaios foram realizados pelo SENAI com acreditação CRL 0076."
+        "text": "Sim. A argamassa polimérica MEP atende às normas técnicas ABNT NBR 16590-1 e NBR 16590-2:2017, referentes a compostos poliméricos para assentamento de alvenaria de vedação."
       }
     },
     {
@@ -1958,44 +1958,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 
     </div>
 
-    <!-- ABNT CERTIFICATE BANNER -->
-    <div style="margin-top:56px;background:var(--azul);border-radius:12px;padding:32px 40px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
-      <div style="flex-shrink:0;text-align:center;">
-        <div style="width:74px;height:74px;border-radius:50%;border:2.5px solid var(--laranja);background:rgba(242,140,40,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.35);">Certificado</div>
-      </div>
-      <div style="width:1px;height:64px;background:rgba(255,255,255,.1);flex-shrink:0;"></div>
-      <div style="flex:1;min-width:220px;">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--laranja);margin-bottom:8px;">Certificado de Conformidade de Produto</div>
-        <div style="font-size:20px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:6px;">ABNT NBR 16590-1 e 16590-2:2017</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.55;">Composto Polimérico para Assentamento de Alvenaria de Vedação — acreditado pela Coordenação Geral de Acreditação do Inmetro</div>
-      </div>
-      <div style="flex-shrink:0;text-align:right;">
-        <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px;">Certificado N°</div>
-        <div style="font-size:20px;font-weight:900;color:#fff;letter-spacing:.05em;margin-bottom:14px;">491.001/25</div>
-        <div style="display:inline-block;background:rgba(242,140,40,.12);border:1px solid rgba(242,140,40,.3);border-radius:6px;padding:8px 18px;">
-          <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:2px;">Válido até</div>
-          <div style="font-size:15px;font-weight:900;color:var(--laranja);">Janeiro 2028</div>
-        </div>
-      </div>
-      <div style="width:100%;border-top:1px solid rgba(255,255,255,.07);padding-top:18px;display:flex;gap:48px;flex-wrap:wrap;">
-        <div>
-          <div style="font-size:9px;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:3px;">Laboratório</div>
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6);">SENAI — Acreditação CRL 0076</div>
-        </div>
-        <div>
-          <div style="font-size:9px;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:3px;">Relatório de Ensaio</div>
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6);">N° 2083/24-A e 2084/24-A</div>
-        </div>
-        <div>
-          <div style="font-size:9px;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:3px;">Data dos Ensaios</div>
-          <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.6);">10 de Outubro de 2024</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -2286,7 +2248,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       } else if (v.indexOf('engenheiro') >= 0) {
         perfil = 'eng';
         etapa = 2;
-        chatIAFala('Perfeito! Temos ficha técnica completa e certificação ABNT 491.001/25 disponível. Qual a metragem estimada do projeto? (em m²)', []);
+        chatIAFala('Perfeito! Temos ficha técnica completa, conforme norma ABNT NBR 16590. Qual a metragem estimada do projeto? (em m²)', []);
       } else if (v.indexOf('própria') >= 0 || v.indexOf('propria') >= 0 || v.indexOf('obra') >= 0) {
         perfil = 'final';
         etapa = 2;
@@ -2322,7 +2284,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       }
       if (etapa === 3) {
         if (v.indexOf('técnico') >= 0 || v.indexOf('dados') >= 0) {
-          chatIAFala('A Massa MEP tem certificação ABNT 491.001/25, rende 1 balde (24 kg) por 15 a 16 m², cura em 72h e elimina a betoneira completamente. Posso enviar a ficha técnica junto com a proposta.',
+          chatIAFala('A Massa MEP atende à norma ABNT NBR 16590, rende 1 balde (24 kg) por 15 a 16 m², cura em 72h e elimina a betoneira completamente. Posso enviar a ficha técnica junto com a proposta.',
             ['Sim, manda tudo','Só a proposta mesmo']);
           return;
         }
@@ -2443,7 +2405,7 @@ document.getElementById('f-btn').addEventListener('click', function() {
       headers: {
         'accept': 'application/json',
         'content-type': 'application/json',
-        'api-key': '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'
+        'api-key': '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'
       },
       body: JSON.stringify({ email: email, attributes: attrs, listIds: [8], updateEnabled: true })
     }).catch(function(){});
