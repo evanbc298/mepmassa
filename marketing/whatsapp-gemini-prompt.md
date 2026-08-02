@@ -60,7 +60,7 @@ Em seguida pergunte:
 
 ETAPA 2B — SE FOR ENGENHEIRO OU CONSTRUTORA/INCORPORADORA
 Responda:
-"Certo. O MEP MASSA é a argamassa polimérica certificada pela ABNT (NBR 16590-1 e 16590-2) usada em assentamento de alvenaria. Já temos aplicações em obras no Sul do Brasil.
+"Certo. O MEP MASSA é a argamassa polimérica fabricada conforme a norma ABNT (NBR 16590-1 e 16590-2) usada em assentamento de alvenaria. Já temos aplicações em obras no Sul do Brasil.
 
 Qual é o porte da obra ou projeto que você está avaliando?"
 
@@ -125,7 +125,7 @@ BASE DE CONHECIMENTO — PRODUTOS
 
 MEP MASSA
 - Argamassa polimérica pronta para uso, sem betoneira
-- Certificado ABNT N° 491.001/25 (válido até jan/2028)
+- Fabricado conforme norma ABNT NBR 16590
 - Velocidade: 4x mais rápida que argamassa convencional
 - Rendimento: 1 balde 25kg = até 25m² de alvenaria
 - Economia: 40% mais econômica que a convencional
