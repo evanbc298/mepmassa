@@ -361,6 +361,8 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .sec-header .sh-sub { font-size:15px; color:var(--sub); margin-top:8px; line-height:1.6; }
 
 /* PRODUTOS MEP MASSAS */
+.sistema-banner { margin:0 0 40px; border-radius:14px; overflow:hidden; box-shadow:0 12px 40px rgba(10,15,30,0.15); }
+.sistema-banner img { width:100%; display:block; height:auto; }
 .produtos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
 .produto-card { background:var(--branco); border-radius:10px; overflow:hidden; border:1px solid var(--borda); transition:box-shadow .2s, transform .2s; cursor:pointer; position:relative; display:flex; flex-direction:column; }
 .produto-card:hover { box-shadow:0 8px 32px rgba(0,0,0,0.1); transform:translateY(-4px); }
@@ -1211,6 +1213,12 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="sh-tag">Linha MEP Massas</div>
       <div class="sh-title">Argamassa Polimérica</div>
       <div class="sh-sub">Produto pronto para uso. Solução completa para qualquer etapa da obra — do reparo ao grande canteiro.</div>
+    </div>
+    <div class="sistema-banner">
+      <picture>
+        <source media="(max-width:900px)" srcset="banner-mep-linha-completa-mobile.webp">
+        <img src="banner-mep-linha-completa.webp" alt="Sistema completo MEP 10, 20, 30 e 40 — nivelamento, assentamento, encunhamento e reboco fino" loading="lazy" width="1715" height="917">
+      </picture>
     </div>
     <div class="produtos-grid">
 
