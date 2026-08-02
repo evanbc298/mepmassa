@@ -361,8 +361,6 @@ nav { background: var(--branco); border-bottom: 1px solid var(--borda); }
 .sec-header .sh-sub { font-size:15px; color:var(--sub); margin-top:8px; line-height:1.6; }
 
 /* PRODUTOS MEP MASSAS */
-.sistema-banner { margin:0 0 40px; border-radius:14px; overflow:hidden; box-shadow:0 12px 40px rgba(10,15,30,0.15); }
-.sistema-banner img { width:100%; display:block; height:auto; }
 .produtos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
 .produto-card { background:var(--branco); border-radius:10px; overflow:hidden; border:1px solid var(--borda); transition:box-shadow .2s, transform .2s; cursor:pointer; position:relative; display:flex; flex-direction:column; }
 .produto-card:hover { box-shadow:0 8px 32px rgba(0,0,0,0.1); transform:translateY(-4px); }
@@ -918,6 +916,22 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 .slb3-txt .sl-btn-s { background:#F28C28; color:#fff; }
 .slb3-txt .sl-btn-g { border-color:rgba(255,255,255,.25); color:rgba(255,255,255,.7); }
 
+/* SL Banner 5 — Sistema Completo */
+.slb5 { background:linear-gradient(115deg, #0d1730 0%, #16264a 100%); }
+.slb5-ring { position:absolute; border-radius:50%; border:1px solid rgba(255,255,255,.06); width:520px; height:520px; top:-160px; left:-140px; }
+.slb5 .sl-inner { grid-template-columns:0.82fr 1.35fr; gap:44px; }
+.slb5-txt .sl-eyebrow { color:#F28C28; }
+.slb5-txt .sl-h1 { color:#fff; }
+.slb5-txt .sl-h1 span { color:#F28C28; }
+.slb5-txt .sl-sub { color:rgba(255,255,255,.58); max-width:380px; }
+.slb5-txt .sl-btn-s { background:#F28C28; color:#fff; }
+.slb5-txt .sl-btn-g { border-color:rgba(255,255,255,.25); color:rgba(255,255,255,.75); }
+.slb5-img { position:relative; height:82%; border-radius:14px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.4); }
+.slb5-img img { width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
+.slb5-tag { position:absolute; bottom:16px; left:16px; z-index:3; background:rgba(10,15,30,.85); backdrop-filter:blur(4px); color:#fff;
+  padding:8px 14px; border-radius:8px; font-size:11px; font-weight:700; letter-spacing:.05em; }
+.slb5-tag b { color:#F28C28; }
+
 /* SL Banner 4 — Calculadora */
 .slb4 { background:#1A2B4D; }
 .slb4-right { position:absolute; right:0; top:0; bottom:0; width:44%; background:#F28C28;
@@ -950,6 +964,8 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .slb3-ov { background:linear-gradient(to bottom, rgba(7,16,30,.55) 0%, rgba(7,16,30,.92) 60%, rgba(7,16,30,.98) 100%) !important; }
   .slb4-right { display:none; }
   .slb4-r { display:none; }
+  .slb5-img { height:auto; aspect-ratio:790/917; }
+  .slb5-img img { object-position:center center; }
   .sl-ctrl { width:38px; height:38px; font-size:13px; }
   .sl-ctrl.sl-prev { left:10px; }
   .sl-ctrl.sl-next { right:10px; }
@@ -1139,6 +1155,29 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       </div>
     </div>
 
+    <!-- Banner 5: Sistema Completo -->
+    <div class="sl-banner slb5">
+      <div class="slb5-ring"></div>
+      <div class="sl-inner">
+        <div class="slb5-txt">
+          <div class="sl-eyebrow">Sistema Completo</div>
+          <div class="sl-h1">UMA SOLUÇÃO<br>PRA CADA <span>ETAPA.</span></div>
+          <div class="sl-sub">MEP 10, 20, 30 e 40 — do nivelamento da primeira fiada ao reboco fino de acabamento. Quatro produtos, uma só obra.</div>
+          <div class="sl-ctas">
+            <a href="#produtos" class="sl-btn-s">Ver os 4 Produtos</a>
+            <a href="#contato" class="sl-btn-g">Falar com Vendas</a>
+          </div>
+        </div>
+        <div class="slb5-img">
+          <picture>
+            <source media="(max-width:900px)" srcset="banner-mep-linha-completa-mobile.webp">
+            <img src="banner-mep-linha-completa.webp" alt="Sistema completo MEP 10, 20, 30 e 40 — nivelamento, assentamento, encunhamento e reboco fino" loading="lazy">
+          </picture>
+          <div class="slb5-tag">Sistema <b>MEP 10 · 20 · 30 · 40</b></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Banner 4: Calculadora -->
     <div class="sl-banner slb4">
       <div class="slb4-right"></div>
@@ -1213,12 +1252,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="sh-tag">Linha MEP Massas</div>
       <div class="sh-title">Argamassa Polimérica</div>
       <div class="sh-sub">Produto pronto para uso. Solução completa para qualquer etapa da obra — do reparo ao grande canteiro.</div>
-    </div>
-    <div class="sistema-banner">
-      <picture>
-        <source media="(max-width:900px)" srcset="banner-mep-linha-completa-mobile.webp">
-        <img src="banner-mep-linha-completa.webp" alt="Sistema completo MEP 10, 20, 30 e 40 — nivelamento, assentamento, encunhamento e reboco fino" loading="lazy" width="1715" height="917">
-      </picture>
     </div>
     <div class="produtos-grid">
 
