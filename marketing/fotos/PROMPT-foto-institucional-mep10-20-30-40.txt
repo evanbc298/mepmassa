@@ -1,0 +1,25 @@
+Fotografia institucional corporativa, estilo realista, alta qualidade, luz natural de fim de tarde (golden hour suave, não dura).
+
+Use o rosto e a aparência física da pessoa na foto de referência anexa (mantenha o rosto o mais fiel possível ao anexo, não crie um rosto genérico diferente). Ele está em pé, expressão séria e confiante, com os braços cruzados sobre o peito. Veste uma camisa polo azul-marinho escura de manga longa, com friso/vivo laranja nas golas e punhos, e um pequeno logo bordado no peito esquerdo — use EXATAMENTE a logo da imagem de referência anexa "logo-mep-icon.png", reproduzida com fidelidade, na versão branca (não a colorida) para contrastar com o tecido escuro: é um cubo/paralelepípedo geométrico em perspectiva isométrica com 3 faces visíveis formando um espaço vazio em forma de "M" no centro — NÃO é um hexágono simples nem um ícone de casa, é literalmente um cubo 3D visto em ângulo. Ao lado do ícone, a palavra "MEP" em branco, letra bold sem serifa.
+
+IMPORTANTE SOBRE A LOGO: a tentativa anterior desenhou um hexágono genérico com um símbolo de casinha dentro, o que está ERRADO. Anexei a logo oficial da empresa como imagem de referência separada — copie a forma exata dela, não reinterprete nem simplifique. A logo aparece em 5 lugares na composição (a camisa + os 4 rótulos dos baldes) e deve ser IDÊNTICA nas 5 aparições.
+
+Ao fundo, um canteiro de obra real, mas organizado (não bagunçado) e desfocado (profundidade de campo rasa): estrutura de prédio em construção, pilares de concreto aparente, alvenaria de tijolo cerâmico já erguida, luz natural de fim de tarde. Nada de entulho, poeira exagerada ou desordem — é uma obra em andamento organizado, não uma demolição. Adicione um capacete de segurança branco na cabeça dele (mantendo a camisa polo da marca) para dar autenticidade de obra real.
+
+Na frente dele, sobre uma bancada de madeira rústica improvisada (tábuas apoiadas, como se montada na própria obra), estão QUATRO baldes de plástico idênticos em formato e tamanho, lado a lado, tampa preta, alça de metal. Cada balde tem um rótulo no mesmo padrão visual: faixa laranja no topo com a logo (ícone do cubo — ver instrução acima, versão branca) + texto "MEP MASSAS" em branco; abaixo, fundo azul-marinho escuro com o nome do produto em branco/laranja bem grande; embaixo uma faixa laranja menor com uma frase de destaque; na parte inferior, 3 ícones brancos pequenos em círculo (relógio, símbolo de "sem betoneira", gráfico de barras) com textos pequenos, e à direita um retângulo branco com o peso em destaque.
+
+Da esquerda para a direita, os 4 baldes devem ter EXATAMENTE este texto (não inventar outra numeração ou nome):
+
+1) MEP 10 — nome do produto "MEP 10" (10 em laranja) — subtítulo "NIVELAMENTO" — faixa de destaque "1ª FIADA · BASE NIVELADA" — ícones: "Pega em 30 min" / "Sem mistura - sem betoneira" / "40% mais econômica" — caixa de peso: "24 KG" grande + "MASSA DE NIVELAMENTO" pequeno embaixo.
+
+2) MEP 20 — nome "MEP 20" (20 em laranja) — subtítulo "ASSENTAMENTO" — faixa de destaque "4X MAIS RÁPIDA" — mesmos 3 ícones — caixa de peso: "24 KG" + "ARGAMASSA POLIMÉRICA".
+
+3) MEP 30 — nome "MEP 30" (30 em laranja) — subtítulo "ENCUNHAMENTO" — faixa de destaque "TOPO DA PAREDE · AMORTECEDOR" — mesmos 3 ícones — caixa de peso: "24 KG" + "ENCUNHAMENTO".
+
+4) MEP 40 — nome "MEP 40" (40 em laranja) — subtítulo "REBOCO FINO" — faixa de destaque "3 EM 1 · ELIMINA 3 ETAPAS" — mesmos 3 ícones — caixa de peso: "25 KG" + "REBOCO FINO".
+
+Importante: os 4 baldes devem ter o mesmo tamanho, mesma altura de mesa, mesmo ângulo de câmera, mesma iluminação — como se fosse uma única foto real, não uma colagem. O homem fica atrás/no meio, com os braços cruzados visíveis por cima dos baldes centrais (2 e 3), olhando para a câmera. Enquadramento horizontal (16:9 ou mais largo), pra caber os 4 baldes confortavelmente lado a lado sem cortar nenhum.
+
+Deixe uma margem/respiro extra nas bordas esquerda e direita (não deixe o balde 1 nem o balde 4 encostados na borda da imagem) — essa foto vai ser recortada de formas diferentes no site (banner largo no computador, recorte vertical no celular), então precisa de espaço de sobra nas laterais para o recorte não cortar os baldes das pontas.
+
+Formato: paisagem, alta resolução (mínimo 1920px de largura), fundo desfocado (bokeh), foco nítido nos baldes e no rosto/torso do homem.
