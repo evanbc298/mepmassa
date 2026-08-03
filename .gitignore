@@ -35,3 +35,7 @@ MATERIAL NOVO 13-07/
 
 # Credenciais — nunca versionar
 .env
+
+# Listas de contatos de terceiros (dados pessoais/empresariais scrapeados) — repo é público, não versionar
+LISTA DE EMAILS/
+marketing/prospeccao/construtoras-sc-2026-08/leads-construtoras-sc-ago2026.csv
