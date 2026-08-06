@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>MEP COLOR — Verso do Balde (346x266mm) — Sistema 5 produtos</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+@page { size: 346mm 266mm; margin: 0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content:center; font-family:'Barlow',sans-serif; }
+
+.rotulo {
+  width:346mm; height:266mm;
+  display:flex; flex-direction:column;
+  background:#fff;
+  box-shadow:0 10px 50px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+
+/* TOPO */
+.top-band {
+  background: linear-gradient(135deg, #182645 0%, #0f1830 100%);
+  padding:7mm 10mm;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.top-band::after {
+  content:'';
+  position:absolute; right:-40mm; top:-60mm;
+  width:160mm; height:160mm; border-radius:50%;
+  background:radial-gradient(circle, rgba(242,140,40,0.10) 0%, rgba(242,140,40,0) 70%);
+}
+.logo-area { display:flex; align-items:center; gap:10px; position:relative; z-index:1; }
+/* logo real MEP COLOR — recortada via background-position a partir do arquivo fonte */
+.logo-crop {
+  width:55mm; height:15.9mm;
+  background-image:url('../../../docs/logo-mep-color.webp');
+  background-repeat:no-repeat;
+  background-size:69.0mm auto;
+  background-position:-7.64mm -12.84mm;
+  flex-shrink:0;
+}
+.top-produto { font-size:18px; font-weight:900; color:#fff; letter-spacing:0.8px; text-transform:uppercase; text-align:center; font-family:'Barlow Condensed',sans-serif; position:relative; z-index:1; }
+.top-vol { visibility:hidden; }
+
+.stripe-orange { height:2.2mm; background:linear-gradient(90deg, #F28C28, #C9A84C, #C1121F, #6B7280, #4A90A4); flex-shrink:0; }
+
+/* DIRETRIZ CRÍTICA */
+.diretriz {
+  background:#FBF6EE;
+  border-bottom:1px solid #F0DFC0;
+  padding:3mm 10mm;
+  display:flex; align-items:center; gap:4mm;
+  flex-shrink:0;
+}
+.diretriz-icon-wrap {
+  width:8mm; height:8mm; border-radius:50%; background:#F5E4C8;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.diretriz-icon { width:16px; height:16px; }
+.diretriz-txt { font-size:7.6pt; font-weight:500; color:#6b5019; line-height:1.4; }
+.diretriz-txt strong { font-weight:800; color:#a8721f; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* CORPO 5 COLUNAS */
+.corpo {
+  flex:1;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  gap:0;
+  overflow:hidden;
+}
+.col {
+  --accent:#F28C28; --tint:#FDEBD9; --tagtext:#162240;
+  padding:0 4.2mm 4mm;
+  border-right:1px solid #ececec;
+  display:flex; flex-direction:column; gap:3mm;
+  position:relative;
+}
+.col:last-child { border-right:none; }
+.col::before {
+  content:'';
+  display:block;
+  height:2.6mm;
+  background:var(--accent);
+  margin:0 -4.2mm 3mm;
+}
+
+.col-head { display:flex; align-items:center; gap:2.2mm; }
+.swatch { width:10px; height:10px; border-radius:50%; background:var(--accent); flex-shrink:0; box-shadow:0 0 0 2px #fff, 0 0 0 3px var(--accent); }
+.col-tag {
+  display:inline-block;
+  background:var(--accent); color:var(--tagtext);
+  font-family:'Barlow Condensed',sans-serif; font-size:8.6pt; font-weight:800;
+  letter-spacing:.7px; text-transform:uppercase;
+  padding:1.1mm 2.6mm; border-radius:2px; width:fit-content;
+}
+.col-title {
+  font-family:'Barlow Condensed',sans-serif; font-size:27pt; font-weight:900; color:#162240;
+  letter-spacing:-0.3px; line-height:0.92; margin-top:1.5mm;
+}
+.col-etapa {
+  font-size:8.4pt; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.3px;
+  padding-bottom:2.2mm; border-bottom:1.5px solid var(--tint);
+}
+
+.sec { display:flex; flex-direction:column; gap:1.4mm; }
+.sec-head { display:flex; align-items:center; gap:2.2mm; }
+.sec-icon-wrap {
+  width:6.4mm; height:6.4mm; border-radius:50%; background:var(--tint);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.sec-icon { width:14px; height:14px; flex-shrink:0; color:var(--accent); }
+.sec-title {
+  font-size:10pt; font-weight:800; color:#162240;
+}
+.sec-body { font-size:8.4pt; font-weight:500; color:#444; line-height:1.42; padding-left:23px; }
+
+.passo { display:flex; gap:1.8mm; align-items:flex-start; padding-left:23px; }
+.passo-num {
+  background:#162240; color:#fff; font-size:7.4pt; font-weight:800;
+  width:15px; height:15px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;
+}
+.passo-txt { font-size:8.4pt; font-weight:500; color:#444; line-height:1.32; }
+.passo-txt strong { font-weight:700; color:#162240; }
+
+/* RENDIMENTO — stat chip fixado no rodapé da coluna */
+.rend-chip {
+  margin-top:auto;
+  background:var(--tint);
+  border-radius:2.2mm;
+  padding:2.8mm 3.4mm;
+  display:flex; flex-direction:column; gap:0.5mm;
+}
+.rend-label { font-size:7.2pt; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:.6px; }
+.rend-value { font-family:'Barlow Condensed',sans-serif; font-size:19pt; font-weight:900; color:#162240; line-height:1.05; }
+.rend-note { font-size:7.2pt; color:#666; font-weight:500; }
+
+.rend-chip.pending {
+  background:#f4f4f4;
+  border:1px dashed #c4c4c4;
+}
+.rend-chip.pending .rend-label { color:#999; }
+.rend-chip.pending .rend-value { color:#999; font-size:10.5pt; }
+
+/* CORES DISPONÍVEIS */
+.cores-sec { display:flex; flex-direction:column; gap:1.4mm; }
+.cores-row { display:flex; flex-wrap:wrap; gap:1.4mm; }
+.cores-chip { width:5.2mm; height:5.2mm; border-radius:1.2px; border:1px solid rgba(0,0,0,.12); flex-shrink:0; }
+.cores-note { font-size:7.2pt; font-weight:700; color:var(--accent); letter-spacing:.3px; padding-left:23px; }
+
+.stripe-thin { height:2.2mm; background:#162240; flex-shrink:0; }
+
+/* RODAPÉ */
+.rodape {
+  background:#162240;
+  padding:5mm 10mm;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0;
+  gap:6mm;
+}
+.rod-left { display:flex; flex-direction:column; gap:2.5mm; }
+.rod-brand { display:flex; align-items:center; gap:3mm; }
+.rod-info { font-size:8pt; color:rgba(255,255,255,.65); line-height:1.5; }
+.rod-info strong { color:#fff; font-weight:700; }
+.rod-safety { display:flex; align-items:flex-start; gap:2.5mm; max-width:150mm; }
+.rod-safety-icon { width:15px; height:15px; flex-shrink:0; color:#F28C28; margin-top:1px; }
+.rod-safety-txt { font-size:6.5pt; color:rgba(255,255,255,.5); line-height:1.35; text-transform:uppercase; letter-spacing:.3px; }
+.rod-safety-txt .cit { color:#F28C28; font-weight:800; }
+
+.rod-lote {
+  border:1px dashed rgba(255,255,255,.3); border-radius:1.5mm;
+  padding:2mm 3mm; display:flex; flex-direction:column; gap:1mm; flex-shrink:0;
+}
+.rod-lote-label { font-size:6.2pt; color:rgba(255,255,255,.4); letter-spacing:1px; text-transform:uppercase; }
+.rod-lote-row { font-size:7.2pt; color:rgba(255,255,255,.75); font-weight:600; }
+.rod-lote-row b { color:#fff; }
+
+.rod-sac { text-align:center; flex-shrink:0; }
+.rod-sac-icon {
+  width:11mm; height:11mm; border-radius:50%; border:1.5px solid rgba(255,255,255,.3);
+  display:flex; align-items:center; justify-content:center; margin:0 auto 1.5mm;
+  color:#fff;
+}
+.rod-sac-label { font-size:7pt; color:rgba(255,255,255,.5); letter-spacing:1px; text-transform:uppercase; }
+.rod-sac-tel { font-size:13pt; font-weight:900; color:#F28C28; font-family:'Barlow Condensed',sans-serif; }
+
+.rod-right { display:flex; align-items:center; gap:4mm; flex-shrink:0; }
+.rod-badge {
+  border:1.5px solid rgba(255,255,255,.3); border-radius:50%;
+  width:20mm; height:20mm;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:1.5mm; gap:0.6mm;
+}
+.rod-badge-icon { width:14px; height:14px; color:#F28C28; }
+.rod-badge-txt { font-size:5.8pt; font-weight:700; color:rgba(255,255,255,.85); line-height:1.2; text-transform:uppercase; letter-spacing:.3px; }
+</style>
+</head>
+<body>
+<div class="rotulo">
+
+  <!-- TOPO -->
+  <div class="top-band">
+    <div class="logo-area">
+      <div class="logo-crop"></div>
+    </div>
+    <div class="top-produto">
+      Sistema MEP Color<br>
+      <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:0;text-transform:none;font-family:'Barlow',sans-serif;">5 Produtos — Ficha Técnica Completa</span>
+    </div>
+    <div class="top-vol">.</div>
+  </div>
+
+  <div class="stripe-orange"></div>
+
+  <!-- DIRETRIZ CRÍTICA -->
+  <div class="diretriz">
+    <div class="diretriz-icon-wrap">
+      <svg class="diretriz-icon" viewBox="0 0 100 100">
+        <polygon points="50,10 92,85 8,85" fill="none" stroke="#a8721f" stroke-width="7" stroke-linejoin="round"/>
+        <rect x="45" y="38" width="10" height="26" rx="2" fill="#a8721f"/>
+        <circle cx="50" cy="72" r="6" fill="#a8721f"/>
+      </svg>
+    </div>
+    <div class="diretriz-txt"><strong>Diretriz de aplicação —</strong> todos os produtos MEP COLOR são à base de água, prontos para uso conforme diluição indicada. Comece sempre pelo Fundo Preparador em bases novas ou muito porosas antes de qualquer tinta de acabamento. Teste a cor em área pequena antes de aplicar por completo.</div>
+  </div>
+
+  <!-- CORPO 5 COLUNAS -->
+  <div class="corpo">
+
+    <!-- COL 1: FUNDO PREPARADOR -->
+    <div class="col" style="--accent:#4A90A4; --tint:#E1EEF1; --tagtext:#ffffff;">
+      <div class="col-head">
+        <span class="swatch"></span>
+        <div class="col-tag">Antes de Pintar</div>
+      </div>
+      <div class="col-title">Fundo<br>Preparador</div>
+      <div class="col-etapa">Selador acrílico · Prepara a base</div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Uniformiza a absorção de alvenaria, reboco, concreto, gesso e fibrocimento antes da pintura.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Superfície limpa, seca e livre de partículas soltas.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Diluir até 20% em água se necessário.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Aguardar secagem total (4h) antes de pintar por cima.</div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg></div>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Não substitui impermeabilizante nem massa corrida. Usar sempre em base nova/porosa.</div>
+      </div>
+
+      <div class="rend-chip">
+        <div class="rend-label">Rendimento</div>
+        <div class="rend-value">8–15 m²/L</div>
+        <div class="rend-note">por demão · varia com a porosidade</div>
+      </div>
+    </div>
+
+    <!-- COL 2: PREMIUM -->
+    <div class="col" style="--accent:#C9A84C; --tint:#F5EDD9; --tagtext:#162240;">
+      <div class="col-head">
+        <span class="swatch"></span>
+        <div class="col-tag">Linha Premium</div>
+      </div>
+      <div class="col-title">Premium</div>
+      <div class="col-etapa">Alta cobertura · Interno e externo</div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Acabamento premium para alvenaria, reboco, gesso, drywall e fibrocimento.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Misturar bem antes de usar.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Aplicar com rolo de lã, pincel ou pistola, em movimentos cruzados.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Respeitar o intervalo entre demãos indicado na embalagem.</div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg></div>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Lavável e resistente ao UV — indicada para fachadas expostas ao sol.</div>
+      </div>
+
+      <div class="cores-sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.5c4-3 7-6.5 7-10.5a7 7 0 10-14 0c0 4 3 7.5 7 10.5z"/></svg></div>
+          <div class="sec-title">Cores</div>
+        </div>
+        <div class="cores-row">
+          <div class="cores-chip" style="background:#FFFFFF"></div>
+          <div class="cores-chip" style="background:#F5F3EC"></div>
+          <div class="cores-chip" style="background:#DCC9A3"></div>
+          <div class="cores-chip" style="background:#D9C7A8"></div>
+          <div class="cores-chip" style="background:#D4D4D4"></div>
+          <div class="cores-chip" style="background:#4A4A4A"></div>
+          <div class="cores-chip" style="background:#1A1A1A"></div>
+          <div class="cores-chip" style="background:#B85C38"></div>
+          <div class="cores-chip" style="background:#1F5A5A"></div>
+          <div class="cores-chip" style="background:#5A8F3C"></div>
+        </div>
+        <div class="cores-note">+ sistema tintométrico</div>
+      </div>
+
+      <div class="rend-chip pending">
+        <div class="rend-label">Rendimento</div>
+        <div class="rend-value">A confirmar</div>
+        <div class="rend-note">ficha técnica em finalização</div>
+      </div>
+    </div>
+
+    <!-- COL 3: ECONÔMICA -->
+    <div class="col" style="--accent:#F28C28; --tint:#FDEBD9; --tagtext:#162240;">
+      <div class="col-head">
+        <span class="swatch"></span>
+        <div class="col-tag">Linha Econômica</div>
+      </div>
+      <div class="col-title">Econômica</div>
+      <div class="col-etapa">Alto rendimento · Interno e externo</div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Ótimo custo-benefício para alvenaria, concreto, gesso, drywall e fibrocimento.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Limpar a base e aplicar selador se for nova ou muito porosa.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Misturar bem, diluir até 20% em água se necessário.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Aplicar 2 a 3 demãos, aguardando 2h entre elas.</div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg></div>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Não aplicar sob chuva, abaixo de 10°C ou acima de 35°C.</div>
+      </div>
+
+      <div class="cores-sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.5c4-3 7-6.5 7-10.5a7 7 0 10-14 0c0 4 3 7.5 7 10.5z"/></svg></div>
+          <div class="sec-title">Cores</div>
+        </div>
+        <div class="cores-row">
+          <div class="cores-chip" style="background:#FFFFFF"></div>
+          <div class="cores-chip" style="background:#F0E6C8"></div>
+          <div class="cores-chip" style="background:#E8DFA8"></div>
+          <div class="cores-chip" style="background:#C9A876"></div>
+          <div class="cores-chip" style="background:#A0A0A0"></div>
+          <div class="cores-chip" style="background:#6B6B6B"></div>
+          <div class="cores-chip" style="background:#C9962C"></div>
+          <div class="cores-chip" style="background:#A8C8DC"></div>
+          <div class="cores-chip" style="background:#1E4E9C"></div>
+          <div class="cores-chip" style="background:#B8272C"></div>
+        </div>
+        <div class="cores-note">+ sistema tintométrico</div>
+      </div>
+
+      <div class="rend-chip">
+        <div class="rend-label">Rendimento</div>
+        <div class="rend-value">170 m²</div>
+        <div class="rend-note">acabado · lata 18L</div>
+      </div>
+    </div>
+
+    <!-- COL 4: PISOS E QUADRAS -->
+    <div class="col" style="--accent:#C1121F; --tint:#FBE0E2; --tagtext:#ffffff;">
+      <div class="col-head">
+        <span class="swatch"></span>
+        <div class="col-tag">Uso Externo</div>
+      </div>
+      <div class="col-title">Pisos e<br>Quadras</div>
+      <div class="col-etapa">Alta resistência · Tráfego intenso</div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Concreto, cimento, pisos esportivos e garagens — trânsito intenso e exposição ao tempo.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Superfície limpa, seca e curada.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Aplicar com rolo ou pincel em camada uniforme.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Respeitar o tempo de secagem antes de liberar o tráfego.</div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg></div>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Antiderrapante e resistente ao UV — não usar sobre umidade ascendente.</div>
+      </div>
+
+      <div class="cores-sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.5c4-3 7-6.5 7-10.5a7 7 0 10-14 0c0 4 3 7.5 7 10.5z"/></svg></div>
+          <div class="sec-title">Cores</div>
+        </div>
+        <div class="cores-row">
+          <div class="cores-chip" style="background:#6B6B6B"></div>
+          <div class="cores-chip" style="background:#1A1A1A"></div>
+          <div class="cores-chip" style="background:#B8272C"></div>
+          <div class="cores-chip" style="background:#1E4E9C"></div>
+          <div class="cores-chip" style="background:#3E7D3E"></div>
+          <div class="cores-chip" style="background:#E8C13C"></div>
+          <div class="cores-chip" style="background:#D9C7A8"></div>
+          <div class="cores-chip" style="background:#FFFFFF"></div>
+        </div>
+        <div class="cores-note">+ sistema tintométrico</div>
+      </div>
+
+      <div class="rend-chip">
+        <div class="rend-label">Rendimento</div>
+        <div class="rend-value">120 m²</div>
+        <div class="rend-note">acabado · lata 18L</div>
+      </div>
+    </div>
+
+    <!-- COL 5: ESMALTE ACRÍLICO -->
+    <div class="col" style="--accent:#6B7280; --tint:#E9EAEC; --tagtext:#ffffff;">
+      <div class="col-head">
+        <span class="swatch"></span>
+        <div class="col-tag">Base Água</div>
+      </div>
+      <div class="col-title">Esmalte<br>Acrílico</div>
+      <div class="col-etapa">Brilhante · Madeira e metal</div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Acabamento brilhante para madeira, metal, alvenaria e gesso.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Lixar a superfície. Em metal, remover ferrugem e usar fundo anticorrosivo.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Diluir até 10% em água se necessário.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Aplicar 2 demãos, aguardando 2h entre elas.</div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg></div>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Secagem ao toque em 20 min. Cura total em 12h.</div>
+      </div>
+
+      <div class="cores-sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.5c4-3 7-6.5 7-10.5a7 7 0 10-14 0c0 4 3 7.5 7 10.5z"/></svg></div>
+          <div class="sec-title">Cores</div>
+        </div>
+        <div class="cores-row">
+          <div class="cores-chip" style="background:#FFFFFF"></div>
+          <div class="cores-chip" style="background:#F5F3EC"></div>
+          <div class="cores-chip" style="background:#F0E6C8"></div>
+          <div class="cores-chip" style="background:#E8DFA8"></div>
+          <div class="cores-chip" style="background:#DCC9A3"></div>
+          <div class="cores-chip" style="background:#1A1A1A"></div>
+          <div class="cores-chip" style="background:#8C8C8C"></div>
+          <div class="cores-chip" style="background:#2E5C8A"></div>
+          <div class="cores-chip" style="background:#3E7D3E"></div>
+          <div class="cores-chip" style="background:#B8272C"></div>
+          <div class="cores-chip" style="background:#E8C13C"></div>
+          <div class="cores-chip" style="background:#D9C7A8"></div>
+          <div class="cores-chip" style="background:#8C6239"></div>
+          <div class="cores-chip" style="background:#B0B0B0"></div>
+        </div>
+        <div class="cores-note">14 cores fixas</div>
+      </div>
+
+      <div class="rend-chip">
+        <div class="rend-label">Rendimento</div>
+        <div class="rend-value">10,0 m²/L</div>
+        <div class="rend-note">acabado · 18L ≈ 180 m²</div>
+      </div>
+    </div>
+
+  </div><!-- /corpo -->
+
+  <div class="stripe-thin"></div>
+
+  <!-- RODAPÉ -->
+  <div class="rodape">
+    <div class="rod-left">
+      <div class="rod-brand">
+        <svg viewBox="7 30 186 138" width="24" height="18" xmlns="http://www.w3.org/2000/svg">
+          <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+            <path fill="#fff" d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z"/>
+            <path fill="#F28C28" d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z"/>
+          </g>
+        </svg>
+        <div class="rod-info">
+          <strong>MEP Indústria e Comércio Ltda</strong><br>
+          Rua 3500, 97, Centro — Balneário Camboriú, SC · <strong>mep.ind.br</strong>
+        </div>
+      </div>
+      <div class="rod-safety">
+        <svg class="rod-safety-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg>
+        <div class="rod-safety-txt">Mantenha fora do alcance de crianças e animais. Produtos à base de água — não inflamáveis.<br>Em caso de intoxicação, ligue <span class="cit">CIT 0800 722 6001</span> (a confirmar nº regional)</div>
+      </div>
+    </div>
+
+    <div class="rod-lote">
+      <div class="rod-lote-label">Identificação do Lote</div>
+      <div class="rod-lote-row">Lote: <b>________</b></div>
+      <div class="rod-lote-row">Fab: <b>__/__/____</b> &nbsp; Val: <b>__/__/____</b></div>
+    </div>
+
+    <div class="rod-sac">
+      <div class="rod-sac-icon">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 1 H13 A2 2 0 0 1 15 3 V15 A2 2 0 0 1 13 17 H5 A2 2 0 0 1 3 15 V3 A2 2 0 0 1 5 1Z"/><circle cx="9" cy="14" r="0.8" fill="currentColor"/></svg>
+      </div>
+      <div class="rod-sac-label">SAC / WhatsApp</div>
+      <div class="rod-sac-tel">(47) 98851-5506</div>
+    </div>
+
+    <div class="rod-right">
+      <div class="rod-badge">
+        <svg class="rod-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <div class="rod-badge-txt">Validade<br>2 anos</div>
+      </div>
+      <div class="rod-badge">
+        <svg class="rod-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        <div class="rod-badge-txt">Local Seco<br>e Ventilado</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
