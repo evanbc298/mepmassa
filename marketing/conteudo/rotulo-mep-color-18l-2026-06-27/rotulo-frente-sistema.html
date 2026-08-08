@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>MEP COLOR — Frente do Balde (346x266mm) — Marca</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+@page { size: 346mm 266mm; margin: 0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content:center; font-family:'Barlow',sans-serif; }
+
+.rotulo {
+  width:346mm; height:266mm;
+  display:flex; flex-direction:column;
+  background:#fff;
+  box-shadow:0 10px 50px rgba(0,0,0,.5);
+  overflow:hidden;
+  position:relative;
+}
+
+/* ═══ ZONA HERO — NAVY ═══ */
+.hero {
+  position:relative;
+  height:128mm;
+  background: linear-gradient(150deg, #1b2c50 0%, #0e1730 65%, #0a1226 100%);
+  overflow:hidden;
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 16mm;
+}
+/* glow decorativo */
+.hero::before {
+  content:'';
+  position:absolute; right:-70mm; top:-90mm;
+  width:220mm; height:220mm; border-radius:50%;
+  background:radial-gradient(circle, rgba(242,140,40,0.14) 0%, rgba(242,140,40,0) 68%);
+}
+.hero::after {
+  content:'';
+  position:absolute; left:-60mm; bottom:-100mm;
+  width:200mm; height:200mm; border-radius:50%;
+  background:radial-gradient(circle, rgba(74,144,164,0.10) 0%, rgba(74,144,164,0) 70%);
+}
+/* cubo watermark gigante */
+.hero-cube-wm { position:absolute; right:-18mm; bottom:-30mm; width:150mm; height:150mm; opacity:0.05; }
+
+.hero-inner { position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; }
+
+/* logo real MEP COLOR — recortada via background-position a partir do arquivo fonte */
+.hero-logo-crop {
+  width:130mm; height:37.6mm;
+  background-image:url('../../../docs/logo-mep-color.webp');
+  background-repeat:no-repeat;
+  background-size:163.1mm auto;
+  background-position:-18.05mm -30.35mm;
+  flex-shrink:0;
+}
+
+.hero-vol { text-align:right; flex-shrink:0; }
+.hero-vol-num { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:58pt; color:#fff; line-height:0.85; }
+.hero-vol-unit { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:14pt; color:#F28C28; letter-spacing:5px; }
+.hero-vol-alt { font-size:9.5pt; color:rgba(255,255,255,.4); margin-top:2mm; letter-spacing:1px; }
+
+/* tagline sob o logo */
+.hero-tagline {
+  position:relative; z-index:2;
+  margin-top:11mm;
+  display:flex; align-items:center; gap:5mm;
+}
+.hero-rule { width:14mm; height:1.4px; background:#F28C28; flex-shrink:0; }
+.hero-tagline-txt {
+  font-family:'Barlow',sans-serif; font-style:italic; font-weight:700;
+  font-size:15pt; color:rgba(255,255,255,.82); letter-spacing:0.3px;
+}
+
+/* ÁREA RESERVADA — etiqueta de identificação de produto (colada na produção) */
+.sticker-zone {
+  position:absolute; z-index:3;
+  right:16mm; bottom:11mm;
+  width:58mm; height:34mm;
+  border:1.2px dashed rgba(255,255,255,.4);
+  border-radius:2mm;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.6mm;
+  padding:3mm;
+  text-align:center;
+}
+.sticker-zone-icon { width:16px; height:16px; color:rgba(255,255,255,.45); }
+.sticker-zone-txt {
+  font-family:'Barlow',sans-serif; font-weight:700; font-size:6.6pt;
+  color:rgba(255,255,255,.5); text-transform:uppercase; letter-spacing:.6px; line-height:1.5;
+}
+
+.stripe-orange { height:2.2mm; background:linear-gradient(90deg, #F28C28, #C9A84C, #C1121F, #6B7280, #4A90A4); flex-shrink:0; }
+
+/* ═══ ZONA CENTRAL — BRANCA / ECOSSISTEMA ═══ */
+.center {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:6mm 20mm;
+  gap:7mm;
+  background:#fff;
+}
+.center-kicker {
+  font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:11pt;
+  color:#9aa3b5; letter-spacing:4px; text-transform:uppercase; text-align:center;
+}
+.center-headline {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:30pt;
+  color:#162240; text-align:center; line-height:1.05; letter-spacing:-0.3px;
+  max-width:230mm;
+}
+
+/* espectro de 5 produtos */
+.spectrum {
+  display:flex; align-items:flex-start; gap:9mm; margin-top:2mm;
+}
+.spec-item { display:flex; flex-direction:column; align-items:center; gap:3mm; width:34mm; }
+.spec-swatch {
+  width:15mm; height:15mm; border-radius:50%;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,.18), 0 3px 8px rgba(0,0,0,.12);
+}
+.spec-label { font-size:8.6pt; font-weight:800; color:#162240; text-align:center; text-transform:uppercase; letter-spacing:.4px; line-height:1.25; }
+.spec-sub { font-size:7.4pt; color:#9aa3b5; text-align:center; font-weight:600; }
+
+/* selos de confiança */
+.trust-row {
+  display:flex; align-items:center; gap:7mm; margin-top:3mm;
+}
+.trust-item { display:flex; align-items:center; gap:2.4mm; }
+.trust-icon { width:16px; height:16px; color:#F28C28; flex-shrink:0; }
+.trust-txt { font-size:8.4pt; font-weight:700; color:#4a5468; letter-spacing:.3px; text-transform:uppercase; }
+.trust-sep { width:1px; height:5mm; background:#e2e5ea; }
+
+/* ═══ RODAPÉ NAVY ═══ */
+.rodape {
+  background:#162240;
+  padding:5mm 16mm;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0;
+  gap:6mm;
+}
+.rod-brand { display:flex; align-items:center; gap:3mm; }
+.rod-cube { width:22px; height:22px; }
+.rod-info { font-size:8pt; color:rgba(255,255,255,.65); line-height:1.5; }
+.rod-info strong { color:#fff; font-weight:700; }
+.rod-site { text-align:center; }
+.rod-site-url { font-family:'Barlow Condensed',sans-serif; font-size:15pt; font-weight:800; color:#fff; letter-spacing:1px; }
+.rod-site-sub { font-size:7pt; color:rgba(255,255,255,.4); letter-spacing:2px; text-transform:uppercase; margin-top:1mm; }
+.rod-right { display:flex; align-items:center; gap:5mm; flex-shrink:0; }
+.rod-vol { text-align:right; }
+.rod-vol-val { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:16pt; color:#fff; line-height:1; }
+.rod-vol-lbl { font-size:6.4pt; color:rgba(255,255,255,.35); text-transform:uppercase; letter-spacing:1.5px; margin-top:1mm; }
+.bc { background:#fff; border-radius:2px; padding:2mm 2mm 1.5mm; display:flex; flex-direction:column; align-items:center; }
+.bc-num { font-size:5.5pt; color:#000; letter-spacing:1.5px; margin-top:1mm; }
+</style>
+</head>
+<body>
+<div class="rotulo">
+
+  <!-- HERO -->
+  <div class="hero">
+    <svg class="hero-cube-wm" viewBox="7 30 186 138" xmlns="http://www.w3.org/2000/svg">
+      <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+        <path fill="#fff" d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z"/>
+        <path fill="#fff" d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z"/>
+        <path fill="#fff" d="m 3790,6354 c -6,-15 -10,-312 -10,-774 v -749 l 33,-24 c 49,-38 412,-237 430,-237 9,0 21,9 27,19 6,13 10,171 10,444 0,403 1,425 19,441 18,16 32,10 315,-148 163,-92 300,-166 305,-166 14,0 285,154 521,297 118,72 287,172 375,223 180,104 211,129 225,179 5,20 10,133 10,251 0,223 -7,267 -43,264 -9,-1 -101,-53 -204,-116 -556,-340 -822,-498 -837,-498 -21,0 -89,34 -224,112 -56,32 -187,105 -290,161 -103,57 -284,158 -403,225 -119,67 -224,122 -233,122 -9,0 -21,-12 -26,-26 z"/>
+      </g>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-logo-crop"></div>
+
+      <div class="hero-vol">
+        <div class="hero-vol-num">18</div>
+        <div class="hero-vol-unit">LITROS</div>
+        <div class="hero-vol-alt">Também em 3,6L</div>
+      </div>
+    </div>
+
+    <div class="hero-tagline">
+      <div class="hero-rule"></div>
+      <div class="hero-tagline-txt">Sistema completo de preparação e pintura</div>
+    </div>
+
+    <div class="sticker-zone">
+      <svg class="sticker-zone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L3 3v6.59a2 2 0 00.59 1.41l9.59 9.59a2 2 0 002.82 0l4.59-4.59a2 2 0 000-2.82z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+      <div class="sticker-zone-txt">Área reservada<br>etiqueta do produto<br>(nome + cor)</div>
+    </div>
+  </div>
+
+  <div class="stripe-orange"></div>
+
+  <!-- CENTRO -->
+  <div class="center">
+    <div class="center-kicker">5 produtos · Uma só linha</div>
+    <div class="center-headline">Da preparação da base ao acabamento final,<br>cada etapa tem a tinta certa.</div>
+
+    <div class="spectrum">
+      <div class="spec-item">
+        <div class="spec-swatch" style="background:#4A90A4"></div>
+        <div class="spec-label">Fundo<br>Preparador</div>
+        <div class="spec-sub">Prepara</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-swatch" style="background:#C9A84C"></div>
+        <div class="spec-label">Premium</div>
+        <div class="spec-sub">Alta cobertura</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-swatch" style="background:#F28C28"></div>
+        <div class="spec-label">Econômica</div>
+        <div class="spec-sub">Alto rendimento</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-swatch" style="background:#C1121F"></div>
+        <div class="spec-label">Pisos e<br>Quadras</div>
+        <div class="spec-sub">Uso externo</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-swatch" style="background:#6B7280"></div>
+        <div class="spec-label">Esmalte<br>Acrílico</div>
+        <div class="spec-sub">Madeira e metal</div>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="trust-txt">Base Água</div>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <div class="trust-txt">Indústria Brasileira</div>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 11-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        <div class="trust-txt">Não Inflamável</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <div class="rodape">
+    <div class="rod-brand">
+      <svg class="rod-cube" viewBox="7 30 186 138" xmlns="http://www.w3.org/2000/svg">
+        <g transform="matrix(0.03527778,0,0,-0.03527778,-74.680394,331.94446)">
+          <path fill="#fff" d="m 4763,8451 c -28,-16 -109,-65 -180,-109 -144,-89 -518,-317 -1069,-648 -204,-123 -392,-242 -418,-265 -26,-23 -56,-59 -67,-81 -47,-93 -49,-119 -49,-1008 0,-527 4,-858 10,-899 23,-140 48,-164 347,-341 l 168,-99 5,957 5,957 22,3 c 25,4 137,-51 468,-230 197,-107 243,-128 257,-119 10,6 102,61 204,122 224,133 267,159 262,164 -3,3 -420,244 -675,391 -56,33 -102,61 -103,64 0,8 931,568 952,573 9,2 307,-166 308,-173 0,-3 -155,-102 -345,-219 -190,-118 -344,-215 -342,-217 9,-9 469,-254 477,-254 6,0 70,38 143,83 72,46 188,117 257,157 294,173 840,518 840,530 -1,3 -157,90 -348,194 -191,105 -453,248 -582,319 -279,154 -335,177 -428,177 -55,0 -76,-6 -119,-29 z"/>
+          <path fill="#F28C28" d="m 6446,7588 c -16,-6 -128,-70 -250,-143 -121,-72 -349,-208 -506,-300 -581,-343 -700,-414 -915,-546 -121,-75 -235,-144 -252,-155 -18,-10 -33,-21 -33,-24 1,-3 114,-70 253,-149 l 251,-143 51,25 c 27,13 88,47 135,74 83,48 743,435 990,580 68,40 127,73 130,73 4,0 15,-6 26,-14 18,-14 19,-33 22,-541 2,-343 -1,-539 -8,-565 -6,-21 -27,-63 -47,-92 -20,-29 -44,-60 -43,-69 0,-8 -6,-24 -23,-33 l 29,9 9,32 c 17,14 -13,-9 -18,-8 -8,0 -400,-235 -584,-351 l -103,-64 v -323 c 0,-256 3,-322 13,-316 6,4 24,15 38,25 14,10 165,102 335,205 170,103 398,241 508,307 223,136 290,190 329,271 58,118 57,101 60,997 2,453 0,855 -5,892 -18,160 -120,281 -282,337 -66,22 -69,23 -110,8 z"/>
+        </g>
+      </svg>
+      <div class="rod-info">
+        <strong>MEP Indústria e Comércio Ltda</strong><br>
+        Rua 3500, 97, Centro — Balneário Camboriú, SC · (47) 98851-5506
+      </div>
+    </div>
+
+    <div class="rod-site">
+      <div class="rod-site-url">mep.ind.br</div>
+      <div class="rod-site-sub">SAC · WhatsApp · Orçamento</div>
+    </div>
+
+    <div class="rod-right">
+      <div class="rod-vol">
+        <div class="rod-vol-val">18L / 3,6L</div>
+        <div class="rod-vol-lbl">Volumes disponíveis</div>
+      </div>
+      <div class="bc">
+        <svg viewBox="0 0 100 44" width="24mm" height="10mm" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0"  y="0" width="2"  height="44" fill="#000"/><rect x="4"  y="0" width="1"  height="44" fill="#000"/><rect x="7"  y="0" width="3"  height="44" fill="#000"/><rect x="12" y="0" width="1"  height="44" fill="#000"/><rect x="15" y="0" width="2"  height="44" fill="#000"/><rect x="19" y="0" width="1"  height="44" fill="#000"/><rect x="22" y="0" width="3"  height="44" fill="#000"/><rect x="27" y="0" width="1"  height="44" fill="#000"/><rect x="30" y="0" width="2"  height="44" fill="#000"/><rect x="34" y="0" width="1"  height="44" fill="#000"/><rect x="37" y="0" width="3"  height="44" fill="#000"/><rect x="42" y="0" width="2"  height="44" fill="#000"/><rect x="46" y="0" width="1"  height="44" fill="#000"/><rect x="49" y="0" width="3"  height="44" fill="#000"/><rect x="54" y="0" width="1"  height="44" fill="#000"/><rect x="57" y="0" width="2"  height="44" fill="#000"/><rect x="61" y="0" width="1"  height="44" fill="#000"/><rect x="64" y="0" width="3"  height="44" fill="#000"/><rect x="69" y="0" width="1"  height="44" fill="#000"/><rect x="72" y="0" width="2"  height="44" fill="#000"/><rect x="76" y="0" width="1"  height="44" fill="#000"/><rect x="79" y="0" width="3"  height="44" fill="#000"/><rect x="84" y="0" width="2"  height="44" fill="#000"/><rect x="88" y="0" width="1"  height="44" fill="#000"/><rect x="91" y="0" width="2"  height="44" fill="#000"/><rect x="95" y="0" width="1"  height="44" fill="#000"/><rect x="98" y="0" width="2"  height="44" fill="#000"/>
+        </svg>
+        <div class="bc-num">0 00000 00000 0</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
