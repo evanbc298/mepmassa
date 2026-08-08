@@ -45,7 +45,7 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
 .top-produto { font-size:18px; font-weight:900; color:#fff; letter-spacing:0.8px; text-transform:uppercase; text-align:center; font-family:'Barlow Condensed',sans-serif; position:relative; z-index:1; }
 .top-vol { visibility:hidden; }
 
-.stripe-orange { height:2.2mm; background:linear-gradient(90deg, #F28C28, #C9A84C, #C1121F, #6B7280, #4A90A4); flex-shrink:0; }
+.stripe-orange { height:2.2mm; background:linear-gradient(90deg, #4A90A4, #C9A84C, #F28C28, #C1121F, #6B7280, #1E4E9C); flex-shrink:0; }
 
 /* DIRETRIZ CRÍTICA */
 .diretriz {
@@ -63,17 +63,17 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
 .diretriz-txt { font-size:7.6pt; font-weight:500; color:#6b5019; line-height:1.4; }
 .diretriz-txt strong { font-weight:800; color:#a8721f; text-transform:uppercase; letter-spacing:0.5px; }
 
-/* CORPO 5 COLUNAS */
+/* CORPO 6 COLUNAS */
 .corpo {
   flex:1;
   display:grid;
-  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;
   gap:0;
   overflow:hidden;
 }
 .col {
   --accent:#F28C28; --tint:#FDEBD9; --tagtext:#162240;
-  padding:0 4.2mm 4mm;
+  padding:0 3.2mm 3.4mm;
   border-right:1px solid #ececec;
   display:flex; flex-direction:column; gap:3mm;
   position:relative;
@@ -97,33 +97,33 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
   padding:1.1mm 2.6mm; border-radius:2px; width:fit-content;
 }
 .col-title {
-  font-family:'Barlow Condensed',sans-serif; font-size:27pt; font-weight:900; color:#162240;
+  font-family:'Barlow Condensed',sans-serif; font-size:21pt; font-weight:900; color:#162240;
   letter-spacing:-0.3px; line-height:0.92; margin-top:1.5mm;
 }
 .col-etapa {
-  font-size:8.4pt; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.3px;
-  padding-bottom:2.2mm; border-bottom:1.5px solid var(--tint);
+  font-size:7.2pt; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:.3px;
+  padding-bottom:1.8mm; border-bottom:1.5px solid var(--tint);
 }
 
-.sec { display:flex; flex-direction:column; gap:1.4mm; }
-.sec-head { display:flex; align-items:center; gap:2.2mm; }
+.sec { display:flex; flex-direction:column; gap:1.2mm; }
+.sec-head { display:flex; align-items:center; gap:1.8mm; }
 .sec-icon-wrap {
-  width:6.4mm; height:6.4mm; border-radius:50%; background:var(--tint);
+  width:5.6mm; height:5.6mm; border-radius:50%; background:var(--tint);
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
 }
-.sec-icon { width:14px; height:14px; flex-shrink:0; color:var(--accent); }
+.sec-icon { width:12px; height:12px; flex-shrink:0; color:var(--accent); }
 .sec-title {
-  font-size:10pt; font-weight:800; color:#162240;
+  font-size:8.8pt; font-weight:800; color:#162240;
 }
-.sec-body { font-size:8.4pt; font-weight:500; color:#444; line-height:1.42; padding-left:23px; }
+.sec-body { font-size:7.4pt; font-weight:500; color:#444; line-height:1.36; padding-left:20px; }
 
-.passo { display:flex; gap:1.8mm; align-items:flex-start; padding-left:23px; }
+.passo { display:flex; gap:1.5mm; align-items:flex-start; padding-left:20px; }
 .passo-num {
-  background:#162240; color:#fff; font-size:7.4pt; font-weight:800;
-  width:15px; height:15px; border-radius:50%;
+  background:#162240; color:#fff; font-size:6.6pt; font-weight:800;
+  width:13px; height:13px; border-radius:50%;
   display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;
 }
-.passo-txt { font-size:8.4pt; font-weight:500; color:#444; line-height:1.32; }
+.passo-txt { font-size:7.4pt; font-weight:500; color:#444; line-height:1.28; }
 .passo-txt strong { font-weight:700; color:#162240; }
 
 /* RENDIMENTO — stat chip fixado no rodapé da coluna */
@@ -134,9 +134,9 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
   padding:2.8mm 3.4mm;
   display:flex; flex-direction:column; gap:0.5mm;
 }
-.rend-label { font-size:7.2pt; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:.6px; }
-.rend-value { font-family:'Barlow Condensed',sans-serif; font-size:19pt; font-weight:900; color:#162240; line-height:1.05; }
-.rend-note { font-size:7.2pt; color:#666; font-weight:500; }
+.rend-label { font-size:6.4pt; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:.6px; }
+.rend-value { font-family:'Barlow Condensed',sans-serif; font-size:16pt; font-weight:900; color:#162240; line-height:1.05; }
+.rend-note { font-size:6.4pt; color:#666; font-weight:500; }
 
 .rend-chip.pending {
   background:#f4f4f4;
@@ -148,8 +148,8 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
 /* CORES DISPONÍVEIS */
 .cores-sec { display:flex; flex-direction:column; gap:1.4mm; }
 .cores-row { display:flex; flex-wrap:wrap; gap:1.4mm; }
-.cores-chip { width:5.2mm; height:5.2mm; border-radius:1.2px; border:1px solid rgba(0,0,0,.12); flex-shrink:0; }
-.cores-note { font-size:7.2pt; font-weight:700; color:var(--accent); letter-spacing:.3px; padding-left:23px; }
+.cores-chip { width:4.4mm; height:4.4mm; border-radius:1.2px; border:1px solid rgba(0,0,0,.12); flex-shrink:0; }
+.cores-note { font-size:6.4pt; font-weight:700; color:var(--accent); letter-spacing:.3px; padding-left:20px; }
 
 .stripe-thin { height:2.2mm; background:#162240; flex-shrink:0; }
 
@@ -208,7 +208,7 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
     </div>
     <div class="top-produto">
       Sistema MEP Color<br>
-      <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:0;text-transform:none;font-family:'Barlow',sans-serif;">5 Produtos — Ficha Técnica Completa</span>
+      <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:0;text-transform:none;font-family:'Barlow',sans-serif;">6 Produtos — Ficha Técnica Completa</span>
     </div>
     <div class="top-vol">.</div>
   </div>
@@ -519,6 +519,68 @@ body { margin:0; padding:30px; background:#c8c8c8; display:flex; justify-content
         <div class="rend-label">Rendimento</div>
         <div class="rend-value">10,0 m²/L</div>
         <div class="rend-note">acabado · 18L ≈ 180 m²</div>
+      </div>
+    </div>
+
+    <!-- COL 6: TINTA EMBORRACHADA -->
+    <div class="col" style="--accent:#1E4E9C; --tint:#DCE6F2; --tagtext:#ffffff;">
+      <div class="col-head">
+        <span class="swatch"></span>
+        <div class="col-tag">Impermeável</div>
+      </div>
+      <div class="col-title">Tinta<br>Emborrachada</div>
+      <div class="col-etapa">Elástica · Fachadas e muros</div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg></div>
+          <div class="sec-title">Indicação</div>
+        </div>
+        <div class="sec-body">Impermeabilizante acrílico emborrachado para paredes e muros de alvenaria. Elasticidade acompanha movimentações da superfície, prevenindo microfissuras.</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+          <div class="sec-title">Aplicação</div>
+        </div>
+        <div class="passo"><div class="passo-num">1</div><div class="passo-txt">Mexer o produto com espátula/régua até ficar homogêneo.</div></div>
+        <div class="passo"><div class="passo-num">2</div><div class="passo-txt">Diluir até 10% em água na 1ª e 2ª demão.</div></div>
+        <div class="passo"><div class="passo-num">3</div><div class="passo-txt">Misturar novamente antes de aplicar, no ponto ideal.</div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-3.5 7-10V5l-7-3-7 3v6c0 6.5 7 10 7 10z"/></svg></div>
+          <div class="sec-title">Cuidados</div>
+        </div>
+        <div class="sec-body">Secagem ao toque em 1h. 4h entre demãos, 72h pra cura final — varia com o clima.</div>
+      </div>
+
+      <div class="cores-sec">
+        <div class="sec-head">
+          <div class="sec-icon-wrap"><svg class="sec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.5c4-3 7-6.5 7-10.5a7 7 0 10-14 0c0 4 3 7.5 7 10.5z"/></svg></div>
+          <div class="sec-title">Cores</div>
+        </div>
+        <div class="cores-row">
+          <div class="cores-chip" style="background:#FFFFFF"></div>
+          <div class="cores-chip" style="background:#F0E6C8"></div>
+          <div class="cores-chip" style="background:#D9C7A8"></div>
+          <div class="cores-chip" style="background:#A0A0A0"></div>
+          <div class="cores-chip" style="background:#4A4A4A"></div>
+          <div class="cores-chip" style="background:#1A1A1A"></div>
+          <div class="cores-chip" style="background:#B85C38"></div>
+          <div class="cores-chip" style="background:#1E4E9C"></div>
+          <div class="cores-chip" style="background:#3E7D3E"></div>
+          <div class="cores-chip" style="background:#B8272C"></div>
+        </div>
+        <div class="cores-note">+ sistema tintométrico</div>
+      </div>
+
+      <div class="rend-chip">
+        <div class="rend-label">Rendimento</div>
+        <div class="rend-value">11,1 m²/L</div>
+        <div class="rend-note">por demão · 18L ≈ 200 m²</div>
       </div>
     </div>
 
