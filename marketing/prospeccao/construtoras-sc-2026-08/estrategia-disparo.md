@@ -21,7 +21,7 @@ Acompanhar taxa de bounce (manter abaixo de 2%) e reclamações de spam (abaixo 
 
 Email 1 é o único definido nesta fase (`marketing/email/template-parceria-inicial.html`). Posicionamento: MEP não é "um produto de argamassa", é o **sistema completo de edificação** (Método de Edificação Profissional) — nivelamento, assentamento, encunhamento e reboco fino num fornecedor só. É essa a diferença que abre a conversa de parceria, não o preço.
 
-Assunto sugerido: **"MEP — um sistema completo pra alvenaria da {{contact.EMPRESA}}"**
+Assunto sugerido: **"MEP: um sistema completo pra alvenaria da {{contact.COMPANY}}"**
 Pré-visualização sugerida: **"Do nivelamento ao reboco fino, com um fornecedor só. Sem betoneira."**
 
 - **Dia 0 — Email 1: Apresentação do sistema.** Tom conversacional, sem tabela de comparação, sem preço. Enquadra o MEP como sistema (não produto único) e como parceria, não como venda pontual. Menciona condição comercial diferenciada para quem inicia agora, sem citar valor. CTA duplo (responder o email ou chamar no WhatsApp).
@@ -38,9 +38,19 @@ O Email 1 já inclui a linha "as condições comerciais para quem começa agora 
 
 Reaproveitar o padrão de `controle.csv` da base antiga (`Data, Empresa, Contato, Telefone, Status, Observação`) — nova planilha em `marketing/prospeccao/construtoras-sc-2026-08/controle.csv`. Marcar status por empresa conforme resposta chega, pra saber quem sai da sequência automática.
 
-## Pendências
+## Resultado real da importação (03/08/2026)
 
-- [ ] Usuário exportar a lista do Apify (CSV/Excel) e salvar em `marketing/prospeccao/construtoras-sc-2026-08/` (nome sugerido: `leads-construtoras-sc-ago2026.csv`, mesmo formato `EMAIL,FIRSTNAME,LASTNAME,EMPRESA,CIDADE` já usado na base antiga)
-- [ ] Deduplicar contra `leads-com-email.csv`
-- [ ] Criar lista nova no Brevo e configurar o lote de envio
-- [ ] Emails 2 e 3 da sequência ainda não escritos — fazer depois que o Email 1 estiver rodando e a lista importada
+A planilha do Apify (`LISTA DE EMAILS/leads_construtoras_incorporadoras_SC.xlsx`) trouxe **158 empresas**, não ~300. Cobertura de contato:
+- 150 com WhatsApp/telefone
+- Só 20 com email preenchido (normal: Google Meu Negócio raramente expõe email público, só telefone)
+- 5 dessas 20 já estavam na base antiga de 100 contatos (Jun/2026)
+- **15 contatos novos e únicos com email válido** — é essa a base real do Email 1
+
+Arquivo limpo: `leads-construtoras-sc-ago2026.csv`. Relatório completo da limpeza: `relatorio-importacao.md`.
+
+**Status:**
+- [x] Lista "Prospecção Construtoras SC — Ago/2026" criada no Brevo (id 9)
+- [x] 15 contatos importados com atributos COMPANY/CITY/WHATSAPP
+- [x] Campanha "Prospecção Construtoras SC — Ago/2026 (Sistema Completo)" criada (id 16), assunto sem travessão, agendada para **04/08/2026 09:30** (terça de manhã, primeira janela útil)
+- [ ] Emails 2 e 3 da sequência ainda não escritos — fazer depois de ver a resposta do Email 1
+- [ ] **Oportunidade maior fica no WhatsApp** (150 números): disparo em massa automatizado não é recomendado (risco de banimento do número que a Bruna usa + exposição LGPD, já discutido). Se quiser explorar esse volume, o caminho mais seguro é contato manual/personalizado 1 a 1, não automação — decisão pendente do usuário.
