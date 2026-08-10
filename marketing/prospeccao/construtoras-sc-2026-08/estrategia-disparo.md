@@ -51,6 +51,8 @@ Arquivo limpo: `leads-construtoras-sc-ago2026.csv`. Relatório completo da limpe
 **Status:**
 - [x] Lista "Prospecção Construtoras SC — Ago/2026" criada no Brevo (id 9)
 - [x] 15 contatos importados com atributos COMPANY/CITY/WHATSAPP
-- [x] Campanha "Prospecção Construtoras SC — Ago/2026 (Sistema Completo)" criada (id 16), assunto sem travessão, agendada para **04/08/2026 09:30** (terça de manhã, primeira janela útil)
-- [ ] Emails 2 e 3 da sequência ainda não escritos — fazer depois de ver a resposta do Email 1
+- [x] Campanha "Prospecção Construtoras SC — Ago/2026 (Sistema Completo)" criada (id 16), assunto sem travessão, disparada em **04/08/2026 09:30**
+- [x] **Email 1 — resultado final:** 15 enviados, 12 entregues, 2 hard bounce + 1 soft bounce, **1 abertura, 0 cliques, 0 respostas visíveis**. Taxa de abertura baixa (~8%), mas amostra pequena.
+- [x] **Email 2 (prova social)** criado (`marketing/email/template-parceria-prova-social.html`, campanha id 17) — case do case 820m² (custo -26,5%, peso -59,6t, CO₂ -80%, resíduo -96%), sem preço, foto de obra real. Agendado pra **11/08/2026 09:30** (dia 6 do Email 1, dentro da janela dia 5-7 planejada). Vai pra lista id 9 inteira — Brevo pula sozinho os 2 contatos já blacklisted pelo hard bounce.
+- [ ] Email 3 (convite direto) ainda não escrito — fazer depois de ver o resultado do Email 2, só pra quem não respondeu ainda
 - [ ] **Oportunidade maior fica no WhatsApp** (150 números): disparo em massa automatizado não é recomendado (risco de banimento do número que a Bruna usa + exposição LGPD, já discutido). Se quiser explorar esse volume, o caminho mais seguro é contato manual/personalizado 1 a 1, não automação — decisão pendente do usuário.
