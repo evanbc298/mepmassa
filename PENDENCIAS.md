@@ -47,7 +47,7 @@ Em 22/07: CNPJ da MEP corrigido em todo o projeto (era 73.717.119/0001-84, corre
 O cliente aprovou versões do rótulo verso e frente geradas no GPT (com ícones que meus arquivos HTML não tinham) — não são os mesmos arquivos que tenho aqui. Prompts de correção já enviados ao usuário pra ele rodar no GPT e me devolver:
 - Rótulo verso: 3 correções de texto (remover "ajuste em 5 segundos" do MEP10, adicionar "obras acima de 2 pavimentos" no MEP20, opção bisnaga/espátula no MEP30) — já apliquei também no meu HTML (`rotulo-verso-balde.html`), mas o "oficial" é a versão do GPT
 - Rótulo frente: correção da tagline — prompt enviado, aguardando resultado
-- QR code personalizado com logo no centro pronto (`marketing/rotulos-bisnaga/qrcode-mep-personalizado.png`) — **ainda não testado fisicamente com celular**, fazer esse teste antes de imprimir
+- QR code personalizado com logo no centro pronto (`marketing/rotulos-bisnaga/qrcode-mep-personalizado.png`) — **testado fisicamente com celular em 14/08/2026, funciona**, liberado pra uso em material impresso/digital
 
 **Arquivo temporário travado:** `marketing/rotulos-bisnaga/ROTULO-FRENTE-BARRICA-UNICO-830x280mm-tmp.pdf` — está esperando o usuário fechar o PDF antigo no Acrobat pra eu finalizar a substituição (arquivo final vs nome definitivo).
 
