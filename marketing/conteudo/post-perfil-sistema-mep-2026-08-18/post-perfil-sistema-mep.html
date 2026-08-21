@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Post — Sistema MEP (perfil)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body { font-family: 'Barlow', sans-serif; background: #0a0f1e; }
+
+  .slide {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #0f1932;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 44px 64px;
+    flex-shrink: 0;
+  }
+
+  .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.90);
+    text-transform: uppercase;
+  }
+
+  .meta {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.40);
+    text-transform: uppercase;
+  }
+
+  /* ── FOTO (inteira, sem corte) ── */
+  .photo-wrap {
+    width: 1080px;
+    height: 576px;
+    background: #0f1932;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .photo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── CONTEÚDO ── */
+  .content {
+    flex: 1;
+    padding: 48px 64px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tag {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: #F28C28;
+    margin-bottom: 20px;
+  }
+
+  .orange-rule {
+    width: 52px;
+    height: 3px;
+    background: #F28C28;
+    margin-bottom: 28px;
+  }
+
+  .title {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.10;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 28px;
+  }
+
+  .body {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.70);
+    max-width: 700px;
+  }
+
+  .stats {
+    display: flex;
+    margin-top: 44px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .stat {
+    flex: 1;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    padding-right: 20px;
+  }
+
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat + .stat { padding-left: 20px; }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: #F28C28;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.35;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .footer-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.40);
+    text-transform: uppercase;
+  }
+
+  .footer-site {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.40);
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <div class="logo-bar">
+    <span class="brand">MEP Massas</span>
+    <span class="meta">Sistema 10 · 20 · 30 · 40</span>
+  </div>
+
+  <div class="photo-wrap">
+    <img src="file:///c:/Users/evanb/Desktop/MEPMASSA/MazyOS/marketing/fotos/foto-institucional-mep10-20-30-40.png" alt="Sistema MEP">
+  </div>
+
+  <div class="content">
+    <div class="tag">O Sistema MEP</div>
+    <div class="orange-rule"></div>
+    <div class="title">Do nivelamento ao reboco fino, em um único sistema.</div>
+    <div class="body">Cada etapa da alvenaria tem um produto MEP pensado pra função exata daquele momento — nada de adaptar uma argamassa genérica pra tudo.</div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Mais econômico</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4X</div>
+        <div class="stat-label">Mais rápido</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">-109</div>
+        <div class="stat-label">Dias de prazo</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">-96%</div>
+        <div class="stat-label">Resíduo</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT NBR 16590</span>
+      <span class="footer-site">mep.ind.br</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "remotion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "remotion studio",
+    "render": "remotion render SistemaMep out/sistema-mep.mp4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@remotion/cli": "^4.0.512",
+    "@remotion/google-fonts": "^4.0.512",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "remotion": "^4.0.512"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "typescript": "^7.0.2"
+  }
+}
