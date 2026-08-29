@@ -30,7 +30,7 @@ img{max-width:100%;display:block;}
 .topbar span{font-size:12px;color:rgba(255,255,255,0.55);}
 .topbar .tb-right{display:flex;gap:20px;}
 .topbar .tb-right a{font-size:12px;color:rgba(255,255,255,0.55);transition:color .2s;}
-.topbar .tb-right a:hover{color:var(--laranja);}
+.topbar .tb-right a:hover{color:var(--laranja);}/* Acesso ao sistema interno: so o cadeado, sem texto — nao e pra cliente. */.topbar .tb-right a.tb-lock{display:inline-flex;align-items:center;color:rgba(255,255,255,0.38);}.topbar .tb-right a.tb-lock:hover{color:var(--laranja);}
 
 /* HEADER */
 header{background:var(--branco);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
@@ -118,6 +118,9 @@ footer{background:var(--azul2);color:rgba(255,255,255,0.55);margin-top:80px;}
   <div class="tb-right">
     <a href="tel:+5547988515506">(47) 98851-5506</a>
     <a href="mailto:contato@mep.ind.br">contato@mep.ind.br</a>
+    <a href="https://integramap-web-production.up.railway.app" class="tb-lock" target="_blank" rel="noopener nofollow" title="IntegraMEP — acesso interno" aria-label="IntegraMEP — acesso interno">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+    </a>
   </div>
 </div>
 
