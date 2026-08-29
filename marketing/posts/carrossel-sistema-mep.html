@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Carrossel MEP — Sistema 10/20/30/40</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    font-family: 'Barlow', sans-serif;
+    background: #0a0f1e;
+  }
+
+  .slide {
+    position: relative;
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #0f1932;
+  }
+
+  .slide-content {
+    position: absolute;
+    inset: 0;
+    padding: 64px;
+  }
+
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.90);
+    text-transform: uppercase;
+  }
+
+  .counter {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.32);
+  }
+
+  .text-block {
+    position: absolute;
+    left: 64px;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: #F28C28;
+    margin-bottom: 18px;
+  }
+
+  .orange-rule {
+    width: 48px;
+    height: 3px;
+    background: #F28C28;
+    margin-bottom: 28px;
+    flex-shrink: 0;
+  }
+
+  .title {
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 32px;
+  }
+
+  .body {
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.68;
+    color: rgba(255,255,255,0.62);
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.28);
+    text-transform: uppercase;
+  }
+
+  .footer-site {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.28);
+  }
+
+  /* ── CAPA / CTA (navy limpo) ── */
+  .slide-nav .text-block {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slide-nav .title {
+    font-size: 78px;
+    line-height: 1.02;
+  }
+
+  .slide-nav .body {
+    font-size: 21px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .top-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #F28C28;
+  }
+
+  .cta-box {
+    position: absolute;
+    bottom: 130px;
+    left: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-line {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.40);
+    text-transform: uppercase;
+  }
+
+  .cta-url {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+  }
+
+  /* ── SLIDES DE PRODUTO (split navy / foto objeto) ── */
+  .slide-produto .text-block {
+    top: 44%;
+    transform: translateY(-50%);
+    max-width: 400px;
+    z-index: 2;
+  }
+
+  .slide-produto .title {
+    font-size: 56px;
+  }
+
+  .product-glow {
+    position: absolute;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,140,40,0.16) 0%, rgba(242,140,40,0) 70%);
+  }
+
+  .product-img {
+    position: absolute;
+    right: -50px;
+    top: 52%;
+    transform: translateY(-50%);
+    height: 620px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 50px 90px rgba(0,0,0,0.55));
+    z-index: 1;
+  }
+
+  .weight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 36px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 40px;
+    width: fit-content;
+  }
+
+  .weight-badge span {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .weight-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #F28C28;
+  }
+
+  .slide + .slide { border-top: 2px solid #0a0f1e; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 01 — CAPA
+══════════════════════════════════════════ -->
+<div class="slide slide-nav">
+  <div class="top-line"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">01 / 06</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">O Sistema MEP</div>
+      <div class="orange-rule"></div>
+      <div class="title">Quatro etapas.<br>Um só sistema.</div>
+      <div class="body">Do nivelamento da base ao acabamento final, cada fase da alvenaria tem um produto MEP pensado pra função exata daquele momento — nada de adaptar uma argamassa genérica pra tudo.</div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+      <span class="footer-site">mep.ind.br</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 02 — MEP 10
+══════════════════════════════════════════ -->
+<div class="slide slide-produto">
+  <div class="product-glow"></div>
+  <img class="product-img" src="../../docs/mep-10-nivelamento.webp" alt="MEP 10">
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">02 / 06</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">Etapa 01 · Nivelamento</div>
+      <div class="orange-rule"></div>
+      <div class="title">MEP 10 corrige<br>a base antes<br>de tudo.</div>
+      <div class="body">A primeira fiada define a obra inteira. O MEP 10 nivela sobre baldrame, viga ou laje, absorvendo qualquer irregularidade do piso antes do assentamento começar.</div>
+      <div class="weight-badge"><span class="weight-dot"></span><span>Balde 24 kg · pronto pra aplicar</span></div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 03 — MEP 20
+══════════════════════════════════════════ -->
+<div class="slide slide-produto">
+  <div class="product-glow"></div>
+  <img class="product-img" src="../../docs/mep-20-assentamento.webp" alt="MEP 20">
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">03 / 06</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">Etapa 02 · Assentamento</div>
+      <div class="orange-rule"></div>
+      <div class="title">MEP 20 assenta<br>toda a parede.</div>
+      <div class="body">Dois cordões contínuos de massa substituem a argamassa tradicional em cada fiada. Sem betoneira, sem água, sem cimento — só posicionar o bloco e ajustar.</div>
+      <div class="weight-badge"><span class="weight-dot"></span><span>Balde 24 kg · pronto pra aplicar</span></div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 04 — MEP 30
+══════════════════════════════════════════ -->
+<div class="slide slide-produto">
+  <div class="product-glow"></div>
+  <img class="product-img" src="../../docs/mep-30-encunhamento.webp" alt="MEP 30">
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">04 / 06</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">Etapa 03 · Encunhamento</div>
+      <div class="orange-rule"></div>
+      <div class="title">MEP 30 fecha<br>a última fiada.</div>
+      <div class="body">O ponto onde a parede encosta na viga ou laje superior exige um material diferente — que absorva a movimentação natural da estrutura sem trincar.</div>
+      <div class="weight-badge"><span class="weight-dot"></span><span>Balde 24 kg · pronto pra aplicar</span></div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 05 — MEP 40
+══════════════════════════════════════════ -->
+<div class="slide slide-produto">
+  <div class="product-glow"></div>
+  <img class="product-img" src="../../docs/mep-40-reboco-fino.webp" alt="MEP 40">
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">05 / 06</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">Etapa 04 · Reboco Fino</div>
+      <div class="orange-rule"></div>
+      <div class="title">MEP 40 fecha<br>com acabamento.</div>
+      <div class="body">Camada fina direto na parede, sem chapisco, sem emboço, sem massa corrida. Três demãos de 5 mm e a parede está pronta pro acabamento final.</div>
+      <div class="weight-badge"><span class="weight-dot"></span><span>Balde rígido 25 kg</span></div>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SLIDE 06 — CTA
+══════════════════════════════════════════ -->
+<div class="slide slide-nav">
+  <div class="top-line"></div>
+  <div class="slide-content">
+    <div class="logo-bar">
+      <span class="brand">MEP Massas</span>
+      <span class="counter">06 / 06</span>
+    </div>
+    <div class="text-block">
+      <div class="tag">O sistema completo</div>
+      <div class="orange-rule"></div>
+      <div class="title">Uma obra.<br>Quatro produtos.<br>Zero desperdício.</div>
+      <div class="body">MEP 10, 20, 30 e 40 trabalham juntos — mas cada um funciona sozinho, na etapa certa. Conheça o sistema completo e peça uma proposta pra sua obra.</div>
+    </div>
+    <div class="cta-box">
+      <span class="cta-line">Peça uma proposta</span>
+      <span class="cta-url">mep.ind.br</span>
+    </div>
+    <div class="footer">
+      <span class="footer-label">Argamassa polimérica · ABNT 16590</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
