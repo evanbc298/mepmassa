@@ -989,7 +989,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <a href="tel:+5547988515506">(47) 98851-5506</a>
     <a href="mailto:contato@mep.ind.br">contato@mep.ind.br</a>
     <a href="https://www.mep.ind.br">mep.ind.br</a>
-    <a href="https://integramap-web-production.up.railway.app" class="tb-lock" target="_blank" rel="noopener nofollow" title="IntegraMEP — acesso interno" aria-label="IntegraMEP — acesso interno">
+    <a href="https://sistema.mep.ind.br" class="tb-lock" target="_blank" rel="noopener nofollow" title="IntegraMEP — acesso interno" aria-label="IntegraMEP — acesso interno">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
     </a>
   </div>
@@ -2436,22 +2436,23 @@ document.getElementById('f-btn').addEventListener('click', function() {
 
   if (!nome) { alert('Por favor, informe seu nome.'); return; }
 
-  // Envia para Brevo em background
+  // Envia o lead em background pro nosso endpoint, que repassa pra Brevo.
+  //
+  // A chave da API NAO fica mais aqui. Este site e estatico (GitHub Pages),
+  // entao qualquer coisa neste arquivo e publica — a chave antiga ficou
+  // visivel no codigo-fonte da pagina e precisou ser trocada. Agora quem
+  // conhece a chave e so o servidor: integramap/src/app/api/lead/route.ts
   if (email) {
-    var attrs = { NOME: nome };
-    if (empresa) attrs.EMPRESA = empresa;
-    if (tel)     attrs.WHATSAPP = tel;
-    if (cidade)  attrs.CIDADE = cidade;
-    if (tipo)    attrs.TIPO_OBRA = tipo;
-    if (metro)   attrs.METRAGEM = metro;
-    fetch('https://api.brevo.com/v3/contacts', {
+    var lead = { nome: nome, email: email };
+    if (empresa) lead.empresa  = empresa;
+    if (tel)     lead.telefone = tel;
+    if (cidade)  lead.cidade   = cidade;
+    if (tipo)    lead.tipoObra = tipo;
+    if (metro)   lead.metragem = metro;
+    fetch('https://sistema.mep.ind.br/api/lead', {
       method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'content-type': 'application/json',
-        'api-key': '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'
-      },
-      body: JSON.stringify({ email: email, attributes: attrs, listIds: [8], updateEnabled: true })
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(lead)
     }).catch(function(){});
   }
 
