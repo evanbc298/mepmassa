@@ -39,3 +39,13 @@ MATERIAL NOVO 13-07/
 # Listas de contatos de terceiros (dados pessoais/empresariais scrapeados) — repo é público, não versionar
 LISTA DE EMAILS/
 marketing/prospeccao/construtoras-sc-2026-08/leads-construtoras-sc-ago2026.csv
+
+# Material de trabalho que NAO deve ir pro repositorio — este aqui e publico.
+# Em 11/09/2026 um `git add -A` varreu 23 MB disso (inclusive um video de
+# 21 MB) pra dentro de um commit; foi desfeito antes do push, mas sem estas
+# linhas acontece de novo.
+_reel-test/
+_triagem-tmp/
+*.docx
+docs/_remove-bg.js
+docs/balde-25kg-v2-cutout.png
