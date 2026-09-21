@@ -92,12 +92,13 @@ Branco, Gelo, Palha, Areia, Pérola, Marfim, Algodão Egípcio, Camurça, Pêsse
 
 ### Endereços
 
-**Balneário Camboriú — SC (sede)**
-Rua 3500, 97, Centro — Balneário Camboriú, SC
+**Jaraguá do Sul — SC (sede e depósito)**
+Rua João Januário Ayroso, 2555, Jaraguá Esquerdo — Jaraguá do Sul, SC — CEP 89253-295
+Endereço enviado à contabilidade em 09/2026 para constar no CNPJ.
 Tel: (47) 98851-5506
 
-**Jaraguá do Sul — SC**
-Rua Willy Manhke, 219, Apto 301, Centro — Jaraguá do Sul, SC
+**Balneário Camboriú — SC (escritório)**
+Rua 3500, 97, Centro — Balneário Camboriú, SC — CEP 88330-254
 Tel: (47) 98851-5506
 
 ## Concorrentes mapeados

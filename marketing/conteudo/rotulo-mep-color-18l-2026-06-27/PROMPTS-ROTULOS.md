@@ -33,7 +33,7 @@ Mesmo layout. Mudanças:
 - Cores disponíveis: Branco, Gelo, Marfim, Palha, Areia,
   Preto, Cinza, Azul Colonial, Verde, Vermelho, Amarelo,
   Bege, Bronze, Prata
-- Rodapé: mep.ind.br, CNPJ 43.717.899/0001-87, 18L / 3,6L
+- Rodapé: mep.ind.br, CNPJ 62.205.954/0001-98, 18L / 3,6L
 ```
 
 ### Verso
@@ -67,7 +67,7 @@ Aviso vermelho: Lixar superfície antes de aplicar. Em metal,
 remover ferrugem e aplicar fundo anticorrosivo.
 
 Rodapé igual: MEP Indústria e Comércio Ltda,
-CNPJ 43.717.899/0001-87, Rua 3500, 97, Centro — Balneário Camboriú, SC,
+CNPJ 62.205.954/0001-98, Rua João Januário Ayroso, 2555 — Jaraguá do Sul, SC,
 SAC/WhatsApp (47) 98851-5506, contato@mep.ind.br,
 selos BASE ÁGUA · INDÚSTRIA BRASILEIRA · NÃO INFLAMÁVEL
 ```
@@ -87,7 +87,7 @@ Mesmo layout. Mudanças:
 - Superfícies: Lajes · Calhas · Rufos · Fundações · Muros
 - 4 ícones: Impermeável / Elástica / Resistente UV / Alta Durabilidade
 - Cores disponíveis: Branco, Cinza, Areia, Telha
-- Rodapé: mep.ind.br, CNPJ 43.717.899/0001-87, 18L / 3,6L
+- Rodapé: mep.ind.br, CNPJ 62.205.954/0001-98, 18L / 3,6L
 ```
 
 ### Verso
@@ -121,7 +121,7 @@ Aviso vermelho: Não aplicar sob chuva ou com previsão de chuva
 em 24 horas. Não diluir o produto.
 
 Rodapé igual: MEP Indústria e Comércio Ltda,
-CNPJ 43.717.899/0001-87, Rua 3500, 97, Centro — Balneário Camboriú, SC,
+CNPJ 62.205.954/0001-98, Rua João Januário Ayroso, 2555 — Jaraguá do Sul, SC,
 SAC/WhatsApp (47) 98851-5506, contato@mep.ind.br,
 selos BASE ÁGUA · INDÚSTRIA BRASILEIRA · NÃO INFLAMÁVEL
 ```
@@ -142,7 +142,7 @@ Mesmo layout. Mudanças:
 - 4 ícones: Penetração Profunda / Fixa a Superfície / Alto Rendimento / Prepara a Base
 - Sem paleta de cores (produto transparente — remover seção de cores)
 - Volume: 18L / 3,6L / 900mL
-- Rodapé: mep.ind.br, CNPJ 43.717.899/0001-87, 18L / 3,6L / 900mL
+- Rodapé: mep.ind.br, CNPJ 62.205.954/0001-98, 18L / 3,6L / 900mL
 ```
 
 ### Verso
@@ -176,7 +176,7 @@ Aviso vermelho: Aplicar antes de qualquer tinta MEP COLOR
 em superfícies novas ou muito porosas.
 
 Rodapé igual: MEP Indústria e Comércio Ltda,
-CNPJ 43.717.899/0001-87, Rua 3500, 97, Centro — Balneário Camboriú, SC,
+CNPJ 62.205.954/0001-98, Rua João Januário Ayroso, 2555 — Jaraguá do Sul, SC,
 SAC/WhatsApp (47) 98851-5506, contato@mep.ind.br,
 selos BASE ÁGUA · INDÚSTRIA BRASILEIRA · NÃO INFLAMÁVEL
 ```
@@ -197,7 +197,7 @@ Mesmo layout. Mudanças:
 - 4 ícones: Impermeável / Alto Rendimento / Durável / Resistente
 - Cores disponíveis: Branco, Areia, Creme, Bege Suave, Marfim
 - Volume: 25 KG (substituir "18 LITROS" por "25 KG" no topo direito)
-- Rodapé: mep.ind.br, CNPJ 43.717.899/0001-87, 25 KG
+- Rodapé: mep.ind.br, CNPJ 62.205.954/0001-98, 25 KG
 ```
 
 ### Verso
@@ -231,7 +231,7 @@ Aviso vermelho: Aplicar fundo preparador MEP COLOR antes da textura
 em superfícies novas. Não aplicar sob chuva ou sol forte.
 
 Rodapé igual: MEP Indústria e Comércio Ltda,
-CNPJ 43.717.899/0001-87, Rua 3500, 97, Centro — Balneário Camboriú, SC,
+CNPJ 62.205.954/0001-98, Rua João Januário Ayroso, 2555 — Jaraguá do Sul, SC,
 SAC/WhatsApp (47) 98851-5506, contato@mep.ind.br,
 selos BASE ÁGUA · INDÚSTRIA BRASILEIRA · NÃO INFLAMÁVEL
 ```

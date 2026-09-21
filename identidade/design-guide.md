@@ -129,7 +129,7 @@ Conceito aprovado em junho/2026. Ver mockup em `saidas/mep-color-identidade.html
 
 ### Dados legais MEP COLOR
 - Razão social: MEP Indústria e Comércio Ltda
-- CNPJ: 43.717.899/0001-87
+- CNPJ: 62.205.954/0001-98
 - Endereço: 3500, Sl. 05, Balneário Camboriú/SC
 
 ---

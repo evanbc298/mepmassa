@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEP — Convite</title>
+</head>
+<!--
+  Email 3 da sequência de parceria — o convite direto.
+
+  Decisão de desenho, tomada a partir dos números reais das campanhas
+  (medidos em 17/09/2026): 133 emails enviados, abertura de 16–23%, e
+  ZERO cliques. O email abre e morre ali. Então aqui:
+
+  - UM único botão. Os emails 1 e 2 tinham links competindo com blocos de
+    números; a atenção se dividia e ninguém clicava.
+  - O pedido é pequeno: um número de m², não "agende uma reunião". Quanto
+    menor o esforço pedido, maior a chance de resposta.
+  - Texto curto. Os anteriores eram densos de dado; este é humano.
+  - Nenhum número técnico novo, nenhum preço — preço só depois de entender
+    volume e obra, conforme a estratégia de agosto.
+-->
+<body style="margin:0;padding:0;background:#f0f2f5;font-family:Arial,Helvetica,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f2f5;padding:32px 0;">
+<tr><td align="center">
+
+<table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+
+  <!-- Cabeçalho -->
+  <tr>
+    <td style="background:#1a2b4d;border-radius:10px 10px 0 0;padding:28px 40px;">
+      <div style="color:#ffffff;font-size:22px;font-weight:900;letter-spacing:1px;">MEP</div>
+      <div style="color:rgba(255,255,255,0.6);font-size:10px;text-transform:uppercase;letter-spacing:2px;margin-top:4px;">Método de Edificação Profissional</div>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="background:#f28c28;padding:10px 40px;">
+      <div style="color:#ffffff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Um convite direto</div>
+    </td>
+  </tr>
+
+  <!-- Corpo -->
+  <tr>
+    <td style="background:#ffffff;padding:36px 40px 20px;">
+
+      <p style="margin:0 0 18px;color:#333333;font-size:15px;line-height:1.65;">
+        Olá, <strong>{{contact.COMPANY}}</strong>.
+      </p>
+
+      <p style="margin:0 0 18px;color:#333333;font-size:15px;line-height:1.65;">
+        Nas últimas semanas te mandamos dois emails sobre o sistema MEP — os quatro produtos
+        que cobrem a alvenaria do nivelamento ao reboco fino, e o resultado medido numa obra
+        real de 820 m².
+      </p>
+
+      <p style="margin:0 0 18px;color:#333333;font-size:15px;line-height:1.65;">
+        Não vou repetir número nenhum aqui. Quero fazer algo mais útil:
+        <strong>rodar a conta na sua obra.</strong>
+      </p>
+
+      <p style="margin:0 0 26px;color:#333333;font-size:15px;line-height:1.65;">
+        Me diga só quantos <strong>m² de alvenaria</strong> tem a sua próxima obra. Eu devolvo
+        o comparativo de custo e de prazo entre o método convencional e o MEP, com os números
+        da sua metragem — não os de um case genérico.
+      </p>
+
+      <!-- CTA única -->
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px;">
+        <tr>
+          <td align="center">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#f28c28;border-radius:6px;padding:16px 34px;">
+                  <a href="https://wa.me/5547988515506?text=Ol%C3%A1%21%20Recebi%20o%20email%20da%20MEP.%20Minha%20pr%C3%B3xima%20obra%20tem%20cerca%20de%20____%20m%C2%B2%20de%20alvenaria."
+                     style="color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;">
+                    Mandar a metragem pelo WhatsApp
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="margin:0 0 6px;color:#888888;font-size:13px;line-height:1.6;text-align:center;">
+        Prefere por aqui? É só responder este email com o número.
+      </p>
+
+    </td>
+  </tr>
+
+  <!-- Assinatura -->
+  <tr>
+    <td style="background:#ffffff;padding:8px 40px 30px;">
+      <div style="border-top:1px solid #e8e8e8;padding-top:20px;">
+        <p style="margin:0;color:#555555;font-size:14px;line-height:1.6;">
+          Um abraço,<br>
+          <strong style="color:#1a2b4d;">Equipe MEP Indústria</strong><br>
+          <span style="color:#888888;font-size:13px;">Balneário Camboriú/SC · (47) 98851-5506</span>
+        </p>
+      </div>
+    </td>
+  </tr>
+
+  <!-- Rodapé -->
+  <tr>
+    <td style="background:#f7f7f7;border-top:1px solid #e8e8e8;border-radius:0 0 10px 10px;padding:24px 40px;">
+      <p style="margin:0 0 8px;color:#999999;font-size:12px;line-height:1.6;">
+        <strong style="color:#555555;">MEP Indústria e Comércio Ltda</strong><br>
+        Rua João Januário Ayroso, 2555 — Jaraguá do Sul/SC · mep.ind.br
+      </p>
+      <p style="margin:0;color:#aaaaaa;font-size:11px;line-height:1.6;">
+        Você recebeu este email porque sua empresa atua em construção civil em Santa Catarina.
+        Se preferir não receber mais, <a href="{{ unsubscribe }}" style="color:#888888;">cancele aqui</a>.
+      </p>
+    </td>
+  </tr>
+
+</table>
+
+</td></tr>
+</table>
+</body>
+</html>
