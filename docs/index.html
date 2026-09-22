@@ -977,6 +977,27 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .sl-ctas { flex-direction:column; align-items:flex-start; }
   .sl-btn-s,.sl-btn-g { width:100%; text-align:center; }
 }
+
+/* ===== mep: correcoes de celular (22/09/2026) ===== */
+@media (max-width:900px){
+  /* o menu rola de lado; a sombra na borda mostra que tem mais itens */
+  nav{position:relative;}
+  nav::after{content:'';position:absolute;top:0;right:0;bottom:0;width:32px;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 75%);}
+  .nav-inner{scrollbar-width:none;}
+  .nav-inner::-webkit-scrollbar{display:none;}
+  /* os dois botoes de 'Como adquirir' saiam pelas bordas: um embaixo do outro */
+  .cta-dupla{flex-wrap:wrap !important;gap:12px !important;}
+  .cta-dupla > a{width:100%;justify-content:center;}
+  /* a tabela das construtoras estava cortada na direita */
+  .ct-table-wrap{overflow-x:auto;}
+  .ct-table{min-width:520px;}
+}
+@media (max-width:640px){
+  /* 4 passos e especificacoes tecnicas em duas colunas espremiam o texto */
+  .passos-grid{grid-template-columns:1fr !important;gap:18px !important;}
+  .passos-item{text-align:left;}
+  .specs-2col{grid-template-columns:1fr !important;gap:28px !important;}
+}
 </style>
 </head>
 <body>
@@ -1521,7 +1542,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
           </div>
           <div class="aplicacao-callout" style="bottom:22%;left:25%;">
             <div class="ac-dot"></div><div class="ac-line"></div>
-            <div class="ac-box"><strong>Zero desperdício</strong><span>Canteiro limpo e organizado</span></div>
+            <div class="ac-box"><strong>Sem entulho</strong><span>Canteiro limpo e organizado</span></div>
           </div>
         </div>
         <!-- Antes/Depois overlay — visível só na aba 2 -->
@@ -1595,7 +1616,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="comp-row"><div class="col-a">Material para quarto 3x3m (2,7m)</div><div class="col-b">594 kg</div><div class="col-c win">45 kg</div></div>
       <div class="comp-row"><div class="col-a">Material para pavimento 820 m²</div><div class="col-b">24.000 kg</div><div class="col-c win">1.200 kg (1 pallet)</div></div>
       <div class="comp-row"><div class="col-a">Velocidade de execução</div><div class="col-b">Padrão</div><div class="col-c win">4x mais rápida</div></div>
-      <div class="comp-row"><div class="col-a">Desperdício de material</div><div class="col-b">15% a 25%</div><div class="col-c win">Zero (0%)</div></div>
+      <div class="comp-row"><div class="col-a">Desperdício de material</div><div class="col-b">15% a 25%</div><div class="col-c win">Menos de 1%</div></div>
       <div class="comp-row"><div class="col-a">Equipamentos necessários</div><div class="col-b">Betoneira + energia + nível</div><div class="col-c win">Aplicador + nível + prumo</div></div>
       <div class="comp-row"><div class="col-a">Consumo de água na obra</div><div class="col-b">Alto consumo</div><div class="col-c win">95% menos</div></div>
       <div class="comp-row"><div class="col-a">Redução de custo total</div><div class="col-b">—</div><div class="col-c win">Até 40%</div></div>
@@ -1903,7 +1924,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:10px;">Venda Direta</div>
     <h2 style="font-size:34px;font-weight:900;color:var(--azul);margin-bottom:12px;">Como adquirir o MEP</h2>
     <p style="font-size:16px;color:var(--sub);margin-bottom:44px;">Vendemos diretamente para construtoras, incorporadoras e pedreiros. Sem intermediário, com atendimento direto da equipe comercial.</p>
-    <div style="display:flex;flex-wrap:nowrap;gap:16px;justify-content:center;align-items:center;margin-bottom:40px;">
+    <div class="cta-dupla" style="display:flex;flex-wrap:nowrap;gap:16px;justify-content:center;align-items:center;margin-bottom:40px;">
       <a href="https://wa.me/5547988515506?text=Ol%C3%A1%21+Gostaria+de+solicitar+um+or%C3%A7amento+do+MEP+Massas." target="_blank"
          style="display:flex;align-items:center;gap:12px;background:#25D366;color:#fff;padding:16px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.3);white-space:nowrap;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.556 4.121 1.527 5.855L.057 23.882l6.19-1.621A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.366l-.358-.214-3.724.976.995-3.622-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
@@ -1937,7 +1958,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         Baixar Ficha Técnica (PDF)
       </a>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+    <div class="specs-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
 
       <div>
         <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:var(--laranja);margin-bottom:20px;">Desempenho</div>
@@ -1960,7 +1981,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--borda);">
             <div style="padding:14px 18px;font-size:13px;color:var(--sub);font-weight:600;border-right:1px solid var(--borda);">Rendimento</div>
-            <div style="padding:14px 18px;font-size:14px;font-weight:800;color:var(--azul);">~1 m² por kg</div>
+            <div style="padding:14px 18px;font-size:14px;font-weight:800;color:var(--azul);">~1,5 kg por m²</div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;">
             <div style="padding:14px 18px;font-size:13px;color:var(--sub);font-weight:600;border-right:1px solid var(--borda);">Norma técnica</div>
@@ -2018,7 +2039,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
         <div style="display:flex;flex-direction:column;gap:14px;">
           <div style="display:flex;align-items:center;gap:12px;">
             <div style="width:8px;height:8px;border-radius:50%;background:var(--laranja);flex-shrink:0;"></div>
-            <span style="font-size:14px;font-weight:600;color:var(--azul);">Indústria própria — controle total do produto</span>
+            <span style="font-size:14px;font-weight:600;color:var(--azul);">Estoque próprio em Jaraguá do Sul — pronta entrega</span>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
             <div style="width:8px;height:8px;border-radius:50%;background:var(--laranja);flex-shrink:0;"></div>
@@ -2049,7 +2070,7 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 <div class="sec sec-bg" id="contato">
   <div class="sec-inner">
     <div class="sec-header">
-      <div class="sh-tag">Orçamento Direto de Fábrica</div>
+      <div class="sh-tag">Orçamento Direto com a MEP</div>
       <div class="sh-title">Solicite sua proposta comercial</div>
       <div class="sh-sub">Atendimento direto da equipe comercial MEP. Sem intermediários, com suporte técnico incluso.</div>
     </div>
