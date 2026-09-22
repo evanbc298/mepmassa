@@ -998,6 +998,19 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   .passos-item{text-align:left;}
   .specs-2col{grid-template-columns:1fr !important;gap:28px !important;}
 }
+
+@media (max-width:540px){
+  /* dois produtos por linha: a lista inteira cabia em 8 telas de rolagem */
+  .produtos-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important;}
+  .color-products-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important;}
+  .produto-card .produto-desc,.color-prod-desc{font-size:12px;}
+  .produto-nome,.color-prod-nome{font-size:14px;}
+}
+
+@media (max-width:540px){
+  .produto-card,.color-prod-card{display:flex;flex-direction:column;}
+  .produto-card .produto-cta,.color-prod-card .color-prod-cta{margin-top:auto;}
+}
 </style>
 </head>
 <body>
@@ -1086,189 +1099,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     </div>
   </div>
 </div>
-
-<!-- ═══ BANNER SLIDER ═══ -->
-<div class="sl-wrap">
-  <div class="sl-track" id="sl-track">
-
-    <!-- Banner 1: MEP Massas -->
-    <div class="sl-banner slb1">
-      <div class="slb1-noise"></div>
-      <div class="slb1-diag"></div>
-      <div class="slb1-ring" style="width:580px;height:580px;top:-200px;right:-100px;"></div>
-      <div class="sl-inner">
-        <div class="slb1-txt">
-          <div class="sl-eyebrow">Argamassa Polimérica · Pronta para Uso</div>
-          <div class="sl-h1">A MASSA QUE<br>CHEGA <span class="navy">PRONTA.</span><br>VOCÊ APLICA.</div>
-          <div class="sl-sub">Sem betoneira, sem entulho, sem complicação. Tecnologia polimérica que multiplica a produtividade da obra.</div>
-          <div class="slb1-metrics">
-            <div class="slb1-metric"><div class="mv">4×</div><div class="ml">Mais rápida</div></div>
-            <div class="slb1-metric"><div class="mv">40%</div><div class="ml">Mais econômica</div></div>
-            <div class="slb1-metric"><div class="mv">Zero</div><div class="ml">Desperdício</div></div>
-          </div>
-          <div class="sl-ctas">
-            <a href="#contato" class="sl-btn-s">Solicitar Orçamento</a>
-            <a href="#comparativo" class="sl-btn-g">Ver Comparativo</a>
-          </div>
-        </div>
-        <div class="slb1-img">
-          <div class="slb1-glow"></div>
-          <img src="barrica-25kg.webp?v=9" alt="MEP Massas — Barrica 24kg">
-          <div class="slb1-badge">Rende<strong>16 m²</strong>por barrica</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banner 2: MEP COLOR -->
-    <div class="sl-banner slb2">
-      <div class="slb2-grad"></div>
-      <div class="slb2-badge-color"></div>
-      <div class="slb2-corner-gold"></div>
-      <div class="slb2-corner-red"></div>
-      <div class="slb2-dots"></div>
-      <svg class="slb2-ring" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="310" cy="310" r="300" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-        <circle cx="310" cy="310" r="230" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-        <circle cx="310" cy="310" r="155" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
-        <line x1="10" y1="310" x2="610" y2="310" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
-        <line x1="310" y1="10" x2="310" y2="610" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
-      </svg>
-      <div class="sl-inner">
-        <div class="slb2-txt">
-          <div class="sl-eyebrow">Linha de Tintas</div>
-          <div style="margin-bottom:12px;"><img src="logo-mep-color.webp" alt="MEP COLOR Tintas" style="height:140px;width:auto;"></div>
-          <div class="sl-h1">QUATRO<br>LINHAS.</div>
-          <div class="sl-sub">Do interior ao exterior. Da parede ao piso. Uma linha completa com qualidade MEP.</div>
-          <div class="slb2-linhas">
-            <div class="slb2-linha"><div class="slb2-linha-ic" style="background:#C9A84C"></div><span class="slb2-linha-txt">Premium — maxima durabilidade</span></div>
-            <div class="slb2-linha"><div class="slb2-linha-ic" style="background:#F28C28"></div><span class="slb2-linha-txt">Econômica — alto rendimento por litro</span></div>
-            <div class="slb2-linha"><div class="slb2-linha-ic" style="background:#C1121F"></div><span class="slb2-linha-txt">Pisos e Quadras — alto tráfego</span></div>
-            <div class="slb2-linha"><div class="slb2-linha-ic" style="background:#9CA3AF"></div><span class="slb2-linha-txt">Esmalte Acrílico — madeiras e metais</span></div>
-          </div>
-          <div class="sl-ctas">
-            <a href="#mep-color" class="sl-btn-s">Ver Linha Completa</a>
-            <a href="#contato" class="sl-btn-g">Solicitar Orçamento</a>
-          </div>
-        </div>
-        <div class="slb2-imgs">
-          <div class="slb2-img"><img src="bucket-premium.webp" alt="MEP COLOR Tinta Acrílica Premium — paredes internas e externas"><div class="slb2-lbl">Premium</div></div>
-          <div class="slb2-img"><img src="bucket-esmalte.webp" alt="MEP COLOR Esmalte Acrílico para madeiras e metais"><div class="slb2-lbl">Esmalte</div></div>
-          <div class="slb2-img"><img src="bucket-pisos.webp" alt="MEP COLOR Tinta para Pisos e Quadras — alto tráfego"><div class="slb2-lbl">Pisos</div></div>
-          <div class="slb2-img"><img src="bucket-economica.webp" alt="MEP COLOR Tinta Acrílica Econômica — alto rendimento"><div class="slb2-lbl">Econômica</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banner 3: Editorial -->
-    <div class="sl-banner slb3">
-      <div class="slb3-ov"></div>
-      <div class="sl-inner">
-        <div class="slb3-txt">
-          <div class="sl-eyebrow">Resultado comprovado em obra</div>
-          <div class="sl-h1">MESMA OBRA.<br><em>METADE</em><br>DO TEMPO.</div>
-          <div class="sl-sub">Construtoras que adotam o MEP entregam mais rapido, gastam menos e produzem com mais qualidade.</div>
-          <div class="slb3-dados">
-            <div class="slb3-dado"><div class="dv">-109</div><div class="dl">Dias de obra</div></div>
-            <div class="slb3-dado"><div class="dv">-26%</div><div class="dl">Custo total</div></div>
-            <div class="slb3-dado"><div class="dv">-49%</div><div class="dl">Menos peso</div></div>
-          </div>
-          <div class="sl-ctas">
-            <a href="#contato" class="sl-btn-s">Falar com Consultor</a>
-            <a href="#comparativo" class="sl-btn-g">Ver Dados de Obra</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banner 5: Sistema Completo -->
-    <div class="sl-banner slb5">
-      <div class="slb5-ring"></div>
-      <div class="sl-inner">
-        <div class="slb5-txt">
-          <div class="sl-eyebrow">Sistema Completo</div>
-          <div class="sl-h1">UMA SOLUÇÃO<br>PRA CADA <span>ETAPA.</span></div>
-          <div class="sl-sub">MEP 10, 20, 30 e 40 — do nivelamento da primeira fiada ao reboco fino de acabamento. Quatro produtos, uma só obra.</div>
-          <div class="sl-ctas">
-            <a href="#produtos" class="sl-btn-s">Ver os 4 Produtos</a>
-            <a href="#contato" class="sl-btn-g">Falar com Vendas</a>
-          </div>
-        </div>
-        <div class="slb5-img">
-          <picture>
-            <source media="(max-width:900px)" srcset="banner-mep-linha-completa-mobile.webp?v=2">
-            <img src="banner-mep-linha-completa.webp?v=2" alt="Sistema completo MEP 10, 20, 30 e 40 — nivelamento, assentamento, encunhamento e reboco fino" loading="lazy">
-          </picture>
-          <div class="slb5-tag">Sistema <b>MEP 10 · 20 · 30 · 40</b></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Banner 4: Calculadora -->
-    <div class="sl-banner slb4">
-      <div class="slb4-right"></div>
-      <div class="sl-inner">
-        <div class="slb4-left">
-          <div class="sl-eyebrow">Ferramenta Gratuita</div>
-          <div class="sl-h1">QUANTO SUA<br>OBRA PODE<br><em>ECONOMIZAR?</em></div>
-          <div class="sl-sub">Informe a metragem e veja em segundos o quanto o MEP economiza na sua obra comparado com a argamassa convencional.</div>
-          <div class="sl-ctas">
-            <a href="#calculadora" class="sl-btn-s">Calcular Agora — Gratis</a>
-            <a href="#contato" class="sl-btn-g">Falar com Vendas</a>
-          </div>
-        </div>
-        <div class="slb4-r">
-          <div>
-            <div class="slb4-num">40%</div>
-            <div class="slb4-num-s">de economia média</div>
-          </div>
-          <div class="slb4-cards">
-            <div class="slb4-card"><div class="cv">4×</div><div class="cl">Mais rápida</div></div>
-            <div class="slb4-card"><div class="cv">3×</div><div class="cl">Resistente</div></div>
-            <div class="slb4-card"><div class="cv">95%</div><div class="cl">Menos água</div></div>
-            <div class="slb4-card"><div class="cv">Zero</div><div class="cl">Desperdício</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /sl-track -->
-  <button class="sl-ctrl sl-prev" onclick="slMove(-1)">&#8592;</button>
-  <button class="sl-ctrl sl-next" onclick="slMove(1)">&#8594;</button>
-  <div class="sl-dots" id="sl-dots"></div>
-  <div class="sl-prog" id="sl-prog"></div>
-</div>
-<script>
-(function(){
-  var cur=0, total=document.querySelectorAll('.sl-banner').length;
-  var track=document.getElementById('sl-track');
-  var dotsEl=document.getElementById('sl-dots');
-  var progEl=document.getElementById('sl-prog');
-  var timer;
-  for(var i=0;i<total;i++){
-    var d=document.createElement('div');
-    d.className='sl-dot'+(i===0?' sl-on':'');
-    d.setAttribute('data-i',i);
-    d.onclick=function(){ slGoTo(+this.getAttribute('data-i')); };
-    dotsEl.appendChild(d);
-  }
-  window.slGoTo=function(n){
-    cur=(n+total)%total;
-    track.style.transform='translateX(-'+cur+'00%)';
-    document.querySelectorAll('.sl-dot').forEach(function(d,i){ d.className='sl-dot'+(i===cur?' sl-on':''); });
-    progEl.style.animation='none'; void progEl.offsetWidth; progEl.style.animation='slprog 5s linear infinite';
-    clearInterval(timer); timer=setInterval(function(){ slGoTo(cur+1); },5000);
-  };
-  window.slMove=function(dir){ slGoTo(cur+dir); };
-  document.addEventListener('keydown',function(e){
-    if(e.key==='ArrowLeft') slMove(-1);
-    if(e.key==='ArrowRight') slMove(1);
-  });
-  var sx=0;
-  track.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; });
-  track.addEventListener('touchend',function(e){ var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50) slMove(dx<0?1:-1); });
-  slGoTo(0);
-})();
-</script>
 
 <!-- PRODUTOS MEP MASSAS -->
 <div class="sec" id="produtos">
@@ -1504,17 +1334,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       </div>
 
     </div>
-  </div>
-</div>
-
-<!-- BANNER DIVISOR -->
-<div class="divisor-banner">
-  <div class="divisor-inner">
-    <div class="divisor-text">
-      <h2>Calcule quanto sua obra pode economizar com o MEP</h2>
-      <p>Dados reais de obra. Comparativo completo entre MEP e argamassa convencional.</p>
-    </div>
-    <a href="#calculadora" class="divisor-btn">Acessar Calculadora Gratuita</a>
   </div>
 </div>
 
@@ -1918,33 +1737,6 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
   </div>
 </div>
 
-<!-- COMO ADQUIRIR -->
-<div style="background:#f8f9fb;padding:70px 0;border-top:1px solid var(--borda);">
-  <div style="max-width:900px;margin:0 auto;padding:0 40px;text-align:center;">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--laranja);margin-bottom:10px;">Venda Direta</div>
-    <h2 style="font-size:34px;font-weight:900;color:var(--azul);margin-bottom:12px;">Como adquirir o MEP</h2>
-    <p style="font-size:16px;color:var(--sub);margin-bottom:44px;">Vendemos diretamente para construtoras, incorporadoras e pedreiros. Sem intermediário, com atendimento direto da equipe comercial.</p>
-    <div class="cta-dupla" style="display:flex;flex-wrap:nowrap;gap:16px;justify-content:center;align-items:center;margin-bottom:40px;">
-      <a href="https://wa.me/5547988515506?text=Ol%C3%A1%21+Gostaria+de+solicitar+um+or%C3%A7amento+do+MEP+Massas." target="_blank"
-         style="display:flex;align-items:center;gap:12px;background:#25D366;color:#fff;padding:16px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.3);white-space:nowrap;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.556 4.121 1.527 5.855L.057 23.882l6.19-1.621A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.005-1.366l-.358-.214-3.724.976.995-3.622-.234-.373A9.818 9.818 0 1112 21.818z"/></svg>
-        Solicitar pelo WhatsApp
-      </a>
-      <a href="mailto:contato@mep.ind.br?subject=Solicita%C3%A7%C3%A3o%20de%20or%C3%A7amento%20MEP"
-         style="display:flex;align-items:center;gap:12px;background:var(--azul);color:#fff;padding:16px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-        Solicitar Cotação por E-mail
-      </a>
-    </div>
-    <div style="border-top:1px solid var(--borda);padding-top:28px;">
-      <p style="font-size:14px;color:var(--sub);">Quer ser revendedor ou distribuidor do MEP na sua região?
-        <a href="https://wa.me/5547988515506?text=Ol%C3%A1%21+Tenho+interesse+em+ser+revendedor+MEP+na+minha+regi%C3%A3o." target="_blank"
-           style="color:var(--laranja);font-weight:700;text-decoration:none;">Fale com nosso comercial →</a>
-      </p>
-    </div>
-  </div>
-</div>
-
 
 <!-- ESPECIFICACOES TECNICAS -->
 <div class="sec" id="especificacoes">
@@ -2126,6 +1918,11 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
     </div>
   </div>
 </div>
+    <div style="border-top:1px solid var(--borda);margin-top:36px;padding-top:24px;text-align:center;">
+      <p style="font-size:14px;color:var(--sub);">Quer ser revendedor ou distribuidor do MEP na sua região?
+        <a href="https://wa.me/5547988515506?text=Ol%C3%A1%21+Tenho+interesse+em+ser+revendedor+MEP+na+minha+regi%C3%A3o." target="_blank" style="color:var(--laranja);font-weight:700;text-decoration:none;">Fale com nosso comercial &rarr;</a>
+      </p>
+    </div>
 
 <!-- FOOTER -->
 <footer>
