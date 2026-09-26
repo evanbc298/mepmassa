@@ -2384,7 +2384,7 @@ function calcular() {
   var rendimento  = parseFloat(document.getElementById('calc-bloco').value); // m² por balde
   var base        = document.getElementById('calc-base').value; // 'convencional' | 'usinada'
   var baldes      = Math.ceil(m2 / rendimento);
-  var pesoMEP     = baldes * 25;
+  var pesoMEP     = baldes * 24;   // balde MEP 20 = 24 kg (o 25 kg e o MEP 40, reboco fino)
   var pesoConv    = Math.round(m2 * 29.27);
   var diasConv    = Math.ceil(m2 / 9);
   var diasMEP     = Math.ceil(m2 / (rendimento * 1.08));
