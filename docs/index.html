@@ -2383,8 +2383,9 @@ function calcular() {
 
   var rendimento  = parseFloat(document.getElementById('calc-bloco').value); // m² por balde
   var base        = document.getElementById('calc-base').value; // 'convencional' | 'usinada'
-  var baldes      = Math.ceil(m2 / rendimento);
-  var pesoMEP     = baldes * 24;   // balde MEP 20 = 24 kg (o 25 kg e o MEP 40, reboco fino)
+  var baldes      = Math.ceil(m2 / rendimento);        // baldes a comprar (embalagem inteira)
+  var consumoKgM2 = 24 / rendimento;                   // kg por m2 conforme o bloco escolhido
+  var pesoMEP     = Math.round(m2 * consumoKgM2);      // material que vai pra parede, nao o balde cheio
   var pesoConv    = Math.round(m2 * 29.27);
   var diasConv    = Math.ceil(m2 / 9);
   var diasMEP     = Math.ceil(m2 / (rendimento * 1.08));
@@ -2401,7 +2402,7 @@ function calcular() {
     var custoConvMaterial = pesoConv * CUSTO.convPrecoKg;
     var custoMEPMaterial  = pesoMEP * CUSTO.mepPrecoKg;
     economiaReais = custoConvMaterial - custoMEPMaterial;
-    metodologia = 'Estimativa de economia em material, com base em preço médio de mercado da argamassa convencional. Não inclui mão de obra nem desperdício de aplicação.';
+    metodologia = 'Comparação de material consumido por m², com base em preço médio de mercado da argamassa convencional. O que sobra no balde é reaproveitável — a embalagem é hermética — e por isso não entra como perda. Não inclui mão de obra.';
   }
 
   var economiaFmt = economiaReais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
@@ -2420,7 +2421,8 @@ function calcular() {
 
   var res = document.getElementById('calc-results');
   res.classList.add('show');
-  document.getElementById('calc-lead-gate').classList.add('show');
+  var gate = document.getElementById('calc-lead-gate');
+  if (gate) { gate.classList.add('show'); }   // a caixa de lead nao existe no HTML; sem isso o JS quebrava aqui
   res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
