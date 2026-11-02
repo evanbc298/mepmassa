@@ -129,7 +129,7 @@
       "name": "A MEP COLOR tem tinta para qual tipo de superfície?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A linha MEP COLOR possui 4 produtos: Premium (paredes internas e externas), Esmalte (madeiras e metais), Pisos e Quadras (alto tráfego) e Econômica (grandes áreas). Cada produto tem indicação específica de substrato."
+        "text": "A linha MEP COLOR tem Fundo Preparador (base nova ou porosa), Acrílico Standard e Acrílico Fosco Premium (paredes internas e externas), Acrílico Semi Brilho, Tinta Emborrachada (fachadas e muros), Tinta para Piso (concreto e cimentado) e as texturas acrílica e projetada. Cada produto tem indicação específica de substrato."
       }
     },
     {
@@ -238,7 +238,7 @@
       "@type": "Product",
       "@id": "https://www.mep.ind.br/#produto-color",
       "name": "MEP COLOR — Linha de Tintas para Construção Civil",
-      "description": "Linha completa de tintas MEP COLOR: Acrílica Premium (interior e exterior), Acrílica Econômica, Pisos e Quadras e Esmalte Acrílico para madeiras e metais. Disponível em 3,6L e 14L.",
+      "description": "Linha completa de tintas MEP COLOR: Fundo Preparador, Acrílico Standard, Acrílico Fosco Premium, Acrílico Semi Brilho, Tinta Emborrachada e Tinta para Piso. Disponível em balde de 15 L e galão de 3,6 L.",
       "brand": {
         "@type": "Brand",
         "name": "MEP COLOR"
@@ -702,7 +702,16 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 .tm-close:hover{background:rgba(255,255,255,0.14);}
 .tm-body{display:grid;grid-template-columns:200px 1fr;gap:0;padding:24px 32px 32px;}
 .tm-left{display:flex;flex-direction:column;align-items:center;gap:16px;padding-right:28px;border-right:1px solid rgba(255,255,255,0.06);}
-.tm-prod-img{width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,0.5));}
+.tm-prod-img{width:170px;height:150px;position:relative}
+.leque-cores{position:relative;width:100%;height:100%}
+.leque-cores span{position:absolute;left:50%;bottom:8%;width:34%;height:74%;border:5px solid #fff;border-bottom-width:26px;border-radius:3px;
+  box-shadow:0 10px 22px rgba(0,0,0,.45);transform-origin:50% 100%;
+  transform:translateX(calc(-50% + (var(--i) - (var(--n) - 1) / 2) * 15%)) rotate(calc((var(--i) - (var(--n) - 1) / 2) * 9deg));transition:transform .45s}
+.leque-cores span b{position:absolute;left:0;right:0;bottom:-21px;text-align:center;font:700 10px/1.1 'Barlow Condensed',sans-serif;
+  letter-spacing:.08em;text-transform:uppercase;color:#1A2B4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 2px}
+.color-prod-img .leque-cores{height:250px;max-width:300px;z-index:1}
+@media (max-width:600px){.color-prod-img .leque-cores span{width:28%;border-width:4px;border-bottom-width:4px}.color-prod-img .leque-cores span b{display:none}}
+.color-prod-card:hover .leque-cores span{transform:translateX(calc(-50% + (var(--i) - (var(--n) - 1) / 2) * 19%)) rotate(calc((var(--i) - (var(--n) - 1) / 2) * 12deg))}
 .tm-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
 .tm-pill{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:5px 10px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);white-space:nowrap;}
 .tm-spec{text-align:center;}
@@ -1178,10 +1187,10 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
 
       <div class="produto-card">
         <div class="produto-img-foto">
-          <img src="textura-projetada-20kg.png" alt="Textura Projetada MEP 20kg">
+          <img src="textura-projetada-20kg.png" alt="Textura Projetada MEP 23 kg">
         </div>
         <div class="produto-info">
-          <div class="produto-nome">Textura Projetada — 20 kg</div>
+          <div class="produto-nome">Textura Projetada — 23 kg</div>
           <div class="produto-desc">Revestimento decorativo para fachadas, muros e paredes. Granulometria fina, média ou grossa. Interno e externo.</div>
           <a href="https://loja.mep.ind.br/checkout/?add-to-cart=25" class="produto-cta">Comprar</a>
         </div>
@@ -1231,11 +1240,11 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="color-sec-right">
         <div class="color-badge">
           <div class="color-badge-title">Embalagens</div>
-          <div class="color-badge-val">14L · 3,6L</div>
+          <div class="color-badge-val">15L · 3,6L</div>
         </div>
         <div class="color-badge">
-          <div class="color-badge-title">Linhas</div>
-          <div class="color-badge-val">4 linhas</div>
+          <div class="color-badge-title">Cartela</div>
+          <div class="color-badge-val">7 cores</div>
         </div>
         <div class="color-badge">
           <div class="color-badge-title">Aplicação</div>
@@ -1253,20 +1262,20 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="color-prod-card" onclick="abrirTinta('premium')">
         <div class="color-prod-img" style="--glow:#C9A84C">
           <div class="color-prod-glow"></div>
-          <img src="bucket-premium.webp" alt="MEP COLOR Premium">
+          <div class="leque-cores"><span style="--i:0;--n:5;background:#F3F2EE"><b>Branco</b></span><span style="--i:1;--n:5;background:#D9D5C2"><b>Crômio</b></span><span style="--i:2;--n:5;background:#B8B8B2"><b>Elefante</b></span><span style="--i:3;--n:5;background:#D7C09C"><b>Camurça</b></span><span style="--i:4;--n:5;background:#CDB78F"><b>Cadeira de Bambu</b></span></div>
         </div>
         <div class="color-prod-info">
           <div class="color-prod-line">
             <div class="color-prod-dot" style="background:#C9A84C"></div>
             <span class="color-prod-line-txt">Linha Premium</span>
           </div>
-          <div class="color-prod-name">Tinta Acrílica<br>Premium</div>
+          <div class="color-prod-name">Acrílico<br>Fosco Premium</div>
           <div class="color-prod-pills">
             <span class="color-prod-pill">Interior</span>
             <span class="color-prod-pill">Exterior</span>
             <span class="color-prod-pill">Alvenaria</span>
           </div>
-          <div class="color-prod-desc">Alta durabilidade e cobertura superior. Máximo desempenho em alvenaria interna e externa.</div>
+          <div class="color-prod-desc">Alta cobertura, lavável e resistente ao UV. Indicada para fachada exposta ao sol e paredes internas.</div>
           <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
@@ -1274,19 +1283,20 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="color-prod-card" onclick="abrirTinta('economica')">
         <div class="color-prod-img" style="--glow:#F28C28">
           <div class="color-prod-glow"></div>
-          <img src="bucket-economica.webp" alt="MEP COLOR Econômica">
+          <div class="leque-cores"><span style="--i:0;--n:5;background:#F3F2EE"><b>Branco</b></span><span style="--i:1;--n:5;background:#D9D5C2"><b>Crômio</b></span><span style="--i:2;--n:5;background:#CDB78F"><b>Cadeira de Bambu</b></span><span style="--i:3;--n:5;background:#B8B8B2"><b>Elefante</b></span><span style="--i:4;--n:5;background:#D7C09C"><b>Camurça</b></span></div>
         </div>
         <div class="color-prod-info">
           <div class="color-prod-line">
             <div class="color-prod-dot" style="background:#F28C28"></div>
-            <span class="color-prod-line-txt">Linha Econômica</span>
+            <span class="color-prod-line-txt">Linha Standard</span>
           </div>
-          <div class="color-prod-name">Tinta Acrílica<br>Econômica</div>
+          <div class="color-prod-name">Acrílico<br>Standard</div>
           <div class="color-prod-pills">
-            <span class="color-prod-pill">Superfícies Internas</span>
+            <span class="color-prod-pill">Interior</span>
+            <span class="color-prod-pill">Exterior</span>
             <span class="color-prod-pill">Alvenaria</span>
           </div>
-          <div class="color-prod-desc">Alto rendimento por litro. Fácil aplicação com rolo e brocha. Acabamento nivelado em obra.</div>
+          <div class="color-prod-desc">Custo-benefício para grandes áreas de alvenaria, concreto, gesso, drywall e fibrocimento.</div>
           <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
@@ -1294,41 +1304,41 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="color-prod-card" onclick="abrirTinta('pisos')">
         <div class="color-prod-img" style="--glow:#C1121F">
           <div class="color-prod-glow"></div>
-          <img src="bucket-pisos.webp" alt="MEP COLOR Pisos e Quadras">
+          <div class="leque-cores"><span style="--i:0;--n:2;background:#9C9C99"><b>Cinza Claro</b></span><span style="--i:1;--n:2;background:#6C6B66"><b>Cinza Chumbo</b></span></div>
         </div>
         <div class="color-prod-info">
           <div class="color-prod-line">
             <div class="color-prod-dot" style="background:#C1121F"></div>
             <span class="color-prod-line-txt">Uso Profissional</span>
           </div>
-          <div class="color-prod-name">Pisos<br>e Quadras</div>
+          <div class="color-prod-name">Tinta<br>para Piso</div>
           <div class="color-prod-pills">
             <span class="color-prod-pill">Calçadas</span>
-            <span class="color-prod-pill">Quadras</span>
-            <span class="color-prod-pill">Pisos</span>
+            <span class="color-prod-pill">Garagens</span>
+            <span class="color-prod-pill">Cimentados</span>
           </div>
-          <div class="color-prod-desc">Alta resistência ao tráfego pesado. Inclui cores de demarcação viária. Interior e exterior.</div>
+          <div class="color-prod-desc">Alta resistência ao tráfego e ao tempo, antiderrapante. Em Cinza Claro e Cinza Chumbo.</div>
           <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
 
-      <div class="color-prod-card" onclick="abrirTinta('esmalte')">
-        <div class="color-prod-img" style="--glow:#6B7280">
+      <div class="color-prod-card" onclick="abrirTinta('emborrachada')">
+        <div class="color-prod-img" style="--glow:#4A90A4">
           <div class="color-prod-glow"></div>
-          <img src="bucket-esmalte.webp" alt="MEP COLOR Esmalte">
+          <div class="leque-cores"><span style="--i:0;--n:3;background:#F3F2EE"><b>Branco</b></span><span style="--i:1;--n:3;background:#D9D5C2"><b>Crômio</b></span><span style="--i:2;--n:3;background:#B8B8B2"><b>Elefante</b></span></div>
         </div>
         <div class="color-prod-info">
           <div class="color-prod-line">
-            <div class="color-prod-dot" style="background:#6B7280"></div>
-            <span class="color-prod-line-txt">Base de Água</span>
+            <div class="color-prod-dot" style="background:#4A90A4"></div>
+            <span class="color-prod-line-txt">Impermeável</span>
           </div>
-          <div class="color-prod-name">Esmalte<br>Acrílico</div>
+          <div class="color-prod-name">Tinta<br>Emborrachada</div>
           <div class="color-prod-pills">
-            <span class="color-prod-pill">Madeiras</span>
-            <span class="color-prod-pill">Metais</span>
-            <span class="color-prod-pill">Ext · Int</span>
+            <span class="color-prod-pill">Fachadas</span>
+            <span class="color-prod-pill">Muros</span>
+            <span class="color-prod-pill">Alvenaria</span>
           </div>
-          <div class="color-prod-desc">Secagem rápida. Acabamento liso e durável. Proteção profissional para madeiras e metais.</div>
+          <div class="color-prod-desc">Película elástica que acompanha a parede e veda microfissuras. Mínimo de 3 demãos.</div>
           <span class="color-prod-cta">Ver cores e calcular</span>
         </div>
       </div>
@@ -1946,10 +1956,10 @@ footer { background:var(--azul2); color:rgba(255,255,255,0.55); }
       <div class="footer-col">
         <h3>MEP COLOR</h3>
         <ul>
-          <li><a href="#mep-color">Linha Premium</a></li>
-          <li><a href="#mep-color">Linha Econômica</a></li>
-          <li><a href="#mep-color">Pisos e Quadras</a></li>
-          <li><a href="#mep-color">Esmalte Acrílico</a></li>
+          <li><a href="#mep-color">Acrílico Fosco Premium</a></li>
+          <li><a href="#mep-color">Acrílico Standard</a></li>
+          <li><a href="#mep-color">Tinta para Piso</a></li>
+          <li><a href="#mep-color">Tinta Emborrachada</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2433,67 +2443,44 @@ document.getElementById('calc-m2').addEventListener('keydown', function(e) {
 /* ── MODAL TINTA ── */
 var TINTAS = {
   premium: {
-    tag: 'Acrílica Premium',
-    nome: 'Tinta Acrílica Premium',
-    img: 'bucket-premium.webp',
+    tag: 'Acrílico Fosco Premium',
+    nome: 'Tinta Acrílica Fosco Premium',
     wcSlug: 'tinta-acrilica-premium-mep-color',
     pills: ['Interior','Exterior','Alvenaria'],
-    rendimento: 8.3,
-    sizes: ['3,6L','18L'],
-    sizesLitros: [3.6, 18],
-    cores: [
-      {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Palha',hex:'#E8D49A'},
-      {nome:'Areia',hex:'#D4B896'},{nome:'Pérola',hex:'#E0D5C8'},{nome:'Marfim',hex:'#F0EAD6'},
-      {nome:'Algodão',hex:'#E4D8C4'},{nome:'Pêssego',hex:'#F0B080'},{nome:'Concreto',hex:'#A09080'},
-      {nome:'Cromio',hex:'#B0B8C4'},{nome:'Elefante',hex:'#828282'},{nome:'Bronze',hex:'#9A8060'},
-      {nome:'Verde Kiwi',hex:'#8AAA5A'},{nome:'Camurça',hex:'#C8A878'}
-    ]
+    rendimento: 7.8,
+    sizes: ['3,6L','15L'],
+    sizesLitros: [3.6, 15],
+    cores: [{nome:'Branco',hex:'#F3F2EE'},{nome:'Crômio',hex:'#D9D5C2'},{nome:'Elefante',hex:'#B8B8B2'},{nome:'Camurça',hex:'#D7C09C'},{nome:'Cadeira de Bambu',hex:'#CDB78F'}]
   },
   economica: {
-    tag: 'Látex Econômico',
-    nome: 'Tinta Acrílica Econômica',
-    img: 'bucket-economica.webp',
+    tag: 'Acrílico Standard',
+    nome: 'Tinta Acrílica Standard',
     wcSlug: 'tinta-acrilica-economica-mep-color',
-    pills: ['Superfícies Internas','Alvenaria'],
-    rendimento: 4.7,
-    sizes: ['3,6L','18L'],
-    sizesLitros: [3.6, 18],
-    cores: [
-      {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Palha',hex:'#E8D49A'},
-      {nome:'Areia',hex:'#D4B896'},{nome:'Pérola',hex:'#E0D5C8'},{nome:'Marfim',hex:'#F0EAD6'},
-      {nome:'Algodão',hex:'#E4D8C4'},{nome:'Pêssego',hex:'#F0B080'},{nome:'Concreto',hex:'#A09080'},
-      {nome:'Cromio',hex:'#B0B8C4'},{nome:'Elefante',hex:'#828282'},{nome:'Bronze',hex:'#9A8060'},
-      {nome:'Verde Kiwi',hex:'#8AAA5A'},{nome:'Camurça',hex:'#C8A878'}
-    ]
+    pills: ['Interior','Exterior','Alvenaria'],
+    rendimento: 6.7,
+    sizes: ['3,6L','15L'],
+    sizesLitros: [3.6, 15],
+    cores: [{nome:'Branco',hex:'#F3F2EE'},{nome:'Crômio',hex:'#D9D5C2'},{nome:'Cadeira de Bambu',hex:'#CDB78F'},{nome:'Elefante',hex:'#B8B8B2'},{nome:'Camurça',hex:'#D7C09C'}]
   },
   pisos: {
-    tag: 'Pisos e Quadras',
-    nome: 'Tinta para Pisos e Quadras',
-    img: 'bucket-pisos.webp',
+    tag: 'Tinta para Piso',
+    nome: 'Tinta para Piso',
     wcSlug: 'tinta-pisos-e-quadras-mep-color',
-    pills: ['Calçadas','Quadras Esportivas','Pisos','Cimentados'],
-    rendimento: 5.6,
-    sizes: ['3,6L','18L'],
-    sizesLitros: [3.6, 18],
-    cores: [
-      {nome:'Amarelo',hex:'#F5C200'},{nome:'Amarelo Demarcação',hex:'#F0DC00'},{nome:'Vermelho Segurança',hex:'#CC0000'},
-      {nome:'Vermelho',hex:'#990000'},{nome:'Concreto',hex:'#8B7D6B'},{nome:'Verde',hex:'#1A4A1A'},
-      {nome:'Cinza Chumbo',hex:'#464646'},{nome:'Cinza',hex:'#888888'},{nome:'Azul',hex:'#1A2B6B'},
-      {nome:'Preto',hex:'#111111'},{nome:'Marrom',hex:'#5A2D0C'},{nome:'Grafite',hex:'#3C3C3C'}
-    ]
+    pills: ['Calçadas','Garagens','Pisos','Cimentados'],
+    rendimento: 6.7,
+    sizes: ['3,6L','15L'],
+    sizesLitros: [3.6, 15],
+    cores: [{nome:'Cinza Claro',hex:'#9C9C99'},{nome:'Cinza Chumbo',hex:'#6C6B66'}]
   },
-  esmalte: {
-    tag: 'Esmalte Base Água',
-    nome: 'Esmalte Acrílico',
-    img: 'bucket-esmalte.webp',
-    wcSlug: 'esmalte-acrilico-base-agua-mep-color',
-    pills: ['Madeiras','Metais','Interior','Exterior'],
-    rendimento: 8.3,
-    sizes: ['0,9L','3,6L'],
-    sizesLitros: [0.9, 3.6],
-    cores: [
-      {nome:'Branco',hex:'#FFFFFF'},{nome:'Gelo',hex:'#F4F0E8'},{nome:'Preto',hex:'#111111'}
-    ]
+  emborrachada: {
+    tag: 'Impermeável',
+    nome: 'Tinta Emborrachada',
+    wcSlug: 'tinta-emborrachada-mep-color',
+    pills: ['Fachadas','Muros','Alvenaria'],
+    rendimento: 6.1,
+    sizes: ['3,6L','15L'],
+    sizesLitros: [3.6, 15],
+    cores: [{nome:'Branco',hex:'#F3F2EE'},{nome:'Crômio',hex:'#D9D5C2'},{nome:'Elefante',hex:'#B8B8B2'}]
   }
 };
 
@@ -2510,16 +2497,17 @@ function abrirTinta(id) {
 
   document.getElementById('tm-tag').textContent = t.tag;
   document.getElementById('tm-nome').textContent = t.nome;
-  document.getElementById('tm-img').src = t.img;
-  document.getElementById('tm-img').alt = t.nome;
-  document.getElementById('tm-rend').textContent = t.rendimento + ' m²/L';
+  document.getElementById('tm-img').innerHTML = '<div class="leque-cores">' + t.cores.map(function(c,i){
+    return '<span style="--i:'+i+';--n:'+t.cores.length+';background:'+c.hex+'"><b>'+c.nome+'</b></span>';
+  }).join('') + '</div>';
+  document.getElementById('tm-rend').textContent = String(t.rendimento).replace('.', ',') + ' m²/L';
 
   var pills = document.getElementById('tm-pills');
   pills.innerHTML = t.pills.map(function(p){return '<span class="tm-pill">'+p+'</span>';}).join('');
 
   var cores = document.getElementById('tm-cores');
   cores.innerHTML = t.cores.map(function(c,i){
-    var borda = (c.hex==='#FFFFFF'||c.hex==='#F4F0E8'||c.hex==='#F0EAD6'||c.hex==='#E4D8C4'||c.hex==='#E0D5C8'||c.hex==='#E8D49A') ? 'border:1px solid rgba(255,255,255,0.18);' : '';
+    var borda = 'border:1px solid rgba(255,255,255,0.18);';
     return '<div class="tm-cor" style="background:'+c.hex+';'+borda+'" title="'+c.nome+'" onclick="selecionarCor('+i+')"></div>';
   }).join('');
 
@@ -2563,12 +2551,12 @@ function calcularTinta() {
   if (!area || area <= 0) return;
   var litrosLata = _tintaAtual.sizesLitros[_sizeSel];
   var rendTotal = _tintaAtual.rendimento * litrosLata;
-  var latas = Math.ceil((area * 2) / rendTotal);
+  var latas = Math.ceil(area / rendTotal);
   var result = document.getElementById('tm-result');
   document.getElementById('tm-latas-num').textContent = latas;
-  document.getElementById('tm-latas-label').textContent = latas === 1 ? 'lata' : 'latas';
+  document.getElementById('tm-latas-label').textContent = _tintaAtual.sizesLitros[_sizeSel] >= 15 ? (latas === 1 ? 'balde' : 'baldes') : (latas === 1 ? 'galão' : 'galões');
   document.getElementById('tm-latas-size').textContent = _tintaAtual.sizes[_sizeSel];
-  document.getElementById('tm-calc-detalhe').textContent = 'Para '+area+' m² com 2 demãos · rendimento estimado: '+_tintaAtual.rendimento+' m²/L';
+  document.getElementById('tm-calc-detalhe').textContent = 'Para '+area+' m² com o acabamento completo · rendimento: '+String(_tintaAtual.rendimento).replace('.', ',')+' m²/L acabado';
   result.classList.add('vis');
   atualizarCTA();
 }
@@ -2578,7 +2566,7 @@ function atualizarCTA() {
   var size = _tintaAtual ? _tintaAtual.sizes[_sizeSel] : '';
   var res = document.getElementById('tm-result');
   var latas = res && res.classList.contains('vis') ? document.getElementById('tm-latas-num').textContent : null;
-  var msg = 'Olá, vim pelo site MEP e tenho interesse na ' + (_tintaAtual ? _tintaAtual.nome : '') + (cor ? ' — Cor: ' + cor : '') + (size ? ' — Embalagem: ' + size : '') + (latas ? ' — Quantidade: ' + latas + ' lata(s)' : '') + '. Pode me passar mais informações?';
+  var msg = 'Olá, vim pelo site MEP e tenho interesse na ' + (_tintaAtual ? _tintaAtual.nome : '') + (cor ? ' — Cor: ' + cor : '') + (size ? ' — Embalagem: ' + size : '') + (latas ? ' — Quantidade: ' + latas + ' unidade(s)' : '') + '. Pode me passar mais informações?';
   document.getElementById('tm-wa').href = 'https://wa.me/5547988515506?text=' + encodeURIComponent(msg);
 }
 
@@ -2714,7 +2702,7 @@ document.addEventListener('keydown', function(e) {
     <div class="tm-body">
 
       <div class="tm-left">
-        <img class="tm-prod-img" id="tm-img" src="" alt="">
+        <div class="tm-prod-img" id="tm-img"></div>
         <div class="tm-pills" id="tm-pills"></div>
         <div class="tm-spec">
           <div class="tm-spec-val" id="tm-rend"></div>
@@ -2752,7 +2740,7 @@ document.addEventListener('keydown', function(e) {
         <div>
           <a class="tm-cta" id="tm-buy" href="#" style="background:var(--laranja);margin-bottom:10px;">Comprar Agora</a>
           <a class="tm-cta" id="tm-wa" href="#" target="_blank">Solicitar pelo WhatsApp</a>
-          <div class="tm-cta-aviso">Rendimento conforme rótulo do fabricante para 2 demãos em superfície lisa. Pode variar conforme o substrato.</div>
+          <div class="tm-cta-aviso">Rendimento acabado (todas as demãos) conforme ficha do fabricante. Pode variar conforme o substrato.</div>
         </div>
 
       </div>
