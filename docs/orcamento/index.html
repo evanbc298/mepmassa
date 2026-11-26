@@ -110,7 +110,58 @@ legend b{color:var(--lar2);font-weight:700;margin-right:6px}
 .wa{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;height:58px;border-radius:10px;background:#25D366;color:#fff;text-decoration:none;font:800 20px 'Barlow Condensed';letter-spacing:.05em;text-transform:uppercase}
 .wa svg{width:26px;height:26px}
 
-footer{text-align:center;font-size:13px;color:var(--cinza);padding:10px 16px 34px}
+
+/* ---------- método completo ---------- */
+.sec{max-width:1080px;margin:0 auto;padding:44px 16px 8px}
+.sec .k{font:700 14px 'Barlow Condensed';letter-spacing:.28em;text-transform:uppercase;color:var(--lar2)}
+.sec h2{margin-top:6px;font:800 clamp(30px,5vw,44px)/1 'Barlow Condensed';text-transform:uppercase}
+.sec h2 em{font-style:normal;color:var(--lar)}
+.sec .intro{margin-top:10px;color:var(--cinza);font-size:17px;max-width:640px}
+.etp{margin-top:24px;display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.etp{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.etp{grid-template-columns:repeat(4,1fr)}}
+.ec{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(15,25,50,.07);display:flex;flex-direction:column}
+.em{position:relative;aspect-ratio:4/3;background:#eef0f4}
+.em img,.em svg{position:absolute;inset:0;width:100%;height:100%}
+.em img{object-fit:cover}
+.em svg{padding:8px}
+.em svg text{font-family:'Barlow',sans-serif}
+.em .nb{position:absolute;z-index:2;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font:800 19px 'Barlow Condensed';display:grid;place-content:center}
+.em .tp{position:absolute;z-index:2;right:10px;bottom:10px;font:700 11px 'Barlow';letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(15,25,50,.72);padding:4px 8px;border-radius:4px}
+.eb{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1}
+.eb h3{font:800 23px/1 'Barlow Condensed';text-transform:uppercase}
+.eb h3 span{color:var(--lar)}
+.eb h3 small{display:block;margin-top:4px;font:600 13px 'Barlow';text-transform:none;color:var(--cinza)}
+.eb ul{list-style:none;margin-top:10px}
+.eb li{position:relative;padding-left:16px;font-size:15px;margin-top:6px}
+.eb li:before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--lar)}
+.eb .chip{margin-top:auto;padding-top:14px}
+.eb .chip span{display:inline-block;font:700 12px 'Barlow';letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--navy);padding:6px 10px;border-radius:5px}
+.alerta{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;border:1.5px solid var(--lar);background:#fdf4ea;border-radius:12px;padding:14px 16px}
+.alerta b{font:800 17px 'Barlow Condensed';text-transform:uppercase;color:var(--lar2);white-space:nowrap}
+.alerta span{font-size:15px;flex:1;min-width:220px}
+
+.cmp{margin-top:22px;background:var(--navy);color:#fff;border-radius:14px;overflow:hidden}
+.cl{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;padding:16px 18px;border-top:1px solid rgba(255,255,255,.08)}
+.cl:first-child{border-top:0}
+.cl .n{grid-column:1/-1;font-weight:600;color:rgba(255,255,255,.8)}
+@media(min-width:700px){.cl{grid-template-columns:1.3fr 1fr 1fr;align-items:center}.cl .n{grid-column:auto}}
+.cl .a,.cl .b{font:800 22px 'Barlow Condensed'}
+.cl .a{color:rgba(255,255,255,.5)}
+.cl .a small,.cl .b small{display:block;font:600 11px 'Barlow';letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.cl .b{color:var(--lar)}
+.fonte{margin-top:8px;font-size:13px;color:var(--cinza)}
+
+.pas{margin-top:22px;display:grid;gap:12px;grid-template-columns:1fr;counter-reset:p}
+@media(min-width:800px){.pas{grid-template-columns:repeat(3,1fr)}}
+.pas div{background:#fff;border-radius:12px;padding:18px;box-shadow:0 4px 20px rgba(15,25,50,.06);counter-increment:p}
+.pas div:before{content:counter(p);display:grid;place-content:center;width:34px;height:34px;border-radius:50%;background:var(--lar);color:var(--navy);font:800 19px 'Barlow Condensed'}
+.pas b{display:block;margin-top:10px;font-size:17px}
+.pas span{display:block;margin-top:4px;color:var(--cinza);font-size:15px}
+.fim{max-width:1080px;margin:36px auto 0;padding:0 16px}
+.fim a{display:flex;align-items:center;justify-content:center;height:58px;border-radius:10px;background:var(--lar);color:var(--navy);text-decoration:none;font:800 21px 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase}
+
+footer{text-align:center;margin-top:28px;font-size:13px;color:var(--cinza);padding:10px 16px 34px}
 </style>
 </head>
 <body>
@@ -208,7 +259,99 @@ footer{text-align:center;font-size:13px;color:var(--cinza);padding:10px 16px 34p
   </aside>
 </main>
 
-<footer>MEP Indústria · (47) 98851-5506 · <a href="https://mep.ind.br">mep.ind.br</a></footer>
+
+<section class="sec" id="metodo">
+  <div class="k">Sistema MEP 10 · 20 · 30 · 40</div>
+  <h2>Como sobe uma parede <em>MEP</em></h2>
+  <p class="intro">Uma massa pronta para cada etapa, da primeira fiada ao acabamento. Abre o balde e aplica: sem betoneira, sem areia, sem água.</p>
+  <div class="etp">
+    <article class="ec">
+      <div class="em"><div class="nb">1</div>        <svg viewBox="0 0 254 124" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <pattern id="f10" width="15" height="13" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="9" height="7" rx="1" fill="#a9553f"/></pattern>
+          </defs>
+          <!-- laje com desnível -->
+          <path d="M0 101 L254 91 L254 124 L0 124 Z" fill="#c3c8d0"/>
+          <path d="M0 101 L254 91" stroke="#9aa1ad" stroke-width="1.5"/>
+          <!-- massa preenchendo até o nível -->
+          <path d="M0 86 L254 86 L254 91 L0 101 Z" fill="#F28C28"/>
+          <!-- blocos das pontas -->
+          <g><rect x="16" y="50" width="58" height="36" fill="#c96f55"/><rect x="16" y="50" width="58" height="36" fill="url(#f10)"/></g>
+          <g><rect x="180" y="50" width="58" height="36" fill="#c96f55"/><rect x="180" y="50" width="58" height="36" fill="url(#f10)"/></g>
+          <!-- linha guia -->
+          <line x1="16" y1="47" x2="238" y2="47" stroke="#0f1932" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <text x="127" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="#0f1932">linha guia</text>
+          <!-- bisnaga -->
+          <g transform="translate(126 80) rotate(-38)">
+            <path d="M0 -3 L-9 -5 L-9 5 L0 3 Z" fill="#F28C28"/>
+            <rect x="-62" y="-9" width="53" height="18" rx="5" fill="#0f1932"/>
+            <rect x="-56" y="-9" width="6" height="18" fill="#26355e"/>
+          </g>
+          <!-- cota do desnível -->
+          <line x1="246" y1="86" x2="246" y2="91" stroke="#0f1932" stroke-width="1"/>
+          <text x="248" y="118" text-anchor="end" font-size="9" font-weight="700" fill="#0f1932">corrige até 1,5 cm</text>
+          <text x="6" y="118" font-size="9" font-weight="600" fill="#4b5563">laje ou baldrame</text>
+        </svg></div>
+      <div class="eb"><h3><span>MEP 10</span> Nivelamento<small>Primeira fiada</small></h3><ul><li>Base seca, limpa e escovada, sem umedecer.</li><li>Corrige desnível de até 1,5 cm.</li><li>Linha guia esticada e fiada no nível.</li></ul><div class="chip"><span>Ajuste o bloco em até 5 s</span></div></div>
+    </article>
+    <article class="ec">
+      <div class="em"><div class="nb">2</div><img src="mep20.webp" alt="Parede assentada com MEP 20, junta fina e no prumo" loading="lazy"><span class="tp">Obra real</span></div>
+      <div class="eb"><h3><span>MEP 20</span> Assentamento<small>Todas as fiadas</small></h3><ul><li>Dois cordões contínuos aplicados com bisnaga.</li><li>Junta fina e constante, de 3 a 5 mm.</li><li>Consumo de 1,5 a 2,0 kg por m² de parede.</li></ul><div class="chip"><span>8 a 10× menos material</span></div></div>
+    </article>
+    <article class="ec">
+      <div class="em"><div class="nb">3</div>        <svg viewBox="0 0 254 124" preserveAspectRatio="xMidYMid meet">
+          <!-- viga -->
+          <rect x="0" y="8" width="254" height="30" fill="#c3c8d0"/>
+          <text x="127" y="28" text-anchor="middle" font-size="10" font-weight="700" fill="#4b5563">viga ou laje</text>
+          <!-- folga com MEP 30 -->
+          <rect x="0" y="38" width="254" height="13" fill="#F28C28"/>
+          <!-- fiadas -->
+          <g fill="#c96f55">
+            <rect x="0" y="51" width="58" height="26"/><rect x="62" y="51" width="58" height="26"/><rect x="124" y="51" width="58" height="26"/><rect x="186" y="51" width="68" height="26"/>
+            <rect x="0" y="80" width="27" height="26"/><rect x="31" y="80" width="58" height="26"/><rect x="93" y="80" width="58" height="26"/><rect x="155" y="80" width="58" height="26"/><rect x="217" y="80" width="37" height="26"/>
+            <rect x="0" y="109" width="58" height="15"/><rect x="62" y="109" width="58" height="15"/><rect x="124" y="109" width="58" height="15"/><rect x="186" y="109" width="68" height="15"/>
+          </g>
+          <g fill="#F28C28"><rect x="0" y="77" width="254" height="3"/><rect x="0" y="106" width="254" height="3"/></g>
+          <!-- cota -->
+          <g stroke="#fff" stroke-width="1.4"><line x1="232" y1="40" x2="232" y2="49"/><line x1="227" y1="40" x2="237" y2="40"/><line x1="227" y1="49" x2="237" y2="49"/></g>
+          <rect x="128" y="39.5" width="98" height="10" rx="2" fill="#0f1932"/>
+          <text x="177" y="47.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">folga de 1,5 a 3 cm</text>
+        </svg></div>
+      <div class="eb"><h3><span>MEP 30</span> Encunhamento<small>Topo da parede</small></h3><ul><li>Aplicar no mínimo 72 h depois de subir a parede.</li><li>Preenche a folga de 1,5 a 3 cm até a viga.</li><li>Bordas fechadas nas duas faces.</li></ul><div class="chip"><span>Absorve a deflexão da estrutura</span></div></div>
+    </article>
+    <article class="ec">
+      <div class="em"><div class="nb">4</div><img src="mep40.webp" alt="Aplicação do reboco fino MEP 40 com desempenadeira" loading="lazy"><span class="tp">Imagem ilustrativa</span></div>
+      <div class="eb"><h3><span>MEP 40</span> Reboco fino<small>Acabamento</small></h3><ul><li>Três demãos finas: 5 mm no total.</li><li>Substitui chapisco, emboço e massa corrida.</li><li>Parede branca, pronta para pintar.</li></ul><div class="chip"><span>Do bloco à pintura</span></div></div>
+    </article>
+  </div>
+  <div class="alerta"><b>Pronto para uso</b><span>Nunca adicione água, cimento ou cal: quebra a cadeia polimérica e anula a garantia. Aplicar entre 10 °C e 35 °C, em base seca e limpa.</span></div>
+</section>
+
+<section class="sec">
+  <div class="k">Na ponta do lápis</div>
+  <h2>O que muda na <em>sua obra</em></h2>
+  <div class="cmp">
+    <div class="cl"><div class="n">Espessura da junta</div><div class="a"><small>Convencional</small>10 a 15 mm</div><div class="b"><small>Sistema MEP</small>3 a 5 mm</div></div>
+    <div class="cl"><div class="n">Material por m² de parede</div><div class="a"><small>Convencional</small>29,27 kg</div><div class="b"><small>Sistema MEP</small>1,5 a 2,0 kg</div></div>
+    <div class="cl"><div class="n">Mão de obra por m²</div><div class="a"><small>Convencional</small>1,2 homem-hora</div><div class="b"><small>Sistema MEP</small>0,4 homem-hora</div></div>
+    <div class="cl"><div class="n">Alvenaria de um prédio de 18 pavimentos</div><div class="a"><small>Convencional</small>7,6 meses</div><div class="b"><small>Sistema MEP</small>5,1 meses</div></div>
+  </div>
+  <p class="fonte">Dados do catálogo técnico MEP e de estudo comparativo em prédio de 18 pavimentos.</p>
+</section>
+
+<section class="sec">
+  <div class="k">Seu orçamento</div>
+  <h2>Como <em>funciona</em></h2>
+  <div class="pas">
+    <div><b>Você responde 3 perguntas</b><span>Perfil, área construída e quando a parede começa a subir.</span></div>
+    <div><b>A equipe confirma pelo WhatsApp</b><span>Tipo de bloco e, se tiver, a planta. Em horário comercial.</span></div>
+    <div><b>Você recebe a proposta</b><span>Quantidade de cada etapa, valores e prazo de entrega.</span></div>
+  </div>
+</section>
+
+<div class="fim"><a href="#caixa">Quero meu orçamento</a></div>
+
+<footer>Fotos de obra real e imagens ilustrativas, identificadas em cada etapa.<br>MEP Indústria · (47) 98851-5506 · <a href="https://mep.ind.br">mep.ind.br</a></footer>
 
 <script>
 (function(){
