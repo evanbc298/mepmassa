@@ -36,7 +36,7 @@ body{font-family:'Barlow',system-ui,sans-serif;background:var(--fundo);color:var
 a{color:inherit}
 
 .topo{background:var(--navy);color:#fff;position:relative;overflow:hidden}
-.topo .foto{position:absolute;inset:0;background:url(obra.webp) center 30%/cover;opacity:.35}
+.topo .foto{position:absolute;inset:0;background:url(topo.webp) center 40%/cover;opacity:.3}
 .topo .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,50,.55),rgba(15,25,50,.95))}
 .topo .in{position:relative;max-width:1080px;margin:0 auto;padding:22px 20px 92px}
 .marca{display:flex;align-items:center;gap:14px}
@@ -99,10 +99,14 @@ legend b{color:var(--lar2);font-weight:700;margin-right:6px}
 .nums div{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 4px}
 .nums strong{display:block;font:800 26px 'Barlow Condensed';color:#fff}
 .nums small{font-size:12px;color:rgba(255,255,255,.65);line-height:1.2;display:block}
-.lado .foto2{margin-top:14px;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:url(obra.webp) center 40%/cover}
-.lado .legenda{font-size:13px;color:var(--cinza);margin-top:6px}
 .norma{margin-top:14px;font:700 13px 'Barlow Condensed';letter-spacing:.16em;text-transform:uppercase;color:var(--cinza)}
 
+@media(min-width:900px){.lado{position:sticky;top:20px}}
+.lista{list-style:none;margin-top:18px;display:grid;gap:10px}
+.lista li{position:relative;padding-left:26px;font-size:15px;color:rgba(255,255,255,.85)}
+.lista li:before{content:"";position:absolute;left:2px;top:4px;width:12px;height:7px;border-left:2.5px solid var(--lar);border-bottom:2.5px solid var(--lar);transform:rotate(-45deg)}
+.ver{display:block;margin-top:20px;text-align:center;padding:12px;border:1.5px solid rgba(255,255,255,.25);border-radius:10px;color:#fff;text-decoration:none;font:700 16px 'Barlow Condensed';letter-spacing:.1em;text-transform:uppercase}
+.ver:hover{border-color:var(--lar)}
 .ok{text-align:center;padding:10px 0}
 .ok .ic{width:64px;height:64px;border-radius:50%;background:#e9f7ee;color:#1a8a4a;display:grid;place-content:center;margin:0 auto;font-size:34px}
 .ok h2{margin-top:14px}
@@ -240,22 +244,20 @@ footer{text-align:center;margin-top:28px;font-size:13px;color:var(--cinza);paddi
 
   <aside class="lado">
     <div class="bloco">
-      <h3>Uma massa pronta para cada etapa da parede</h3>
-      <div class="etapas">
-        <div><b>MEP 10</b><span>Nivelamento da primeira fiada</span></div>
-        <div><b>MEP 20</b><span>Assentamento dos blocos</span></div>
-        <div><b>MEP 30</b><span>Encunhamento sob a viga</span></div>
-        <div><b>MEP 40</b><span>Reboco fino, pronto para pintar</span></div>
-      </div>
+      <h3>Por que construtoras trocam para o Sistema MEP</h3>
       <div class="nums">
         <div><strong>4×</strong><small>mais rápido</small></div>
         <div><strong>40%</strong><small>até de economia</small></div>
         <div><strong>8 a 10×</strong><small>menos material</small></div>
       </div>
+      <ul class="lista">
+        <li>Argamassa pronta no balde: sem betoneira, sem areia, sem água</li>
+        <li>Junta fina de 3 a 5 mm e menos de 1% de desperdício</li>
+        <li>Uma massa para cada etapa, do nivelamento ao reboco fino</li>
+        <li>Atende à norma ABNT NBR 16590</li>
+      </ul>
+      <a class="ver" href="#metodo">Veja como sobe uma parede MEP</a>
     </div>
-    <div class="foto2" role="img" aria-label="Parede assentada com MEP 20 em obra real"></div>
-    <p class="legenda">Obra real com MEP 20: junta fina e parede no prumo.</p>
-    <p class="norma">Atende à norma ABNT NBR 16590</p>
   </aside>
 </main>
 
