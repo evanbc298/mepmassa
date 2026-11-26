@@ -68,6 +68,11 @@ legend b{color:var(--lar2);font-weight:700;margin-right:6px}
 .ops label:has(input:checked){border-color:var(--lar);background:#fff7ef}
 .ops input:focus-visible{outline:3px solid rgba(242,140,40,.4);outline-offset:2px}
 
+.area{display:flex;align-items:center;gap:10px}
+.area input{width:180px;height:56px;border:1.5px solid var(--linha);border-radius:10px;padding:0 14px;font:700 24px 'Barlow';color:var(--navy);background:#fff}
+.area input:focus{outline:none;border-color:var(--lar);box-shadow:0 0 0 3px rgba(242,140,40,.18)}
+.area span{font:800 24px 'Barlow Condensed';color:var(--cinza)}
+.dica{margin-top:6px;font-size:14px;color:var(--cinza)}
 .campos{margin-top:24px;display:grid;gap:12px}
 @media(min-width:600px){.campos{grid-template-columns:1fr 1fr}.campos .tudo{grid-column:1/-1}}
 .campos label{display:block;font-weight:600;font-size:14px;margin-bottom:5px}
@@ -150,12 +155,12 @@ footer{text-align:center;font-size:13px;color:var(--cinza);padding:10px 16px 34p
       </fieldset>
 
       <fieldset>
-        <legend><b>2.</b>Tamanho da obra:</legend>
-        <div class="ops">
-          <label><input type="radio" name="porte" value="ate150"> Uma casa (até 150 m²)</label>
-          <label><input type="radio" name="porte" value="150a500"> De 150 a 500 m²</label>
-          <label><input type="radio" name="porte" value="acima500"> Acima de 500 m² ou prédio</label>
+        <legend><b>2.</b>Área construída da obra:</legend>
+        <div class="area">
+          <input id="area" name="area" type="text" inputmode="numeric" placeholder="Ex.: 120" maxlength="7" aria-describedby="area-dica">
+          <span>m²</span>
         </div>
+        <p class="dica" id="area-dica">Some todos os pavimentos. Não sabe o número exato? Uma estimativa já serve.</p>
       </fieldset>
 
       <fieldset>
@@ -227,16 +232,22 @@ footer{text-align:center;font-size:13px;color:var(--cinza);padding:10px 16px 34p
     else tel.value = d;
   });
 
+  var areaEl = document.getElementById('area');
+  areaEl.addEventListener('input', function(){ areaEl.value = areaEl.value.replace(/\D/g,'').slice(0,6); });
+
   function val(n){ var e = document.querySelector('input[name="'+n+'"]:checked'); return e ? e.value : ''; }
   function erro(m){ var e = document.getElementById('erro'); e.textContent = m; e.style.display = m ? 'block' : 'none'; }
 
   document.getElementById('form').addEventListener('submit', function(ev){
     ev.preventDefault();
-    var perfil = val('perfil'), porte = val('porte'), fase = val('fase');
+    var perfil = val('perfil'), fase = val('fase');
+    var area = parseInt(document.getElementById('area').value.replace(/\D/g,''), 10) || 0;
+    var porte = area <= 150 ? 'ate150' : area <= 500 ? '150a500' : 'acima500';
     var nome = document.getElementById('nome').value.trim();
     var cidade = document.getElementById('cidade').value.trim();
     var digitos = tel.value.replace(/\D/g,'');
-    if (!perfil || !porte || !fase) return erro('Responda as 3 perguntas, por favor.');
+    if (!perfil || !fase) return erro('Responda as 3 perguntas, por favor.');
+    if (area < 15 || area > 500000) return erro('Informe a área construída em m² (pode ser estimada).');
     if (!nome) return erro('Informe seu nome.');
     if (digitos.length < 10 || digitos.length > 11) return erro('Confira o WhatsApp com DDD.');
     erro('');
@@ -244,7 +255,7 @@ footer{text-align:center;font-size:13px;color:var(--cinza);padding:10px 16px 34p
     var btn = document.getElementById('btn');
     btn.disabled = true; btn.textContent = 'Enviando...';
 
-    var lead = { nome:nome, telefone:tel.value, cidade:cidade, perfil:perfil, porte:porte, fase:fase,
+    var lead = { nome:nome, telefone:tel.value, cidade:cidade, perfil:perfil, porte:porte, area:area, fase:fase,
       consentimento: document.getElementById('aceite').checked, origem:'pagina-orcamento',
       utm: utm.join(' / '), site: document.getElementById('site').value };
 
@@ -254,7 +265,7 @@ footer{text-align:center;font-size:13px;color:var(--cinza);padding:10px 16px 34p
       if (window.fbq) fbq('track', 'Lead', { content_name: perfil + ' · ' + porte });
       var primeiro = nome.split(' ')[0];
       var texto = 'Olá! Sou ' + nome + (cidade ? ', de ' + cidade : '') + '. Acabei de pedir o orçamento no site: ' +
-        R.perfil[perfil] + ', ' + R.porte[porte] + ', ' + R.fase[fase] + '.';
+        R.perfil[perfil] + ', obra de ' + area.toLocaleString('pt-BR') + ' m², ' + R.fase[fase] + '.';
       document.getElementById('caixa').innerHTML =
         '<div class="ok"><div class="ic">✓</div><h2>Recebemos, ' + primeiro.replace(/[<>&"]/g,'') + '!</h2>' +
         '<p>A equipe MEP vai te chamar no WhatsApp para fechar o cálculo da sua obra. ' +
